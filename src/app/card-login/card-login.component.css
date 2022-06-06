@@ -16,6 +16,8 @@ div label{
 
 .card-header p{
     color: white;
+    font-size: 15pt;
+    font-weight: bold;
 }
 
 .card-footer{
