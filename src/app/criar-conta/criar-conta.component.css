@@ -1,0 +1,23 @@
+.bg{
+    background-color:#DCDCDC;
+    
+}
+.border{
+    border-radius:10px;
+}
+label{
+    font-size: 15pt;
+    font-family: 'Times New Roman', Times, serif;
+    color:	#4F4F4F;
+}
+h5{
+    font-size: 20pt;
+    font-family: 'Times New Roman', Times, serif;
+    color:#000000;
+}
+.mg1{
+    margin-top: 50px;
+}
+.mg2{
+    margin-top: 20px;
+}
