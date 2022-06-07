@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CardHomeServiceService } from '../card-home-service.service';
+import { Produto } from '../model/Produto';
 
 @Component({
   selector: 'app-card-home',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardHomeComponent implements OnInit {
 
-  constructor() { }
+  produto: Produto[]=[]
 
-  ngOnInit(): void {
+  constructor(private cardHomeServiceService: CardHomeServiceService) { }
+
+  ngOnInit(){
+    this.produto=this.cardHomeServiceService.getAll()
   }
 
 }
