@@ -1,6 +1,6 @@
 ul.social-network li{
     display: inline;
-    
+
     margin: 0;
     padding: 3%;
     text-decoration: none;
@@ -13,8 +13,6 @@ a {
 
 footer{
     background-color: #64AEAA;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
 }
 
 footer .footer-copyright{
