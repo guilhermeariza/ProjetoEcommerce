@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CardHomeServiceService } from '../card-home-service.service';
 import { Produto } from '../model/Produto';
+import { ProdutoService } from '../produto-service.service';
 
 @Component({
   selector: 'app-card-home',
@@ -11,10 +11,11 @@ export class CardHomeComponent implements OnInit {
 
   produto: Produto[]=[]
 
-  constructor(private cardHomeServiceService: CardHomeServiceService) { }
+  constructor(private produtoService: ProdutoService) { }
 
   ngOnInit(){
-    this.produto=this.cardHomeServiceService.getAll()
+      this.produto=this.produtoService.getAll()
+
   }
 
 }
