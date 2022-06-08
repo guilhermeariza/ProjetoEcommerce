@@ -12,8 +12,6 @@ export class ProdutoService {
     {id: 4, nome: "Carro verde", preco: "4,000.00", descricao: "carro eletrico na cor verde"},
     {id: 5, nome: "Carro bege", preco: "4,000.00", descricao: "carro eletrico na cor verde"},
     {id: 6, nome: "Carro amarelo", preco: "4,000.00", descricao: "carro eletrico na cor verde"}
-
-
   ]
 
   constructor() { }
