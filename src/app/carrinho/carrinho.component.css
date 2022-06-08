@@ -1,0 +1,27 @@
+.fs-18{
+  font-size: 15px;
+}
+
+.m-top-100px{
+  margin-top: 100px;
+
+}
+
+div.alinhar div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.alinhar-recuo div{
+  display: flex;
+  justify-content: flex-start;
+}
+
+/*.font{
+  font-family: 'Roboto Condensed', sans-serif;
+}*/
+
+.mr-15px{
+  margin-right: 30px;
+}
