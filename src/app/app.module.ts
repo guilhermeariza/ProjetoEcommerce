@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CardPesquisaProdutoComponent } from './card-pesquisa-produto/card-pesquisa-produto.component';
 import { CarrinhoComponent } from './carrinho/carrinho.component';
+import { ProdutoComponent } from './produto/produto.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     CardPesquisaProdutoComponent,
-    CarrinhoComponent
+    CarrinhoComponent,
+    ProdutoComponent
   ],
   imports: [
     BrowserModule,
