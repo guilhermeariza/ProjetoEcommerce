@@ -18,8 +18,8 @@ import { CadastrarProdutoComponent } from './cadastrar-produto/cadastrar-produto
     CardPesquisaProdutoComponent,
     CardHomeComponent,
     FooterComponent,
+    CadastrarProdutoComponent,
     CardLoginComponent,
-    CadastrarProdutoComponent
   ],
   imports: [
     BrowserModule,
