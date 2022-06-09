@@ -5,7 +5,7 @@ import { CardHomeComponent } from './card-home/card-home.component';
 import { CardLoginComponent } from './card-login/card-login.component';
 
 const routes: Routes = [
-  {path: '', redirectTo:'login', pathMatch: 'full'},
+  {path: '', redirectTo:'inico', pathMatch: 'full'},
   {path: 'login', component: CardLoginComponent},
   {path: 'inicio', component: CardHomeComponent},
   {path: 'gerenciarprodutos', component: CadastrarProdutoComponent},
