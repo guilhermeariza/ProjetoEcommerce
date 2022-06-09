@@ -24,13 +24,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="align-middle">
-        <th id="idProduto" scope="row" hidden="true">1</th>
+      <tr class="align-middle" *ngFor="let produto of produto">
+        <th id="idProduto" scope="row" hidden="true">{{produto.id}}</th>
         <td class="text-center"><img src="assets/img/carro_preto.png" class="img-tabela"></td>
-        <td class="text-center">Carro elétrico preto</td>
-        <td class="text-center">Transporte</td>
-        <td class="text-center">R$ 5.000,00</td>
-        <td class="text-center">200</td>
+        <td class="text-center">{{produto.nome}}</td>
+        <td class="text-center">{{produto.categoria}}</td>
+        <td class="text-center">{{produto.preco}}</td>
+        <td class="text-center">{{produto.quantidade}}</td>
         <td class="text-center">
           <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#excluirProdutoModal">
             <i class="bi bi-trash"></i>
