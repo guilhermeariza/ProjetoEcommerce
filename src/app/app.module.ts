@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CardPesquisaProdutoComponent } from './card-pesquisa-produto/card-pesquisa-produto.component';
 import { CardLoginComponent } from './card-login/card-login.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     CardPesquisaProdutoComponent,
+    FooterComponent,
     CardLoginComponent
   ],
   imports: [
