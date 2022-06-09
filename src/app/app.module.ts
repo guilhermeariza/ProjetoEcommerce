@@ -6,8 +6,10 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CardPesquisaProdutoComponent } from './card-pesquisa-produto/card-pesquisa-produto.component';
 import { CardLoginComponent } from './card-login/card-login.component';
+import { CardHomeComponent } from './card-home/card-home.component';
 import { FooterComponent } from './footer/footer.component';
 import { CadastrarProdutoComponent } from './cadastrar-produto/cadastrar-produto.component';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { CadastrarProdutoComponent } from './cadastrar-produto/cadastrar-produto
     CardPesquisaProdutoComponent,
     FooterComponent,
     CardLoginComponent,
-    CadastrarProdutoComponent
+    CadastrarProdutoComponent,
+    CardHomeComponent,
   ],
   imports: [
     BrowserModule,
