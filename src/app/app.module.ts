@@ -7,6 +7,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { CardPesquisaProdutoComponent } from './card-pesquisa-produto/card-pesquisa-produto.component';
 import { CardLoginComponent } from './card-login/card-login.component';
 import { FooterComponent } from './footer/footer.component';
+import { CadastrarProdutoComponent } from './cadastrar-produto/cadastrar-produto.component';
 
 @NgModule({
   declarations: [
@@ -14,11 +15,13 @@ import { FooterComponent } from './footer/footer.component';
     NavbarComponent,
     CardPesquisaProdutoComponent,
     FooterComponent,
-    CardLoginComponent
+    CardLoginComponent,
+    CadastrarProdutoComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
