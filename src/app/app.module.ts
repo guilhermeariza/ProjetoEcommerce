@@ -9,6 +9,8 @@ import { CardLoginComponent } from './card-login/card-login.component';
 import { CardHomeComponent } from './card-home/card-home.component';
 import { FooterComponent } from './footer/footer.component';
 import { CadastrarProdutoComponent } from './cadastrar-produto/cadastrar-produto.component';
+import { CarrinhoComponent } from './carrinho/carrinho.component';
+
 
 
 @NgModule({
@@ -20,11 +22,13 @@ import { CadastrarProdutoComponent } from './cadastrar-produto/cadastrar-produto
     CardLoginComponent,
     CadastrarProdutoComponent,
     CardHomeComponent,
+    CarrinhoComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    
+
 
   ],
   providers: [],
