@@ -24,3 +24,11 @@ footer .footer-copyright{
 footer .footer-copyright span{
     font-size: large;
 }
+
+.page-footer {
+  position: relative;
+  bottom:0;
+  left:0;
+  right: 0;
+  margin-top: 100px;
+}

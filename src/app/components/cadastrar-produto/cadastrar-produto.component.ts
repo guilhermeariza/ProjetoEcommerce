@@ -13,7 +13,7 @@ export class CadastrarProdutoComponent implements OnInit {
   constructor(private produtoService: ProdutoService) { }
 
   ngOnInit(){
-      this.produto=this.produtoService.getAll()
+      this.produto=this.produtoService.getAll();
   }
 
   editarProduto(produto: Produto){

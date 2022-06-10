@@ -5,4 +5,5 @@ export class Produto {
   public quantidade!: number
   public descricao!: string
   public categoria!: string
+  public foto!: string
 }

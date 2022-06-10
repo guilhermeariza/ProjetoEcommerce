@@ -1,8 +1,8 @@
 <div class="d-flex justify-content-center d-lg-inline-flex col-3 p-3" *ngFor="let produto of produto">
-  <div>{{produto.id}}</div>
   <div class="card text-center" style="width: 300px;">
+    <label id="idProduto" hidden="true">{{produto.id}}</label>
     <div class="card-header p-0" style="height: 200px;">
-      <img class="" style="height: 150px;" src="assets/img/carro_preto.png">
+      <img style="height: 150px;" src="{{produto.foto}}">
       <div style="height: 20px;">
         <p>{{produto.preco}}</p>
       </div>

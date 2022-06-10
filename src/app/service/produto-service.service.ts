@@ -8,12 +8,41 @@ import { Produto } from '../model/Produto';
 })
 export class ProdutoService {
   produto: Produto[] = [
-    {id: 1, nome: "Carro preto", categoria:"Transporte", quantidade:1000, preco: "1,000.00", descricao: "carro eletrico na cor preta"},
-    {id: 2, nome: "Carro azul", categoria:"Transporte", quantidade:2000, preco: "2,000.00", descricao: "carro eletrico na cor azul"},
-    {id: 3, nome: "Carro branco", categoria:"Transporte", quantidade:3000, preco: "3,000.00", descricao: "carro eletrico na cor branco"},
-    {id: 4, nome: "Carro verde", categoria:"Transporte", quantidade:4000, preco: "4,000.00", descricao: "carro eletrico na cor verde"},
-    {id: 5, nome: "Carro bege", categoria:"Transporte", quantidade:5000, preco: "4,000.00", descricao: "carro eletrico na cor verde"},
-    {id: 6, nome: "Carro amarelo", categoria:"Transporte", quantidade:6000, preco: "4,000.00", descricao: "carro eletrico na cor verde"}
+    {
+      id: 1, nome: "Carro elétrico",
+      categoria:"Transporte",
+      quantidade:1000,
+      preco: "2.795,00",
+      descricao: "carro eletrico na cor preta",
+      foto: "assets/img/carro_preto.png"
+    },
+    {
+      id: 2,
+      nome: "Bicicleta elétrica",
+      categoria:"Transporte",
+      quantidade:2000,
+      preco: "1,000.00",
+      descricao: "carro eletrico na cor azul",
+      foto: "assets/img/bicicleta.png"
+    },
+    {
+      id: 3,
+      nome: "Painel solar",
+      categoria:"Painéis",
+      quantidade:3000,
+      preco: "3,000.00",
+      descricao: "carro eletrico na cor branco",
+      foto: "assets/img/painel_solar_1.png"
+    },
+    {
+      id: 4,
+      nome: "Painel solar",
+      categoria:"Painéis",
+      quantidade:4000,
+      preco: "4,000.00",
+      descricao: "carro eletrico na cor verde",
+      foto: "assets/img/painel_solar_2.png"
+    },
   ]
 
   constructor() { }

@@ -26,7 +26,7 @@
     <tbody>
       <tr class="align-middle" *ngFor="let produto of produto">
         <th id="idProduto" scope="row" hidden="true">{{produto.id}}</th>
-        <td class="text-center"><img src="assets/img/carro_preto.png" class="img-tabela"></td>
+        <td class="text-center"><img src="{{produto.foto}}" class="img-tabela"></td>
         <td class="text-center">{{produto.nome}}</td>
         <td class="text-center">{{produto.categoria}}</td>
         <td class="text-center">{{produto.preco}}</td>

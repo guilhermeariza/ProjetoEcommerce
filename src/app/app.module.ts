@@ -25,7 +25,6 @@ import { CardPesquisaProdutoComponent } from './components/card-pesquisa-produto
   imports: [
     BrowserModule,
     AppRoutingModule,
-
   ],
   providers: [],
   bootstrap: [AppComponent]
