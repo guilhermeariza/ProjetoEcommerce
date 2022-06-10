@@ -1,7 +1,10 @@
-.img{
-    width: 250em;height: 250em;
+img{
+    max-width: 500px;
+    max-height: 500px;
 }
 
 .container-fluid{
     background-color:#64aeaa
 }
+
+
