@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Produto } from '../model/Produto';
-import { ProdutoService } from '../service/produto-service.service';
+import { Produto } from 'src/app/model/Produto';
+import { ProdutoService } from 'src/app/service/produto-service.service';
 
 @Component({
   selector: 'app-cadastrar-produto',
@@ -8,7 +8,6 @@ import { ProdutoService } from '../service/produto-service.service';
   styleUrls: ['./cadastrar-produto.component.css']
 })
 export class CadastrarProdutoComponent implements OnInit {
-
   produto: Produto[]=[]
 
   constructor(private produtoService: ProdutoService) { }
