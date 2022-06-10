@@ -24,6 +24,7 @@ import { CadastrarProdutoComponent } from './cadastrar-produto/cadastrar-produto
   imports: [
     BrowserModule,
     AppRoutingModule,
+    
 
   ],
   providers: [],
