@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Elertech</a>
+        <a class="navbar-brand" routerLink="/inico">Elertech</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -8,24 +8,27 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
+                <li class="nav-item iten-hover">
                     <a class="nav-link active" routerLink="/inicio">Início</a>
                 </li>
+                <li class="nav-item iten-hover">
+                  <a class="nav-link" routerLink="/gerenciarprodutos">Gerenciar produtos</a>
+              </li>
                 <!--Botao dropdown-->
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown iten-hover">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Categorias
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Painéis solares</a>
-                        <a class="dropdown-item" href="#">Transporte</a>
+                        <a class="dropdown-item" routerLink="">Painéis solares</a>
+                        <a class="dropdown-item" routerLink="">Transporte</a>
                     </div>
                 </li>
                 <!--/Botao dropdown-->
 
                 <li class="nav-item">
-                    <a class="nav-link" href="sobre.html">Sobre</a>
+                    <a class="nav-link iten-hover" routerLink="/sobre">Sobre</a>
                 </li>
 
                 <!--Barra de pesquisa com botão-->
@@ -42,7 +45,7 @@
         <!--Botão carrinho-->
         <ul class="navbar-nav">
             <li class="form-inline nav-item dropdown">
-                <a class="nav-link" href="carrinho.html">
+                <a class="nav-link" routerLink="/carrinho">
                     <img src="assets/icon/carrinho_transparente.gif" width="30px">
                 </a>
             </li>
@@ -57,17 +60,13 @@
                     <img src="assets/icon/person-circle.svg" width="30px">
                 </a>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Meu perfil</a>
-                    <a class="dropdown-item" href="#">Formas de pagamento</a>
+                    <a class="dropdown-item" routerLink="">Meu perfil</a>
+                    <a class="dropdown-item" routerLink="">Formas de pagamento</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Sair</a>
+                    <a class="dropdown-item" routerLink="">Sair</a>
                 </div>
             </li>
         </ul>
         <!--/Botão de usuario-->
     </div>
 </nav>
-
-<!--Separador-->
-<div class="p-4"><br></div>
-<!--/Separador-->
