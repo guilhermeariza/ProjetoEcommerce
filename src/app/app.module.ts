@@ -14,7 +14,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FormularioDadosClienteComponent } from './components/formulario-dados-cliente/formulario-dados-cliente.component';
 import { TabelaCartaoCreditoComponent } from './components/tabela-cartao-credito/tabela-cartao-credito.component';
-import { EditarCartaoComponent } from './components/editar-cartao/editar-cartao.component';
+
 
 
 @NgModule({
@@ -31,7 +31,7 @@ import { EditarCartaoComponent } from './components/editar-cartao/editar-cartao.
     CarrinhoComponent,
     TabelaCartaoCreditoComponent,
     FormularioDadosClienteComponent,
-    EditarCartaoComponent
+
 
   ],
   imports: [
