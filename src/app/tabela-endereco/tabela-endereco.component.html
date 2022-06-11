@@ -1,44 +1,119 @@
-<form class="row g-3">
-  <div class="col-md-6">
-    <label for="inputEmail4" class="form-label">Nome Completo</label>
-    <input type="email" class="form-control" id="Como aparecem no seu RG ou CNH">
-  </div>
-  <div class="col-md-6">
-    <label for="inputPassword4" class="form-label">CEP</label>
-    <input type="password" class="form-control" id="Insira o seu CEP">
-  </div>
-  <div class="col-12">
-    <label for="inputAddress" class="form-label">Rua/Avenida</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-  </div>
-  <div class="col-12">
-    <label for="inputAddress2" class="form-label">Complemento</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Casa, Predio">
-  </div>
-  <div class="col-md-6">
-    <label for="inputCity" class="form-label">Cidade</label>
-    <input type="text" class="form-control" id="Cidade">
-  </div>
-  <div class="col-md-4">
-    <label for="inputState" class="form-label">Estado</label>
-    <select id="inputState" class="form-select">
-      <option selected>Sao Paulo</option>
-      <option>...</option>
-    </select>
-  </div>
-  <div class="col-md-2">
-    <label for="inputZip" class="form-label">Zip</label>
-    <input type="text" class="form-control" id="inputZip">
-  </div>
-  <div class="col-12">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck">
-      <label class="form-check-label" for="gridCheck">
-        Check me out
-      </label>
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+</head>
+
+<div class="container-fluid">
+<!-- Botão para cadastrar endereço -->
+  <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#cadastrarEnderecoModal">
+    <i class="bi bi-plus-square-fill"></i>
+    Adicionar endereço
+  </button>
+  <!-- Botão para cadastrar endereço -->
+
+  <!-- Tabela que irá listar os endereços -->
+  <table class="table table-hover align-middle">
+    <thead class="text-center">
+      <tr>
+        <th scope="col" hidden="true">#</th>
+        <th scope="col">Endereço</th>
+        <th scope="col">CEP</th>
+      </tr>
+    </thead>
+    <tbody class="text-center">
+      <tr>
+        <th scope="row" hidden="true">1</th>
+        <td>Rua Carlos de Arruda Botelho,321 - Bairro Jardim Guarani - São Paulo - SP</td>
+        <td>02849-030</td>
+        <td>
+          <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editarCartaoModal"><i class="bi bi-pencil-square"></i>Editar</button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#excluirCartaoModal"><i class="bi bi-trash"></i>Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- Tabela que irá listar os cartões -->
+
+<!-- Modal cadastrar -->
+<div class="modal fade" id="cadastrarEnderecoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" style="max-width:1000px;">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #64AEAA; color:white; ">
+        <p class="display-6">Cadastrar endereço</p>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="row gy-2 gx-3 align-items-center">
+          <div class="col-4">
+            <label class="form-label" for="nomeEndereco">Novo Endereço</label>
+            <input type="text" class="form-control" id="nomeEndereco">
+            <div id="nomeEnderecoHelp" class="form-text">Campo obrigatorio</div>
+          </div>
+
+          <div class="col-4">
+            <label class="form-label" for="cep">CEP</label>
+          <input type="text" class="form-control" id="cep">
+            <div id="cepHelp" class="form-text">Campo obrigatorio</div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer text-center" style="background-color: #64AEAA;">
+        <button type="button" class="btn btn-success">Cadastrar</button>
+      </div>
     </div>
   </div>
-  <div class="col-12">
-    <button type="submit" class="btn btn-primary">Sign in</button>
+</div>
+<!-- Modal cadastrar -->
+
+<!-- Modal excluir -->
+<div class="modal fade" id="excluirEnderecoModal" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content ">
+      <div class="modal-header alert-danger">
+        <h5 class="modal-title" id="staticBackdropLabel">Você está excluindo um endereço</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body alert-danger">
+        <p class="display-6">Tem certeza?</p>
+      </div>
+      <div class="modal-footer alert-danger">
+        <button type="button" class="btn btn-danger">Sim</button>
+      </div>
+    </div>
   </div>
-</form>
+</div>
+<!-- Modal excluir -->
+
+<!-- Modal editar -->
+
+<div class="modal fade" id="editarEnderecoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" style="max-width:1000px;">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #64AEAA; color:white; ">
+        <p class="display-6">Editar Endereço</p>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="row gy-2 gx-3 align-items-center">
+          <div class="col-4">
+            <label class="form-label" for="endereco">Endereço</label>
+            <input type="text" class="form-control" id="endereco">
+            <div id="enderecoHelp" class="form-text">Campo obrigatorio</div>
+          </div>
+
+          <div class="col-4">
+            <label class="form-label" for="cep">CEP</label>
+          <input type="text" class="form-control" id="cep">
+            <div id="cepHelp" class="form-text">Campo obrigatorio</div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer text-center" style="background-color: #64AEAA;">
+        <button type="button" class="btn btn-primary">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal editar -->
