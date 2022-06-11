@@ -101,3 +101,47 @@
   </div>
 </div>
 <!-- Modal excluir -->
+
+<!-- Modal editar -->
+
+<div class="modal fade" id="editarCartaoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" style="max-width:1000px;">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #64AEAA; color:white; ">
+        <p class="display-6">Editar cartão</p>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="row gy-2 gx-3 align-items-center">
+          <div class="col-4">
+            <label class="form-label" for="nomeCartao">Nome escrito no cartão</label>
+            <input type="text" class="form-control" id="nomeCartao">
+            <div id="nomeCartaoHelp" class="form-text">Campo obrigatorio</div>
+          </div>
+
+          <div class="col-4">
+            <label class="form-label" for="numeroCartao">Numero impressso no cartão</label>
+          <input type="text" class="form-control" id="numeroCartao">
+            <div id="numeroCartaoHelp" class="form-text">Campo obrigatorio</div>
+          </div>
+
+          <div class="col-2">
+            <label class="form-label" for="validade" id="validade" name="validade">Validade</label>
+            <input type="date" class="form-control" id="validade">
+            <div id="validadeHelp" class="form-text">Campo obrigatorio</div>
+          </div>
+
+          <div class="col-2">
+            <label class="form-label" for="cvv" id="cvv" name="cvv">CVV</label>
+            <input type="text" class="form-control" id="cvv">
+            <div id="cvvHelp" class="form-text">Campo obrigatorio</div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer text-center" style="background-color: #64AEAA;">
+        <button type="button" class="btn btn-primary">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal editar -->
