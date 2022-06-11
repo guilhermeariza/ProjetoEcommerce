@@ -1,6 +1,5 @@
 ul.social-network li{
   display: inline;
-
   margin: 0;
   padding: 3%;
   text-decoration: none;
@@ -12,6 +11,9 @@ a {
 }
 
 footer{
+  width: 100%;
+  position: relative;
+  bottom: 0;
   background-color: #64AEAA;
 }
 
