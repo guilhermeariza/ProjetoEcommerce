@@ -1,0 +1,9 @@
+.navbar{
+  background-color: whitesmoke;
+}
+
+.iten-hover:hover{
+  font-weight: bold;
+  background-color: #64aeaa;
+  border-radius: 10px;
+}
