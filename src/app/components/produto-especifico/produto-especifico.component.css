@@ -1,0 +1,39 @@
+.h1{
+    color: cyan;
+    text-align: center;
+}
+
+.linha{
+    background-color: cyan;
+}
+
+#num{
+    text-align: center;
+    color: cyan;
+}
+
+.preco{
+    color: cyan;
+    text-align: end;
+}
+
+#container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.paragrafo{
+    color: cyan;
+}
+
+#outrocontainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#exampleModalLabel{
+    text-align: center;
+    color: cyan;
+}
