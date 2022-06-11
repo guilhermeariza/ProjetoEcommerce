@@ -11,7 +11,7 @@ import { CarrinhoComponent } from './components/carrinho/carrinho.component';
 import { CarrosselComponent } from './components/carrossel/carrossel.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { FormularioDadosClienteComponent } from './formulario-dados-cliente/formulario-dados-cliente.component';
+import { FormularioDadosClienteComponent } from './components/formulario-dados-cliente/formulario-dados-cliente.component';
 import { TabelaCartaoCreditoComponent } from './components/tabela-cartao-credito/tabela-cartao-credito.component';
 
 @NgModule({
@@ -26,7 +26,8 @@ import { TabelaCartaoCreditoComponent } from './components/tabela-cartao-credito
     CardLoginComponent,
     CarrosselComponent,
     CarrinhoComponent,
-    TabelaCartaoCreditoComponent
+    TabelaCartaoCreditoComponent,
+    FormularioDadosClienteComponent
   ],
   imports: [
     BrowserModule,
