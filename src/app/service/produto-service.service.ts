@@ -1,20 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Produto } from '../model/Produto';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
 export class ProdutoService {
   produto: Produto[] = [
     {
-      id: 1, nome: "Carro elétrico",
-      categoria:"Transporte",
-      quantidade:1000,
+      id: 1,
+      nome: "Carro elétrico",
       preco: "2.795,00",
+      quantidade:1000,
       descricao: "carro eletrico na cor preta",
-      foto: "assets/img/carro_preto.png"
+      categoria:"Transporte",
+      foto: "assets/img/carro_preto.png",
     },
     {
       id: 2,

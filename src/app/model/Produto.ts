@@ -1,3 +1,5 @@
+import { Carrinho } from "./Carrinho"
+
 export class Produto {
   public id!: number
   public nome!: string
@@ -6,4 +8,5 @@ export class Produto {
   public descricao!: string
   public categoria!: string
   public foto!: string
+  // public carrinho!: Carrinho
 }
