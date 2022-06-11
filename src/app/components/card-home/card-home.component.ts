@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProdutoService } from 'src/app/service/produto-service.service';
 import { Produto } from '../../model/Produto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card-home',
@@ -11,11 +12,10 @@ export class CardHomeComponent implements OnInit {
 
   produto: Produto[]=[]
 
-  constructor(private produtoService: ProdutoService) { }
+  constructor(private router: Router, private produtoService: ProdutoService) { }
 
   ngOnInit(){
       this.produto=this.produtoService.getAll()
-
   }
 
 }
