@@ -1,6 +1,7 @@
 .navbar{
-  background-color: #acce88;
-  margin-bottom: 30px;
+  position: relative;
+  top: 0;
+  background-color: whitesmoke;
 }
 
 .iten-hover:hover{
