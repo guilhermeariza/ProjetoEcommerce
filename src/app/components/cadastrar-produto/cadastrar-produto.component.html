@@ -26,7 +26,7 @@
       <tr class="align-middle" *ngFor="let produto of produto">
         <th id="idProduto" scope="row" hidden="true">{{produto.id}}</th>
         <td class="text-center"><img src="{{produto.foto}}" class="img-tabela"></td>
-        <td class="text-center">{{produto.nome}}</td>
+        <td id="nomeProdutoTb" class="text-center">{{produto.nome}}</td>
         <td class="text-center">{{produto.categoria}}</td>
         <td class="text-center">{{produto.preco}}</td>
         <td class="text-center">{{produto.quantidade}}</td>
@@ -37,7 +37,7 @@
           </button>
         </td>
         <td class="text-center">
-          <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editarProdutoModal">
+          <button id="btnEditarProduto" (click)="editarProduto()" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editarProdutoModal">
             <i class="bi bi-pencil-square"></i>
             Editar
           </button>
@@ -86,6 +86,7 @@
               <label for="foto" class="form-label">Upload de foto</label>
               <div class="col-5">
                 <input class="form-control" type="file" id="foto">
+                <img id="setFoto">
               </div>
               <div class="col">
                 <button class="btn btn-success">
@@ -122,14 +123,14 @@
       <div class="modal-body">
         <form class="row gy-2 gx-3 align-items-center">
           <div class="col-5">
-            <label id="idProduto" hidden="true">idProduto</label>
-            <label class="form-label" for="nomeProduto">Nome do produto</label>
-            <input type="text" class="form-control" id="nomeProduto">
+            <label id="idProdutoEditar" hidden="true">idProduto</label>
+            <label class="form-label" for="nomeProdutoEditar">Nome do produto</label>
+            <input type="text" class="form-control" id="nomeProdutoEditar">
             <div id="nomeProdutoHelp" class="form-text">Campo obrigatorio</div>
           </div>
           <div class="col-3">
-            <label class="form-label" for="categoriaProduto">Categoria</label>
-            <select class="form-select" id="categoriaProduto">
+            <label class="form-label" for="categoriaProdutoEditar">Categoria</label>
+            <select class="form-select" id="categoriaProdutoEditar">
               <option selected>Selecione uma categoria...</option>
               <option value="2">Painel solar</option>
               <option value="3">Trasnporte</option>
@@ -137,13 +138,13 @@
             <div id="categoriaProdutoHelp" class="form-text">Campo obrigatorio</div>
           </div>
           <div class="col-2">
-            <label class="form-label" for="qtdProduto">Quantidade</label>
-            <input type="text" class="form-control" id="qtdProduto">
+            <label class="form-label" for="qtdProdutoEditar">Quantidade</label>
+            <input type="text" class="form-control" id="qtdProdutoEditar">
             <div id="qtdProdutoHelp" class="form-text">Campo obrigatorio</div>
           </div>
           <div class="col-2">
-            <label class="form-label" for="precoProduto">Preço de venda</label>
-            <input type="text" class="form-control" id="precoProduto">
+            <label class="form-label" for="precoProdutoEditar">Preço de venda</label>
+            <input type="text" class="form-control" id="precoProdutoEditar">
             <div id="precoProdutoHelp" class="form-text">Campo obrigatorio</div>
           </div>
           <div class="col-12">
@@ -162,8 +163,8 @@
           </div>
           <div class="row mt-4">
             <div class="col">
-              <label for="descricaoProduto" class="form-label">Descrição do produto</label>
-              <textarea class="form-control" id="descricaoProduto" rows="4"></textarea>
+              <label for="descricaoProdutoEditar" class="form-label">Descrição do produto</label>
+              <textarea class="form-control" id="descricaoProdutoEditar" rows="4"></textarea>
             </div>
           </div>
         </form>
