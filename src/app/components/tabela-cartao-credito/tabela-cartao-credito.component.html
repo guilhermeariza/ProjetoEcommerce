@@ -1,0 +1,103 @@
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+</head>
+
+<div class="container-fluid">
+<!-- Botão para cadastrar cartão -->
+  <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#cadastrarCartaoModal">
+    <i class="bi bi-plus-square-fill"></i>
+    Adicionar cartão
+  </button>
+  <!-- Botão para cadastrar cartão -->
+
+  <!-- Tabela que irá listar os cartões -->
+  <table class="table table-hover align-middle">
+    <thead class="text-center">
+      <tr>
+        <th scope="col" hidden="true">#</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Numero</th>
+        <th scope="col">Vencimento</th>
+        <th scope="col">CVV</th>
+      </tr>
+    </thead>
+    <tbody class="text-center">
+      <tr>
+        <th scope="row" hidden="true">1</th>
+        <td>PAMELA AZEVEDO</td>
+        <td>4536970972583073</td>
+        <td>04/2028</td>
+        <td>467</td>
+        <td>
+          <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editarCartaoModal"><i class="bi bi-pencil-square"></i>Editar</button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#excluirCartaoModal"><i class="bi bi-trash"></i>Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- Tabela que irá listar os cartões -->
+
+<!-- Modal cadastrar -->
+<div class="modal fade" id="cadastrarCartaoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" style="max-width:1000px;">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #64AEAA; color:white; ">
+        <p class="display-6">Cadastrar cartão</p>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="row gy-2 gx-3 align-items-center">
+          <div class="col-4">
+            <label class="form-label" for="nomeCartao">Nome escrito no cartão</label>
+            <input type="text" class="form-control" id="nomeCartao">
+            <div id="nomeCartaoHelp" class="form-text">Campo obrigatorio</div>
+          </div>
+
+          <div class="col-4">
+            <label class="form-label" for="numeroCartao">Numero impressso no cartão</label>
+          <input type="text" class="form-control" id="numeroCartao">
+            <div id="numeroCartaoHelp" class="form-text">Campo obrigatorio</div>
+          </div>
+
+          <div class="col-2">
+            <label class="form-label" for="validade" id="validade" name="validade">Validade</label>
+            <input type="date" class="form-control" id="validade">
+            <div id="validadeHelp" class="form-text">Campo obrigatorio</div>
+          </div>
+
+          <div class="col-2">
+            <label class="form-label" for="cvv" id="cvv" name="cvv">CVV</label>
+            <input type="text" class="form-control" id="cvv">
+            <div id="cvvHelp" class="form-text">Campo obrigatorio</div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer text-center" style="background-color: #64AEAA;">
+        <button type="button" class="btn btn-success">Cadastrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal cadastrar -->
+
+<!-- Modal excluir -->
+<div class="modal fade" id="excluirCartaoModal" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content ">
+      <div class="modal-header alert-danger">
+        <h5 class="modal-title" id="staticBackdropLabel">Você está excluindo um cartão</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body alert-danger">
+        <p class="display-6">Tem certeza?</p>
+      </div>
+      <div class="modal-footer alert-danger">
+        <button type="button" class="btn btn-danger">Sim</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal excluir -->
