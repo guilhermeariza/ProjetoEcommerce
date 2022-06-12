@@ -19,15 +19,21 @@ export class CadastrarProdutoComponent implements OnInit {
       this.produto=this.produtoService.getAll();
   }
 
-  editarProduto(){
-    $( document ).trigger('ready'); {
-      const nomeProduto = $('#nomeProduto').text();
-      console.log(nomeProduto);
-    };
+  editarProduto(id:number){
+    const i = this.produto.findIndex((produto, index, array) => produto.id === id);
+    $('#idProdutoEditar').text(this.produto[i].id)
+    $('#nomeProdutoEditar').val(this.produto[i].nome)
+    $('#precoProdutoEditar').val(this.produto[i].preco)
+    $('#qtdProdutoEditar').val(this.produto[i].quantidade)
+    $('#descricaoProdutoEditar').val(this.produto[i].descricao)
+    $("#categoriaProdutoEditar option:contains("+this.produto[i].categoria+")").attr('selected', 'true');
+    $('#fotoProdutoEditar').val(this.produto[i].foto)
+    console.log(this.produto[i])
   }
 
-
-
-
-
+  excluirProduto(id:number){
+    const i = this.produto.findIndex((produto, index, array) => produto.id === id);
+    $('#idProdutoExcluir').text(this.produto[i].id)
+    $('#nomeProdutoExcluir').text(this.produto[i].nome)
+  }
 }

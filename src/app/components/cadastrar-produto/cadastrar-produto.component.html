@@ -13,7 +13,7 @@
   <table class="table table-sm">
     <thead>
       <tr>
-        <th id="idProduto" scope="col" hidden="true">ID</th>
+        <th scope="col">ID</th>
         <th scope="col">Foto</th>
         <th scope="col">Nome</th>
         <th scope="col">Categotia</th>
@@ -24,20 +24,20 @@
     </thead>
     <tbody>
       <tr class="align-middle" *ngFor="let produto of produto">
-        <th id="idProduto" scope="row" hidden="true">{{produto.id}}</th>
-        <td class="text-center"><img src="{{produto.foto}}" class="img-tabela"></td>
-        <td id="nomeProdutoTb" class="text-center">{{produto.nome}}</td>
-        <td class="text-center">{{produto.categoria}}</td>
-        <td class="text-center">{{produto.preco}}</td>
-        <td class="text-center">{{produto.quantidade}}</td>
+        <td id="idProduto" >{{produto.id}}</td>
+        <td id="fotoProduto" class="text-center"><img src="{{produto.foto}}" class="img-tabela"></td>
+        <td id="nomeProduto" class="text-center">{{produto.nome}}</td>
+        <td id="categoriaProduto" class="text-center">{{produto.categoria}}</td>
+        <td id="precoProduto" class="text-center">{{produto.preco}}</td>
+        <td id="qtdProduto" class="text-center">{{produto.quantidade}}</td>
         <td class="text-center">
-          <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#excluirProdutoModal">
+          <button id="btnExcluir"  (click)="excluirProduto(produto.id)" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#excluirProdutoModal">
             <i class="bi bi-trash"></i>
             Excluir
           </button>
         </td>
         <td class="text-center">
-          <button id="btnEditarProduto" (click)="editarProduto()" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editarProdutoModal">
+          <button id="btnEditar" (click)="editarProduto(produto.id)" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editarProdutoModal">
             <i class="bi bi-pencil-square"></i>
             Editar
           </button>
@@ -132,8 +132,8 @@
             <label class="form-label" for="categoriaProdutoEditar">Categoria</label>
             <select class="form-select" id="categoriaProdutoEditar">
               <option selected>Selecione uma categoria...</option>
-              <option value="2">Painel solar</option>
-              <option value="3">Trasnporte</option>
+              <option value="1">Painéis</option>
+              <option value="2">Transporte</option>
             </select>
             <div id="categoriaProdutoHelp" class="form-text">Campo obrigatorio</div>
           </div>
@@ -151,7 +151,7 @@
             <div class="row">
               <label for="foto" class="form-label">Upload de foto</label>
               <div class="col-5">
-                <input class="form-control" type="file" id="foto">
+                <input class="form-control" type="file" id="fotoProdutoEditar">
               </div>
               <div class="col">
                 <button class="btn btn-primary">
@@ -186,7 +186,9 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body alert-danger">
-        <p class="display-6">Tem certeza?</p>
+        <label id="idProdutoExcluir" hidden="true"></label>
+        <p class="">Tem certeza que deseja excluir o produto <label class="" id="nomeProdutoExcluir"></label> ?</p>
+        <label class="" id="nomeProdutoExcluir"></label>
       </div>
       <div class="modal-footer alert-danger">
         <button type="button" class="btn btn-danger">Sim</button>
