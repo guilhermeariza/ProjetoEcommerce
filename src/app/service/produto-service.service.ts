@@ -13,7 +13,7 @@ export class ProdutoService {
       quantidade:1000,
       descricao: "carro eletrico na cor preta",
       categoria:"Transporte",
-      foto: "assets/img/carro_preto.png",
+      foto: "assets/img/carro_preto.png"
     },
     {
       id: 2,

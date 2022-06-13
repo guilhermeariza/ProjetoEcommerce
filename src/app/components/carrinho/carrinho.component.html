@@ -17,12 +17,14 @@
           <div class="col"></div>
         </div>
         <hr>
-        <div class="row col mt-5 alinhar">
+        <div *ngFor="let carrinho of carrinho" class="row col mt-5 alinhar">
           <div class="col">
             <img src="../../assets/img/carro_preto.png" alt="" class=""
               style="max-width:90%; max-height:100%; width: auto; height: auto;">
           </div>
-          <div class="col-sm ">Bike elétrica</div>
+          <label id="idCarrinho">{{carrinho.id}}</label>
+          <label id="idProduto">{{carrinho.produto.id}}</label>
+          <div class="col-sm ">{{carrinho.produto}}</div>
           <div class="col">40</div>
           <div class="col fw-bold">R$ 3.000,00</div>
           <div class="col fw-bold">R$ 120.000,00</div>
