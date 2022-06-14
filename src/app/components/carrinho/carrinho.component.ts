@@ -11,10 +11,10 @@ import { ProdutoService } from 'src/app/service/produto-service.service';
   styleUrls: ['./carrinho.component.css']
 })
 export class CarrinhoComponent implements OnInit {
-  carrinho: Carrinho[]=[produto: Produto[]=[]]
+  carrinho: Carrinho[]=[]
   produto: Produto[]=[]
 
-  constructor(private router: Router, private carrinhoService: CarrinhoService, private produtoService: ProdutoService) { }
+  constructor(private router: Router, private carrinhoService: CarrinhoService) { }
 
   ngOnInit(){
     this.carrinho=this.carrinhoService.getAll()
