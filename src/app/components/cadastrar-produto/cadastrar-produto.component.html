@@ -48,12 +48,12 @@
 <!-- tabela -->
 
 <!-- Modal cadastrar -->
-<div class="modal fade" id="cadastrarProdutoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="cadastrarProdutoModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" style="max-width:1000px;">
     <div class="modal-content">
       <div class="modal-header" style="background-color: #64AEAA; color:white; ">
         <p class="display-6">Cadastrar produto</p>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button (click)="limparImagem()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form class="row gy-2 gx-3 align-items-center">
@@ -85,14 +85,8 @@
             <div class="row">
               <label for="foto" class="form-label">Upload de foto</label>
               <div class="col-5">
-                <input class="form-control" type="file" id="foto">
+                <input class="form-control" type="file" id="input_img" (change)="fileChange($event)" accept="image/*">
                 <img id="setFoto">
-              </div>
-              <div class="col">
-                <button class="btn btn-success">
-                  <i class="bi bi-file-earmark-arrow-up-fill"></i>
-                  Enviar
-                </button>
               </div>
             </div>
           </div>
