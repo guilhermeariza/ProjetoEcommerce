@@ -42,6 +42,15 @@ export class ProdutoService {
       descricao: "carro eletrico na cor verde",
       foto: "assets/img/painel_solar_2.png"
     },
+    {
+      id: 5,
+      nome: "Painel solar",
+      categoria:"Painéis",
+      quantidade:4000,
+      preco: "4,000.00",
+      descricao: "carro eletrico na cor verde",
+      foto: "assets/img/painel_solar_2.png"
+    }
   ]
 
   constructor() { }

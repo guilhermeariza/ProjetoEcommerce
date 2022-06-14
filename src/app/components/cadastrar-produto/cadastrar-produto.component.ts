@@ -27,7 +27,7 @@ export class CadastrarProdutoComponent implements OnInit {
     $('#qtdProdutoEditar').val(this.produto[i].quantidade)
     $('#descricaoProdutoEditar').val(this.produto[i].descricao)
     $("#categoriaProdutoEditar option:contains("+this.produto[i].categoria+")").attr('selected', 'true');
-    $('#fotoProdutoEditar').val(this.produto[i].foto)
+    $('#fotoProdutoEditar').attr('src', this.produto[i].foto)
     console.log(this.produto[i])
   }
 
