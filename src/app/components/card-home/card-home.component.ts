@@ -11,11 +11,11 @@ import { Router } from '@angular/router';
 export class CardHomeComponent implements OnInit {
 
   produto: Produto[]=[]
-
+  maisVendidos: Produto[] = []
 
   constructor(private router: Router, private produtoService: ProdutoService) { }
 
   ngOnInit(){
-    this.produto = this.produtoService.getAll()
+    this.maisVendidos = this.produtoService.getFour()
   }
 }
