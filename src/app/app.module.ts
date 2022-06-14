@@ -3,10 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { CardPesquisaProdutoComponent } from './card-pesquisa-produto/card-pesquisa-produto.component';
-import { CardHomeComponent } from './card-home/card-home.component';
-import { CriarContaComponent } from './criar-conta/criar-conta.component';
+
+import { CadastrarProdutoComponent } from './components/cadastrar-produto/cadastrar-produto.component';
+import { CardHomeComponent } from './components/card-home/card-home.component';
+import { CardLoginComponent } from './components/card-login/card-login.component';
+import { CardPesquisaProdutoComponent } from './components/card-pesquisa-produto/card-pesquisa-produto.component';
+import { CarrinhoComponent } from './components/carrinho/carrinho.component';
+import { CarrosselComponent } from './components/carrossel/carrossel.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+
 
 @NgModule({
   declarations: [
@@ -14,11 +20,17 @@ import { CriarContaComponent } from './criar-conta/criar-conta.component';
     NavbarComponent,
     CardPesquisaProdutoComponent,
     CardHomeComponent,
-    CriarContaComponent
+
+    FooterComponent,
+    CadastrarProdutoComponent,
+    CardLoginComponent,
+    CarrosselComponent,
+    CarrinhoComponent
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

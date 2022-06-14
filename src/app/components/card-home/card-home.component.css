@@ -1,0 +1,19 @@
+div .card{
+  box-shadow: 0 10px 12px 0 rgba(23, 21, 172, 0.2), 0 6px 20px 0 rgba(29, 141, 7, 0.19);
+}
+.card-header{
+  background-color: #64aeaa;
+  border: #64aeaa;
+}
+
+.card-header p{
+  color: white;
+  font-size: 20pt;
+  font-weight: bold;
+}
+
+.card-footer{
+  background-color: #64aeaa;
+  border: #64aeaa;
+  font-weight: bold;
+}

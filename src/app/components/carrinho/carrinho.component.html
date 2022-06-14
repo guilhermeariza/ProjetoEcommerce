@@ -1,0 +1,84 @@
+<main class="pt-4" style="margin-top: 55px;">
+  <div class=" container d-block row w-75 mx-auto">
+    <div class="row p-3 fw-bold mx-auto" style="background: rgb(237, 237, 237);">
+      <div class="col"><u><a class="text-muted" href="#">CONTINUAR COMPRANDO</a></u></div>
+      <div class="col text-center">MEU CARRINHO(4)</div>
+      <div class="col"></div>
+    </div>
+    <div class="mx-auto d-block  font fs-15 shadow-lg p-3 mb-5 bg-body rounded" style="background: rgb(255, 255, 255)">
+      <div class="col-12 row-cols text-center alinhar">
+        <div class="row col mt-5 fw-bold">
+          <div class="col ">PRODUTOS</div>
+          <div class="col"></div>
+          <div class="col">QUANTIDADE</div>
+          <div class="col">VALOR UNITÁRIO</div>
+          <div class="col">TOTAL</div>
+          <div class="col">SELECIONAR</div>
+          <div class="col"></div>
+        </div>
+        <hr>
+        <div class="row col mt-5 alinhar">
+          <div class="col">
+            <img src="../../assets/img/carro_preto.png" alt="" class=""
+              style="max-width:90%; max-height:100%; width: auto; height: auto;">
+          </div>
+          <div class="col-sm ">Bike elétrica</div>
+          <div class="col">40</div>
+          <div class="col fw-bold">R$ 3.000,00</div>
+          <div class="col fw-bold">R$ 120.000,00</div>
+          <div class=" col form-check">
+            <input type="checkbox" value="" id="defaultCheck1" style="width: 20px; height: 20px;">
+            <label for="defaultCheck1"></label>
+          </div>
+          <div class="col">
+            <button type="button" class="fw-bold border border-white "
+              style="width: 80%; height: 80%; background: white;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              <h4>&times;</h4>
+            </button>
+          </div>
+        </div>
+        <hr>
+        <button type="button" class=" btn fs-20 fw-bold mt-5" style="background: rgb(66, 153, 171);">
+          Seguir para o pagamento
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="meuModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Excluir produto</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>Você tem certeza que deseja excluir (nomeDoProduto) do seu carrinho?</p>
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <button type="button" class="btn btn-danger w-50 " data-dismiss="modal">Tenho certeza</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Button trigger modal -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

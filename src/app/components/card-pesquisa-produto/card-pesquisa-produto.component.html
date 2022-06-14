@@ -1,5 +1,7 @@
-<div class="container">
+<div class="container" *ngFor="let produto of produto">
+
     <div class="row shadow-lg mb-3" style="background: lightgray; border-radius: 10px; box-shadow: black, 10%;">
+      <div style="display: none;">{{produto.id}}</div>
         <div class="col-3">
             <a href="#">
                 <img src="assets/img/carro_preto.png" height="200" width="200"
@@ -8,14 +10,14 @@
         </div>
         <div class="col-9">
             <a href="#" style="text-decoration: none; color:black;">
-                <p class="pt-3" style="font-size: 20pt;">Nome produto produto</p>
+                <p class="pt-3" style="font-size: 20pt;">{{produto.nome}}</p>
             </a>
             <div class="row">
                 <div class="col-9">
-                    <p><strong>Descrição: </strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    <p><strong>Descrição: </strong>{{produto.descricao}}</p>
                 </div>
                 <div class="col-9">
-                    <p class="" style="font-size: 24pt;"><strong>R$ </strong>2.000,00</p>
+                    <p class="" style="font-size: 24pt;"><strong>R$ </strong>{{produto.preco}}</p>
                 </div>
             </div>
         </div>
