@@ -18,8 +18,6 @@ import { FormularioDadosClienteComponent } from './components/formulario-dados-c
 import { TabelaCartaoCreditoComponent } from './components/tabela-cartao-credito/tabela-cartao-credito.component';
 import { TabelaEnderecoComponent } from './components/tabela-endereco/tabela-endereco.component';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +32,8 @@ import { TabelaEnderecoComponent } from './components/tabela-endereco/tabela-end
     CadastrarProdutoComponent,
     CardLoginComponent,
     CarrinhoComponent,
-    CarrosselComponent
+    CarrosselComponent,
+    CarrinhoComponent
   ],
   imports: [
     BrowserModule,
