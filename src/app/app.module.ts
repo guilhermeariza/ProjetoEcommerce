@@ -23,17 +23,16 @@ import { TabelaEnderecoComponent } from './components/tabela-endereco/tabela-end
     AppComponent,
     NavbarComponent,
     CardPesquisaProdutoComponent,
-    FormularioDadosClienteComponent,
     CardHomeComponent,
     FooterComponent,
-    TabelaCartaoCreditoComponent,
-    TabelaEnderecoComponent,
-    FormularioDadosClienteComponent,
     CadastrarProdutoComponent,
     CardLoginComponent,
     CarrinhoComponent,
     CarrosselComponent,
-    CarrinhoComponent
+    CarrinhoComponent,
+    FormularioDadosClienteComponent,
+    TabelaCartaoCreditoComponent,
+    TabelaEnderecoComponent
   ],
   imports: [
     BrowserModule,
