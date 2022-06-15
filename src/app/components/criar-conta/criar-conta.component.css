@@ -1,36 +1,5 @@
-.bg{
-    background-color:#64aeaa;
-    
-}
-
-label{
-    font-size: 15pt;
-    font-family: 'Times New Roman', Times, serif;
-    color:	#000000;
-}
-h5{
-    font-size: 20pt;
-    font-family: 'Times New Roman', Times, serif;
-    color:#000000;
-}
-.mg1{
-    margin-top: 50px;
-}
-.mg2{
-    margin-top: 20px;
-}
-
-h5{
-    color:rgb(0, 5, 5);
-    text-align: center;
-    font-weight:bold;
-}
-p{
-    color:rgb(2, 4, 41);
-    text-align: center;
-    font-family: 'Lucida Sans';
-    font-size: 14px;
-    font-weight:bold;
-   
+.bg-212{
+  background-color: rgb(212, 212, 212);
+  border-radius: 10px;
 }
 
