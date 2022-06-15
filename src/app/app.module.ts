@@ -41,6 +41,7 @@ import { TabelaEnderecoComponent } from './components/tabela-endereco/tabela-end
     AppRoutingModule,
     HttpClientModule,
     FormsModule
+  ],
   providers: [
     {
       provide: LocationStrategy,

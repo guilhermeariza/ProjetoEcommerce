@@ -6,6 +6,7 @@ import { CardLoginComponent } from './components/card-login/card-login.component
 import { CarrinhoComponent } from './components/carrinho/carrinho.component';
 import { FormularioDadosClienteComponent } from './components/formulario-dados-cliente/formulario-dados-cliente.component';
 
+
 const routes: Routes = [
   {path: '', redirectTo:'inico', pathMatch: 'full'},
   {path: 'login', component: CardLoginComponent},
