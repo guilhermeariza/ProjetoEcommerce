@@ -22,14 +22,14 @@
     </thead>
     <tbody class="text-center">
       <tr>
-        <th scope="row" hidden="true">1</th>
-        <td>Rua Carlos de Arruda Botelho,321 - Bairro Jardim Guarani - São Paulo - SP</td>
-        <td>02849-030</td>
+        <th id="idEnderecoTb" scope="row" hidden="true">1</th>
+        <td id="enderecoTb">Rua Carlos de Arruda Botelho,321 - Bairro Jardim Guarani - São Paulo - SP</td>
+        <td id="cepTb">02849-030</td>
         <td>
-          <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editarCartaoModal"><i class="bi bi-pencil-square"></i>Editar</button>
+          <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editarEnderecoModal"><i class="bi bi-pencil-square"></i>Editar</button>
         </td>
         <td>
-          <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#excluirCartaoModal"><i class="bi bi-trash"></i>Excluir</button>
+          <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#excluirEnderecoModal"><i class="bi bi-trash"></i>Excluir</button>
         </td>
       </tr>
     </tbody>
@@ -47,16 +47,16 @@
       </div>
       <div class="modal-body">
         <form class="row gy-2 gx-3 align-items-center">
-          <div class="col-4">
-            <label class="form-label" for="nomeEndereco">Novo Endereço</label>
-            <input type="text" class="form-control" id="nomeEndereco">
-            <div id="nomeEnderecoHelp" class="form-text">Campo obrigatorio</div>
+          <div class="col-8">
+            <label class="form-label" for="nomeEnderecoCadastrar">Novo Endereço</label>
+            <input type="text" class="form-control" id="nomeEnderecoCadastrar">
+            <div id="nomeEnderecoCadastrarHelp" class="form-text">Campo obrigatorio</div>
           </div>
 
           <div class="col-4">
-            <label class="form-label" for="cep">CEP</label>
-          <input type="text" class="form-control" id="cep">
-            <div id="cepHelp" class="form-text">Campo obrigatorio</div>
+            <label class="form-label" for="cepCadastrar">CEP</label>
+          <input type="text" class="form-control" id="cepCadastrar">
+            <div id="cepCadastrarHelp" class="form-text">Campo obrigatorio</div>
           </div>
         </form>
       </div>
@@ -88,7 +88,6 @@
 <!-- Modal excluir -->
 
 <!-- Modal editar -->
-
 <div class="modal fade" id="editarEnderecoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" style="max-width:1000px;">
     <div class="modal-content">
@@ -98,16 +97,16 @@
       </div>
       <div class="modal-body">
         <form class="row gy-2 gx-3 align-items-center">
-          <div class="col-4">
-            <label class="form-label" for="endereco">Endereço</label>
-            <input type="text" class="form-control" id="endereco">
-            <div id="enderecoHelp" class="form-text">Campo obrigatorio</div>
+          <div class="col-8">
+            <label class="form-label" for="enderecoEditar">Endereço</label>
+            <input type="text" class="form-control" id="enderecoEditar">
+            <div id="enderecoEditarHelp" class="form-text">Campo obrigatorio</div>
           </div>
 
           <div class="col-4">
-            <label class="form-label" for="cep">CEP</label>
-          <input type="text" class="form-control" id="cep">
-            <div id="cepHelp" class="form-text">Campo obrigatorio</div>
+            <label class="form-label" for="cepEditar">CEP</label>
+          <input type="text" class="form-control" id="cepEditar">
+            <div id="cepEditarHelp" class="form-text">Campo obrigatorio</div>
           </div>
         </form>
       </div>
