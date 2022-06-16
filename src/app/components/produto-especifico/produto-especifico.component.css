@@ -1,19 +1,12 @@
 .h1{
-    color: black;
-    text-align: center;
-}
-
-.linha{
-    background-color: black;
+    font-size: 25pt;
 }
 
 #num{
     text-align: center;
-    color: black;
 }
 
 .preco{
-    color: black;
     text-align: end;
 }
 
@@ -24,7 +17,7 @@
 }
 
 .paragrafo{
-    color: black;
+    font-size:15pt;
 }
 
 #outrocontainer{
@@ -42,5 +35,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.estoque{
+    font-size: 8pt;
+    text-align: end;
     
 }
+  
