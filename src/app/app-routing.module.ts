@@ -10,7 +10,8 @@ const routes: Routes = [
   {path: 'login', component: CardLoginComponent},
   {path: 'inicio', component: CardHomeComponent},
   {path: 'gerenciarprodutos', component: CadastrarProdutoComponent},
-  {path: 'carrinho', component: CarrinhoComponent}
+  {path: 'carrinho', component: CarrinhoComponent},
+  {path: 'sobre', component: Sobre}
 
 ];
 
