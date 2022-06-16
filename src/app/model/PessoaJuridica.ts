@@ -9,8 +9,8 @@ export class PessoaJuridica{
   public razaoSocial!: string
   public email!: string
   public cnpj!: string
-  public usuario!: Usuario
+  // public usuario!: Usuario
   public cartaoCredito!: CartaoCredito[]
-  public carrinho!: Carrinho
-  public endereco!: Endereco[]
+  // public carrinho!: Carrinho
+  // public endereco!: Endereco[]
 }
