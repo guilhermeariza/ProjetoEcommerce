@@ -4,6 +4,7 @@ import { CadastrarProdutoComponent } from './components/cadastrar-produto/cadast
 import { CardHomeComponent } from './components/card-home/card-home.component';
 import { CardLoginComponent } from './components/card-login/card-login.component';
 import { CarrinhoComponent } from './components/carrinho/carrinho.component';
+import { SobreComponent } from './components/sobre/sobre.component';
 
 const routes: Routes = [
   {path: '', redirectTo:'inico', pathMatch: 'full'},
