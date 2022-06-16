@@ -13,7 +13,7 @@
   <table class="table table-sm">
     <thead>
       <tr>
-        <th id="idProduto" scope="col" hidden="true">ID</th>
+        <th scope="col">ID</th>
         <th scope="col">Foto</th>
         <th scope="col">Nome</th>
         <th scope="col">Categotia</th>
@@ -24,20 +24,20 @@
     </thead>
     <tbody>
       <tr class="align-middle" *ngFor="let produto of produto">
-        <th id="idProduto" scope="row" hidden="true">{{produto.id}}</th>
-        <td class="text-center"><img src="{{produto.foto}}" class="img-tabela"></td>
-        <td class="text-center">{{produto.nome}}</td>
-        <td class="text-center">{{produto.categoria}}</td>
-        <td class="text-center">{{produto.preco}}</td>
-        <td class="text-center">{{produto.quantidade}}</td>
+        <td id="idProduto" >{{produto.id}}</td>
+        <td id="fotoProduto" class="text-center"><img src="{{produto.foto}}" class="img-tabela"></td>
+        <td id="nomeProduto" class="text-center">{{produto.nome}}</td>
+        <td id="categoriaProduto" class="text-center">{{produto.categoria}}</td>
+        <td id="precoProduto" class="text-center">{{produto.preco}}</td>
+        <td id="qtdProduto" class="text-center">{{produto.quantidade}}</td>
         <td class="text-center">
-          <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#excluirProdutoModal">
+          <button id="btnExcluir"  (click)="excluirProduto(produto.id)" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#excluirProdutoModal">
             <i class="bi bi-trash"></i>
             Excluir
           </button>
         </td>
         <td class="text-center">
-          <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editarProdutoModal">
+          <button id="btnEditar" (click)="editarProduto(produto.id)" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editarProdutoModal">
             <i class="bi bi-pencil-square"></i>
             Editar
           </button>
@@ -48,12 +48,12 @@
 <!-- tabela -->
 
 <!-- Modal cadastrar -->
-<div class="modal fade" id="cadastrarProdutoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="cadastrarProdutoModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" style="max-width:1000px;">
     <div class="modal-content">
       <div class="modal-header" style="background-color: #64AEAA; color:white; ">
         <p class="display-6">Cadastrar produto</p>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button (click)="limparImagem()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form class="row gy-2 gx-3 align-items-center">
@@ -85,13 +85,8 @@
             <div class="row">
               <label for="foto" class="form-label">Upload de foto</label>
               <div class="col-5">
-                <input class="form-control" type="file" id="foto">
-              </div>
-              <div class="col">
-                <button class="btn btn-success">
-                  <i class="bi bi-file-earmark-arrow-up-fill"></i>
-                  Enviar
-                </button>
+                <input class="form-control" type="file" id="input_img" (change)="fileChange($event)" accept="image/*">
+                <img id="setFoto">
               </div>
             </div>
           </div>
@@ -121,36 +116,39 @@
       </div>
       <div class="modal-body">
         <form class="row gy-2 gx-3 align-items-center">
-          <div class="col-5">
-            <label id="idProduto" hidden="true">idProduto</label>
-            <label class="form-label" for="nomeProduto">Nome do produto</label>
-            <input type="text" class="form-control" id="nomeProduto">
+          <div class="col-sm-2 text-center">
+            <img id="fotoProdutoEditar">
+          </div>
+          <div class="col-4">
+            <label id="idProdutoEditar" hidden="true">idProduto</label>
+            <label class="form-label" for="nomeProdutoEditar">Nome do produto</label>
+            <input type="text" class="form-control" id="nomeProdutoEditar">
             <div id="nomeProdutoHelp" class="form-text">Campo obrigatorio</div>
           </div>
-          <div class="col-3">
-            <label class="form-label" for="categoriaProduto">Categoria</label>
-            <select class="form-select" id="categoriaProduto">
+          <div class="col-2">
+            <label class="form-label" for="categoriaProdutoEditar">Categoria</label>
+            <select class="form-select" id="categoriaProdutoEditar">
               <option selected>Selecione uma categoria...</option>
-              <option value="2">Painel solar</option>
-              <option value="3">Trasnporte</option>
+              <option value="1">Painéis</option>
+              <option value="2">Transporte</option>
             </select>
             <div id="categoriaProdutoHelp" class="form-text">Campo obrigatorio</div>
           </div>
           <div class="col-2">
-            <label class="form-label" for="qtdProduto">Quantidade</label>
-            <input type="text" class="form-control" id="qtdProduto">
+            <label class="form-label" for="qtdProdutoEditar">Quantidade</label>
+            <input type="text" class="form-control" id="qtdProdutoEditar">
             <div id="qtdProdutoHelp" class="form-text">Campo obrigatorio</div>
           </div>
           <div class="col-2">
-            <label class="form-label" for="precoProduto">Preço de venda</label>
-            <input type="text" class="form-control" id="precoProduto">
+            <label class="form-label" for="precoProdutoEditar">Preço de venda</label>
+            <input type="text" class="form-control" id="precoProdutoEditar">
             <div id="precoProdutoHelp" class="form-text">Campo obrigatorio</div>
           </div>
-          <div class="col-12">
+          <!-- <div class="col-12">
             <div class="row">
               <label for="foto" class="form-label">Upload de foto</label>
               <div class="col-5">
-                <input class="form-control" type="file" id="foto">
+                <input class="form-control" type="file" id="fotoProdutoEditar">
               </div>
               <div class="col">
                 <button class="btn btn-primary">
@@ -159,11 +157,11 @@
                 </button>
               </div>
             </div>
-          </div>
+          </div> -->
           <div class="row mt-4">
             <div class="col">
-              <label for="descricaoProduto" class="form-label">Descrição do produto</label>
-              <textarea class="form-control" id="descricaoProduto" rows="4"></textarea>
+              <label for="descricaoProdutoEditar" class="form-label">Descrição do produto</label>
+              <textarea class="form-control" id="descricaoProdutoEditar" rows="4"></textarea>
             </div>
           </div>
         </form>
@@ -185,7 +183,9 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body alert-danger">
-        <p class="display-6">Tem certeza?</p>
+        <label id="idProdutoExcluir" hidden="true"></label>
+        <p class="">Tem certeza que deseja excluir o produto <label class="" id="nomeProdutoExcluir"></label> ?</p>
+        <label class="" id="nomeProdutoExcluir"></label>
       </div>
       <div class="modal-footer alert-danger">
         <button type="button" class="btn btn-danger">Sim</button>
