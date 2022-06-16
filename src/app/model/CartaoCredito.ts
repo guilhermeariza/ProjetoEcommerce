@@ -7,5 +7,5 @@ export class CartaoCredito{
   public numeroCartao!: string
   public dataValidade!: string
   public cvv!: string
-  public pessoaJuridica!: PessoaJuridica
+  // public pessoaJuridica!: PessoaJuridica
 }
