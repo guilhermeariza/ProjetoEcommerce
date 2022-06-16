@@ -10,6 +10,7 @@ import { CardHomeComponent } from './card-home/card-home.component';
 import { FooterComponent } from './footer/footer.component';
 import { CadastrarProdutoComponent } from './cadastrar-produto/cadastrar-produto.component';
 import { CarrinhoComponent } from './carrinho/carrinho.component';
+import { HistoricoPedidosComponent } from './historico-pedidos/historico-pedidos.component';
 
 
 
@@ -23,6 +24,7 @@ import { CarrinhoComponent } from './carrinho/carrinho.component';
     CadastrarProdutoComponent,
     CardHomeComponent,
     CarrinhoComponent,
+    HistoricoPedidosComponent,
 
   ],
   imports: [
