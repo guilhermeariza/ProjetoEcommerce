@@ -1,19 +1,19 @@
 .h1{
-    color: cyan;
+    color: black;
     text-align: center;
 }
 
 .linha{
-    background-color: cyan;
+    background-color: black;
 }
 
 #num{
     text-align: center;
-    color: cyan;
+    color: black;
 }
 
 .preco{
-    color: cyan;
+    color: black;
     text-align: end;
 }
 
@@ -24,7 +24,7 @@
 }
 
 .paragrafo{
-    color: cyan;
+    color: black;
 }
 
 #outrocontainer{
@@ -35,5 +35,12 @@
 
 #exampleModalLabel{
     text-align: center;
-    color: cyan;
+    color: black;
+}
+
+#imagem{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
 }
