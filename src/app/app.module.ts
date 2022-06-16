@@ -14,6 +14,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FormularioDadosClienteComponent } from './components/formulario-dados-cliente/formulario-dados-cliente.component';
 import { TabelaCartaoCreditoComponent } from './components/tabela-cartao-credito/tabela-cartao-credito.component';
+import { SobreComponent } from './components/sobre/sobre.component';
 
 
 
@@ -31,6 +32,7 @@ import { TabelaCartaoCreditoComponent } from './components/tabela-cartao-credito
     CarrinhoComponent,
     TabelaCartaoCreditoComponent,
     FormularioDadosClienteComponent,
+    SobreComponent,
 
 
   ],
