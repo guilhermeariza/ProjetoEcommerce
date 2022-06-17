@@ -32,7 +32,7 @@ import { TabelaEnderecoComponent } from './components/tabela-endereco/tabela-end
     CarrosselComponent,
     FormularioDadosClienteComponent,
     TabelaCartaoCreditoComponent,
-    TabelaEnderecoComponent
+    TabelaEnderecoComponent,
     ProdutoEspecificoComponent
   ],
   imports: [

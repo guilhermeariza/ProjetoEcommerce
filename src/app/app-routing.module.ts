@@ -14,7 +14,7 @@ const routes: Routes = [
   {path: 'inicio', component: CardHomeComponent},
   {path: 'gerenciarprodutos', component: CadastrarProdutoComponent},
   {path: 'carrinho', component: CarrinhoComponent},
-  {path: 'produto', component: ProdutoEspecificoComponent}
+  {path: 'produto', component: ProdutoEspecificoComponent},
   {path: 'meuperfil', component: FormularioDadosClienteComponent},
   {path: 'criarconta', component: CriarContaComponent}
 ];
