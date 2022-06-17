@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   id: 0,
-  usuario: '',
-  tipo: '',
-  token: ''
+  usuario: 'adm',
+  tipo: 'adm',
+  token: 'adm'
 };
