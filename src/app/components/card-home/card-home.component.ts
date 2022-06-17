@@ -16,6 +16,14 @@ export class CardHomeComponent implements OnInit {
   constructor(private router: Router, private produtoService: ProdutoService) { }
 
   ngOnInit(){
-    this.maisVendidos = this.produtoService.getFour()
+    this.maisVendidos = this.getFour()
+  }
+
+  getFour(){
+    let maisVendidos = new Array
+    for(let i=0;i<4;i++){
+      maisVendidos.push(this.produto[i])
+    }
+    return maisVendidos
   }
 }

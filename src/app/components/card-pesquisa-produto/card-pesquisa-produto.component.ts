@@ -15,6 +15,6 @@ export class CardPesquisaProdutoComponent implements OnInit {
   constructor(private router: Router, private produtoService: ProdutoService) { }
 
   ngOnInit(){
-      this.produto=this.produtoService.getAll()
+      return this.produtoService.getAllProdutos()
   }
 }

@@ -11,31 +11,41 @@ import * as $ from 'jQuery';
 })
 export class CadastrarProdutoComponent implements OnInit {
 
-  produto: Produto[]=[]
+  // produto: Produto[]=[]
+
+  produto: Produto = new Produto
 
   constructor(private router: Router, private produtoService: ProdutoService) { }
 
   ngOnInit(){
-      this.produto=this.produtoService.getAll();
+     return this.produtoService.getAllProdutos();
   }
 
-  editarProduto(id:number){
-    const i = this.produto.findIndex((produto, index, array) => produto.id === id);
-    $('#idProdutoEditar').text(this.produto[i].id)
-    $('#nomeProdutoEditar').val(this.produto[i].nome)
-    $('#precoProdutoEditar').val(this.produto[i].preco)
-    $('#qtdProdutoEditar').val(this.produto[i].quantidade)
-    $('#descricaoProdutoEditar').val(this.produto[i].descricao)
-    $("#categoriaProdutoEditar option:contains("+this.produto[i].categoria+")").attr('selected', 'true');
-    $('#fotoProdutoEditar').attr('src', this.produto[i].foto)
-    console.log(this.produto[i])
+  cadastrar(){
+    this.produtoService.postProduto(this.produto).subscribe((resposta: Produto) => {
+      this.produto = resposta
+      alert('Produto cadastrado com sucesso')
+      this.produto = new Produto
+    })
   }
 
-  excluirProduto(id:number){
-    const i = this.produto.findIndex((produto, index, array) => produto.id === id);
-    $('#idProdutoExcluir').text(this.produto[i].id)
-    $('#nomeProdutoExcluir').text(this.produto[i].nome)
-  }
+  // editarProduto(id:number){
+  //   const i = this.produto.findIndex((produto, index, array) => produto.id === id);
+  //   $('#idProdutoEditar').text(this.produto[i].id)
+  //   $('#nomeProdutoEditar').val(this.produto[i].nome)
+  //   $('#precoProdutoEditar').val(this.produto[i].preco)
+  //   $('#qtdProdutoEditar').val(this.produto[i].quantidade)
+  //   $('#descricaoProdutoEditar').val(this.produto[i].descricao)
+  //   $("#categoriaProdutoEditar option:contains("+this.produto[i].categoria+")").attr('selected', 'true');
+  //   $('#fotoProdutoEditar').attr('src', this.produto[i].foto)
+  //   console.log(this.produto[i])
+  // }
+
+  // excluirProduto(id:number){
+  //   const i = this.produto.findIndex((produto, index, array) => produto.id === id);
+  //   $('#idProdutoExcluir').text(this.produto[i].id)
+  //   $('#nomeProdutoExcluir').text(this.produto[i].nome)
+  // }
 
   fileChange(event: Event) {
     var file: any

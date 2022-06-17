@@ -23,15 +23,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="align-middle" *ngFor="let produto of produto">
+      <tr class="align-middle" *ngFor="let produto in produto">
         <td id="idProduto" >{{produto.id}}</td>
         <td id="fotoProduto" class="text-center"><img src="{{produto.foto}}" class="img-tabela"></td>
-        <td id="nomeProduto" class="text-center">{{produto.nome}}</td>
-        <td id="categoriaProduto" class="text-center">{{produto.categoria}}</td>
-        <td id="precoProduto" class="text-center">{{produto.preco}}</td>
+        <td id="nomeProduto" class="text-center">{{this.produto.nome}}</td>
+        <td id="categoriaProduto" class="text-center">{{this.produto.categoria}}</td>
+        <td id="precoProduto" class="text-center">{{this.produto.preco}}</td>
         <td id="qtdProduto" class="text-center">{{produto.quantidade}}</td>
         <td class="text-center">
-          <button id="btnExcluir"  (click)="excluirProduto(produto.id)" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#excluirProdutoModal">
+          <button id="btnExcluir"  (click)="excluirProduto(this.produto.id)" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#excluirProdutoModal">
             <i class="bi bi-trash"></i>
             Excluir
           </button>
