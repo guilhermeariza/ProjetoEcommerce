@@ -8,9 +8,9 @@ declare var $:any;
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'projetoEcommerce';
+  title = 'Elertech';
 
   constructor(public auth: AuthService){
-    
+
   }
 }
