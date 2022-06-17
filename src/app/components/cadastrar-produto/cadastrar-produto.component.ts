@@ -15,16 +15,31 @@ export class CadastrarProdutoComponent implements OnInit {
   listaProdutos: Produto[]
   categoria: string
 
-  constructor(private router: Router, private produtoService: ProdutoService) { }
+  constructor(private router: Router, private produtoService: ProdutoService) {
+    this.getter()
+  }
 
   ngOnInit(){
-     return this.produtoService.getAll();
+
+  }
+
+  getter(){
+    this.produtoService.getAll().subscribe((data: Produto) => {
+        this.listaProdutos[] = data
+        console.log('O data que recebemos: ', data)
+        console.log('A variavel que preenchemos: ', this.listaProdutos)
+    },
+    (error: any) => {
+      let erro = error
+      console.log('Erro: ', error)
+    }
+    )
   }
 
   categoriaProduto(event: any){
     this.categoria = event.target.value
   }
-  
+
   cadastrarProduto(){
     this.produtoService.save(this.produto).subscribe((resposta: Produto) => {
       this.produto = resposta

@@ -1,5 +1,5 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { Produto } from '../model/Produto';
@@ -16,7 +16,7 @@ export class ProdutoService {
     headers: new HttpHeaders().set('Autorization', environment.token)
   }
 
-  getAll(){
+  public getAll(): Observable<Produto> {
     return this.http.get<Produto>('http/localhost:8080/produto')
   }
 
