@@ -11,26 +11,23 @@ import * as $ from 'jQuery';
 })
 export class CadastrarProdutoComponent implements OnInit {
 
-  produto: Produto = new Produto
-  listaProdutos: Produto[]
+  produto:any = new Produto()
+  produtoCadastrar: any = new Produto()
   categoria: string
 
   constructor(private router: Router, private produtoService: ProdutoService) {
-    this.getter()
+    this.carregarTabela()
   }
 
   ngOnInit(){
 
   }
 
-  getter(){
+  carregarTabela(){
     this.produtoService.getAll().subscribe((data: Produto) => {
-        this.listaProdutos[] = data
-        console.log('O data que recebemos: ', data)
-        console.log('A variavel que preenchemos: ', this.listaProdutos)
+        this.produto = data
     },
     (error: any) => {
-      let erro = error
       console.log('Erro: ', error)
     }
     )
@@ -40,37 +37,52 @@ export class CadastrarProdutoComponent implements OnInit {
     this.categoria = event.target.value
   }
 
-  cadastrarProduto(){
-    this.produtoService.save(this.produto).subscribe((resposta: Produto) => {
-      this.produto = resposta
+  cadastrarProduto(produtoCadastrar: Produto){
+    produtoCadastrar.categoria = this.categoria
+    this.produtoService.save(produtoCadastrar).subscribe((resposta: Produto) => {
+      produtoCadastrar = resposta
       alert('Produto cadastrado com sucesso')
-      this.produto = new Produto
+      this.produtoCadastrar = new Produto
+    },
+    (error: any) => {
+      alert('Preencha todos os campos, são obrigatórios')
     })
+    console.log('Produto cadastrado', this.produtoCadastrar)
   }
 
-  editarProduto(produto: Produto){
-    $('#idProdutoEditar').text(this.produto.id)
-    $('#nomeProdutoEditar').val(this.produto.nome)
-    $('#precoProdutoEditar').val(this.produto.preco)
-    $('#qtdProdutoEditar').val(this.produto.quantidade)
-    $('#descricaoProdutoEditar').val(this.produto.descricao)
-    $("#categoriaProdutoEditar option:contains("+this.produto.categoria+")").attr('selected', 'true');
-    $('#fotoProdutoEditar').attr('src', this.produto.foto)
-    this.produtoService.update(produto)
+  abrirModalEditar(produto: Produto){
+    console.log(produto)
+    $('#idProdutoEditar').text(produto.id)
+    $('#nomeProdutoEditar').val(produto.nome)
+    $('#precoProdutoEditar').val(produto.preco)
+    $('#qtdProdutoEditar').val(produto.estoque)
+    $('#descricaoProdutoEditar').val(produto.descricao)
+    $("#categoriaProdutoEditar option:contains("+produto.categoria+")").attr('selected', 'true');
+    $('#fotoProdutoEditar').attr('src', produto.foto)
   }
 
-  excluirProduto(id: number){
-    $('#idProdutoExcluir').text(this.produto.id)
-    $('#nomeProdutoExcluir').text(this.produto.nome)
+  atualizarProduto(produto: Produto){
+
+  }
+
+  abrirModalExcluir(produto: Produto){
+    $('#idProdutoExcluir').text(produto.id)
+    $('#nomeProdutoExcluir').text(produto.nome)
+    console.log(produto)
+  }
+
+  excluirProduto(produto: Produto){
+    console.log(produto.id)
+    let id = produto.id
     this.produtoService.delete(id)
   }
 
   carregarFoto(event: Event) {
     var file: any
     if(file !== null){
-      file = document.getElementById('input_img');
-      var form = new FormData();
-      form.append("image", file.files[0]);
+      file = document.getElementById('input_img')
+      var form = new FormData()
+      form.append("image", file.files[0])
       var settings= new Array
       settings = [{
           url: "https://api.imgbb.com/1/upload?key=f7dc66d97778642fac1278cb89831b02",
@@ -82,21 +94,19 @@ export class CadastrarProdutoComponent implements OnInit {
           data: form
       }]
       $.ajax(settings[0]).done(function (response) {
-          console.log(response);
-          var jx = JSON.parse(response);
-          var linkFoto = jx.data.url;
-          $('#setFoto').attr('src',linkFoto)
+          console.log(response)
+          var jx = JSON.parse(response)
+          var linkFoto = jx.data.url
+          $('#setFoto').attr('src', linkFoto)
+          $('#setFotoInput').val(linkFoto)
           $('#input_img').hide()
-      });
+        });
     }
   }
 
   limparImagem(){
     $('#input_img').show()
+    $('#input_img').attr('src','')
     $('#setFoto').attr('src','')
-  }
-
-  alerta(){
-    alert('esta funcionando')
   }
 }

@@ -3,6 +3,7 @@
 </head>
 
 <main class="container pt-4" style="margin-top: 55px;">
+
   <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#cadastrarProdutoModal">
     <i class="bi bi-plus-square-fill"></i>
     Adicionar produto
@@ -23,21 +24,21 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="align-middle" *ngFor="let produto of listaProdutos">
+      <tr class="align-middle" *ngFor="let produto of produto">
         <td id="idProduto" >{{produto.id}}</td>
         <td id="fotoProduto" class="text-center"><img src="{{produto.foto}}" class="img-tabela"></td>
         <td id="nomeProduto" class="text-center">{{produto.nome}}</td>
         <td id="categoriaProduto" class="text-center">{{produto.categoria}}</td>
         <td id="precoProduto" class="text-center">{{produto.preco}}</td>
-        <td id="qtdProduto" class="text-center">{{produto.quantidade}}</td>
+        <td id="qtdProduto" class="text-center">{{produto.estoque}}</td>
         <td class="text-center">
-          <button id="btnExcluir" (click)="excluirProduto(produto.id)" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#excluirProdutoModal">
+          <button id="btnExcluir" (click)="abrirModalExcluir(produto)" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#excluirProdutoModal">
             <i class="bi bi-trash"></i>
             Excluir
           </button>
         </td>
         <td class="text-center">
-          <button id="btnEditar" (click)="editarProduto(produto)" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editarProdutoModal">
+          <button id="btnEditar" (click)="abrirModalEditar(produto)" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editarProdutoModal">
             <i class="bi bi-pencil-square"></i>
             Editar
           </button>
@@ -59,47 +60,48 @@
         <form class="row gy-2 gx-3 align-items-center">
           <div class="col-5">
             <label class="form-label" for="nomeProduto">Nome do produto</label>
-            <input [(ngModel)]="produto.nome" name="nome" type="text" class="form-control" id="nomeProduto">
+            <input [(ngModel)]="produtoCadastrar.nome" name="nome" type="text" class="form-control" id="nomeProduto">
             <div id="nomeProdutoHelp" class="form-text">Campo obrigatorio</div>
           </div>
           <div class="col-3">
             <label class="form-label" for="categoriaProduto">Categoria</label>
             <select class="form-select" id="categoriaProduto" (change)="categoriaProduto($event)">
               <option selected>Selecione uma categoria...</option>
-              <option value="2">Painel solar</option>
-              <option value="3">Trasnporte</option>
+              <option value="Painel solar">Painel solar</option>
+              <option value="Trasnporte">Trasnporte</option>
             </select>
             <div id="categoriaProdutoHelp" class="form-text">Campo obrigatorio</div>
           </div>
           <div class="col-2">
             <label class="form-label" for="qtdProduto">Quantidade</label>
-            <input [(ngModel)]="produto.quantidade" name="quantidade" type="text" class="form-control" id="qtdProduto">
+            <input [(ngModel)]="produtoCadastrar.estoque" name="quantidade" type="text" class="form-control" id="qtdProduto">
             <div id="qtdProdutoHelp" class="form-text">Campo obrigatorio</div>
           </div>
           <div class="col-2">
             <label class="form-label" for="precoProduto" id="precoProduto" name="precoProduto">Preço de venda</label>
-            <input [(ngModel)]="produto.preco" name="preco" type="text" placeholder="R$ 0,00" class="dinheiro form-control" id="precoProduto">
+            <input [(ngModel)]="produtoCadastrar.preco" name="preco" type="text" placeholder="R$ 0,00" class="dinheiro form-control" id="precoProduto">
             <div id="precoProdutoHelp" class="form-text">Campo obrigatorio</div>
           </div>
           <div class="col-12">
             <div class="row">
               <label for="foto" class="form-label">Upload de foto</label>
               <div class="col-5">
-                <input [(ngModel)]="produto.foto" name="foto" class="form-control" type="file" id="input_img" (change)="carregarFoto($event)" accept="image/*">
+                <input name="foto" class="form-control" type="file" id="input_img" (change)="carregarFoto($event)" accept="image/*">
                 <img id="setFoto">
+                <input name="foto" type="text" id="setFotoInput">
               </div>
             </div>
           </div>
           <div class="row mt-4">
             <div class="col">
               <label for="descricaoProduto" class="form-label">Descrição do produto</label>
-              <textarea [(ngModel)]="produto.descricao" name="descricao" class="form-control" id="descricaoProduto" rows="4"></textarea>
+              <textarea [(ngModel)]="produtoCadastrar.descricao" name="descricao" class="form-control" id="descricaoProduto" rows="4"></textarea>
             </div>
           </div>
         </form>
       </div>
       <div class="modal-footer text-center" style="background-color: #64AEAA;">
-        <button type="button" class="btn btn-success" (click)="cadastrarProduto()">Cadastrar</button>
+        <button type="button" class="btn btn-success" (click)="cadastrarProduto(produtoCadastrar)">Cadastrar</button>
       </div>
     </div>
   </div>
@@ -170,11 +172,11 @@
       </div>
       <div class="modal-body alert-danger">
         <label id="idProdutoExcluir" hidden="true"></label>
-        <p class="">Tem certeza que deseja excluir o produto <label class="" id="nomeProdutoExcluir"></label> ?</p>
+        <p class="">Tem certeza que deseja excluir o produto <label id="nomeProdutoExcluir"></label> ?</p>
         <label class="" id="nomeProdutoExcluir"></label>
       </div>
       <div class="modal-footer alert-danger">
-        <button type="button" class="btn btn-danger">Sim</button>
+        <button type="button" class="btn btn-danger" (click)="excluirProduto(produto.id)">Sim</button>
       </div>
     </div>
   </div>
