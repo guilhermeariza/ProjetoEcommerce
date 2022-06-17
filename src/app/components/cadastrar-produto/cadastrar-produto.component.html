@@ -59,12 +59,12 @@
         <form class="row gy-2 gx-3 align-items-center">
           <div class="col-5">
             <label class="form-label" for="nomeProduto">Nome do produto</label>
-            <input type="text" class="form-control" id="nomeProduto">
+            <input [(ngModel)]="produto.nome" name="nome" type="text" class="form-control" id="nomeProduto">
             <div id="nomeProdutoHelp" class="form-text">Campo obrigatorio</div>
           </div>
           <div class="col-3">
             <label class="form-label" for="categoriaProduto">Categoria</label>
-            <select class="form-select" id="categoriaProduto">
+            <select class="form-select" id="categoriaProduto" (change)="categoriaProduto($event)">
               <option selected>Selecione uma categoria...</option>
               <option value="2">Painel solar</option>
               <option value="3">Trasnporte</option>
@@ -73,19 +73,19 @@
           </div>
           <div class="col-2">
             <label class="form-label" for="qtdProduto">Quantidade</label>
-            <input type="text" class="form-control" id="qtdProduto">
+            <input [(ngModel)]="produto.quantidade" name="quantidade" type="text" class="form-control" id="qtdProduto">
             <div id="qtdProdutoHelp" class="form-text">Campo obrigatorio</div>
           </div>
           <div class="col-2">
             <label class="form-label" for="precoProduto" id="precoProduto" name="precoProduto">Preço de venda</label>
-            <input type="text" placeholder="R$ 0,00" class="dinheiro form-control" id="precoProduto">
+            <input [(ngModel)]="produto.preco" name="preco" type="text" placeholder="R$ 0,00" class="dinheiro form-control" id="precoProduto">
             <div id="precoProdutoHelp" class="form-text">Campo obrigatorio</div>
           </div>
           <div class="col-12">
             <div class="row">
               <label for="foto" class="form-label">Upload de foto</label>
               <div class="col-5">
-                <input class="form-control" type="file" id="input_img" (change)="carregarFoto($event)" accept="image/*">
+                <input [(ngModel)]="produto.foto" name="foto" class="form-control" type="file" id="input_img" (change)="carregarFoto($event)" accept="image/*">
                 <img id="setFoto">
               </div>
             </div>
@@ -93,7 +93,7 @@
           <div class="row mt-4">
             <div class="col">
               <label for="descricaoProduto" class="form-label">Descrição do produto</label>
-              <textarea class="form-control" id="descricaoProduto" rows="4"></textarea>
+              <textarea [(ngModel)]="produto.descricao" name="descricao" class="form-control" id="descricaoProduto" rows="4"></textarea>
             </div>
           </div>
         </form>

@@ -13,6 +13,7 @@ export class CadastrarProdutoComponent implements OnInit {
 
   produto: Produto = new Produto
   listaProdutos: Produto[]
+  categoria: string
 
   constructor(private router: Router, private produtoService: ProdutoService) { }
 
@@ -20,6 +21,10 @@ export class CadastrarProdutoComponent implements OnInit {
      return this.produtoService.getAll();
   }
 
+  categoriaProduto(event: any){
+    this.categoria = event.target.value
+  }
+  
   cadastrarProduto(){
     this.produtoService.save(this.produto).subscribe((resposta: Produto) => {
       this.produto = resposta
