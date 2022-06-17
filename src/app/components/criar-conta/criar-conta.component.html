@@ -1,0 +1,68 @@
+<main class="pt-4" style="margin-top: 55px;">
+  <div class="container p-4 bg-212">
+    <div class="row g-3 mg2 ">
+      <h1>Criar Conta</h1>
+    </div>
+    <form class="row">
+      <div class="col-3">
+        <label for="nomeFantasia" class="form-label ">NomeFantasia</label>
+        <input type="text" class="form-control" id="nomeFantasia">
+      </div>
+      <div class="col-3">
+        <label for="razaoSocial" class="form-label">Razao Social</label>
+        <input type="text" class="form-control" id="razaoSocial">
+      </div>
+      <div class="col-3">
+        <label for="cnpj" class="form-label">CNPJ</label>
+        <input type="text" class="form-control" id="cnpj">
+      </div>
+      <div class="col-3">
+        <label for="email" class="form-label">E-mail</label>
+        <input type="email" class="form-control" id="email" placeholder="exemplo@exemplo.com">
+      </div>
+
+      <div class="row pt-5">
+        <h1>Usuário e Senha</h1>
+      </div>
+      <div class="col-md-4">
+        <label for="Usuario" class="form-label">Usuario</label>
+        <input type="text" class="form-control" id="usuario">
+      </div>
+      <div class="col-md-4">
+        <label for="Senha" class="form-label">Senha</label>
+        <input type="password" class="form-control" id="senha" aria-describedby="passwordHelp">
+        <small id="passwordHelp" class="form-text text-secondary">Digite sua senha com 8 caracteres</small>
+
+      </div>
+      <div class="col-md-4">
+        <label for="Confirma Senha" class="form-label">Confirma Senha </label>
+        <input type="password" class="form-control" id="confirmaSenha" aria-describedby="passwordHelp">
+        <small id="passwordHelp" class="form-text text-secondary">Digite sua senha com 8 caracteres</small>
+      </div>
+      <form class="row g-3">
+      </form>
+      <div class="d-grid gap-2 col-2 mx-auto">
+        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+          data-bs-target="#exampleModal">Cadastrar</button>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Elertech</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                Cadastro efetivado com sucesso!
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fechar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </form>
+  </div>
+</main>
