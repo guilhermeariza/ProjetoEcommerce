@@ -1,7 +1,11 @@
+main{
+  background-color: #feffdf;
+}
 .card{
     width: 400px;
     height: 450px;
     box-shadow: 0 10px 12px 0 rgba(23, 21, 172, 0.2), 0 6px 20px 0 rgba(29, 141, 7, 0.19);
+    margin-top: 50px;
 }
 
 div label{
