@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './service/auth.service';
 declare var $:any;
 
 @Component({
@@ -8,4 +9,8 @@ declare var $:any;
 })
 export class AppComponent {
   title = 'projetoEcommerce';
+
+  constructor(public auth: AuthService){
+    
+  }
 }
