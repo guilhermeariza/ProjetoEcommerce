@@ -1,0 +1,45 @@
+.h1{
+    font-size: 25pt;
+}
+
+#num{
+    text-align: center;
+}
+
+.preco{
+    text-align: end;
+}
+
+#container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.paragrafo{
+    font-size:15pt;
+}
+
+#outrocontainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#exampleModalLabel{
+    text-align: center;
+    color: black;
+}
+
+#imagem{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.estoque{
+    font-size: 8pt;
+    text-align: end;
+    
+}
+  
