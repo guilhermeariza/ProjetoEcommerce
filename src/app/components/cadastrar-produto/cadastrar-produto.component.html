@@ -23,21 +23,21 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="align-middle" *ngFor="let produto in produto">
+      <tr class="align-middle" *ngFor="let produto of listaProdutos">
         <td id="idProduto" >{{produto.id}}</td>
         <td id="fotoProduto" class="text-center"><img src="{{produto.foto}}" class="img-tabela"></td>
-        <td id="nomeProduto" class="text-center">{{this.produto.nome}}</td>
-        <td id="categoriaProduto" class="text-center">{{this.produto.categoria}}</td>
-        <td id="precoProduto" class="text-center">{{this.produto.preco}}</td>
+        <td id="nomeProduto" class="text-center">{{produto.nome}}</td>
+        <td id="categoriaProduto" class="text-center">{{produto.categoria}}</td>
+        <td id="precoProduto" class="text-center">{{produto.preco}}</td>
         <td id="qtdProduto" class="text-center">{{produto.quantidade}}</td>
         <td class="text-center">
-          <button id="btnExcluir"  (click)="excluirProduto(this.produto.id)" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#excluirProdutoModal">
+          <button id="btnExcluir" (click)="excluirProduto(produto.id)" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#excluirProdutoModal">
             <i class="bi bi-trash"></i>
             Excluir
           </button>
         </td>
         <td class="text-center">
-          <button id="btnEditar" (click)="editarProduto(produto.id)" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editarProdutoModal">
+          <button id="btnEditar" (click)="editarProduto(produto)" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editarProdutoModal">
             <i class="bi bi-pencil-square"></i>
             Editar
           </button>
@@ -85,7 +85,7 @@
             <div class="row">
               <label for="foto" class="form-label">Upload de foto</label>
               <div class="col-5">
-                <input class="form-control" type="file" id="input_img" (change)="fileChange($event)" accept="image/*">
+                <input class="form-control" type="file" id="input_img" (change)="carregarFoto($event)" accept="image/*">
                 <img id="setFoto">
               </div>
             </div>
@@ -99,7 +99,7 @@
         </form>
       </div>
       <div class="modal-footer text-center" style="background-color: #64AEAA;">
-        <button type="button" class="btn btn-success">Cadastrar</button>
+        <button type="button" class="btn btn-success" (click)="cadastrarProduto()">Cadastrar</button>
       </div>
     </div>
   </div>
@@ -144,20 +144,6 @@
             <input type="text" class="form-control" id="precoProdutoEditar">
             <div id="precoProdutoHelp" class="form-text">Campo obrigatorio</div>
           </div>
-          <!-- <div class="col-12">
-            <div class="row">
-              <label for="foto" class="form-label">Upload de foto</label>
-              <div class="col-5">
-                <input class="form-control" type="file" id="fotoProdutoEditar">
-              </div>
-              <div class="col">
-                <button class="btn btn-primary">
-                  <i class="bi bi-file-earmark-arrow-up-fill"></i>
-                  Atualizar
-                </button>
-              </div>
-            </div>
-          </div> -->
           <div class="row mt-4">
             <div class="col">
               <label for="descricaoProdutoEditar" class="form-label">Descrição do produto</label>

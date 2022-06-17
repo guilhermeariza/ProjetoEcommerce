@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Produto } from 'src/app/model/Produto';
-import { ProdutoService } from 'src/app/service/produto-service.service';
+import { ProdutoService } from 'src/app/service/produto.service';
 import { Router } from '@angular/router';
 import * as $ from 'jQuery';
 
@@ -11,43 +11,41 @@ import * as $ from 'jQuery';
 })
 export class CadastrarProdutoComponent implements OnInit {
 
-  // produto: Produto[]=[]
-
   produto: Produto = new Produto
+  listaProdutos: Produto[]
 
   constructor(private router: Router, private produtoService: ProdutoService) { }
 
   ngOnInit(){
-     return this.produtoService.getAllProdutos();
+     return this.produtoService.getAll();
   }
 
-  cadastrar(){
-    this.produtoService.postProduto(this.produto).subscribe((resposta: Produto) => {
+  cadastrarProduto(){
+    this.produtoService.save(this.produto).subscribe((resposta: Produto) => {
       this.produto = resposta
       alert('Produto cadastrado com sucesso')
       this.produto = new Produto
     })
   }
 
-  // editarProduto(id:number){
-  //   const i = this.produto.findIndex((produto, index, array) => produto.id === id);
-  //   $('#idProdutoEditar').text(this.produto[i].id)
-  //   $('#nomeProdutoEditar').val(this.produto[i].nome)
-  //   $('#precoProdutoEditar').val(this.produto[i].preco)
-  //   $('#qtdProdutoEditar').val(this.produto[i].quantidade)
-  //   $('#descricaoProdutoEditar').val(this.produto[i].descricao)
-  //   $("#categoriaProdutoEditar option:contains("+this.produto[i].categoria+")").attr('selected', 'true');
-  //   $('#fotoProdutoEditar').attr('src', this.produto[i].foto)
-  //   console.log(this.produto[i])
-  // }
+  editarProduto(produto: Produto){
+    $('#idProdutoEditar').text(this.produto.id)
+    $('#nomeProdutoEditar').val(this.produto.nome)
+    $('#precoProdutoEditar').val(this.produto.preco)
+    $('#qtdProdutoEditar').val(this.produto.quantidade)
+    $('#descricaoProdutoEditar').val(this.produto.descricao)
+    $("#categoriaProdutoEditar option:contains("+this.produto.categoria+")").attr('selected', 'true');
+    $('#fotoProdutoEditar').attr('src', this.produto.foto)
+    this.produtoService.update(produto)
+  }
 
-  // excluirProduto(id:number){
-  //   const i = this.produto.findIndex((produto, index, array) => produto.id === id);
-  //   $('#idProdutoExcluir').text(this.produto[i].id)
-  //   $('#nomeProdutoExcluir').text(this.produto[i].nome)
-  // }
+  excluirProduto(id: number){
+    $('#idProdutoExcluir').text(this.produto.id)
+    $('#nomeProdutoExcluir').text(this.produto.nome)
+    this.produtoService.delete(id)
+  }
 
-  fileChange(event: Event) {
+  carregarFoto(event: Event) {
     var file: any
     if(file !== null){
       file = document.getElementById('input_img');
