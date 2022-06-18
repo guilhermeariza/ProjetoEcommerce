@@ -9,7 +9,7 @@ import { Produto } from '../model/Produto';
 })
 export class ProdutoService {
   url = 'http://localhost:8080/produto'
-
+  reload = true
   constructor(private http: HttpClient) { }
 
   token = {

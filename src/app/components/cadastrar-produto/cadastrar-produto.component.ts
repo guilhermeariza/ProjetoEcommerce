@@ -15,12 +15,24 @@ export class CadastrarProdutoComponent implements OnInit {
   produtoCadastrar: any = new Produto()
   categoria: string
 
+
   constructor(private router: Router, private produtoService: ProdutoService, private route:ActivatedRoute) {
     this.carregarTabela()
   }
 
   ngOnInit(){
+
   }
+
+  // reload() {
+  //   $('.modal-backdrop').hide()
+  //   if (this.produtoService.reload) {
+  //     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+  //       this.router.navigate(['gerenciarprodutos']);
+  //       this.produtoService.reload = false;
+  //     });
+  //   }
+  // }
 
   carregarTabela(){
     this.produtoService.getAll().subscribe((data: Produto) => {this.produto = data},(error: any) => {console.log('Erro: ', error)})
@@ -65,10 +77,9 @@ export class CadastrarProdutoComponent implements OnInit {
     obj.categoria = $('#categoriaEditar').val()
     obj.foto = $('#fotoProdutoEditar').attr('src')
 
-    console.log(obj)
     this.produtoService.update(obj).subscribe(() => {
       alert('Produto atualizado com sucesso')
-      
+
     },
     (error: any) => {
       switch(error.status){
@@ -92,7 +103,6 @@ export class CadastrarProdutoComponent implements OnInit {
   excluirProduto(produto: Produto){
       this.produtoService.delete(produto).subscribe(() => {
         alert('Produto excluído com sucesso')
-        this.produto = new Produto
       },
       (error: any) => {switch(error.status){
         case 401:
@@ -110,7 +120,6 @@ export class CadastrarProdutoComponent implements OnInit {
       }
       })
   }
-
 
   carregarFoto(event: Event) {
     var file: any
