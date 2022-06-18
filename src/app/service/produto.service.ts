@@ -29,11 +29,11 @@ export class ProdutoService {
   }
 
   update(produto:Produto):Observable<Produto>{
-    return this.http.put<Produto>('http://localhost:8080/produto/', produto)
+    return this.http.put<Produto>('http://localhost:8080/produto/', produto, this.token)
   }
 
   delete(id: number){
-    return this.http.delete<Produto>('http://localhost:8080/produto/'+ id)
+    return this.http.delete<Produto>('http://localhost:8080/produto/'+ id, this.token)
   }
 
 }

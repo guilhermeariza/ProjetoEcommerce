@@ -13,6 +13,8 @@ export class CadastrarProdutoComponent implements OnInit {
 
   produto:any = new Produto()
   produtoCadastrar: any = new Produto()
+  produtoEditar: any = new Produto()
+  produtoExcluir: any = new Produto()
   categoria: string
 
   constructor(private router: Router, private produtoService: ProdutoService) {
@@ -24,13 +26,7 @@ export class CadastrarProdutoComponent implements OnInit {
   }
 
   carregarTabela(){
-    this.produtoService.getAll().subscribe((data: Produto) => {
-        this.produto = data
-    },
-    (error: any) => {
-      console.log('Erro: ', error)
-    }
-    )
+    this.produtoService.getAll().subscribe((data: Produto) => {this.produto = data},(error: any) => {console.log('Erro: ', error)})
   }
 
   categoriaProduto(event: any){
@@ -38,7 +34,8 @@ export class CadastrarProdutoComponent implements OnInit {
   }
 
   cadastrarProduto(produtoCadastrar: Produto){
-    produtoCadastrar.categoria = this.categoria
+    this.produtoCadastrar.categoria = this.categoria
+    this.produtoCadastrar.foto = $('#setFoto').attr('src')
     this.produtoService.save(produtoCadastrar).subscribe((resposta: Produto) => {
       produtoCadastrar = resposta
       alert('Produto cadastrado com sucesso')
@@ -47,21 +44,47 @@ export class CadastrarProdutoComponent implements OnInit {
     (error: any) => {
       alert('Preencha todos os campos, são obrigatórios')
     })
-    console.log('Produto cadastrado', this.produtoCadastrar)
+    this.limparModalEditar()
   }
 
   abrirModalEditar(produto: Produto){
-    console.log(produto)
-    $('#idProdutoEditar').text(produto.id)
-    $('#nomeProdutoEditar').val(produto.nome)
-    $('#precoProdutoEditar').val(produto.preco)
-    $('#qtdProdutoEditar').val(produto.estoque)
-    $('#descricaoProdutoEditar').val(produto.descricao)
-    $("#categoriaProdutoEditar option:contains("+produto.categoria+")").attr('selected', 'true');
+    $('#idEditar').text(produto.id)
+    $('#nomeEditar').val(produto.nome)
+    $('#precoEditar').val(produto.preco)
+    $('#estoqueEditar').val(produto.estoque)
+    $('#descricaoEditar').val(produto.descricao)
+    $("#categoriaEditar option:contains("+produto.categoria+")").attr('selected', 'true');
     $('#fotoProdutoEditar').attr('src', produto.foto)
+
+    console.log(produto)
   }
 
-  atualizarProduto(produto: Produto){
+  atualizarProduto(produtoEditar: Produto){
+    this.produtoService.update(produtoEditar).subscribe((resposta: Produto) => {
+      produtoEditar = resposta
+      alert('Produto atualizado com sucesso')
+      this.produtoEditar = new Produto
+    },
+    (error: any) => {
+      switch(error.status){
+        case 200:
+          alert('Sucesso')
+          console.log('Resposta: '+error.status)
+        break;
+        case 201:
+          alert('Objeto Persistido')
+          console.log('Resposta: '+error.status)
+        break;
+        case 401:
+          alert('Acesso não autorizado')
+          console.log('Resposta: '+error.status)
+        break;
+        case 500:
+          alert('Erro na aplicação')
+          console.log('Resposta: '+error.status)
+        break;
+      }
+    })
 
   }
 
@@ -71,10 +94,8 @@ export class CadastrarProdutoComponent implements OnInit {
     console.log(produto)
   }
 
-  excluirProduto(produto: Produto){
-    console.log(produto.id)
-    let id = produto.id
-    this.produtoService.delete(id)
+  excluirProduto(){
+    
   }
 
   carregarFoto(event: Event) {
@@ -104,9 +125,10 @@ export class CadastrarProdutoComponent implements OnInit {
     }
   }
 
-  limparImagem(){
+  limparModalEditar(){
     $('#input_img').show()
-    $('#input_img').attr('src','')
+    $('#input_img').val('')
     $('#setFoto').attr('src','')
+    $('#categoriaCadastrar').val(0)
   }
 }
