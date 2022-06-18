@@ -13,7 +13,6 @@ export class CadastrarProdutoComponent implements OnInit {
 
   produto:any = new Produto()
   produtoCadastrar: any = new Produto()
-  produtoEditar: any = new Produto()
   categoria: string
 
   constructor(private router: Router, private produtoService: ProdutoService, private route:ActivatedRoute) {
@@ -56,23 +55,23 @@ export class CadastrarProdutoComponent implements OnInit {
     $('#fotoProdutoEditar').attr('src', produto.foto)
   }
 
-  atualizarProduto(produtoEditar: Produto){
-    console.log(this.produtoEditar)
-    this.produtoService.update(produtoEditar).subscribe((resposta: Produto) => {
-      produtoEditar = resposta
+  atualizarProduto(){
+    let obj: any = new Produto
+    obj.id = $('#idEditar').text()
+    obj.nome = $('#nomeEditar').val()
+    obj.preco = $('#precoEditar').val()
+    obj.estoque = $('#precoEditar').val()
+    obj.descricao = $('#descricaoEditar').val()
+    obj.categoria = $('#categoriaEditar').val()
+    obj.foto = $('#fotoProdutoEditar').attr('src')
+
+    console.log(obj)
+    this.produtoService.update(obj).subscribe(() => {
       alert('Produto atualizado com sucesso')
-      this.produtoEditar = new Produto
+      
     },
     (error: any) => {
       switch(error.status){
-        case 200:
-          alert('Sucesso')
-          console.log('Resposta: '+error.status)
-        break;
-        case 201:
-          alert('Objeto Persistido')
-          console.log('Resposta: '+error.status)
-        break;
         case 401:
           alert('Acesso não autorizado')
           console.log('Resposta: '+error.status)
@@ -84,7 +83,6 @@ export class CadastrarProdutoComponent implements OnInit {
       }
     })
   }
-
 
   abrirModalExcluir(produto: Produto){
     $('#idProdutoExcluir').text(produto.id)
@@ -111,8 +109,6 @@ export class CadastrarProdutoComponent implements OnInit {
         break;
       }
       })
-
-      $('#tabela').load('')
   }
 
 

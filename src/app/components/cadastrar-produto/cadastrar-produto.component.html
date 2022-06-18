@@ -128,9 +128,9 @@
           </div>
 
           <div class="col-4">
-            <input [(ngModel)]="produtoEditar.id" name="id" type="text" id="idEditar" hidden="true">
+            <input name="id" type="text" id="idEditar" hidden="true">
             <label class="form-label" for="nomeEditar">Nome do produto</label>
-            <input [(ngModel)]="produtoEditar.nome" name="nome" type="text" class="form-control" id="nomeEditar">
+            <input name="nome" type="text" class="form-control" id="nomeEditar">
             <div id="nomeEditarHelp" class="form-text">Campo obrigatorio</div>
           </div>
 
@@ -146,26 +146,26 @@
 
           <div class="col-2">
             <label class="form-label" for="estoqueEditar">Estoque</label>
-            <input [(ngModel)]="produtoEditar.estoque" name="estoque" type="text" class="form-control" id="estoqueEditar">
+            <input name="estoque" type="text" class="form-control" id="estoqueEditar">
             <div id="estoqueEditarHelp" class="form-text">Campo obrigatorio</div>
           </div>
 
           <div class="col-2">
             <label class="form-label" for="precoEditar">Preço</label>
-            <input [(ngModel)]="produtoEditar.preco" name="preco" type="text" class="form-control" id="precoEditar">
+            <input name="preco" type="text" class="form-control" id="precoEditar">
             <div id="precoEditarHelp" class="form-text">Campo obrigatorio</div>
           </div>
 
           <div class="row mt-4">
             <div class="col">
               <label for="descricaoEditar" class="form-label">Descrição do produto</label>
-              <textarea [(ngModel)]="produtoEditar.descricao" name="descricao" class="form-control" id="descricaoEditar" rows="4"></textarea>
+              <textarea name="descricao" class="form-control" id="descricaoEditar" rows="4"></textarea>
             </div>
           </div>
         </form>
       </div>
       <div class="modal-footer text-center" style="background-color: #64AEAA;">
-        <button type="button" class="btn btn-primary" (click)="atualizarProduto(produtoEditar)">Atualizar</button>
+        <button type="button" class="btn btn-primary" (click)="atualizarProduto()">Atualizar</button>
       </div>
     </div>
   </div>
@@ -183,7 +183,7 @@
       <div class="modal-body alert-danger">
         <input name="id" id="idProdutoExcluir" hidden="true">
         <p class="">Tem certeza que deseja excluir o produto <label id="nomeProdutoExcluir"></label> ?</p>
-        <label class="" id="nomeProdutoExcluir"></label>
+        <label id="nomeProdutoExcluir"></label>
       </div>
       <div class="modal-footer alert-danger">
         <button type="button" class="btn btn-danger" (click)="excluirProduto(produto)">Sim</button>
