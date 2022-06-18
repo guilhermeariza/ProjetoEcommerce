@@ -10,7 +10,7 @@
   </button>
 
 <!-- tabela -->
-<div class="container mt-2" id="tabela">
+<div class="container mt-2" >
   <table class="table table-sm">
     <thead>
       <tr>
@@ -24,7 +24,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="align-middle" *ngFor="let produto of produto">
+      <tr class="align-middle" *ngFor="let produto of produto" id="tabela">
         <td id="idProduto" >{{produto.id}}</td>
         <td id="fotoProduto" class="text-center"><img src="{{produto.foto}}" class="img-tabela"></td>
         <td id="nomeProduto" class="text-center">{{produto.nome}}</td>
@@ -32,7 +32,7 @@
         <td id="precoProduto" class="text-center">{{produto.preco}}</td>
         <td id="qtdProduto" class="text-center">{{produto.estoque}}</td>
         <td class="text-center">
-          <button id="btnExcluir" (click)="abrirModalExcluir(produto)" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#excluirProdutoModal">
+          <button id="btnExcluir" (click)="excluirProduto(produto)" class="btn btn-outline-danger">
             <i class="bi bi-trash"></i>
             Excluir
           </button>
@@ -186,7 +186,7 @@
         <label class="" id="nomeProdutoExcluir"></label>
       </div>
       <div class="modal-footer alert-danger">
-        <button type="button" class="btn btn-danger" (click)="excluirProduto()">Sim</button>
+        <button type="button" class="btn btn-danger" (click)="excluirProduto(produto)">Sim</button>
       </div>
     </div>
   </div>

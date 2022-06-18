@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Produto } from 'src/app/model/Produto';
 import { ProdutoService } from 'src/app/service/produto.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import * as $ from 'jQuery';
 
 @Component({
@@ -14,15 +14,13 @@ export class CadastrarProdutoComponent implements OnInit {
   produto:any = new Produto()
   produtoCadastrar: any = new Produto()
   produtoEditar: any = new Produto()
-  produtoExcluir: any = new Produto()
   categoria: string
 
-  constructor(private router: Router, private produtoService: ProdutoService) {
+  constructor(private router: Router, private produtoService: ProdutoService, private route:ActivatedRoute) {
     this.carregarTabela()
   }
 
   ngOnInit(){
-
   }
 
   carregarTabela(){
@@ -34,6 +32,7 @@ export class CadastrarProdutoComponent implements OnInit {
   }
 
   cadastrarProduto(produtoCadastrar: Produto){
+    console.log(this.produtoCadastrar)
     this.produtoCadastrar.categoria = this.categoria
     this.produtoCadastrar.foto = $('#setFoto').attr('src')
     this.produtoService.save(produtoCadastrar).subscribe((resposta: Produto) => {
@@ -55,11 +54,10 @@ export class CadastrarProdutoComponent implements OnInit {
     $('#descricaoEditar').val(produto.descricao)
     $("#categoriaEditar option:contains("+produto.categoria+")").attr('selected', 'true');
     $('#fotoProdutoEditar').attr('src', produto.foto)
-
-    console.log(produto)
   }
 
   atualizarProduto(produtoEditar: Produto){
+    console.log(this.produtoEditar)
     this.produtoService.update(produtoEditar).subscribe((resposta: Produto) => {
       produtoEditar = resposta
       alert('Produto atualizado com sucesso')
@@ -85,18 +83,38 @@ export class CadastrarProdutoComponent implements OnInit {
         break;
       }
     })
-
   }
+
 
   abrirModalExcluir(produto: Produto){
     $('#idProdutoExcluir').text(produto.id)
     $('#nomeProdutoExcluir').text(produto.nome)
-    console.log(produto)
   }
 
-  excluirProduto(){
-    
+  excluirProduto(produto: Produto){
+      this.produtoService.delete(produto).subscribe(() => {
+        alert('Produto excluído com sucesso')
+        this.produto = new Produto
+      },
+      (error: any) => {switch(error.status){
+        case 401:
+          alert('Acesso não autorizado')
+          console.log('Resposta: '+error.status)
+        break;
+        case 400:
+          alert('Erro na requisição')
+          console.log('Resposta: '+error.status)
+        break;
+        case 500:
+          alert('Erro na aplicação')
+          console.log('Resposta: '+error.status)
+        break;
+      }
+      })
+
+      $('#tabela').load('')
   }
+
 
   carregarFoto(event: Event) {
     var file: any

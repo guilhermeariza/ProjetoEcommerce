@@ -8,7 +8,7 @@ import { Produto } from '../model/Produto';
   providedIn: 'root'
 })
 export class ProdutoService {
-
+  url = 'http://localhost:8080/produto'
 
   constructor(private http: HttpClient) { }
 
@@ -17,23 +17,23 @@ export class ProdutoService {
   }
 
   public getAll(): Observable<Produto> {
-    return this.http.get<Produto>('http://localhost:8080/produto')
+    return this.http.get<Produto>(this.url)
   }
 
   getById(id: number): Observable<Produto>{
-    return this.http.get<Produto>('http://localhost:8080/produto/'+ id)
+    return this.http.get<Produto>(this.url +'/'+ id)
   }
 
   save(produto: Produto):Observable<Produto>{
-    return this.http.post<Produto>('http://localhost:8080/produto', produto, this.token)
+    return this.http.post<Produto>(this.url , produto, this.token)
   }
 
   update(produto:Produto):Observable<Produto>{
-    return this.http.put<Produto>('http://localhost:8080/produto/', produto, this.token)
+    return this.http.put<Produto>(this.url +'/', produto, this.token)
   }
 
-  delete(id: number){
-    return this.http.delete<Produto>('http://localhost:8080/produto/'+ id, this.token)
+  delete(produto: Produto){
+    return this.http.delete<Produto>(this.url +'/'+ produto.id, this.token)
   }
 
 }
