@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Produto } from 'src/app/model/Produto';
 import { ProdutoService } from 'src/app/service/produto.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import * as $ from 'jQuery';
 
 @Component({
@@ -11,31 +11,27 @@ import * as $ from 'jQuery';
 })
 export class CadastrarProdutoComponent implements OnInit {
 
-  produto:any = new Produto()
-  produtoCadastrar: any = new Produto()
+  produto:any = new Produto
+  produtoCadastrar: any = new Produto
   categoria: string
+  listaProdutos: any = new Produto
 
-
-  constructor(private router: Router, private produtoService: ProdutoService, private route:ActivatedRoute) {
-    this.carregarTabela()
+  constructor(
+    private router: Router,
+    private produtoService: ProdutoService,
+    ) {
   }
 
   ngOnInit(){
-
+    this.carregarTabela()
   }
 
-  // reload() {
-  //   $('.modal-backdrop').hide()
-  //   if (this.produtoService.reload) {
-  //     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-  //       this.router.navigate(['gerenciarprodutos']);
-  //       this.produtoService.reload = false;
-  //     });
-  //   }
-  // }
-
   carregarTabela(){
-    this.produtoService.getAll().subscribe((data: Produto) => {this.produto = data},(error: any) => {console.log('Erro: ', error)})
+    this.produtoService.getAll().subscribe((data: Produto) => {
+      this.listaProdutos = data
+    },(error: any) => {
+      console.log('Erro: ', error)
+    })
   }
 
   categoriaProduto(event: any){
@@ -52,7 +48,20 @@ export class CadastrarProdutoComponent implements OnInit {
       this.produtoCadastrar = new Produto
     },
     (error: any) => {
-      alert('Preencha todos os campos, são obrigatórios')
+      switch(error.status){
+        case 400:
+          alert('Erro na requisção')
+          console.log('Resposta: '+error.status)
+        break;
+        case 401:
+          alert('Acesso não autorizado')
+          console.log('Resposta: '+error.status)
+        break;
+        case 500:
+          alert('Erro na aplicação')
+          console.log('Resposta: '+error.status)
+        break;
+      }
     })
     this.limparModalEditar()
   }
@@ -68,21 +77,24 @@ export class CadastrarProdutoComponent implements OnInit {
   }
 
   atualizarProduto(){
-    let obj: any = new Produto
-    obj.id = $('#idEditar').text()
-    obj.nome = $('#nomeEditar').val()
-    obj.preco = $('#precoEditar').val()
-    obj.estoque = $('#precoEditar').val()
-    obj.descricao = $('#descricaoEditar').val()
-    obj.categoria = $('#categoriaEditar').val()
-    obj.foto = $('#fotoProdutoEditar').attr('src')
+    this.produto = new Produto
+    this.produto.id = $('#idEditar').text()
+    this.produto.nome = $('#nomeEditar').val()
+    this.produto.preco = $('#precoEditar').val()
+    this.produto.estoque = $('#precoEditar').val()
+    this.produto.descricao = $('#descricaoEditar').val()
+    this.produto.categoria = $('#categoriaEditar').val()
+    this.produto.foto = $('#fotoProdutoEditar').attr('src')
 
-    this.produtoService.update(obj).subscribe(() => {
+    this.produtoService.update(this.produto).subscribe(() => {
       alert('Produto atualizado com sucesso')
-
     },
     (error: any) => {
       switch(error.status){
+        case 400:
+          alert('Erro na requisção')
+          console.log('Resposta: '+error.status)
+        break;
         case 401:
           alert('Acesso não autorizado')
           console.log('Resposta: '+error.status)
@@ -98,19 +110,33 @@ export class CadastrarProdutoComponent implements OnInit {
   abrirModalExcluir(produto: Produto){
     $('#idProdutoExcluir').text(produto.id)
     $('#nomeProdutoExcluir').text(produto.nome)
+    $('#precoProdutoExcluir').text(produto.preco)
+    $('#estoqueProdutoExcluir').text(produto.estoque)
+    $('#descricaoProdutoExcluir').text(produto.descricao)
+    $('#categoriaProdutoExcluir').text(produto.categoria)
+    $('#fotoProdutoExcluir').text(produto.foto)
   }
 
-  excluirProduto(produto: Produto){
-      this.produtoService.delete(produto).subscribe(() => {
+  excluirProduto(){
+    this.produto = new Produto
+    this.produto.id = $('#idProdutoExcluir').text()
+    this.produto.nome = $('#nomeProdutoExcluir').text()
+    this.produto.preco = $('#precoProdutoExcluir').text()
+    this.produto.estoque =$('#estoqueProdutoExcluir').text()
+    this.produto.descricao = $('#descricaoProdutoExcluir').text()
+    this.produto.categoria = $('#categoriaProdutoExcluir').val()
+    this.produto.foto = $('#fotoProdutoExcluir').text()
+
+      this.produtoService.delete(this.produto).subscribe(() => {
         alert('Produto excluído com sucesso')
       },
       (error: any) => {switch(error.status){
-        case 401:
-          alert('Acesso não autorizado')
-          console.log('Resposta: '+error.status)
-        break;
         case 400:
           alert('Erro na requisição')
+          console.log('Resposta: '+error.status)
+        break;
+        case 401:
+          alert('Acesso não autorizado')
           console.log('Resposta: '+error.status)
         break;
         case 500:

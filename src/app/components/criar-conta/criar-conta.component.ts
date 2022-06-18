@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { Usuario } from 'src/app/model/Usuario';
 import { UsuarioLogin } from 'src/app/model/UsuarioLogin';
 import { AuthService } from 'src/app/service/auth.service';
+import * as $ from 'jQuery';
+import { PessoaJuridica } from 'src/app/model/PessoaJuridica';
 
 @Component({
   selector: 'app-criar-conta',
@@ -11,8 +13,8 @@ import { AuthService } from 'src/app/service/auth.service';
 })
 export class CriarContaComponent implements OnInit {
 
-  user: Usuario = new Usuario
-  userLogin: UsuarioLogin = new UsuarioLogin
+  usuario: Usuario = new Usuario
+  usuarioLogin: UsuarioLogin = new UsuarioLogin
   confirmarSenha: string
 
   constructor(
@@ -26,16 +28,17 @@ export class CriarContaComponent implements OnInit {
 
   confirmSenha(event:any) {
     this.confirmarSenha = event.target.value
+    console.log(this.confirmarSenha)
   }
 
 
-  cadastrar(){
-
-    if(this.user.senha != this.confirmarSenha){
+  cadastrar(usuairo: Usuario){
+    console.log(this.usuario)
+    if(this.usuario.senha != this.confirmarSenha){
       alert('As senhas precisam ser iguais')
     } else {
-      this.auth.cadastrar(this.user).subscribe((resp: Usuario)=>{
-        this.user = resp
+      this.auth.cadastrar(this.usuario).subscribe((resp: Usuario)=>{
+        this.usuario = resp
         this.router.navigate(['/entrar'])
         alert('Usuário cadastrado com sucesso')
       }

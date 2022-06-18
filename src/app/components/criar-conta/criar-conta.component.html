@@ -25,25 +25,24 @@
         <h1>Usuário e Senha</h1>
       </div>
       <div class="col-md-4">
-        <label for="usuario" class="form-label">Usuario</label>
-        <input type="text" class="form-control" name="usuario" id="usuario">
+        <label for="cadastrar" class="form-label">Usuario</label>
+        <input [(ngModel)]='usuario.usuario' type="text" class="form-control" name="cadastrar" id="usuarioCadastrar">
       </div>
       <div class="col-md-4">
-        <label for="Senha" class="form-label">Senha</label>
-        <input type="password" class="form-control" id="senha" aria-describedby="passwordHelp">
+        <label for="senha" class="form-label">Senha</label>
+        <input (input)='confirmSenha($event)' type="password" class="form-control" name="senha" id="senha" aria-describedby="passwordHelp">
         <small id="passwordHelp" class="form-text text-secondary">Digite sua senha com 8 caracteres</small>
 
       </div>
       <div class="col-md-4">
-        <label for="Confirma Senha" class="form-label">Confirma Senha </label>
-        <input type="password" class="form-control" id="confirmaSenha" aria-describedby="passwordHelp">
+        <label for="confirmSenha" class="form-label">Confirma Senha </label>
+        <input [(ngModel)]='usuario.senha' name="senha" type="password" class="form-control" id="confirmSenha" aria-describedby="passwordHelp">
         <small id="passwordHelp" class="form-text text-secondary">Digite sua senha com 8 caracteres</small>
       </div>
       <form class="row g-3">
       </form>
       <div class="d-grid gap-2 col-2 mx-auto">
-        <button type="button" class="btn btn-success" data-bs-toggle="modal"
-          data-bs-target="#exampleModal">Cadastrar</button>
+        <button type="button" class="btn btn-success" (click)="cadastrar(usuario)">Cadastrar</button>
 
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
