@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Usuario } from 'src/app/model/Usuario';
+import { UsuarioLogin } from 'src/app/model/UsuarioLogin';
+import { AuthService } from 'src/app/service/auth.service';
+import * as $ from 'jQuery';
+import { PessoaJuridica } from 'src/app/model/PessoaJuridica';
 
 @Component({
   selector: 'app-criar-conta',
@@ -7,9 +13,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CriarContaComponent implements OnInit {
 
-  constructor() { }
+  usuario: Usuario = new Usuario
+  usuarioLogin: UsuarioLogin = new UsuarioLogin
+  confirmarSenha: string
 
-  ngOnInit(): void {
+  constructor(
+    private auth :AuthService,
+    private router: Router
+    ) { }
+
+  ngOnInit() {
+    window.scroll(0,0)
   }
 
+  confirmSenha(event:any) {
+    this.confirmarSenha = event.target.value
+  }
+
+
+  cadastrar(usuairo: Usuario){
+    console.log(this.usuario)
+    if(this.usuario.senha != this.confirmarSenha){
+      alert('As senhas precisam ser iguais')
+    } else {
+      this.auth.cadastrar(this.usuario).subscribe((resp: Usuario)=>{
+        this.usuario = resp
+        this.router.navigate(['/entrar'])
+        alert('Usuário cadastrado com sucesso')
+      }
+      )
+    }
+  }
 }

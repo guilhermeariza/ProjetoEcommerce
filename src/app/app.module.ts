@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
@@ -17,6 +17,7 @@ import { ProdutoEspecificoComponent } from './components/produto-especifico/prod
 import { FormularioDadosClienteComponent } from './components/formulario-dados-cliente/formulario-dados-cliente.component';
 import { TabelaCartaoCreditoComponent } from './components/tabela-cartao-credito/tabela-cartao-credito.component';
 import { TabelaEnderecoComponent } from './components/tabela-endereco/tabela-endereco.component';
+import { CriarContaComponent } from './components/criar-conta/criar-conta.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { TabelaEnderecoComponent } from './components/tabela-endereco/tabela-end
     FormularioDadosClienteComponent,
     TabelaCartaoCreditoComponent,
     TabelaEnderecoComponent,
-    ProdutoEspecificoComponent
+    ProdutoEspecificoComponent,
+    CriarContaComponent
   ],
   imports: [
     BrowserModule,
