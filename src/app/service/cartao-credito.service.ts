@@ -9,7 +9,7 @@ import { CartaoCredito } from '../model/CartaoCredito';
 })
 export class CartaoCreditoService {
 
-  url: string = 'http://localhost/cartaocredito'
+  url: string = 'http://localhost:8080/cartaocredito'
 
   constructor(private http: HttpClient) { }
 
@@ -19,6 +19,10 @@ export class CartaoCreditoService {
 
   getAll(): Observable<CartaoCredito>{
     return this.http.get<CartaoCredito>(this.url)
+  }
+
+  post(cartao: CartaoCredito):Observable<CartaoCredito>{
+    return this.http.post<CartaoCredito>(this.url +'/cadastrar', cartao, this.token)
   }
 
   delete(cartaoCredito: CartaoCredito):Observable<CartaoCredito>{
