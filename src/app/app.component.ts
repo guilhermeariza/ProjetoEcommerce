@@ -11,6 +11,6 @@ export class AppComponent {
   title = 'projetoEcommerce';
 
   constructor(public auth: AuthService){
-    
+
   }
 }
