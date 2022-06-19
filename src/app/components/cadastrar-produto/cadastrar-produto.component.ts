@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Produto } from 'src/app/model/Produto';
 import { ProdutoService } from 'src/app/service/produto.service';
 import { Router } from '@angular/router';
-import * as $ from 'jQuery';
+declare var $:any;
 
 @Component({
   selector: 'app-cadastrar-produto',
@@ -12,9 +12,11 @@ import * as $ from 'jQuery';
 export class CadastrarProdutoComponent implements OnInit {
 
   produto:any = new Produto
-  produtoCadastrar: any = new Produto
-  categoria: string
   listaProdutos: any = new Produto
+  produtoCadastrar: any
+  produtoEditar: any
+  produtoExcluir: any
+  categoria: string
 
   constructor(
     private router: Router,
@@ -23,10 +25,10 @@ export class CadastrarProdutoComponent implements OnInit {
   }
 
   ngOnInit(){
-    this.carregarTabela()
+    this.getAll()
   }
 
-  carregarTabela(){
+  getAll(){
     this.produtoService.getAll().subscribe((data: Produto) => {
       this.listaProdutos = data
     },(error: any) => {
@@ -38,14 +40,14 @@ export class CadastrarProdutoComponent implements OnInit {
     this.categoria = event.target.value
   }
 
-  cadastrarProduto(produtoCadastrar: Produto){
-    console.log(this.produtoCadastrar)
-    this.produtoCadastrar.categoria = this.categoria
-    this.produtoCadastrar.foto = $('#setFoto').attr('src')
-    this.produtoService.save(produtoCadastrar).subscribe((resposta: Produto) => {
-      produtoCadastrar = resposta
+  cadastrarProduto(produto: Produto){
+    this.produto.categoria = this.categoria
+    this.produto.foto = $('#setFoto').attr('src')
+    this.produtoService.save(produto).subscribe((data: Produto) => {
+      this.produto = data
       alert('Produto cadastrado com sucesso')
-      this.produtoCadastrar = new Produto
+      this.produto = new Produto
+      this.limparModal()
     },
     (error: any) => {
       switch(error.status){
@@ -63,31 +65,27 @@ export class CadastrarProdutoComponent implements OnInit {
         break;
       }
     })
-    this.limparModalEditar()
   }
 
   abrirModalEditar(produto: Produto){
-    $('#idEditar').text(produto.id)
-    $('#nomeEditar').val(produto.nome)
-    $('#precoEditar').val(produto.preco)
-    $('#estoqueEditar').val(produto.estoque)
-    $('#descricaoEditar').val(produto.descricao)
+    this.produtoEditar = produto
     $("#categoriaEditar option:contains("+produto.categoria+")").attr('selected', 'true');
-    $('#fotoProdutoEditar').attr('src', produto.foto)
   }
 
-  atualizarProduto(){
-    this.produto = new Produto
-    this.produto.id = $('#idEditar').text()
-    this.produto.nome = $('#nomeEditar').val()
-    this.produto.preco = $('#precoEditar').val()
-    this.produto.estoque = $('#precoEditar').val()
-    this.produto.descricao = $('#descricaoEditar').val()
-    this.produto.categoria = $('#categoriaEditar').val()
-    this.produto.foto = $('#fotoProdutoEditar').attr('src')
+  atualizarProduto(produtoEditar: Produto){
+    produtoEditar.id = $('#idEditar').val()
+    produtoEditar.nome = $('#nomeEditar').val()
+    produtoEditar.preco = $('#precoEditar').val()
+    produtoEditar.estoque = $('#precoEditar').val()
+    produtoEditar.descricao = $('#descricaoEditar').val()
+    produtoEditar.categoria = $('#categoriaEditar').val()
+    produtoEditar.foto = $('#fotoProdutoEditar').attr('src')
 
-    this.produtoService.update(this.produto).subscribe(() => {
+    this.produtoService.update(produtoEditar).subscribe(() => {
       alert('Produto atualizado com sucesso')
+      this.produtoEditar = new Produto
+      this.limparModal()
+      this.fecharModal()
     },
     (error: any) => {
       switch(error.status){
@@ -107,28 +105,17 @@ export class CadastrarProdutoComponent implements OnInit {
     })
   }
 
+
+
   abrirModalExcluir(produto: Produto){
-    $('#idProdutoExcluir').text(produto.id)
-    $('#nomeProdutoExcluir').text(produto.nome)
-    $('#precoProdutoExcluir').text(produto.preco)
-    $('#estoqueProdutoExcluir').text(produto.estoque)
-    $('#descricaoProdutoExcluir').text(produto.descricao)
-    $('#categoriaProdutoExcluir').text(produto.categoria)
-    $('#fotoProdutoExcluir').text(produto.foto)
+      this.produtoExcluir = produto
   }
 
-  excluirProduto(){
-    this.produto = new Produto
-    this.produto.id = $('#idProdutoExcluir').text()
-    this.produto.nome = $('#nomeProdutoExcluir').text()
-    this.produto.preco = $('#precoProdutoExcluir').text()
-    this.produto.estoque =$('#estoqueProdutoExcluir').text()
-    this.produto.descricao = $('#descricaoProdutoExcluir').text()
-    this.produto.categoria = $('#categoriaProdutoExcluir').val()
-    this.produto.foto = $('#fotoProdutoExcluir').text()
-
-      this.produtoService.delete(this.produto).subscribe(() => {
+  excluirProduto(produtoExcluir: Produto){
+      this.produtoService.delete(produtoExcluir).subscribe(() => {
         alert('Produto excluído com sucesso')
+        produtoExcluir = new Produto
+        this.fecharModal()
       },
       (error: any) => {switch(error.status){
         case 400:
@@ -163,7 +150,7 @@ export class CadastrarProdutoComponent implements OnInit {
           contentType: false,
           data: form
       }]
-      $.ajax(settings[0]).done(function (response) {
+      $.ajax(settings[0]).done(function (response: any) {
           console.log(response)
           var jx = JSON.parse(response)
           var linkFoto = jx.data.url
@@ -174,10 +161,12 @@ export class CadastrarProdutoComponent implements OnInit {
     }
   }
 
-  limparModalEditar(){
-    $('#input_img').show()
-    $('#input_img').val('')
-    $('#setFoto').attr('src','')
-    $('#categoriaCadastrar').val(0)
+
+  limparModal(){
+    $('.modal').find('input:text').val('')
+}
+
+  fecharModal(){
+    $('.modal').modal('hide')
   }
 }
