@@ -25,7 +25,6 @@ export class TabelaCartaoCreditoComponent implements OnInit {
   getAll(){
     this.cartaoService.getAll().subscribe((data: CartaoCredito) => {
       this.listaCartao = data
-
     },(error: any)=>{
       console.log('Erro: '+ error)
     })
