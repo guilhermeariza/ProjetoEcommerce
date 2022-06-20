@@ -106,7 +106,7 @@
         </form>
       </div>
       <div class="modal-footer text-center" style="background-color: #64AEAA;">
-        <button type="button" class="btn btn-success" (click)="cadastrarProduto(produto)">Cadastrar</button>
+        <button type="button" class="btn btn-success"  (click)="cadastrarProduto(produto)">Cadastrar</button>
       </div>
     </div>
   </div>
@@ -167,7 +167,7 @@
       </div>
 
       <div class="modal-footer text-center" style="background-color: #64AEAA;">
-        <button type="button" class="btn btn-primary" (click)="atualizarProduto(produtoEditar)">Atualizar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="atualizarProduto(produtoEditar)">Atualizar</button>
       </div>
 
     </div>
@@ -189,7 +189,7 @@
         <p class="">Tem certeza que deseja excluir o produto <label id="nomeProdutoExcluir">{{produtoExcluir.nome}}</label> ?</p>
       </div>
       <div class="modal-footer alert-danger">
-        <button type="button" class="btn btn-danger" (click)="excluirProduto(produtoExcluir)">Sim</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="excluirProduto(produtoExcluir)">Sim</button>
       </div>
     </div>
   </div>

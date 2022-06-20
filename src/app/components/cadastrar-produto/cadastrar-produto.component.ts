@@ -84,8 +84,6 @@ export class CadastrarProdutoComponent implements OnInit {
     this.produtoService.update(produtoEditar).subscribe(() => {
       alert('Produto atualizado com sucesso')
       this.produtoEditar = new Produto
-      this.limparModal()
-      this.fecharModal()
     },
     (error: any) => {
       switch(error.status){
@@ -115,7 +113,6 @@ export class CadastrarProdutoComponent implements OnInit {
       this.produtoService.delete(produtoExcluir).subscribe(() => {
         alert('Produto excluído com sucesso')
         produtoExcluir = new Produto
-        this.fecharModal()
       },
       (error: any) => {switch(error.status){
         case 400:
@@ -166,7 +163,4 @@ export class CadastrarProdutoComponent implements OnInit {
     $('.modal').find('input:text').val('')
 }
 
-  fecharModal(){
-    $('.modal').modal('hide')
-  }
 }
