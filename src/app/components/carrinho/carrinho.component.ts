@@ -14,4 +14,8 @@ export class CarrinhoComponent implements OnInit {
 
   }
 
+  somarProdutos(){
+
+  }
+
 }

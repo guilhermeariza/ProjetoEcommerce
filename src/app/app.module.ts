@@ -18,7 +18,7 @@ import { ProdutoEspecificoComponent } from './components/produto-especifico/prod
 import { FormularioDadosClienteComponent } from './components/formulario-dados-cliente/formulario-dados-cliente.component';
 import { TabelaCartaoCreditoComponent } from './components/tabela-cartao-credito/tabela-cartao-credito.component';
 import { TabelaEnderecoComponent } from './components/tabela-endereco/tabela-endereco.component';
-import { HistoricoPedidosComponent } from './historico-pedidos/historico-pedidos.component';
+import { HistoricoPedidosComponent } from './components/historico-pedidos/historico-pedidos.component';
 
 
 @NgModule({

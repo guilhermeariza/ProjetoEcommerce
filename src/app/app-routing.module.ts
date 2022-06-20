@@ -1,5 +1,5 @@
 import { CarrinhoComponent } from './components/carrinho/carrinho.component';
-import { HistoricoPedidosComponent } from './historico-pedidos/historico-pedidos.component';
+import { HistoricoPedidosComponent } from './components/historico-pedidos/historico-pedidos.component';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
