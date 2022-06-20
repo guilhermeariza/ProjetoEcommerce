@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Usuario } from 'src/app/model/Usuario';
 import { UsuarioLogin } from 'src/app/model/UsuarioLogin';
 import { AuthService } from 'src/app/service/auth.service';
 import { environment } from 'src/environments/environment.prod';
@@ -28,10 +27,7 @@ export class CardLoginComponent implements OnInit {
       environment.tipo = this.usuarioLogin.tipo
       environment.token = this.usuarioLogin.token
 
-      console.log(environment.id)
-      console.log(environment.usuario)
-      console.log(environment.tipo)
-      console.log(environment.token)
+      console.log(environment)
 
       this.router.navigate(['/inicio'])
     }, erro => {
