@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment.prod';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
+  usuario = environment.usuario
   constructor(private router: Router) { }
 
   ngOnInit(): void {
