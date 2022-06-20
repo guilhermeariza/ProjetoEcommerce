@@ -1,39 +1,40 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
 import { PessoaJuridica } from '../model/PessoaJuridica';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PessoaJuridicaService {
-  pessoaJuridica: PessoaJuridica[] = [
-    {
-       id: 1,
-       nomeFantasia: 'nomeFantasia1',
-       razaoSocial: 'razaoSocial1',
-       email: 'email1',
-       cnpj: '111.111.111.111',
-       cartaoCredito: [
-        {
-          id: 1,
-          apelido: 'Cartao 1',
-          nomeCartao: 'Vinicius Campanholi',
-          numeroCartao: '4319771301916890',
-          dataValidade: '18/02/2025',
-          cvv: '101'
-        },{
-          id: 2,
-          apelido: 'Cartao 2',
-          nomeCartao: 'Guilherme Ariza',
-          numeroCartao: '4969722216061572',
-          dataValidade: '11/12/2026',
-          cvv: '538'
-        }
-       ]
-    }
-  ]
-  constructor() { }
+  url = 'http://localhost:8080/pessoajuridica'
+  constructor(private http: HttpClient) { }
 
-  getAll(){
-    return this.pessoaJuridica
+  token = {
+    headers: new HttpHeaders().set('Autorization', environment.token)
   }
+
+  public getAll(): Observable<PessoaJuridica> {
+    return this.http.get<PessoaJuridica>(this.url)
+  }
+
+  getById(id: number): Observable<PessoaJuridica>{
+    return this.http.get<PessoaJuridica>(this.url +'/'+ id)
+  }
+
+  save(pessoaJuridica: PessoaJuridica):Observable<PessoaJuridica>{
+    return this.http.post<PessoaJuridica>(this.url , PessoaJuridica, this.token)
+  }
+
+  update(pessoaJuridica:PessoaJuridica):Observable<PessoaJuridica>{
+    return this.http.put<PessoaJuridica>(this.url +'/', PessoaJuridica, this.token)
+  }
+
+  delete(pessoaJuridica: PessoaJuridica){
+    return this.http.delete<PessoaJuridica>(this.url +'/'+ pessoaJuridica.id, this.token)
+  }
+
 }
+
+
