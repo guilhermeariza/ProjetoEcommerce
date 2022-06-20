@@ -27,7 +27,7 @@ export class AuthService {
   }
 
   update(usuario: Usuario): Observable<Usuario>{
-    return this.http.post<Usuario>(this.url+'/atualizar', usuario, this.token)
+    return this.http.put<Usuario>(this.url+'/atualizar', usuario, this.token)
   }
 
   logado(){
