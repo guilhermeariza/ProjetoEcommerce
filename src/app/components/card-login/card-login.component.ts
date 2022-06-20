@@ -30,10 +30,7 @@ export class CardLoginComponent implements OnInit {
       environment.nomeFantasia = this.usuarioLogin.nomeFantasia
       environment.razaoSocial = this.usuarioLogin.razaoSocial
 
-      console.log(environment.id)
-      console.log(environment.usuario)
-      console.log(environment.tipo)
-      console.log(environment.token)
+      console.log(environment)
 
       this.router.navigate(['/inicio'])
     }, erro => {

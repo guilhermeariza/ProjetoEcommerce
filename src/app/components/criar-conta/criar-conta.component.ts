@@ -34,7 +34,7 @@ export class CriarContaComponent implements OnInit {
     } else {
       this.auth.cadastrar(this.usuario).subscribe((resp: Usuario)=>{
         this.usuario = resp
-        this.router.navigate(['/entrar'])
+        this.router.navigate(['/login'])
         alert('Usuário cadastrado com sucesso')
       }
       )
