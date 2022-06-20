@@ -5,7 +5,4 @@ export class UsuarioLogin{
   public tipo: string
   public token: string
   public foto: string
-  public nomeFantasia: string
-  public razaoSocial: string
-  public cnpj: string
 }
