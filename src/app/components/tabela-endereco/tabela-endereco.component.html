@@ -15,21 +15,21 @@
   <table class="table table-hover align-middle">
     <thead class="text-center">
       <tr>
-        <th scope="col" hidden="true">#</th>
+        <th scope="col">ID</th>
         <th scope="col">Endereço</th>
         <th scope="col">CEP</th>
       </tr>
     </thead>
     <tbody class="text-center">
-      <tr>
-        <th id="idEnderecoTb" scope="row" hidden="true">1</th>
-        <td id="enderecoTb">Rua Carlos de Arruda Botelho,321 - Bairro Jardim Guarani - São Paulo - SP</td>
-        <td id="cepTb">02849-030</td>
+      <tr *ngFor="let endereco of listaEndereco">
+        <th id="idEnderecoTb" scope="row">{{endereco.id}}</th>
+        <td id="enderecoTb">{{endereco.endereco}}</td>
+        <td id="cepTb">{{endereco.cep}}</td>
         <td>
-          <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editarEnderecoModal"><i class="bi bi-pencil-square"></i>Editar</button>
+          <button (focus)="abrirModalEditar(endereco)"type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editarEnderecoModal"><i class="bi bi-pencil-square"></i>Editar</button>
         </td>
         <td>
-          <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#excluirEnderecoModal"><i class="bi bi-trash"></i>Excluir</button>
+          <button (focus)="abrirModalExcluir(endereco)" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#excluirEnderecoModal"><i class="bi bi-trash"></i>Excluir</button>
         </td>
       </tr>
     </tbody>
@@ -49,19 +49,19 @@
         <form class="row gy-2 gx-3 align-items-center">
           <div class="col-8">
             <label class="form-label" for="nomeEnderecoCadastrar">Novo Endereço</label>
-            <input type="text" class="form-control" id="nomeEnderecoCadastrar">
+            <input [(ngModel)]="endereco.endereco" name="endereco" type="text" class="form-control" id="nomeEnderecoCadastrar">
             <div id="nomeEnderecoCadastrarHelp" class="form-text">Campo obrigatorio</div>
           </div>
 
           <div class="col-4">
             <label class="form-label" for="cepCadastrar">CEP</label>
-          <input type="text" class="form-control" id="cepCadastrar">
+          <input [(ngModel)]="endereco.cep" name="cep" type="text" class="form-control" id="cepCadastrar">
             <div id="cepCadastrarHelp" class="form-text">Campo obrigatorio</div>
           </div>
         </form>
       </div>
       <div class="modal-footer text-center" style="background-color: #64AEAA;">
-        <button type="button" class="btn btn-success">Cadastrar</button>
+        <button type="button" class="btn btn-success"(click)="cadastrar(endereco)">Cadastrar</button>
       </div>
     </div>
   </div>
@@ -69,6 +69,7 @@
 <!-- Modal cadastrar -->
 
 <!-- Modal excluir -->
+<ng-template [ngIf]="enderecoExcluir">
 <div class="modal fade" id="excluirEnderecoModal" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog ">
     <div class="modal-content ">
@@ -77,17 +78,20 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body alert-danger">
+        <p class="display-6">{{enderecoExcluir.endereco}}</p>
         <p class="display-6">Tem certeza?</p>
       </div>
       <div class="modal-footer alert-danger">
-        <button type="button" class="btn btn-danger">Sim</button>
+        <button type="button" class="btn btn-danger" (click)="excluir(enderecoExcluir)">Sim</button>
       </div>
     </div>
   </div>
 </div>
+</ng-template>
 <!-- Modal excluir -->
 
 <!-- Modal editar -->
+<ng-template [ngIf]="enderecoEditar">
 <div class="modal fade" id="editarEnderecoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" style="max-width:1000px;">
     <div class="modal-content">
@@ -99,21 +103,22 @@
         <form class="row gy-2 gx-3 align-items-center">
           <div class="col-8">
             <label class="form-label" for="enderecoEditar">Endereço</label>
-            <input type="text" class="form-control" id="enderecoEditar">
+            <input value="{{enderecoEditar.endereco}}" type="text" class="form-control" id="enderecoEditar">
             <div id="enderecoEditarHelp" class="form-text">Campo obrigatorio</div>
           </div>
 
           <div class="col-4">
             <label class="form-label" for="cepEditar">CEP</label>
-          <input type="text" class="form-control" id="cepEditar">
+            <input value="{{enderecoEditar.cep}}" type="text" class="form-control" id="cepEditar">
             <div id="cepEditarHelp" class="form-text">Campo obrigatorio</div>
           </div>
         </form>
       </div>
       <div class="modal-footer text-center" style="background-color: #64AEAA;">
-        <button type="button" class="btn btn-primary">Salvar</button>
+        <button type="button" class="btn btn-primary" (click)="atualizar(enderecoEditar)">Atualizar</button>
       </div>
     </div>
   </div>
 </div>
+</ng-template>
 <!-- Modal editar -->
