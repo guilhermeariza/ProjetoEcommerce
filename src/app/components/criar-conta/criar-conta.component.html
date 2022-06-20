@@ -4,21 +4,17 @@
       <h1>Criar Conta</h1>
     </div>
     <form class="row">
-      <div class="col-3">
-        <label for="nomeFantasia" class="form-label ">NomeFantasia</label>
-        <input type="text" class="form-control" id="nomeFantasia">
+      <div class="col">
+        <label for="nomeFantasia" class="form-label ">Nome Fantasia</label>
+        <input [(ngModel)]='usuario.nomeFantasia' name="nomeFantasia" type="text" class="form-control" id="nomeFantasia">
       </div>
-      <div class="col-3">
+      <div class="col">
         <label for="razaoSocial" class="form-label">Razao Social</label>
-        <input type="text" class="form-control" id="razaoSocial">
+        <input [(ngModel)]='usuario.razaoSocial' name="razaoSocial" type="text" class="form-control" id="razaoSocial">
       </div>
-      <div class="col-3">
+      <div class="col">
         <label for="cnpj" class="form-label">CNPJ</label>
-        <input type="text" class="form-control" id="cnpj">
-      </div>
-      <div class="col-3">
-        <label for="email" class="form-label">E-mail</label>
-        <input type="email" class="form-control" id="email" placeholder="exemplo@exemplo.com">
+        <input [(ngModel)]='usuario.cnpj' name="cnpj" type="text" class="form-control" id="cnpj">
       </div>
 
       <div class="row pt-5">

@@ -1,60 +1,45 @@
 <main class="p-4" style="margin-top: 55px; ">
   <div class="container-fluid">
+
     <form class="bg-212 p-4">
       <div class="row">
-        <h2 class="mb-4 mt-4" id="atualizarCadastro">Atualização de cadastro</h2>
-        <div class="col-3">
+        <h2 class="mb-4 mt-2" id="atualizarCadastro">Atualização de cadastro</h2>
+        <div class="col">
           <label for="nomeFantasia" class="form-label">Nome fantasia</label>
-          <input type="text" class="form-control" id="nomeFantasia">
+          <input name="nomeFantasia" value="{{usuario.nomeFantasia}}" type="text" class="form-control" id="nomeFantasia">
         </div>
-        <div class="col-3">
+        <div class="col">
           <label for="razaoSocial" class="form-label">Razao social</label>
-          <input type="text" class="form-control" id="nomeFantasia">
+          <input  name="razaoSocial" value="{{usuario.razaoSocial}}" type="text" class="form-control" id="razaoSocial">
         </div>
-        <div class="col-3">
+        <div class="col">
           <label for="cnpj" class="form-label">CNPJ</label>
-          <input type="text" class="form-control" id="cnpj">
-        </div>
-        <div class="col-3">
-          <label for="email" class="form-label">Email</label>
-          <input type="email" class="form-control" id="email" placeholder="email@email.com">
+          <input name="cnpj" value="{{usuario.cnpj}}" type="text" class="form-control" id="cnpj">
         </div>
       </div>
-      <div class="row">
-        <div class="mx-auto mt-5 mb-5 text-center">
-          <button type="button" class="btn btn-lg btn-success">Atualizar dados de cliente</button>
-        </div>
-      </div>
-      </form>
 
-      <hr>
-
-      <app-tabela-cartao-credito></app-tabela-cartao-credito>
-
-      <hr>
-
-      <app-tabela-endereco></app-tabela-endereco>
-      <hr>
-
-      <form class="bg-212 p-4">
       <div class="row mt-4" id="atualizarUsuarioEsenha">
         <h2>Usuário e senha</h2>
-        <div class="col-4">
+        <div class="col">
           <label for="usuario" class="form-label">Usuario</label>
-          <input type="text" class="form-control" id="usuario">
+          <input name="usuario" value="{{usuario.usuario}}" type="text" class="form-control" id="usuario">
         </div>
-        <div class="col-4">
+        <div class="col">
           <label for="senha" class="form-label">Senha</label>
-          <input type="password" class="form-control" id="senha">
+          <input (input)='confirmSenha($event)' type="password" class="form-control" id="senha">
         </div>
-        <div class="col-4">
+        <div class="col">
           <label for="senhaConfirmar" class="form-label">Confirmar senha</label>
-          <input type="password" class="form-control" id="senhaConfirmar">
+          <input name="senha" type="password" class="form-control" id="senhaConfirmar">
         </div>
       </div>
       <div class="mx-auto mt-5 text-center">
-        <button type="button" class="btn btn-lg btn-success">Atualizar usuario e senha</button>
+        <button type="button" class="btn btn-lg btn-success" (click)="atualizar()">Atualizar cadastro</button>
       </div>
     </form>
+    <hr>
+    <app-tabela-cartao-credito></app-tabela-cartao-credito>
+    <hr>
+    <app-tabela-endereco></app-tabela-endereco>
   </div>
 </main>

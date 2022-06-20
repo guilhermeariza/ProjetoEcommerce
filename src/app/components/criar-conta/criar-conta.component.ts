@@ -3,8 +3,6 @@ import { Router } from '@angular/router';
 import { Usuario } from 'src/app/model/Usuario';
 import { UsuarioLogin } from 'src/app/model/UsuarioLogin';
 import { AuthService } from 'src/app/service/auth.service';
-import * as $ from 'jQuery';
-import { PessoaJuridica } from 'src/app/model/PessoaJuridica';
 
 @Component({
   selector: 'app-criar-conta',
@@ -30,10 +28,8 @@ export class CriarContaComponent implements OnInit {
     this.confirmarSenha = event.target.value
   }
 
-
-  cadastrar(usuairo: Usuario){
-    console.log(this.usuario)
-    if(this.usuario.senha != this.confirmarSenha){
+  cadastrar(usuario: Usuario){
+    if(usuario.senha != this.confirmarSenha){
       alert('As senhas precisam ser iguais')
     } else {
       this.auth.cadastrar(this.usuario).subscribe((resp: Usuario)=>{
