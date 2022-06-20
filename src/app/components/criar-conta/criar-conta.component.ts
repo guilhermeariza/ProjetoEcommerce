@@ -30,15 +30,13 @@ export class CriarContaComponent implements OnInit {
     this.confirmarSenha = event.target.value
   }
 
-
   cadastrar(usuairo: Usuario){
-    console.log(this.usuario)
     if(this.usuario.senha != this.confirmarSenha){
       alert('As senhas precisam ser iguais')
     } else {
       this.auth.cadastrar(this.usuario).subscribe((resp: Usuario)=>{
         this.usuario = resp
-        this.router.navigate(['/entrar'])
+        this.router.navigate(['/login'])
         alert('Usuário cadastrado com sucesso')
       }
       )
