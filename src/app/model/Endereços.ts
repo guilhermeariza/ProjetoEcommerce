@@ -1,8 +1,8 @@
-import { PessoaJuridica } from "./PessoaJuridica"
+import { Usuario } from "./Usuario"
 
 export class Endereco{
   public id: number
   public endereco: string
   public cep: string
-  // public pessoaJuridica!: PessoaJuridica
+  public usuario: Usuario
 }

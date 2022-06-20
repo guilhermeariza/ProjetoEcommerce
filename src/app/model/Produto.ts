@@ -8,5 +8,5 @@ export class Produto {
   public descricao: string
   public categoria: string
   public foto: string
-  // public carrinho!: Carrinho
+  public carrinho: Carrinho
 }
