@@ -4,46 +4,41 @@
       <h1>Criar Conta</h1>
     </div>
     <form class="row">
-      <div class="col-3">
-        <label for="nomeFantasia" class="form-label ">NomeFantasia</label>
-        <input type="text" class="form-control" id="nomeFantasia">
+      <div class="col">
+        <label for="nomeFantasia" class="form-label ">Nome Fantasia</label>
+        <input [(ngModel)]='usuario.nomeFantasia' name="nomeFantasia" type="text" class="form-control" id="nomeFantasia">
       </div>
-      <div class="col-3">
+      <div class="col">
         <label for="razaoSocial" class="form-label">Razao Social</label>
-        <input type="text" class="form-control" id="razaoSocial">
+        <input [(ngModel)]='usuario.razaoSocial' name="razaoSocial" type="text" class="form-control" id="razaoSocial">
       </div>
-      <div class="col-3">
+      <div class="col">
         <label for="cnpj" class="form-label">CNPJ</label>
-        <input type="text" class="form-control" id="cnpj">
-      </div>
-      <div class="col-3">
-        <label for="email" class="form-label">E-mail</label>
-        <input type="email" class="form-control" id="email" placeholder="exemplo@exemplo.com">
+        <input [(ngModel)]='usuario.cnpj' name="cnpj" type="text" class="form-control" id="cnpj">
       </div>
 
       <div class="row pt-5">
         <h1>Usuário e Senha</h1>
       </div>
       <div class="col-md-4">
-        <label for="Usuario" class="form-label">Usuario</label>
-        <input type="text" class="form-control" id="usuario">
+        <label for="cadastrar" class="form-label">Usuario</label>
+        <input [(ngModel)]='usuario.usuario' type="text" class="form-control" name="cadastrar" id="usuarioCadastrar">
       </div>
       <div class="col-md-4">
-        <label for="Senha" class="form-label">Senha</label>
-        <input type="password" class="form-control" id="senha" aria-describedby="passwordHelp">
+        <label for="senha" class="form-label">Senha</label>
+        <input (input)='confirmSenha($event)' type="password" class="form-control" name="senha" id="senha" aria-describedby="passwordHelp">
         <small id="passwordHelp" class="form-text text-secondary">Digite sua senha com 8 caracteres</small>
 
       </div>
       <div class="col-md-4">
-        <label for="Confirma Senha" class="form-label">Confirma Senha </label>
-        <input type="password" class="form-control" id="confirmaSenha" aria-describedby="passwordHelp">
+        <label for="confirmSenha" class="form-label">Confirma Senha </label>
+        <input [(ngModel)]='usuario.senha' name="senha" type="password" class="form-control" id="confirmSenha" aria-describedby="passwordHelp">
         <small id="passwordHelp" class="form-text text-secondary">Digite sua senha com 8 caracteres</small>
       </div>
       <form class="row g-3">
       </form>
       <div class="d-grid gap-2 col-2 mx-auto">
-        <button type="button" class="btn btn-success" data-bs-toggle="modal"
-          data-bs-target="#exampleModal">Cadastrar</button>
+        <button type="button" class="btn btn-success" (click)="cadastrar(usuario)">Cadastrar</button>
 
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -61,7 +56,6 @@
             </div>
           </div>
         </div>
-        
       </div>
     </form>
   </div>

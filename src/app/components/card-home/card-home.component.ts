@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProdutoService } from 'src/app/service/produto-service.service';
+import { ProdutoService } from 'src/app/service/produto.service';
 import { Produto } from '../../model/Produto';
 import { Router } from '@angular/router';
 
@@ -16,6 +16,14 @@ export class CardHomeComponent implements OnInit {
   constructor(private router: Router, private produtoService: ProdutoService) { }
 
   ngOnInit(){
-    this.maisVendidos = this.produtoService.getFour()
+    this.maisVendidos = this.getFour()
+  }
+
+  getFour(){
+    let maisVendidos = new Array
+    for(let i=0;i<4;i++){
+      maisVendidos.push(this.produto[i])
+    }
+    return maisVendidos
   }
 }

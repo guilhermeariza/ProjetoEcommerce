@@ -3,13 +3,14 @@
 </head>
 
 <main class="container pt-4" style="margin-top: 55px;">
+
   <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#cadastrarProdutoModal">
     <i class="bi bi-plus-square-fill"></i>
     Adicionar produto
   </button>
 
 <!-- tabela -->
-<div class="container mt-2">
+<div class="container mt-2" >
   <table class="table table-sm">
     <thead>
       <tr>
@@ -23,21 +24,21 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="align-middle" *ngFor="let produto of produto">
+      <tr class="align-middle" *ngFor="let produto of listaProdutos" id="tabela">
         <td id="idProduto" >{{produto.id}}</td>
         <td id="fotoProduto" class="text-center"><img src="{{produto.foto}}" class="img-tabela"></td>
         <td id="nomeProduto" class="text-center">{{produto.nome}}</td>
         <td id="categoriaProduto" class="text-center">{{produto.categoria}}</td>
         <td id="precoProduto" class="text-center">{{produto.preco}}</td>
-        <td id="qtdProduto" class="text-center">{{produto.quantidade}}</td>
+        <td id="qtdProduto" class="text-center">{{produto.estoque}}</td>
         <td class="text-center">
-          <button id="btnExcluir"  (click)="excluirProduto(produto.id)" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#excluirProdutoModal">
+          <button id="btnExcluir" (focus)="abrirModalExcluir(produto)" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#excluirProdutoModal">
             <i class="bi bi-trash"></i>
             Excluir
           </button>
         </td>
         <td class="text-center">
-          <button id="btnEditar" (click)="editarProduto(produto.id)" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editarProdutoModal">
+          <button id="btnEditar" (focus)="abrirModalEditar(produto)" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editarProdutoModal">
             <i class="bi bi-pencil-square"></i>
             Editar
           </button>
@@ -53,53 +54,59 @@
     <div class="modal-content">
       <div class="modal-header" style="background-color: #64AEAA; color:white; ">
         <p class="display-6">Cadastrar produto</p>
-        <button (click)="limparImagem()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form class="row gy-2 gx-3 align-items-center">
+
           <div class="col-5">
-            <label class="form-label" for="nomeProduto">Nome do produto</label>
-            <input type="text" class="form-control" id="nomeProduto">
-            <div id="nomeProdutoHelp" class="form-text">Campo obrigatorio</div>
+            <label class="form-label" for="nomeCadastrar">Nome do produto</label>
+            <input [(ngModel)]="produto.nome" name="nome" type="text" class="form-control" id="nomeCadastrar">
+            <div id="nomeCadastrarHelp" class="form-text">Campo obrigatorio</div>
           </div>
+
           <div class="col-3">
-            <label class="form-label" for="categoriaProduto">Categoria</label>
-            <select class="form-select" id="categoriaProduto">
-              <option selected>Selecione uma categoria...</option>
-              <option value="2">Painel solar</option>
-              <option value="3">Trasnporte</option>
+            <label class="form-label" for="categoriaCadastrar">Categoria</label>
+            <select class="form-select" id="categoriaCadastrar" (change)="categoriaProduto($event)">
+              <option selected value="0">Selecione uma categoria...</option>
+              <option value="Painel solar">Painel solar</option>
+              <option value="Transporte">Transporte</option>
             </select>
-            <div id="categoriaProdutoHelp" class="form-text">Campo obrigatorio</div>
+            <div id="categoriaCadastrarHelp" class="form-text">Campo obrigatorio</div>
           </div>
+
           <div class="col-2">
-            <label class="form-label" for="qtdProduto">Quantidade</label>
-            <input type="text" class="form-control" id="qtdProduto">
-            <div id="qtdProdutoHelp" class="form-text">Campo obrigatorio</div>
+            <label class="form-label" for="estoqueCadastrar">Estoque</label>
+            <input [(ngModel)]="produto.estoque" name="estoque" type="text" class="form-control" id="estoqueCadastrar">
+            <div id="estoqueCadastrarHelp" class="form-text">Campo obrigatorio</div>
           </div>
+
           <div class="col-2">
-            <label class="form-label" for="precoProduto" id="precoProduto" name="precoProduto">Preço de venda</label>
-            <input type="text" placeholder="R$ 0,00" class="dinheiro form-control" id="precoProduto">
-            <div id="precoProdutoHelp" class="form-text">Campo obrigatorio</div>
+            <label class="form-label" for="precoCadastrar" id="precoCadastrar" name="preco">Preço de venda</label>
+            <input [(ngModel)]="produto.preco" name="preco" type="text" placeholder="R$ 0,00" class="form-control" id="precoCadastrar">
+            <div id="precoCadastrarHelp" class="form-text">Campo obrigatorio</div>
           </div>
+
           <div class="col-12">
             <div class="row">
-              <label for="foto" class="form-label">Upload de foto</label>
+              <label for="fotoCadastrar" class="form-label">Upload de foto</label>
               <div class="col-5">
-                <input class="form-control" type="file" id="input_img" (change)="fileChange($event)" accept="image/*">
+                <input name="foto" class="form-control" type="file" id="input_img" (change)="carregarFoto($event)" accept="image/*">
                 <img id="setFoto">
               </div>
             </div>
           </div>
+
           <div class="row mt-4">
             <div class="col">
-              <label for="descricaoProduto" class="form-label">Descrição do produto</label>
-              <textarea class="form-control" id="descricaoProduto" rows="4"></textarea>
+              <label for="descricaoCadastrar" class="form-label">Descrição do produto</label>
+              <textarea [(ngModel)]="produto.descricao" name="descricao" class="form-control" id="descricaoCadastrar" rows="4"></textarea>
             </div>
           </div>
         </form>
       </div>
       <div class="modal-footer text-center" style="background-color: #64AEAA;">
-        <button type="button" class="btn btn-success">Cadastrar</button>
+        <button type="button" class="btn btn-success"  (click)="cadastrarProduto(produto)">Cadastrar</button>
       </div>
     </div>
   </div>
@@ -107,7 +114,8 @@
 <!-- Modal cadastrar -->
 
 <!-- Modal editar -->
-<div class="modal fade" id="editarProdutoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<ng-template [ngIf]="produtoEditar">
+<div  class="modal fade" id="editarProdutoModal" tabindex="-1" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog modal-dialog-centered" style="max-width:1000px;">
     <div class="modal-content">
       <div class="modal-header" style="background-color: #64AEAA; color:white;">
@@ -117,64 +125,59 @@
       <div class="modal-body">
         <form class="row gy-2 gx-3 align-items-center">
           <div class="col-sm-2 text-center">
-            <img id="fotoProdutoEditar">
+            <img id="fotoProdutoEditar" src="{{produtoEditar.foto}}">
           </div>
+
           <div class="col-4">
-            <label id="idProdutoEditar" hidden="true">idProduto</label>
-            <label class="form-label" for="nomeProdutoEditar">Nome do produto</label>
-            <input type="text" class="form-control" id="nomeProdutoEditar">
-            <div id="nomeProdutoHelp" class="form-text">Campo obrigatorio</div>
+            <input name="id" type="text" id="idEditar" hidden="true" value="{{produtoEditar.id}}">
+            <label class="form-label" for="nomeEditar">Nome do produto</label>
+            <input name="nome" type="text" class="form-control" id="nomeEditar" value="{{produtoEditar.nome}}">
+            <div id="nomeEditarHelp" class="form-text">Campo obrigatorio</div>
           </div>
+
           <div class="col-2">
-            <label class="form-label" for="categoriaProdutoEditar">Categoria</label>
-            <select class="form-select" id="categoriaProdutoEditar">
-              <option selected>Selecione uma categoria...</option>
-              <option value="1">Painéis</option>
-              <option value="2">Transporte</option>
+            <label class="form-label" for="categoriaEditar">Categoria</label>
+            <select class="form-select" id="categoriaEditar">
+              <option value="Selecione uma categoria...">Selecione uma categoria...</option>
+              <option value="Painel solar">Painel solar</option>
+              <option value="Transporte">Transporte</option>
             </select>
-            <div id="categoriaProdutoHelp" class="form-text">Campo obrigatorio</div>
+            <div id="categoriaEditarHelp" class="form-text">Campo obrigatorio</div>
           </div>
+
           <div class="col-2">
-            <label class="form-label" for="qtdProdutoEditar">Quantidade</label>
-            <input type="text" class="form-control" id="qtdProdutoEditar">
-            <div id="qtdProdutoHelp" class="form-text">Campo obrigatorio</div>
+            <label class="form-label" for="estoqueEditar">Estoque</label>
+            <input name="estoque" type="text" class="form-control" id="estoqueEditar" value="{{produtoEditar.estoque}}">
+            <div id="estoqueEditarHelp" class="form-text">Campo obrigatorio</div>
           </div>
+
           <div class="col-2">
-            <label class="form-label" for="precoProdutoEditar">Preço de venda</label>
-            <input type="text" class="form-control" id="precoProdutoEditar">
-            <div id="precoProdutoHelp" class="form-text">Campo obrigatorio</div>
+            <label class="form-label" for="precoEditar">Preço</label>
+            <input name="preco" type="text" class="form-control" id="precoEditar" value="{{produtoEditar.preco}}">
+            <div id="precoEditarHelp" class="form-text">Campo obrigatorio</div>
           </div>
-          <!-- <div class="col-12">
-            <div class="row">
-              <label for="foto" class="form-label">Upload de foto</label>
-              <div class="col-5">
-                <input class="form-control" type="file" id="fotoProdutoEditar">
-              </div>
-              <div class="col">
-                <button class="btn btn-primary">
-                  <i class="bi bi-file-earmark-arrow-up-fill"></i>
-                  Atualizar
-                </button>
-              </div>
-            </div>
-          </div> -->
+
           <div class="row mt-4">
             <div class="col">
-              <label for="descricaoProdutoEditar" class="form-label">Descrição do produto</label>
-              <textarea class="form-control" id="descricaoProdutoEditar" rows="4"></textarea>
+              <label for="descricaoEditar" class="form-label">Descrição do produto</label>
+              <textarea name="descricao" class="form-control" id="descricaoEditar" rows="4" value="{{produtoEditar.descricao}}"></textarea>
             </div>
           </div>
         </form>
       </div>
+
       <div class="modal-footer text-center" style="background-color: #64AEAA;">
-        <button type="button" class="btn btn-primary">Atualizar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="atualizarProduto(produtoEditar)">Atualizar</button>
       </div>
+
     </div>
   </div>
 </div>
+</ng-template>
 <!-- Modal editar -->
 
 <!-- Modal excluir -->
+<ng-template [ngIf]="produtoExcluir">
 <div class="modal fade" id="excluirProdutoModal" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog ">
     <div class="modal-content ">
@@ -183,15 +186,14 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body alert-danger">
-        <label id="idProdutoExcluir" hidden="true"></label>
-        <p class="">Tem certeza que deseja excluir o produto <label class="" id="nomeProdutoExcluir"></label> ?</p>
-        <label class="" id="nomeProdutoExcluir"></label>
+        <p class="">Tem certeza que deseja excluir o produto <label id="nomeProdutoExcluir">{{produtoExcluir.nome}}</label> ?</p>
       </div>
       <div class="modal-footer alert-danger">
-        <button type="button" class="btn btn-danger">Sim</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="excluirProduto(produtoExcluir)">Sim</button>
       </div>
     </div>
   </div>
 </div>
+</ng-template>
 <!-- Modal excluir -->
 </main>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProdutoService } from 'src/app/service/produto-service.service';
+import { ProdutoService } from 'src/app/service/produto.service';
 import { Produto } from '../../model/Produto';
 import { Router } from '@angular/router';
 
@@ -15,6 +15,6 @@ export class CardPesquisaProdutoComponent implements OnInit {
   constructor(private router: Router, private produtoService: ProdutoService) { }
 
   ngOnInit(){
-      this.produto=this.produtoService.getAll()
+      return this.produtoService.getAll()
   }
 }
