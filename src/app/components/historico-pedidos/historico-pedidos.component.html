@@ -11,50 +11,75 @@
 
       <div class="col-12 row-cols text-center alinhar">
         <div class="row col mb-3 fw-bold">
-          <div class="col ">Código do pedido</div>
-          <div class="col">Variedade de produtos</div>
-          <div class="col">QUANTIDADE</div>
-          <div class="col">TOTAL</div>
+          <div class="col-2">ID do pedido</div>
+          <div class="col-2">Quantidade de itens</div>
+          <div class="col-4">Período de locação</div>
+          <div class="col-4">Total</div>
         </div>
         <hr>
 
-        <div class="row col pt-5 pb-5 alinhar hover-effect rounded" >
-          <div class="col fw-bold">1</div>
-          <div class="col-sm ">4</div>
-          <div class="col">40</div>
-          <div class="col fw-bold">R$ 120.000,00</div>
+        <div class="row col pt-4 pb-4 alinhar hover-effect rounded" data-bs-toggle="modal" data-bs-target="#abrirCarrinhoModal">
+          <div class="col-2 fw-bold">1</div>
+          <div class="col-2 ">40</div>
+          <div class="col-4">40 meses</div>
+          <div class="col-4 fw-bold">R$ 120.000,00</div>
 
         </div>
         <hr>
-        <div class="row col pt-5 pb-5 alinhar hover-effect rounded" >
-          <div class="col fw-bold">1</div>
-          <div class="col-sm ">4</div>
-          <div class="col">40</div>
-          <div class="col fw-bold">R$ 120.000,00</div>
 
-        </div>
-        <hr>
-        <div class="row col pt-5 pb-5 alinhar hover-effect rounded" >
-          <div class="col fw-bold">1</div>
-          <div class="col-sm ">4</div>
-          <div class="col">40</div>
-          <div class="col fw-bold">R$ 120.000,00</div>
-
-        </div>
-        <hr>
-        <div class="row col pt-5 pb-5 alinhar hover-effect rounded" >
-          <div class="col fw-bold">1</div>
-          <div class="col-sm ">4</div>
-          <div class="col">40</div>
-          <div class="col fw-bold">R$ 120.000,00</div>
-
-        </div>
-        <hr>
 
       </div>
 
     </div>
 
+  </div>
+
+
+  <div class="modal fade" id="abrirCarrinhoModal" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content ">
+        <div class="modal-header ">
+          <h5 class="modal-title" id="staticBackdropLabel">Carinho ID: 1</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+
+          <div class="row col mt-5 fw-bold">
+            <div class="col ">PRODUTOS</div>
+            <div class="col"></div>
+            <div class="col">QUANTIDADE</div>
+            <div class="col">VALOR UNITÁRIO</div>
+            <div class="col">SUBTOTAL</div>
+            <div class="col">SELECIONAR</div>
+            <div class="col"></div>
+          </div>
+          <hr>
+
+          <div class="row col mt-5 ">
+            <div class="col">
+              <img src="../../assets/img/carro_preto.png" alt="" class=""
+                style="max-width:90%; max-height:100%; width: auto; height: auto;">
+            </div>
+            <div class="col-sm ">Bike elétrica</div>
+            <div class="col">40</div>
+            <div class="col fw-bold">R$ 3.000,00</div>
+            <div class="col fw-bold">R$ 120.000,00</div>
+            <div class="col">
+              <input type="checkbox" value="" id="defaultCheck1" style="width: 20px; height: 20px;">
+              <label for="defaultCheck1"></label>
+            </div>
+            <div class="col">
+                <button type="button" class="fw-bold border border-white " style="width: 80%; height: 80%; background: white;" data-bs-toggle="modal" data-bs-target="#excluirProdutoModal"><h4>&times;</h4></button>
+            </div>
+          </div>
+          <hr>
+
+
+
+        </div>
+      </div>
+    </div>
   </div>
 
 </main>
