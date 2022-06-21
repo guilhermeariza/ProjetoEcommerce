@@ -5,11 +5,18 @@ import { CardHomeComponent } from './components/card-home/card-home.component';
 import { CardLoginComponent } from './components/card-login/card-login.component';
 import { CarrinhoComponent } from './components/carrinho/carrinho.component';
 
+
 import { ProdutoEspecificoComponent } from './components/produto-especifico/produto-especifico.component';
+
+
+
+
+
+
 
 import { CriarContaComponent } from './components/criar-conta/criar-conta.component';
 import { FormularioDadosClienteComponent } from './components/formulario-dados-cliente/formulario-dados-cliente.component';
-
+import { CadastroAdmComponent } from './components/cadastro-adm/cadastro-adm.component';
 
 
 const routes: Routes = [
@@ -19,11 +26,18 @@ const routes: Routes = [
   {path: 'gerenciarprodutos', component: CadastrarProdutoComponent},
   {path: 'carrinho', component: CarrinhoComponent},
 
+
   {path: 'produto', component: ProdutoEspecificoComponent},
 
   {path: 'meuperfil', component: FormularioDadosClienteComponent},
-  {path: 'criarconta', component: CriarContaComponent}
+  {path: 'criarconta', component: CriarContaComponent},
 
+
+
+  {path: 'produto', component: ProdutoEspecificoComponent},
+  {path: 'meuperfil', component: FormularioDadosClienteComponent},
+  {path: 'criarconta', component: CriarContaComponent},
+  {path: 'administracaoelertech', component: CadastroAdmComponent}
 
 ];
 

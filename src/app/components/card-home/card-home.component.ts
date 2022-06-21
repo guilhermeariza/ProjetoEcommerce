@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProdutoService } from 'src/app/service/produto-service.service';
+import { ProdutoService } from 'src/app/service/produto.service';
 import { Produto } from '../../model/Produto';
 import { Router } from '@angular/router';
 
@@ -10,12 +10,22 @@ import { Router } from '@angular/router';
 })
 export class CardHomeComponent implements OnInit {
 
-  produto: Produto[]=[]
-  maisVendidos: Produto[] = []
+  produto: any = new Produto
+  maisVendidos:any
 
   constructor(private router: Router, private produtoService: ProdutoService) { }
 
   ngOnInit(){
-    this.maisVendidos = this.produtoService.getFour()
+    this.get()
   }
+
+  get(){
+    this.produtoService.getAll().subscribe((data: Produto) => {
+     this.maisVendidos = data
+    },(error: any) => {
+      console.log('Erro: ', error)
+    })
+  }
+
+  //fim
 }

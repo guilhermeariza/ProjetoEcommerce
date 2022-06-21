@@ -31,15 +31,11 @@
     color: black;
 }
 
-#imagem{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+
 
 .estoque{
     font-size: 8pt;
     text-align: end;
-    
+
 }
-  
+

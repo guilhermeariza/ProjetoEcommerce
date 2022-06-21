@@ -17,3 +17,8 @@ div .card{
   border: #64aeaa;
   font-weight: bold;
 }
+
+img{
+  max-width: 200px;
+  height: 150px;
+}
