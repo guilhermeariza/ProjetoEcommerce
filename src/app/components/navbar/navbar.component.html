@@ -21,8 +21,8 @@
                         Categorias
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" routerLink="">Painéis solares</a>
-                        <a class="dropdown-item" routerLink="">Transporte</a>
+                        <button class="dropdown-item">Painel</button>
+                        <button class="dropdown-item">Transporte</button>
                     </div>
                 </li>
                 <!--/Botao dropdown-->
@@ -33,9 +33,9 @@
 
                 <!--Barra de pesquisa com botão-->
                 <form class="d-flex" role="search">
-                    <input [(ngModel)]="nomePesquisa.nome" name="nome" class="form-control me-2" style="width: 496px;" type="search" placeholder="Pesquisar..."
+                    <input id="barraPesquisa" class="form-control me-2" style="width: 496px;" type="search" placeholder="Pesquisar..."
                         aria-label="Search">
-                    <button routerLink="/pesquisar" [queryParams]="nomePesquisa" class="btn btn-outline-success my-2 my-sm-0" type="submit"><img
+                    <button (click)="pesquisar()" class="btn btn-outline-success my-2 my-sm-0" type="submit"><img
                             src="assets/icon/pesquisa_transparente.gif" width="25px"></button>
                 </form>
                 <!--/Barra de pesquisa com botão-->

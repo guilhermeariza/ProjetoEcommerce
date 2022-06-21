@@ -9,7 +9,6 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./card-pesquisa-produto.component.css']
 })
 export class CardPesquisaProdutoComponent implements OnInit {
-  nomePesquisa: any
   produto: any = new Produto
   listaProdutoPesquisado: any
 
@@ -17,16 +16,17 @@ export class CardPesquisaProdutoComponent implements OnInit {
 
   ngOnInit(){
     this.route.queryParams.subscribe(params => {
-      this.nomePesquisa = params['nome']
+      this.produto.nome = params['nome']
     })
-    this.carregarPesquisa(this.produto)
-    this.getAll()
+    this.carregarPesquisaPorNome(this.produto)
+
   }
 
-  carregarPesquisa(produto: Produto){
-    this.produto.nome = this.nomePesquisa
+  carregarPesquisaPorNome(produto: Produto){
     this.produtoService.getbyName(produto).subscribe((data: Produto) => {
       this.listaProdutoPesquisado = data
+    },(error: any) => {
+      console.log('Erro: ', error)
     })
   }
 

@@ -21,6 +21,7 @@ import { CriarContaComponent } from './components/criar-conta/criar-conta.compon
 import { CadastroAdmComponent } from './components/cadastro-adm/cadastro-adm.component';
 import {CarouselModule} from 'primeng/carousel';
 import {AccordionModule} from 'primeng/accordion';
+declare var $:any;
 
 
 @NgModule({
