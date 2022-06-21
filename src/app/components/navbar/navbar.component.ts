@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Produto } from 'src/app/model/Produto';
 import { environment } from 'src/environments/environment.prod';
+declare var $:any;
 
 @Component({
   selector: 'app-navbar',
@@ -9,15 +11,23 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class NavbarComponent implements OnInit {
   usuario = environment.usuario
+  produto: any = new Produto
+
   constructor(private router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
+
   sair(){
     this.router.navigate(['/login'])
     environment.token = ''
     environment.usuario = ''
     environment.id = 0
+  }
+
+  pesquisar(){
+    this.produto.nome = $('#barraPesquisa').val()
+    this.router.navigate(['/pesquisar'],{queryParams: this.produto})
   }
 
   admLogado(){

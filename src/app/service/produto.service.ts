@@ -28,6 +28,10 @@ export class ProdutoService {
     return this.http.get<Produto>(this.url + '/produto/'+ produto.nome)
   }
 
+  getbyCategoria(produto: Produto){
+    return this.http.get<Produto>('http://localhost:8080/produto/categoria/'+ produto.categoria, this.token)
+  }
+
   save(produto: Produto):Observable<Produto>{
     return this.http.post<Produto>(this.url +'/cadastrar', produto, this.token)
   }

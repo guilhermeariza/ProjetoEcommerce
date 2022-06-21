@@ -19,6 +19,9 @@ import { TabelaCartaoCreditoComponent } from './components/tabela-cartao-credito
 import { TabelaEnderecoComponent } from './components/tabela-endereco/tabela-endereco.component';
 import { CriarContaComponent } from './components/criar-conta/criar-conta.component';
 import { CadastroAdmComponent } from './components/cadastro-adm/cadastro-adm.component';
+import {CarouselModule} from 'primeng/carousel';
+import {AccordionModule} from 'primeng/accordion';
+declare var $:any;
 
 
 @NgModule({
@@ -43,7 +46,9 @@ import { CadastroAdmComponent } from './components/cadastro-adm/cadastro-adm.com
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CarouselModule,
+    AccordionModule
   ],
   providers: [
     {
