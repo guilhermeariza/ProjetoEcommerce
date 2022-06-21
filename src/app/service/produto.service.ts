@@ -9,19 +9,19 @@ import { Produto } from '../model/Produto';
 })
 export class ProdutoService {
   url = 'http://localhost:8080/produto'
-  
+
   constructor(private http: HttpClient) { }
 
   token = {
     headers: new HttpHeaders().set('Autorization', environment.token)
   }
 
-  public getAll(): Observable<Produto> {
+  getAll() {
     return this.http.get<Produto>(this.url)
   }
 
-  getById(id: number): Observable<Produto>{
-    return this.http.get<Produto>(this.url +'/'+ id)
+  getById(produto: Produto): Observable<Produto>{
+    return this.http.get<Produto>(this.url +'/'+ produto.id)
   }
 
   save(produto: Produto):Observable<Produto>{
