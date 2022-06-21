@@ -11,24 +11,28 @@ import { ProdutoService } from 'src/app/service/produto.service';
 })
 export class ProdutoEspecificoComponent implements OnInit {
   id: any
-  nome: any
-  preco: any
-  estoque: any
-  descricao: any
-  categoria: any
-  foto: any
+  produtoEspecifico: any = new Produto
+  produto: any = new Produto
 
   constructor(private route: ActivatedRoute, private produtoService: ProdutoService) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.id = params['id']
-      this.nome = params['nome']
-      this.preco = params['preco']
-      this.estoque = params['estoque']
-      this.descricao = params['descricao']
-      this.foto = params['foto']
     })
+
+    this.carregarProdutoEspecifico(this.produto)
+  }
+
+  carregarProdutoEspecifico(produto: Produto){
+    produto.id = this.id
+    this.produtoService.getById(produto).subscribe((data: Produto) => {
+      this.produtoEspecifico = data
+    })
+  }
+
+  adicionarNoCarrinho(produtoEspecifico: Produto){
+
   }
 
   //fim

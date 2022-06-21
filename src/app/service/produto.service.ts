@@ -20,8 +20,12 @@ export class ProdutoService {
     return this.http.get<Produto>(this.url)
   }
 
-  getById(produto: Produto): Observable<Produto>{
+  getById(produto: Produto){
     return this.http.get<Produto>(this.url +'/'+ produto.id)
+  }
+
+  getbyName(produto: Produto){
+    return this.http.get<Produto>(this.url + '/produto/'+ produto.nome)
   }
 
   save(produto: Produto):Observable<Produto>{
@@ -29,7 +33,7 @@ export class ProdutoService {
   }
 
   update(produto:Produto):Observable<Produto>{
-    return this.http.put<Produto>(this.url +'/', produto, this.token)
+    return this.http.put<Produto>(this.url +'/cadastrar', produto, this.token)
   }
 
   delete(produto: Produto){

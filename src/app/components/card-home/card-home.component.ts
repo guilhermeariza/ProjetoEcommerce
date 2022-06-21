@@ -10,30 +10,22 @@ import { Router } from '@angular/router';
 })
 export class CardHomeComponent implements OnInit {
 
-  produto: Produto = new Produto
+  produto: any = new Produto
   maisVendidos:any
 
   constructor(private router: Router, private produtoService: ProdutoService) { }
 
   ngOnInit(){
-    // this.maisVendidos = this.getFour()
     this.get()
   }
 
   get(){
     this.produtoService.getAll().subscribe((data: Produto) => {
-      this.maisVendidos = data
+     this.maisVendidos = data
     },(error: any) => {
       console.log('Erro: ', error)
     })
   }
-  // getFour(){
-  //   for(let i=0 ; i<4 ; i++){
-  //     this.maisVendidos = this.produto[i]
-  //   }
-  //   return this.maisVendidos
-  // }
-
 
   //fim
 }

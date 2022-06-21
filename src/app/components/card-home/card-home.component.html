@@ -3,22 +3,22 @@
   <div class="d-flex justify-content-center">
     <p class="display-5 mr-4 mt-4 mb-4">Produtos mais procurados</p>
   </div>
-  <div class="d-flex justify-content-center d-lg-inline-flex col-12 col-md-6 col-lg-3" *ngFor="let maisVendidos of maisVendidos">
+  <div class="d-flex justify-content-center d-lg-inline-flex col-12 col-md-6 col-lg-3" *ngFor="let maisVendido of maisVendidos">
     <div class="card text-center" style="width: 300px;">
-      <label id="idProduto" hidden="true">{{maisVendidos.id}}</label>
+      <label id="idProduto" hidden="true">{{maisVendido.id}}</label>
       <div class="card-header p-0" style="height: 200px;">
-        <img style="height: 150px;" src="{{maisVendidos.foto}}">
+        <img style="height: 150px;" src="{{maisVendido.foto}}">
         <div style="height: 20px;">
-          <p>{{maisVendidos.preco}}</p>
+          <p>{{maisVendido.preco}}</p>
         </div>
       </div>
       <div class="card-body">
-        <h5 class="card-title">{{maisVendidos.nome}}</h5>
+        <h5 class="card-title">{{maisVendido.nome}}</h5>
         <p class="card-text">Produto disponível para assinatura.</p>
         <p class="card-text">Documentação e manutenção inclusas.</p>
       </div>
       <div class="card-footer">
-        <button class="btn btn-success" routerLink="/produtoespecifico" [queryParams]="maisVendidos">Saiba mais</button>
+        <button class="btn btn-success" routerLink="/produto" [queryParams]="maisVendido">Saiba mais</button>
       </div>
     </div>
   </div>
