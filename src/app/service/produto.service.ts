@@ -29,7 +29,7 @@ export class ProdutoService {
   }
 
   save(produto: Produto):Observable<Produto>{
-    return this.http.post<Produto>(this.url , produto, this.token)
+    return this.http.post<Produto>(this.url +'/cadastrar', produto, this.token)
   }
 
   update(produto:Produto):Observable<Produto>{

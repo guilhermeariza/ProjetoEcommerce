@@ -103,8 +103,6 @@ export class CadastrarProdutoComponent implements OnInit {
     })
   }
 
-
-
   abrirModalExcluir(produto: Produto){
       this.produtoExcluir = produto
   }
@@ -161,6 +159,10 @@ export class CadastrarProdutoComponent implements OnInit {
 
   limparModal(){
     $('.modal').find('input:text').val('')
+    $('#setFoto').attr('src', '')
+    $("#categoriaEditar option:contains(Selecione uma categoria...)").attr('selected', 'true')
+    $('input[type="file"]').val('')
+    $('#input_img').show()
 }
 
 }

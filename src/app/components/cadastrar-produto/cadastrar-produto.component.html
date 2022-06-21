@@ -38,7 +38,7 @@
           </button>
         </td>
         <td class="text-center">
-          <button id="btnEditar" (focus)="abrirModalEditar(produto)" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editarProdutoModal">
+          <button id="btnEditar" (submit)="abrirModalEditar(produto)" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editarProdutoModal">
             <i class="bi bi-pencil-square"></i>
             Editar
           </button>
@@ -54,7 +54,7 @@
     <div class="modal-content">
       <div class="modal-header" style="background-color: #64AEAA; color:white; ">
         <p class="display-6">Cadastrar produto</p>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="limparModal()"></button>
       </div>
       <div class="modal-body">
         <form class="row gy-2 gx-3 align-items-center">
@@ -68,7 +68,7 @@
           <div class="col-3">
             <label class="form-label" for="categoriaCadastrar">Categoria</label>
             <select class="form-select" id="categoriaCadastrar" (change)="categoriaProduto($event)">
-              <option selected value="0">Selecione uma categoria...</option>
+              <option selected value="Selecione uma categoria...">Selecione uma categoria...</option>
               <option value="Painel solar">Painel solar</option>
               <option value="Transporte">Transporte</option>
             </select>

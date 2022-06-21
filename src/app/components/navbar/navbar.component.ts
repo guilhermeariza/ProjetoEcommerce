@@ -19,4 +19,12 @@ export class NavbarComponent implements OnInit {
     environment.usuario = ''
     environment.id = 0
   }
+
+  admLogado(){
+    let admLogado: boolean = false
+    if(environment.tipo == 'adm'){
+      admLogado = true
+    }
+    return admLogado
+  }
 }

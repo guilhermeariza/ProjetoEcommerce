@@ -12,7 +12,7 @@
                     <a class="nav-link active" routerLink="/inicio">Início</a>
                 </li>
                 <li class="nav-item iten-hover">
-                  <a class="nav-link" routerLink="/gerenciarprodutos">Gerenciar produtos</a>
+                  <a class="nav-link" routerLink="/gerenciarprodutos" *ngIf="admLogado()">Gerenciar produtos</a>
               </li>
                 <!--Botao dropdown-->
                 <li class="nav-item dropdown iten-hover">
