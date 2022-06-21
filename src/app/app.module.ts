@@ -18,6 +18,7 @@ import { FormularioDadosClienteComponent } from './components/formulario-dados-c
 import { TabelaCartaoCreditoComponent } from './components/tabela-cartao-credito/tabela-cartao-credito.component';
 import { TabelaEnderecoComponent } from './components/tabela-endereco/tabela-endereco.component';
 import { CriarContaComponent } from './components/criar-conta/criar-conta.component';
+import { CadastroAdmComponent } from './components/cadastro-adm/cadastro-adm.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { CriarContaComponent } from './components/criar-conta/criar-conta.compon
     TabelaCartaoCreditoComponent,
     TabelaEnderecoComponent,
     ProdutoEspecificoComponent,
-    CriarContaComponent
+    CriarContaComponent,
+    CadastroAdmComponent
   ],
   imports: [
     BrowserModule,
