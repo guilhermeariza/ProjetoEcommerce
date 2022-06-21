@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment.prod';
 import { AuthService } from './service/auth.service';
 declare var $:any;
 
@@ -10,7 +12,17 @@ declare var $:any;
 export class AppComponent {
   title = 'Elertech';
 
-  constructor(public auth: AuthService){
+  constructor(public auth: AuthService, private router: Router){
 
+  }
+
+  ngOnInit(){
+    this.navegarParaLogin()
+  }
+
+  navegarParaLogin(){
+    if(environment.token == ''){
+      this.router.navigate(['/login'])
+    }
   }
 }
