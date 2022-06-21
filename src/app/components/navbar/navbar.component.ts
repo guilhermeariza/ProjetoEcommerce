@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Produto } from 'src/app/model/Produto';
 import { environment } from 'src/environments/environment.prod';
 
 @Component({
@@ -9,10 +10,14 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class NavbarComponent implements OnInit {
   usuario = environment.usuario
+  nomePesquisa: Produto = new Produto
+
   constructor(private router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
+
+  
   sair(){
     this.router.navigate(['/login'])
     environment.token = ''

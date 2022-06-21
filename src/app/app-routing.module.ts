@@ -8,6 +8,7 @@ import { ProdutoEspecificoComponent } from './components/produto-especifico/prod
 import { CriarContaComponent } from './components/criar-conta/criar-conta.component';
 import { FormularioDadosClienteComponent } from './components/formulario-dados-cliente/formulario-dados-cliente.component';
 import { CadastroAdmComponent } from './components/cadastro-adm/cadastro-adm.component';
+import { CardPesquisaProdutoComponent } from './components/card-pesquisa-produto/card-pesquisa-produto.component';
 
 const routes: Routes = [
   {path: '', redirectTo:'inico', pathMatch: 'full'},
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path: 'produto', component: ProdutoEspecificoComponent},
   {path: 'meuperfil', component: FormularioDadosClienteComponent},
   {path: 'criarconta', component: CriarContaComponent},
-  {path: 'administracaoelertech', component: CadastroAdmComponent}
+  {path: 'administracaoelertech', component: CadastroAdmComponent},
+  {path: 'pesquisar', component: CardPesquisaProdutoComponent}
 ];
 
 @NgModule({
