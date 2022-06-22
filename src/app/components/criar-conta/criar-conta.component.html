@@ -1,4 +1,4 @@
-<nav class="navbar text-white fixed-top">
+<nav class="navbar text-white fixed-top" id="usuarioSenha">
   <div class="col-12 display-5 text-center">
     <a>Bem vindo a Elertech!</a>
   </div>
@@ -22,7 +22,7 @@
       </div>
       <div class="col">
         <label for="cnpj" class="form-label">CNPJ</label>
-        <input [(ngModel)]='usuario.cnpj' name="cnpj" type="text" class="form-control" id="cnpj">
+        <input [(ngModel)]='usuario.cnpj' name="cnpj" type="text" class="form-control" id="cnpj" maxlength="18">
       </div>
 
       <div class="row pt-5">

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartaoCredito } from 'src/app/model/CartaoCredito';
 import { Usuario } from 'src/app/model/Usuario';
+import { AlertaService } from 'src/app/service/alerta.service';
 import { CartaoCreditoService } from 'src/app/service/cartao-credito.service';
 declare var $:any;
 
@@ -17,7 +18,7 @@ export class TabelaCartaoCreditoComponent implements OnInit {
   listaCartao: CartaoCredito[]
 
 
-  constructor(private router: Router, private http:HttpClient, private cartaoService: CartaoCreditoService) { }
+  constructor(private router: Router, private http:HttpClient, private cartaoService: CartaoCreditoService, private alerta: AlertaService) { }
 
   ngOnInit() {
     return this.getAll()
@@ -34,23 +35,20 @@ export class TabelaCartaoCreditoComponent implements OnInit {
   cadastrarCartao(){
     this.cartaoService.post(this.cartao).subscribe((data: CartaoCredito) => {
       this.cartao = data
-      alert('Cartao cadastrado com sucesso')
-      this.cartao = new CartaoCredito
+      this.alerta.showAlertSuccess('Cartao cadastrado com sucesso')
       this.limparModal()
+      this.cartao = new CartaoCredito
     },
     (error: any) => {
       switch(error.status){
         case 400:
-          alert('Erro na requisção')
-          console.log('Resposta: '+error.status)
+          this.alerta.showAlertDanger('Erro na requisção, erro: '+error.status)
         break;
         case 401:
-          alert('Acesso não autorizado')
-          console.log('Resposta: '+error.status)
+          this.alerta.showAlertDanger('Acesso não autorizado, erro: '+error.status)
         break;
         case 500:
-          alert('Erro na aplicação')
-          console.log('Resposta: '+error.status)
+          this.alerta.showAlertDanger('Erro na aplicação, erro: '+error.status)
         break;
       }
     })
@@ -62,22 +60,19 @@ export class TabelaCartaoCreditoComponent implements OnInit {
 
   excluir(){
     this.cartaoService.delete(this.cartao.id).subscribe(() => {
-      alert('Cartão excluído com sucesso')
+      this.alerta.showAlertSuccess('Cartao excluído com sucesso')
       this.cartao = new CartaoCredito
       this.fecharModal()
     },(error: any) => {
       switch(error.status){
         case 400:
-          alert('Erro na requisção')
-          console.log('Resposta: '+error.status)
+          this.alerta.showAlertDanger('Erro na requisção, erro: '+error.status)
         break;
         case 401:
-          alert('Acesso não autorizado')
-          console.log('Resposta: '+error.status)
+          this.alerta.showAlertDanger('Acesso não autorizado, erro: '+error.status)
         break;
         case 500:
-          alert('Erro na aplicação')
-          console.log('Resposta: '+error.status)
+          this.alerta.showAlertDanger('Erro na aplicação, erro: '+error.status)
         break;
       }
     })

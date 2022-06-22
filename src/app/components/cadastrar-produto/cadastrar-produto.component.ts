@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Produto } from 'src/app/model/Produto';
 import { ProdutoService } from 'src/app/service/produto.service';
 import { Router } from '@angular/router';
+import { AlertaService } from 'src/app/service/alerta.service';
 declare var $:any;
 
 @Component({
@@ -18,6 +19,7 @@ export class CadastrarProdutoComponent implements OnInit {
   constructor(
     private router: Router,
     private produtoService: ProdutoService,
+    private alerta: AlertaService
     ) {
   }
 
@@ -42,23 +44,20 @@ export class CadastrarProdutoComponent implements OnInit {
     this.produto.foto = $('#setFoto').attr('src')
     this.produtoService.save(this.produto).subscribe((data: Produto) => {
       this.produto = data
-      alert('Produto cadastrado com sucesso')
-      this.produto = new Produto
+      this.alerta.showAlertSuccess(`Produto ${this.produto.nome} cadastrado com sucesso`)
       this.limparModal()
+      this.produto = new Produto
     },
     (error: any) => {
       switch(error.status){
         case 400:
-          alert('Erro na requisção')
-          console.log('Resposta: '+error.status)
+          this.alerta.showAlertDanger('Erro na requisção, erro: '+error.status)
         break;
         case 401:
-          alert('Acesso não autorizado')
-          console.log('Resposta: '+error.status)
+          this.alerta.showAlertDanger('Acesso não autorizado, erro: '+error.status)
         break;
         case 500:
-          alert('Erro na aplicação')
-          console.log('Resposta: '+error.status)
+          this.alerta.showAlertDanger('Erro na aplicação, erro: '+error.status)
         break;
       }
     })
@@ -79,22 +78,19 @@ export class CadastrarProdutoComponent implements OnInit {
     this.produto.foto = $('#fotoProdutoEditar').attr('src')
 
     this.produtoService.update(this.produto).subscribe((data: Produto) => {
-      alert('Produto atualizado com sucesso')
+      this.alerta.showAlertSuccess('Produto atualizado com sucesso')
       this.produto = new Produto
     },
     (error: any) => {
       switch(error.status){
         case 400:
-          alert('Erro na requisção')
-          console.log('Resposta: '+error.status)
+          this.alerta.showAlertDanger('Erro na requisção, erro: '+error.status)
         break;
         case 401:
-          alert('Acesso não autorizado')
-          console.log('Resposta: '+error.status)
+          this.alerta.showAlertDanger('Acesso não autorizado, erro: '+error.status)
         break;
         case 500:
-          alert('Erro na aplicação')
-          console.log('Resposta: '+error.status)
+          this.alerta.showAlertDanger('Erro na aplicação, erro: '+error.status)
         break;
       }
     })
@@ -107,23 +103,21 @@ export class CadastrarProdutoComponent implements OnInit {
   excluirProduto(){
       this.produtoService.delete(this.produto.id).subscribe((data: Produto) => {
         this.produto = data
-        alert('Produto excluído com sucesso')
+        this.alerta.showAlertSuccess(this.produto.nome +' excluído com sucesso')
         this.produto = new Produto
       },
-      (error: any) => {switch(error.status){
-        case 400:
-          alert('Erro na requisição')
-          console.log('Resposta: '+error.status)
-        break;
-        case 401:
-          alert('Acesso não autorizado')
-          console.log('Resposta: '+error.status)
-        break;
-        case 500:
-          alert('Erro na aplicação')
-          console.log('Resposta: '+error.status)
-        break;
-      }
+      (error: any) => {
+        switch(error.status){
+          case 400:
+            this.alerta.showAlertDanger('Erro na requisção, erro: '+error.status)
+          break;
+          case 401:
+            this.alerta.showAlertDanger('Acesso não autorizado, erro: '+error.status)
+          break;
+          case 500:
+            this.alerta.showAlertDanger('Erro na aplicação, erro: '+error.status)
+          break;
+        }
       })
   }
 
@@ -161,6 +155,6 @@ export class CadastrarProdutoComponent implements OnInit {
     $("#categoriaEditar option:contains(Selecione uma categoria...)").attr('selected', 'true')
     $('input[type="file"]').val('')
     $('#input_img').show()
-}
+  }
 
 }

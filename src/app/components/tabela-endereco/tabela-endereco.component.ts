@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Endereco } from 'src/app/model/Endereços';
+import { AlertaService } from 'src/app/service/alerta.service';
 import { EnderecoService } from 'src/app/service/endereco.service';
 declare var $:any;
 
@@ -14,7 +15,7 @@ export class TabelaEnderecoComponent implements OnInit {
   endereco: Endereco = new Endereco()
   listaEnderecos: Endereco[]
 
-  constructor(private router: Router, private enderecoService: EnderecoService) { }
+  constructor(private router: Router, private enderecoService: EnderecoService, private alerta: AlertaService) { }
 
   ngOnInit(): void {
     this.getAll()
@@ -31,23 +32,20 @@ export class TabelaEnderecoComponent implements OnInit {
   cadastrar(){
     this.enderecoService.save(this.endereco).subscribe((data: Endereco) => {
       this.endereco = data
-      alert('Endereco cadastrado com sucesso')
+      this.alerta.showAlertSuccess('Endereco cadastrado com sucesso')
       this.endereco = new Endereco()
       this.limparModal
     },
     (error: any) => {
       switch(error.status){
         case 400:
-          alert('Erro na requisção')
-          console.log('Resposta: '+error.status)
+          this.alerta.showAlertDanger('Erro na requisção, erro: '+error.status)
         break;
         case 401:
-          alert('Acesso não autorizado')
-          console.log('Resposta: '+error.status)
+          this.alerta.showAlertDanger('Acesso não autorizado, erro: '+error.status)
         break;
         case 500:
-          alert('Erro na aplicação')
-          console.log('Resposta: '+error.status)
+          this.alerta.showAlertDanger('Erro na aplicação, erro: '+error.status)
         break;
       }
     })
@@ -60,7 +58,7 @@ export class TabelaEnderecoComponent implements OnInit {
   atualizar(){
     this.enderecoService.update(this.endereco).subscribe((data: Endereco) => {
       this.endereco = data
-      alert('Endereco atualizado com sucesso')
+      this.alerta.showAlertSuccess('Endereco atualizado com sucesso')
       this.limparModal()
       this.fecharModal()
       this.endereco = new Endereco
@@ -68,16 +66,13 @@ export class TabelaEnderecoComponent implements OnInit {
     (error: any) => {
       switch(error.status){
         case 400:
-          alert('Erro na requisção')
-          console.log('Resposta: '+error.status)
+          this.alerta.showAlertDanger('Erro na requisção, erro: '+error.status)
         break;
         case 401:
-          alert('Acesso não autorizado')
-          console.log('Resposta: '+error.status)
+          this.alerta.showAlertDanger('Acesso não autorizado, erro: '+error.status)
         break;
         case 500:
-          alert('Erro na aplicação')
-          console.log('Resposta: '+error.status)
+          this.alerta.showAlertDanger('Erro na aplicação, erro: '+error.status)
         break;
       }
     })
@@ -90,24 +85,22 @@ export class TabelaEnderecoComponent implements OnInit {
 excluir(){
     this.enderecoService.delete(this.endereco.id).subscribe((data: Endereco) => {
       this.endereco = data
-      alert('Endereco excluído com sucesso')
+      this.alerta.showAlertSuccess('Endereco excluído com sucesso')
       this.endereco = new Endereco
       this.fecharModal()
     },
-    (error: any) => {switch(error.status){
-      case 400:
-        alert('Erro na requisição')
-        console.log('Resposta: '+error.status)
-      break;
-      case 401:
-        alert('Acesso não autorizado')
-        console.log('Resposta: '+error.status)
-      break;
-      case 500:
-        alert('Erro na aplicação')
-        console.log('Resposta: '+error.status)
-      break;
-    }
+    (error: any) => {
+      switch(error.status){
+        case 400:
+          this.alerta.showAlertDanger('Erro na requisção, erro: '+error.status)
+        break;
+        case 401:
+          this.alerta.showAlertDanger('Acesso não autorizado, erro: '+error.status)
+        break;
+        case 500:
+          this.alerta.showAlertDanger('Erro na aplicação, erro: '+error.status)
+        break;
+      }
     })
 }
 
