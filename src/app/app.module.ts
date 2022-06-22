@@ -20,6 +20,7 @@ import { TabelaCartaoCreditoComponent } from './components/tabela-cartao-credito
 import { TabelaEnderecoComponent } from './components/tabela-endereco/tabela-endereco.component';
 import { HistoricoPedidosComponent } from './components/historico-pedidos/historico-pedidos.component';
 import { CriarContaComponent } from './components/criar-conta/criar-conta.component';
+import { FinalizarCarrinhoComponent } from './components/finalizar-carrinho/finalizar-carrinho.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { CriarContaComponent } from './components/criar-conta/criar-conta.compon
     TabelaEnderecoComponent,
     ProdutoEspecificoComponent,
     HistoricoPedidosComponent,
-    CriarContaComponent
+    CriarContaComponent,
+    FinalizarCarrinhoComponent
   ],
   imports: [
     BrowserModule,

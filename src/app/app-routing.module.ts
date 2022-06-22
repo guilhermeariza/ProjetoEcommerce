@@ -9,6 +9,7 @@ import { CardLoginComponent } from './components/card-login/card-login.component
 import { ProdutoEspecificoComponent } from './components/produto-especifico/produto-especifico.component';
 import { CriarContaComponent } from './components/criar-conta/criar-conta.component';
 import { FormularioDadosClienteComponent } from './components/formulario-dados-cliente/formulario-dados-cliente.component';
+import { FinalizarCarrinhoComponent } from './components/finalizar-carrinho/finalizar-carrinho.component';
 
 
 const routes: Routes = [
@@ -20,8 +21,8 @@ const routes: Routes = [
   {path: 'produto', component: ProdutoEspecificoComponent},
   {path: 'meuperfil', component: FormularioDadosClienteComponent},
   {path: 'carrinho', component: CarrinhoComponent},
-
-  {path: 'criarconta', component: CriarContaComponent}
+  {path: 'criarconta', component: CriarContaComponent},
+  {path: 'finalizarcarrinho', component: FinalizarCarrinhoComponent}
 ];
 
 @NgModule({
