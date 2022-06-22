@@ -10,28 +10,26 @@ import { ProdutoService } from 'src/app/service/produto.service';
   styleUrls: ['./produto-especifico.component.css']
 })
 export class ProdutoEspecificoComponent implements OnInit {
+  produto: Produto = new Produto()
   id: any
-  produtoEspecifico: any = new Produto
-  produto: any = new Produto
 
   constructor(private route: ActivatedRoute, private produtoService: ProdutoService) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      this.id = params['id']
+      this.produto.id = params['id']
     })
 
-    this.carregarProdutoEspecifico(this.produto)
+    this.carregarProdutoEspecifico()
   }
 
-  carregarProdutoEspecifico(produto: Produto){
-    produto.id = this.id
-    this.produtoService.getById(produto).subscribe((data: Produto) => {
-      this.produtoEspecifico = data
+  carregarProdutoEspecifico(){
+    this.produtoService.getById(this.produto.id).subscribe((data: Produto) => {
+      this.produto = data
     })
   }
 
-  adicionarNoCarrinho(produtoEspecifico: Produto){
+  adicionarNoCarrinho(produto: Produto){
 
   }
 

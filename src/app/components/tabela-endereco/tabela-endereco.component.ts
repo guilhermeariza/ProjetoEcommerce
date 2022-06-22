@@ -11,11 +11,8 @@ declare var $:any;
 })
 export class TabelaEnderecoComponent implements OnInit {
 
-  endereco:any = new Endereco
-  listaEndereco: any = new Endereco
-  enderecoCadastrar:any
-  enderecoEditar:any
-  enderecoExcluir:any
+  endereco: Endereco = new Endereco()
+  listaEnderecos: Endereco[]
 
   constructor(private router: Router, private enderecoService: EnderecoService) { }
 
@@ -24,19 +21,18 @@ export class TabelaEnderecoComponent implements OnInit {
   }
 
   getAll(){
-    this.enderecoService.getAll().subscribe((data: Endereco) => {
-      this.listaEndereco = data
+    this.enderecoService.getAll().subscribe((data: Endereco[]) => {
+      this.listaEnderecos = data
     },(error: any) => {
       console.log('Erro: ', error)
     })
   }
 
-  cadastrar(endereco: Endereco){
-    console.log(endereco)
-    this.enderecoService.save(endereco).subscribe((data: Endereco) => {
+  cadastrar(){
+    this.enderecoService.save(this.endereco).subscribe((data: Endereco) => {
       this.endereco = data
       alert('Endereco cadastrado com sucesso')
-      this.endereco = new Endereco
+      this.endereco = new Endereco()
       this.limparModal
     },
     (error: any) => {
@@ -58,15 +54,16 @@ export class TabelaEnderecoComponent implements OnInit {
   }
 
   abrirModalEditar(endereco: Endereco){
-    this.enderecoEditar = endereco
+    this.endereco = endereco
   }
 
-  atualizar(enderecoEditar: Endereco){
-    this.enderecoService.update(enderecoEditar).subscribe(() => {
+  atualizar(){
+    this.enderecoService.update(this.endereco).subscribe((data: Endereco) => {
+      this.endereco = data
       alert('Endereco atualizado com sucesso')
-      this.enderecoEditar = new Endereco
       this.limparModal()
       this.fecharModal()
+      this.endereco = new Endereco
     },
     (error: any) => {
       switch(error.status){
@@ -87,13 +84,14 @@ export class TabelaEnderecoComponent implements OnInit {
   }
 
   abrirModalExcluir(endereco: Endereco){
-    this.enderecoExcluir = endereco
+    this.endereco = endereco
 }
 
-excluir(enderecoExcluir: Endereco){
-    this.enderecoService.delete(enderecoExcluir).subscribe(() => {
+excluir(){
+    this.enderecoService.delete(this.endereco.id).subscribe((data: Endereco) => {
+      this.endereco = data
       alert('Endereco excluído com sucesso')
-      enderecoExcluir = new Endereco
+      this.endereco = new Endereco
       this.fecharModal()
     },
     (error: any) => {switch(error.status){

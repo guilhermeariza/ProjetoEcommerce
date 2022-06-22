@@ -8,7 +8,6 @@ import { Produto } from '../model/Produto';
   providedIn: 'root'
 })
 export class ProdutoService {
-  url = 'http://localhost:8080/produto'
 
   constructor(private http: HttpClient) { }
 
@@ -16,16 +15,16 @@ export class ProdutoService {
     headers: new HttpHeaders().set('Autorization', environment.token)
   }
 
-  getAll() {
-    return this.http.get<Produto>(this.url)
+  getAll(): Observable<Produto[]> {
+    return this.http.get<Produto[]>('http://localhost:8080/produto', this.token)
   }
 
-  getById(produto: Produto){
-    return this.http.get<Produto>(this.url +'/'+ produto.id)
+  getById(id: number){
+    return this.http.get<Produto>('http://localhost:8080/produto/'+ id, this.token)
   }
 
-  getbyName(produto: Produto){
-    return this.http.get<Produto>(this.url + '/produto/'+ produto.nome)
+  getbyName(nome: string):Observable<Produto[]>{
+    return this.http.get<Produto[]>('http://localhost:8080/produto/produto/'+ nome, this.token)
   }
 
   getbyCategoria(produto: Produto){
@@ -33,15 +32,15 @@ export class ProdutoService {
   }
 
   save(produto: Produto):Observable<Produto>{
-    return this.http.post<Produto>(this.url +'/cadastrar', produto, this.token)
+    return this.http.post<Produto>('http://localhost:8080/produto/cadastrar', produto, this.token)
   }
 
   update(produto:Produto):Observable<Produto>{
-    return this.http.put<Produto>(this.url +'/cadastrar', produto, this.token)
+    return this.http.put<Produto>('http://localhost:8080/produto/cadastrar', produto, this.token)
   }
 
-  delete(produto: Produto){
-    return this.http.delete<Produto>(this.url +'/'+ produto.id, this.token)
+  delete(id: number){
+    return this.http.delete<Produto>('http://localhost:8080/produto/'+ id, this.token)
   }
 
 }

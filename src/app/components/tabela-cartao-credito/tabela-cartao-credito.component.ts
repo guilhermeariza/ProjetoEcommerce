@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartaoCredito } from 'src/app/model/CartaoCredito';
+import { Usuario } from 'src/app/model/Usuario';
 import { CartaoCreditoService } from 'src/app/service/cartao-credito.service';
 declare var $:any;
 
@@ -12,9 +13,9 @@ declare var $:any;
 })
 export class TabelaCartaoCreditoComponent implements OnInit {
 
-  cartao:CartaoCredito = new CartaoCredito
-  listaCartao: any
-  cartaoExcluir: any
+  cartao:CartaoCredito = new CartaoCredito()
+  listaCartao: CartaoCredito[]
+
 
   constructor(private router: Router, private http:HttpClient, private cartaoService: CartaoCreditoService) { }
 
@@ -23,18 +24,18 @@ export class TabelaCartaoCreditoComponent implements OnInit {
   }
 
   getAll(){
-    this.cartaoService.getAll().subscribe((data: CartaoCredito) => {
+    this.cartaoService.getAll().subscribe((data: CartaoCredito[]) => {
       this.listaCartao = data
     },(error: any)=>{
       console.log('Erro: '+ error)
     })
   }
 
-  cadastrarCartao(cartao: CartaoCredito){
-    this.cartaoService.post(cartao).subscribe((data: CartaoCredito) => {
+  cadastrarCartao(){
+    this.cartaoService.post(this.cartao).subscribe((data: CartaoCredito) => {
       this.cartao = data
       alert('Cartao cadastrado com sucesso')
-      cartao = new CartaoCredito
+      this.cartao = new CartaoCredito
       this.limparModal()
     },
     (error: any) => {
@@ -55,16 +56,15 @@ export class TabelaCartaoCreditoComponent implements OnInit {
     })
   }
 
-  abrirModalExcluir(cartao:CartaoCredito){
-    this.cartaoExcluir = cartao
+  abrirModalExcluir(cartao: CartaoCredito){
+    this.cartao = cartao
   }
 
-  excluir(cartaoExcluir: CartaoCredito){
-    this.cartaoService.delete(cartaoExcluir).subscribe((data: CartaoCredito) => {
-      cartaoExcluir = data
+  excluir(){
+    this.cartaoService.delete(this.cartao.id).subscribe(() => {
       alert('Cartão excluído com sucesso')
+      this.cartao = new CartaoCredito
       this.fecharModal()
-      cartaoExcluir = new CartaoCredito
     },(error: any) => {
       switch(error.status){
         case 400:
