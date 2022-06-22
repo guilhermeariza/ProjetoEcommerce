@@ -83,7 +83,7 @@
         </form>
       </div>
       <div class="modal-footer text-center" style="background-color: #64AEAA;">
-        <button type="button" class="btn btn-success" (click)="cadastrarCartao(cartao)">Cadastrar</button>
+        <button type="button" class="btn btn-success" (click)="cadastrarCartao()">Cadastrar</button>
       </div>
     </div>
   </div>
@@ -91,22 +91,20 @@
 <!-- Modal cadastrar -->
 
 <!-- Modal excluir -->
-<ng-template [ngIf]="cartaoExcluir">
 <div class="modal fade" id="excluirCartaoModal" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog ">
     <div class="modal-content ">
       <div class="modal-header alert-danger">
-        <h5 class="modal-title" id="staticBackdropLabel">Você está excluindo o cartão {{cartaoExcluir.apelido}}</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">Você está excluindo o cartão {{cartao.apelido}}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body alert-danger">
         <p class="display-6">Tem certeza?</p>
       </div>
       <div class="modal-footer alert-danger">
-        <button type="button" class="btn btn-danger" (click)="excluir(cartaoExcluir)">Sim</button>
+        <button type="button" class="btn btn-danger" (click)="excluir()">Sim</button>
       </div>
     </div>
   </div>
 </div>
-</ng-template>
 <!-- Modal excluir -->

@@ -11,8 +11,8 @@ declare var $:any;
 })
 export class CardHomeComponent implements OnInit {
 
-  produto: any = new Produto
-  maisVendidos:any
+  produto: Produto = new Produto()
+  listaProdutos:Produto[]
 
   constructor(private router: Router, private produtoService: ProdutoService) { }
 
@@ -21,8 +21,8 @@ export class CardHomeComponent implements OnInit {
   }
 
   get(){
-    this.produtoService.getAll().subscribe((data: Produto) => {
-     this.maisVendidos = data
+    this.produtoService.getAll().subscribe((data: Produto[]) => {
+     this.listaProdutos = data
      $('.p-ripple').hide()
      $('.p-carousel-indicators').hide()
     },(error: any) => {

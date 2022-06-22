@@ -5,28 +5,28 @@
     <p class="display-5 mr-4 mt-4 mb-4">Produtos mais procurados</p>
   </div>
 
-  <p-carousel [value]="maisVendidos" [numVisible]="4" [circular]="true">
-    <ng-template let-maisVendidos pTemplate="item">
+  <p-carousel [value]="listaProdutos" [numVisible]="4" [circular]="true">
+    <ng-template let-listaProdutos pTemplate="item">
       <div class="d-flex justify-content-center">
         <div class="card text-center" style="width: 300px;">
-          <label id="idProduto" hidden="true">{{maisVendidos.id}}</label>
+          <label id="idProduto" hidden="true">{{listaProdutos.id}}</label>
           <div class="card-header p-0" style="height: 200px;">
             <div clas="row">
-              <img src="{{maisVendidos.foto}}">
+              <img src="{{listaProdutos.foto}}">
             </div>
             <div clas="row">
               <div style="height: 20px;">
-                <p>R$ {{maisVendidos.preco}}</p>
+                <p>R$ {{listaProdutos.preco}}</p>
               </div>
             </div>
           </div>
           <div class="card-body">
-            <h5 class="card-title">{{maisVendidos.nome}}</h5>
+            <h5 class="card-title">{{listaProdutos.nome}}</h5>
             <p class="card-text">Produto disponível para assinatura.</p>
             <p class="card-text">Documentação e manutenção inclusas.</p>
           </div>
           <div class="card-footer">
-            <button class="btn btn-success" routerLink="/produto" [queryParams]="maisVendidos">Saiba mais</button>
+            <button class="btn btn-success" routerLink="/produto" [queryParams]="listaProdutos">Saiba mais</button>
           </div>
         </div>
       </div>
