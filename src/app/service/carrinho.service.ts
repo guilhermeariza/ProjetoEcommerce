@@ -21,7 +21,7 @@ export class CarrinhoService {
     return this.http.get<Carrinho>(this.url)
   }
 
-  getByIdTema(id: number): Observable<Carrinho>{
+  getByIdCarrinho(id: number){
     return this.http.get<Carrinho>(this.url)
   }
 
@@ -33,7 +33,7 @@ export class CarrinhoService {
     return this.http.put<Carrinho>(this.url, carrinho, this.token)
   }
 
-  deleteCarrinho(id: number):Observable<Carrinho>{
+  deleteCarrinho(id: number){
     return this.http.delete<Carrinho>(this.url + '/'+ id, this.token)
   }
 

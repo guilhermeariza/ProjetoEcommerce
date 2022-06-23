@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/service/auth.service';
 import { CarrinhoService } from './../../service/carrinho.service';
 import { Carrinho } from './../../model/Carrinho';
 import { Component, OnInit } from '@angular/core';
@@ -15,23 +16,25 @@ export class CarrinhoComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private carrinhoService: CarrinhoService
+    private carrinhoService: CarrinhoService,
+    private auth: AuthService
   ) { }
 
   ngOnInit(){
-    this.getAll()
+    this.getAllCarrinho()
   }
 
-  getAll(){
+  getAllCarrinho(){
     this.carrinhoService.getAll().subscribe((data: Carrinho) => {
       this.listaCarrinhos = data
     },(error: any) => {
       console.log('Erro', error)
     })
+
   }
 
   findByIdCarrinho(id: number){
-    this.carrinhoService.getByIdTema(id).subscribe((resp: Carrinho) =>{
+    this.carrinhoService.getByIdCarrinho(id).subscribe((resp: Carrinho) =>{
       this.carrinho = resp
     })
   }
