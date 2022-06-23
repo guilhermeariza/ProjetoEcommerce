@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Produto } from 'src/app/model/Produto';
+import { ProdutoService } from 'src/app/service/produto.service';
+
 
 @Component({
   selector: 'app-produto-especifico',
@@ -6,14 +10,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./produto-especifico.component.css']
 })
 export class ProdutoEspecificoComponent implements OnInit {
+  produto: Produto = new Produto()
+  id: any
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private produtoService: ProdutoService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.produto.id = this.route.snapshot.params['id']
+    this.carregarProdutoEspecifico()
   }
-  
+
+  carregarProdutoEspecifico(){
+    this.produtoService.getById(this.produto.id).subscribe((data: Produto) => {
+      this.produto = data
+    })
+  }
+
+  adicionarNoCarrinho(produto: Produto){
+
+  }
+
+  //fim
 }
-
-
-
-

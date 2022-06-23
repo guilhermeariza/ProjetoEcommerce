@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuarioLogin } from 'src/app/model/UsuarioLogin';
+import { AlertaService } from 'src/app/service/alerta.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { environment } from 'src/environments/environment.prod';
 
@@ -13,7 +14,7 @@ export class CardLoginComponent implements OnInit {
 
   usuarioLogin: UsuarioLogin = new UsuarioLogin
 
-  constructor(private router: Router, private auth: AuthService) { }
+  constructor(private router: Router, private auth: AuthService, private alerta: AlertaService) { }
 
   ngOnInit() {
     window.scroll(0,0)
@@ -22,6 +23,7 @@ export class CardLoginComponent implements OnInit {
   entrar(){
     this.auth.entrar(this.usuarioLogin).subscribe((resposta: UsuarioLogin) => {
       this.usuarioLogin = resposta
+      this.alerta.showAlertSuccess('Bom te ver '+this.usuarioLogin.nomeFantasia+'!')
       environment.id = this.usuarioLogin.id
       environment.usuario = this.usuarioLogin.usuario
       environment.tipo = this.usuarioLogin.tipo
@@ -35,11 +37,11 @@ export class CardLoginComponent implements OnInit {
       this.router.navigate(['/inicio'])
     }, erro => {
         if(erro.status == 500){
-          alert('Usuario ou senha incorretos')
+          this.alerta.showAlertDanger('Usuário ou senha estão incorretos!')
         } else if(erro.status == 401){
-          alert('Usuario não autorizado')
+          this.alerta.showAlertDanger('Huuum, parece que você ainda não é um cliente!')
         } else if(erro.status == 404){
-          alert('Usuario não cadastrado')
+          this.alerta.showAlertDanger('Houve um erro no seu login, entre em contato pelos nossos canais de atendimento')
         }
       }
     )

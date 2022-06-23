@@ -8,32 +8,39 @@ import { Produto } from '../model/Produto';
   providedIn: 'root'
 })
 export class ProdutoService {
-  url = 'http://localhost:8080/produto'
-  
+
   constructor(private http: HttpClient) { }
 
   token = {
     headers: new HttpHeaders().set('Autorization', environment.token)
   }
 
-  public getAll(): Observable<Produto> {
-    return this.http.get<Produto>(this.url)
+  getAll(): Observable<Produto[]> {
+    return this.http.get<Produto[]>('http://localhost:8080/produto', this.token)
   }
 
-  getById(id: number): Observable<Produto>{
-    return this.http.get<Produto>(this.url +'/'+ id)
+  getById(id: number){
+    return this.http.get<Produto>('http://localhost:8080/produto/'+ id, this.token)
+  }
+
+  getbyName(nome: string):Observable<Produto[]>{
+    return this.http.get<Produto[]>('http://localhost:8080/produto/produto/'+ nome, this.token)
+  }
+
+  getbyCategoria(produto: Produto){
+    return this.http.get<Produto>('http://localhost:8080/produto/categoria/'+ produto.categoria, this.token)
   }
 
   save(produto: Produto):Observable<Produto>{
-    return this.http.post<Produto>(this.url , produto, this.token)
+    return this.http.post<Produto>('http://localhost:8080/produto/cadastrar', produto, this.token)
   }
 
   update(produto:Produto):Observable<Produto>{
-    return this.http.put<Produto>(this.url +'/', produto, this.token)
+    return this.http.put<Produto>('http://localhost:8080/produto/cadastrar', produto, this.token)
   }
 
-  delete(produto: Produto){
-    return this.http.delete<Produto>(this.url +'/'+ produto.id, this.token)
+  delete(id: number){
+    return this.http.delete<Produto>('http://localhost:8080/produto/'+ id, this.token)
   }
 
 }

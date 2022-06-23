@@ -9,6 +9,8 @@ import { CardLoginComponent } from './components/card-login/card-login.component
 import { ProdutoEspecificoComponent } from './components/produto-especifico/produto-especifico.component';
 import { CriarContaComponent } from './components/criar-conta/criar-conta.component';
 import { FormularioDadosClienteComponent } from './components/formulario-dados-cliente/formulario-dados-cliente.component';
+import { CadastroAdmComponent } from './components/cadastro-adm/cadastro-adm.component';
+import { CardPesquisaProdutoComponent } from './components/card-pesquisa-produto/card-pesquisa-produto.component';
 
 
 const routes: Routes = [
@@ -19,9 +21,11 @@ const routes: Routes = [
   {path: 'historicopedidos', component: HistoricoPedidosComponent},
   {path: 'produto', component: ProdutoEspecificoComponent},
   {path: 'meuperfil', component: FormularioDadosClienteComponent},
-  {path: 'carrinho', component: CarrinhoComponent},
+  {path: 'criarconta', component: CriarContaComponent},
+  {path: 'administracaoelertech', component: CadastroAdmComponent},
+  {path: 'pesquisar', component: CardPesquisaProdutoComponent},
+  {path: 'carrinho', component: CarrinhoComponent}
 
-  {path: 'criarconta', component: CriarContaComponent}
 ];
 
 @NgModule({

@@ -8,14 +8,15 @@
         <form>
           <div class="form-group mt-2 mb-4">
             <label for="emal_login">Usuario</label>
-            <input [(ngModel)]="usuarioLogin.usuario" name="usuario" type="email" class="form-control" id="emal_login" placeholder="usuario@example.com"
-              aria-describedby="emailHelp">
+            <input [(ngModel)]="usuarioLogin.usuario" name="usuario" type="email" class="form-control" id="emal_login"
+              placeholder="usuario@example.com" aria-describedby="emailHelp">
             <small id="emailHelp" class="form-text text-secondary">Digite seu endereço de email
               cadastrado</small>
           </div>
           <div class="form-group mb-4">
             <label for="senha_login">Senha</label>
-            <input [(ngModel)]="usuarioLogin.senha" name="senha" type="password" class="form-control" id="senha_login" aria-describedby="emailHelp">
+            <input [(ngModel)]="usuarioLogin.senha" name="senha" type="password" class="form-control" id="senha_login"
+              aria-describedby="emailHelp">
             <small id="emailHelp" class="form-text text-secondary">Digite a senha com no mínimo 8
               caracteres</small>
           </div>
@@ -28,8 +29,14 @@
         </form>
       </div>
       <div class="card-footer">
-        <a href="sobre.html">Sobre</a>
+        <div>
+          <a href="sobre.html">Sobre</a>
+        </div>
+
       </div>
     </div>
+  </div>
+  <div>
+    <a routerLink="/administracaoelertech">É funcionario? crie sua conta aqui</a>
   </div>
 </main>

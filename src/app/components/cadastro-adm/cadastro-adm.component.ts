@@ -6,12 +6,11 @@ import { AlertaService } from 'src/app/service/alerta.service';
 import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
-  selector: 'app-criar-conta',
-  templateUrl: './criar-conta.component.html',
-  styleUrls: ['./criar-conta.component.css']
+  selector: 'app-cadastro-adm',
+  templateUrl: './cadastro-adm.component.html',
+  styleUrls: ['./cadastro-adm.component.css']
 })
-export class CriarContaComponent implements OnInit {
-
+export class CadastroAdmComponent implements OnInit {
   usuario: Usuario = new Usuario
   usuarioLogin: UsuarioLogin = new UsuarioLogin
   confirmarSenha: string
@@ -34,6 +33,10 @@ export class CriarContaComponent implements OnInit {
     if(usuario.senha != this.confirmarSenha){
       this.alerta.showAlertDanger('As senhas precisam ser iguais')
     } else {
+      this.usuario.tipo = 'adm'
+      this.usuario.nomeFantasia = 'Elertech'
+      this.usuario.razaoSocial = 'Elertech energia renovável'
+      this.usuario.cnpj = '40.639.880/0001-65'
       this.auth.cadastrar(this.usuario).subscribe((resp: Usuario)=>{
         this.usuario = resp
         this.alerta.showAlertSuccess('Usuário cadastrado com sucesso')

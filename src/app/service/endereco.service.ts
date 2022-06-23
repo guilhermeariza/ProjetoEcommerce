@@ -17,8 +17,8 @@ export class EnderecoService {
     headers: new HttpHeaders().set('Autorization', environment.token)
   }
 
-  getAll(): Observable<Endereco>{
-    return this.http.get<Endereco>(this.url)
+  getAll(): Observable<Endereco[]>{
+    return this.http.get<Endereco[]>(this.url, this.token)
   }
 
   save(endereco: Endereco): Observable<Endereco>{
@@ -29,7 +29,7 @@ export class EnderecoService {
     return this.http.put<Endereco>(this.url, endereco, this.token)
   }
 
-  delete(endereco: Endereco){
-    return this.http.delete<Endereco>(this.url+'/'+endereco.id, this.token)
+  delete(id: number){
+    return this.http.delete<Endereco>(this.url+'/'+id, this.token)
   }
 }

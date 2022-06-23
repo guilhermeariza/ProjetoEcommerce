@@ -1,4 +1,12 @@
-<main class="pt-4" style="margin-top: 55px;">
+<nav class="navbar text-white fixed-top" id="usuarioSenha">
+  <div class="col-12 display-5 text-center">
+    <a>Bem vindo a Elertech!</a>
+  </div>
+  <div class="col-12 text-center">
+    <a>Se você possui um email corporativo, faça seu cadastro para acessar a gestão de produtos</a>
+  </div>
+</nav>
+<main class="pt-4">
   <div class="container p-4 bg-212">
     <div class="row g-3 mg2 ">
       <h1>Criar Conta</h1>
@@ -14,7 +22,7 @@
       </div>
       <div class="col">
         <label for="cnpj" class="form-label">CNPJ</label>
-        <input [(ngModel)]='usuario.cnpj' name="cnpj" type="text" class="form-control" id="cnpj">
+        <input [(ngModel)]='usuario.cnpj' name="cnpj" type="text" class="form-control" id="cnpj" maxlength="18">
       </div>
 
       <div class="row pt-5">
@@ -39,24 +47,9 @@
       </form>
       <div class="d-grid gap-2 col-2 mx-auto">
         <button type="button" class="btn btn-success" (click)="cadastrar(usuario)">Cadastrar</button>
-
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Elertech</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                Cadastro efetivado com sucesso!
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fechar</button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <button type="button" class="btn btn-danger" routerLink="/login">Cancelar</button>
       </div>
     </form>
   </div>
 </main>
+<app-footer></app-footer>

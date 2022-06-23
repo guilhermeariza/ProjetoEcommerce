@@ -2,6 +2,11 @@
     font-size: 25pt;
 }
 
+img{
+  max-width: 350px;
+  max-height: 350px;
+}
+
 #num{
     text-align: center;
 }
@@ -31,15 +36,9 @@
     color: black;
 }
 
-#imagem{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .estoque{
     font-size: 8pt;
     text-align: end;
-    
+
 }
-  
+

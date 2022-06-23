@@ -1,65 +1,54 @@
 <!-- Construção do Conteiner -->
 <main class="pt-2" style="margin-top: 55px">
-    <div class="container shadow-lg p-3 mb-5 bg-body arredondado" id="container"
-        style="margin-top: 35px; height:450px;">
-        <!-- Stack the columns on mobile by making one full-width and the other half-width -->
-        <div class="row">
-            <div class="col-sm-4 p-1" id="imagem">
-                <img src="../../../assets/img/carro_preto.png" alt="...">
-            </div>
-            <div class="col-sm-8">
-                <h1 class="h1">Título</h1>
-                <hr>
-                <p class="paragrafo">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum ipsam quia odit nam
-                    quos ab, autem, itaque qui optio porro doloribus. Id aspernatur unde perferendis, nemo veritatis
-                    repudiandae reprehenderit voluptates.
-                </p>
-                <hr class="linha">
-                <div class="col-sm">
-                    <h1 class="preco">R$2500,00</h1>
-                    <h5 class="estoque text-muted">Existem 1000 produtos no estoque</h5>
-                </div>
-                <hr class="linha">
-                <!-- Fim do Conteiner -->
+  <div class="container shadow-lg p-3 mb-5 bg-body arredondado" id="container" style="margin-top: 35px; height:450px;">
+    <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+    <div class="col-4 text-center" id="imagem">
+      <img src="{{produto.foto}}" alt="...">
+      <hr>
+      <hr class="linha">
+      <div class="col-sm">
+        <h1 class="preco">R$ {{produto.preco}}</h1>
+        <h5 class="estoque text-muted">Existem {{produto.estoque}} produtos no estoque</h5>
+      </div>
+      <hr class="linha">
+      <!-- Fim do Conteiner -->
 
-                <!-- Início dos Botões -->
-                <div class="d-flex flex-row-reverse">
-                    <div class="p-4">
-                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
-                            COMPRAR
-                        </button>
-                    </div>
-                    <div class="p-4">
-                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                            <button type="button" class="btn btn-secondary" id="menos" onclick="diminui()">-</button>
-                            <input type="text" name="numero" size="5" id="num" value="1">
-                            <button type="button" class="btn btn-secondary" id="mais" onclick="aumenta()">+</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <!-- Início dos Botões -->
+      <div class="d-flex flex-row-reverse">
+        <div class="p-4">
+          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="adicionarNoCarrinho(produto)">
+            COMPRAR
+          </button>
         </div>
-        <!-- Fim dos Botões -->
-
-        <!-- Início do Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Deseja continuar
-                            comprando ou ir ao carrinho?
-                        </h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CONTINUAR
-                            COMPRANDO</button>
-                        <button type="button" class="btn btn-primary">IR AO CARRINHO</button>
-                    </div>
-                </div>
-            </div>
+        <div class="p-4">
+          <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+            <button type="button" class="btn btn-secondary" id="menos" onclick="diminui()">-</button>
+            <input type="text" name="numero" size="5" id="num" value="1">
+            <button type="button" class="btn btn-secondary" id="mais" onclick="aumenta()">+</button>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
+  <!-- Fim dos Botões -->
+
+  <!-- Início do Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Deseja continuar
+            comprando ou ir ao carrinho?
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CONTINUAR
+            COMPRANDO</button>
+          <button type="button" class="btn btn-primary">IR AO CARRINHO</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </main>
 <!-- Fim do Modal -->
