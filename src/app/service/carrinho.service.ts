@@ -9,7 +9,7 @@ import { Carrinho } from '../model/Carrinho';
 })
 export class CarrinhoService {
 
-  url: string = 'ttp://localhost:8080/carrinho'
+  url: string = 'http://localhost:8080/carrinho'
 
   constructor(private http: HttpClient) { }
 
@@ -21,12 +21,20 @@ export class CarrinhoService {
     return this.http.get<Carrinho>(this.url)
   }
 
-  post(carrinho: Carrinho):Observable<Carrinho>{
+  getByIdTema(id: number): Observable<Carrinho>{
+    return this.http.get<Carrinho>(this.url)
+  }
+
+  postCarrinho(carrinho: Carrinho):Observable<Carrinho>{
     return this.http.post<Carrinho>(this.url +'/cadastrar', carrinho, this.token)
   }
 
-  delete(carrinho: Carrinho):Observable<Carrinho>{
-    return this.http.delete<Carrinho>(this.url + '/'+ carrinho.id, this.token)
+  putCarrinho(carrinho: Carrinho): Observable<Carrinho>{
+    return this.http.put<Carrinho>(this.url, carrinho, this.token)
+  }
+
+  deleteCarrinho(id: number):Observable<Carrinho>{
+    return this.http.delete<Carrinho>(this.url + '/'+ id, this.token)
   }
 
 

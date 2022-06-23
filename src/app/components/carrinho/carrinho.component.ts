@@ -30,4 +30,10 @@ export class CarrinhoComponent implements OnInit {
     })
   }
 
+  findByIdCarrinho(id: number){
+    this.carrinhoService.getByIdTema(id).subscribe((resp: Carrinho) =>{
+      this.carrinho = resp
+    })
+  }
+
 }
