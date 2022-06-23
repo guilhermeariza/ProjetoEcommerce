@@ -1,3 +1,4 @@
+import { CartaoCredito } from './model/CartaoCredito';
 import { CarrinhoComponent } from './components/carrinho/carrinho.component';
 import { HistoricoPedidosComponent } from './components/historico-pedidos/historico-pedidos.component';
 import { NgModule, Component } from '@angular/core';
@@ -11,6 +12,7 @@ import { CriarContaComponent } from './components/criar-conta/criar-conta.compon
 import { FormularioDadosClienteComponent } from './components/formulario-dados-cliente/formulario-dados-cliente.component';
 import { CadastroAdmComponent } from './components/cadastro-adm/cadastro-adm.component';
 import { CardPesquisaProdutoComponent } from './components/card-pesquisa-produto/card-pesquisa-produto.component';
+import { TabelaCartaoCreditoComponent } from './components/tabela-cartao-credito/tabela-cartao-credito.component';
 
 
 const routes: Routes = [
