@@ -7,6 +7,7 @@ import { AlertaService } from 'src/app/service/alerta.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { CartaoCreditoService } from 'src/app/service/cartao-credito.service';
 import { environment } from 'src/environments/environment.prod';
+declare var $:any;
 
 @Component({
   templateUrl: './tabela-cartao-credito.component.html',
