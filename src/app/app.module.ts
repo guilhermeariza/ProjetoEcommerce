@@ -24,6 +24,7 @@ import {AccordionModule} from 'primeng/accordion';
 import { AlertasComponent } from './components/alertas/alertas.component';
 import { OrderModule } from 'ngx-order-pipe';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import {ImageModule} from 'primeng/image';
 declare var $:any;
 
 
@@ -54,7 +55,8 @@ declare var $:any;
     CarouselModule,
     AccordionModule,
     OrderModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    ImageModule
   ],
   providers: [
     {
