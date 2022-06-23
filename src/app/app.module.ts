@@ -15,7 +15,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProdutoEspecificoComponent } from './components/produto-especifico/produto-especifico.component';
 import { FormularioDadosClienteComponent } from './components/formulario-dados-cliente/formulario-dados-cliente.component';
-import { TabelaCartaoCreditoComponent } from './components/tabela-cartao-credito/tabela-cartao-credito.component';
 import { TabelaEnderecoComponent } from './components/tabela-endereco/tabela-endereco.component';
 import { CriarContaComponent } from './components/criar-conta/criar-conta.component';
 import { CadastroAdmComponent } from './components/cadastro-adm/cadastro-adm.component';
@@ -25,6 +24,7 @@ import { AlertasComponent } from './components/alertas/alertas.component';
 import { OrderModule } from 'ngx-order-pipe';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import {ImageModule} from 'primeng/image';
+import { TabelaCartaoCreditoComponent } from './components/tabela-cartao-credito/tabela-cartao-credito.component';
 declare var $:any;
 
 
