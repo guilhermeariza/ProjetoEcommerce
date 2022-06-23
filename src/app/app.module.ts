@@ -21,6 +21,10 @@ import { CriarContaComponent } from './components/criar-conta/criar-conta.compon
 import { CadastroAdmComponent } from './components/cadastro-adm/cadastro-adm.component';
 import {CarouselModule} from 'primeng/carousel';
 import {AccordionModule} from 'primeng/accordion';
+import { AlertasComponent } from './components/alertas/alertas.component';
+import { OrderModule } from 'ngx-order-pipe';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import {ImageModule} from 'primeng/image';
 declare var $:any;
 
 
@@ -40,7 +44,8 @@ declare var $:any;
     TabelaEnderecoComponent,
     ProdutoEspecificoComponent,
     CriarContaComponent,
-    CadastroAdmComponent
+    CadastroAdmComponent,
+    AlertasComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +53,10 @@ declare var $:any;
     HttpClientModule,
     FormsModule,
     CarouselModule,
-    AccordionModule
+    AccordionModule,
+    OrderModule,
+    ModalModule.forRoot(),
+    ImageModule
   ],
   providers: [
     {

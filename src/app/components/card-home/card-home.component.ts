@@ -23,8 +23,6 @@ export class CardHomeComponent implements OnInit {
   get(){
     this.produtoService.getAll().subscribe((data: Produto[]) => {
      this.listaProdutos = data
-     $('.p-ripple').hide()
-     $('.p-carousel-indicators').hide()
     },(error: any) => {
       console.log('Erro: ', error)
     })

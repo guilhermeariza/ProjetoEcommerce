@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { AuthService } from './service/auth.service';
+import { PrimeNGConfig } from 'primeng/api';
 declare var $:any;
 
 @Component({
@@ -12,12 +13,13 @@ declare var $:any;
 export class AppComponent {
   title = 'Elertech';
 
-  constructor(public auth: AuthService, private router: Router){
+  constructor(public auth: AuthService, private router: Router, private primengConfig: PrimeNGConfig){
 
   }
 
   ngOnInit(){
     this.navegarParaLogin()
+    this.primengConfig.ripple = true;
   }
 
   navegarParaLogin(){

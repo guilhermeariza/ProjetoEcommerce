@@ -16,10 +16,7 @@ export class ProdutoEspecificoComponent implements OnInit {
   constructor(private route: ActivatedRoute, private produtoService: ProdutoService) { }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      this.produto.id = params['id']
-    })
-
+    this.produto.id = this.route.snapshot.params['id']
     this.carregarProdutoEspecifico()
   }
 

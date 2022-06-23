@@ -5,7 +5,7 @@
     <p class="display-5 mr-4 mt-4 mb-4">Produtos mais procurados</p>
   </div>
 
-  <p-carousel [value]="listaProdutos" [numVisible]="4" [circular]="true">
+  <p-carousel [value]="listaProdutos" [numVisible]="4" [numScroll]="1" [circular]="false" [autoplayInterval]="3000">
     <ng-template let-listaProdutos pTemplate="item">
       <div class="d-flex justify-content-center">
         <div class="card text-center" style="width: 300px;">
@@ -26,11 +26,7 @@
             <p class="card-text">Documentação e manutenção inclusas.</p>
           </div>
           <div class="card-footer">
-            <button class="btn btn-success" routerLink="/produto" [queryParams]="listaProdutos">Saiba mais</button>
-          </div>
-        </div>
-      </div>
-    </ng-template>
+            <button class="btn btn-success" [routerLink]="['/produto', listaProdutos]">Saiba mais</button>
   </p-carousel>
 
 
