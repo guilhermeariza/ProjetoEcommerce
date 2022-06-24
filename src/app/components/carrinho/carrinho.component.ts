@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Carrinho } from 'src/app/model/Carrinho';
-import { Produto } from 'src/app/model/Produto';
 import { Usuario } from 'src/app/model/Usuario';
 import { AlertaService } from 'src/app/service/alerta.service';
 import { AuthService } from 'src/app/service/auth.service';
@@ -16,7 +15,8 @@ import { environment } from 'src/environments/environment.prod';
 export class CarrinhoComponent implements OnInit {
   carrinho:Carrinho = new Carrinho()
   usuario: Usuario = new Usuario()
-  listaCarrinho: any
+  listaCarrinho = new Array
+  lista: any = new Carrinho()
 
   constructor(private router: Router,
     private carrinhoService: CarrinhoService,
@@ -25,35 +25,58 @@ export class CarrinhoComponent implements OnInit {
 
   ngOnInit(){
     this.CarregarCarrinho()
+
   }
 
   CarregarCarrinho(){
-    this.auth.getById(environment.id).subscribe((data: Usuario)=>{
-      this.usuario = data
-      this.listaCarrinho = this.usuario.carrinho
-      console.log(this.listaCarrinho)
+    this.auth.getById(environment.id).subscribe((data: Usuario)=>{this.usuario = data
+      this.carrinho = this.usuario.carrinho
+      this.lista = this.carrinho
+
+      this.listaCarrinho = this.lista.filter(function(c: Carrinho){
+        return c.status == 'carrinho'
+      })
+      this.somaTotal()
+    },(error: any) => {
+        switch(error.status){
+          case 400:
+            this.alerta.showAlertDanger('Erro na requisção, erro: '+error.status)
+          break;
+          case 401:
+            this.alerta.showAlertDanger('Acesso não autorizado, erro: '+error.status)
+          break;
+          case 500:
+            this.alerta.showAlertDanger('Erro na aplicação, erro: '+error.status)
+          break;
+        }
+      })
+  }
+
+  somaTotal(){
+    let somaDosProdutos = 0
+    for(let i=0; i < this.listaCarrinho.length; i++){
+      somaDosProdutos = this.listaCarrinho[i].valorUnitario + somaDosProdutos
+    }
+    console.log('SOMA DOS PRODUTOS NO CARRINHO: '+ somaDosProdutos)
+  }
+
+  excluirProduto(id: number){
+    this.carrinhoService.delete(id).subscribe(()=>{
+
     })
   }
 
-  // somaTotal(){
-  //   let valorTotal = 0
-  //   for(let i=0; i < this.lista.length; i++){
-  //     if(this.lista[i].status == 'carrinho'){
-  //       this.listaCarrinho[i] = this.lista[i]
-  //       valorTotal = this.listaCarrinho[i].produto.preco + valorTotal
-  //     }
-  //   }
-  //   console.log('SOMA '+valorTotal)
-  // }
+  seguirParaPagamento(){
+    for(let i=0; i<this.listaCarrinho.length; i++){
+      this.listaCarrinho[i].status = 'pedido'
+      this.listaCarrinho[i].usuario = this.usuario
+    }
+    console.log(this.listaCarrinho)
+  }
 
-  // seguirParaPagamento(){
-  //   for(let i=0; i<this.lista.length; i++){
-  //     this.lista[i].status = 'pedido'
-  //     this.lista[i].usuario = this.usuario
-  //     this.carrinhoService.update(this.lista[i]).subscribe((data: Carrinho)=>{
-  //       this.carrinho = data
-  //     })
-  //   }
-  // }
-
+  confirmarPagamento(){
+    this.carrinhoService.update(this.carrinho).subscribe((data: Carrinho)=>{
+      this.carrinho = data
+    })
+  }
 }

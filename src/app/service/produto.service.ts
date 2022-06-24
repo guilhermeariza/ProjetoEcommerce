@@ -36,7 +36,7 @@ export class ProdutoService {
   }
 
   update(produto:Produto):Observable<Produto>{
-    return this.http.put<Produto>('http://localhost:8080/produto/cadastrar', produto, this.token)
+    return this.http.put<Produto>('http://localhost:8080/produto/atualizar', produto, this.token)
   }
 
   delete(id: number){
