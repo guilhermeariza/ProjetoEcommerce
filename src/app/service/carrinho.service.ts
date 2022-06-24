@@ -33,7 +33,7 @@ export class CarrinhoService {
   }
 
   update(carrinho: Carrinho): Observable<Carrinho>{
-    return this.http.put<Carrinho>(this.url, carrinho, this.token)
+    return this.http.put<Carrinho>(this.url+"/atualizar", carrinho, this.token)
   }
 
   delete(id: number){

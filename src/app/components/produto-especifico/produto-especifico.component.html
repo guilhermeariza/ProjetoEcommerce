@@ -26,9 +26,9 @@
         </div>
         <div class="p-4">
           <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-            <button type="button" class="btn btn-secondary" id="menos" onclick="diminui()">-</button>
-            <input type="text" name="numero" size="5" id="num" value="1">
-            <button type="button" class="btn btn-secondary" id="mais" onclick="aumenta()">+</button>
+            <button  type="button" class="btn btn-secondary" id="menos" (click)="diminuir()">-</button>
+            <input min="1" max="{{produto.estoque}}" type="number" name="numero" size="5" id="quantidade" value="1">
+            <button type="button" class="btn btn-secondary" id="mais" (click)="aumentar()">+</button>
           </div>
         </div>
       </div>

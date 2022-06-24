@@ -8,7 +8,7 @@ import { AuthService } from 'src/app/service/auth.service';
 import { CarrinhoService } from 'src/app/service/carrinho.service';
 import { ProdutoService } from 'src/app/service/produto.service';
 import { environment } from 'src/environments/environment.prod';
-
+declare var $:any;
 
 @Component({
   selector: 'app-produto-especifico',
@@ -57,10 +57,21 @@ export class ProdutoEspecificoComponent implements OnInit {
   //     this.carrinho = data
   //   })
   // }
+  aumentar(){
+    let n = $('#quantidade').val()
+    ++n
+    $('#quantidade').val(n)
+    this.quantidade = $('#quantidade').val()
+    console.log(this.quantidade)
+  }
 
-  // obetrQuantidade(){
-  //   this.quantidade = $('#quantidade').val()
-  // }
+  diminuir(){
+    let n = $('#quantidade').val()
+    --n
+    $('#quantidade').val(n)
+    this.quantidade = $('#quantidade').val()
+    console.log(this.quantidade)
+  }
 
     adicionarProduto(){
       // Configurar um objeto de produto para enviar ao carrinho
@@ -72,14 +83,22 @@ export class ProdutoEspecificoComponent implements OnInit {
       this.carrinho.categoria = this.produto.categoria
       this.carrinho.quantidade = this.quantidade
       this.carrinho.valorUnitario = this.produto.preco
-      // this.carrinho.valorTotal = this.quantidade * this.produto.preco
+      this.carrinho.valorTotal = this.quantidade * this.produto.preco
       this.carrinho.status = 'carrinho'
+      console.log(this.carrinho)
 
+      // Envia o produto para o carrinho
       this.carrinhoService.save(this.carrinho).subscribe((data: Carrinho)=>{
         this.carrinho = data
         console.log(this.carrinho)
         this.alerta.showAlertSuccess('Carrinho cadastrado com sucesso')
+      })
 
+      // Atualiza o estoque disponível
+      this.produto.estoque = this.produto.estoque - this.carrinho.quantidade
+      this.produtoService.update(this.produto).subscribe((data: Produto)=>{
+        this.produto = data
+        console.log('Estoque atualizado com sucesso')
       })
     }
 
