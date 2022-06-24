@@ -51,13 +51,11 @@ export class ProdutoEspecificoComponent implements OnInit {
       this.carrinho.id = this.usuario.carrinho.id
     })
   }
-  
   aumentar(){
     let n = $('#quantidade').val()
     ++n
     $('#quantidade').val(n)
     this.quantidade = $('#quantidade').val()
-    console.log(this.quantidade)
   }
 
   diminuir(){
@@ -65,7 +63,6 @@ export class ProdutoEspecificoComponent implements OnInit {
     --n
     $('#quantidade').val(n)
     this.quantidade = $('#quantidade').val()
-    console.log(this.quantidade)
   }
 
     adicionarProduto(){

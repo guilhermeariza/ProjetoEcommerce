@@ -1,86 +1,100 @@
-<main class="pt-4" style="margin-top: 55px;">
-  <div class=" container d-block row w-75 mx-auto">
-    <div class="row p-3 fw-bold mx-auto" style="background: rgb(237, 237, 237);">
-      <div class="col"><u><a class="text-muted" href="#">CONTINUAR COMPRANDO</a></u></div>
-      <div class="col text-center">MEU CARRINHO(4)</div>
-      <div class="col"></div>
-    </div>
-    <div class="mx-auto d-block  font fs-15 shadow-lg p-3 mb-5 bg-body rounded" style="background: rgb(255, 255, 255)">
-      <div class="col-12 row-cols text-center alinhar">
-        <div class="row col mt-5 fw-bold">
-          <div class="col ">PRODUTOS</div>
-          <div class="col"></div>
-          <div class="col">QUANTIDADE</div>
-          <div class="col">VALOR UNITÁRIO</div>
-          <div class="col">TOTAL</div>
-          <div class="col">SELECIONAR</div>
-          <div class="col"></div>
-        </div>
-        <hr>
+<main class="pt-4" style="margin-top:55px;">
 
-        <div class="row col mt-5 alinhar" *ngFor="let produto of listaCarrinho">
-          <div class="col">
-            <img src="{{produto.foto}}" alt="" class=""
-              style="max-width:90%; max-height:100%; width: auto; height: auto;">
+  <div class="row">
+    <div class="container col-5 row w-50 fs-17" style="margin-left: 80px">
+
+      <div class="row col-lg-12 p-3 fw-bold mx-auto rounded" style="background: rgb(237, 237, 237);">
+        <div class="col"><u><a class="text-muted" routerLink="/inicio">CONTINUAR COMPRANDO</a></u></div>
+        <div class="col text-center">MEU CARRINHO(4)</div>
+        <div class="col"></div>
+      </div>
+
+      <div class="mx-auto d-block  font fs-17 shadow-lg p-3 mb-5 bg-body rounded"
+        style="background: rgb(255, 255, 255)">
+
+        <div class="col-12 row-cols text-center alinhar">
+          <div class="row col mt-5 fw-bold">
+            <div class="col">PRODUTOS</div>
+            <div class="col"></div>
+            <div class="col">QUANTIDADE</div>
+            <div class="col">VALOR UNITÁRIO</div>
+            <div class="col">SUBTOTAL</div>
+            <div class="col"></div>
           </div>
-          <div class="col-sm ">{{produto.nome}}</div>
-          <div class="col">{{produto.quantidade}}</div>
-          <div class="col fw-bold">R$ {{produto.valorUnitario}}</div>
-          <div class="col fw-bold">R$ {{produto.valorTotal}}</div>
-          <div class=" col form-check">
-            <input type="checkbox" value="" id="defaultCheck1" style="width: 20px; height: 20px;">
-            <label for="defaultCheck1"></label>
+          <hr>
+
+          <div class="row col mt-5 alinhar" *ngFor="let produto of listaCarrinho">
+            <div class="col">
+              <img src="{{produto.foto}}" style="max-width:90%; max-height:100%; width: auto; height: auto;">
+            </div>
+            <div class="col-sm ">{{produto.nomeProduto}}</div>
+            <div class="col">{{produto.quantidade}}</div>
+            <div class="col fw-bold">R$ {{produto.valorUnitario}}</div>
+            <div class="col fw-bold">R$ {{produto.valorTotal}}</div>
+            <div class="col">
+              <button (focus)="excluirProduto(produto.id)" type="button" class="fw-bold border border-white "
+                style="width: 80%; height: 80%; background: white;" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">
+                <h4>&times;</h4>
+              </button>
+            </div>
           </div>
-          <div class="col">
-            <button (focus)="excluirProduto(produto.id)" type="button" class="fw-bold border border-white "
-              style="width: 80%; height: 80%; background: white;" data-bs-toggle="modal" data-bs-target="#exampleModal">
-              <h4>&times;</h4>
-            </button>
-            <button type="button" (click)="confirmarPagamento()">teste</button>
+
+          <hr>
+
+          <div class="col-12 row fs-17 alinhar">
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col fw-bold ">Total:</div>
+            <div class="col">R$ {{somaDosProdutos}}</div>
           </div>
+
         </div>
 
-        <hr>
-        <button (click)="seguirParaPagamento()" type="button" class=" btn fs-20 fw-bold mt-5" style="background: rgb(66, 153, 171);">
-          Seguir para o pagamento
-        </button>
       </div>
 
     </div>
-  </div>
 
-  <div id="meuModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Excluir produto</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <div class="modal-body">
-          <p>Você tem certeza que deseja excluir (nomeDoProduto) do seu carrinho?</p>
-        </div>
-        <div class="modal-footer d-flex justify-content-center">
-          <button type="button" class="btn btn-danger w-50 " data-dismiss="modal">Tenho certeza</button>
-        </div>
+    <div class="container col-4">
+      <div class="row mb-5">
+        <label class="h3 mb-4">Selecione um endereço de entrega</label>
+        <select class="form-select" id="categoriaCadastrar">
+          <option *ngFor="let endereco of listaEndereco" value="{{endereco.endereco}}">Endereço: {{endereco.endereco}}
+            -
+            {{endereco.cep}}</option>
+        </select>
+      </div>
+      <hr>
+      <div class="row mb-5">
+        <label class="h3 mt-4">Selecione forma de pagameto</label>
+        <select class="form-select" id="categoriaCadastrar">
+          <option *ngFor="let cartao of listaCartao" value="{{cartao.numeroCartao}}">{{cartao.apelido}} -
+            {{cartao.numeroCartao}}</option>
+        </select>
+      </div>
+      <div class="row">
+        <button class="btn btn-success block" (click)="finalizarPedido()">Finalizar
+          Pedido</button>
       </div>
     </div>
-  </div>
-  <!-- Button trigger modal -->
 
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+  </div>
+  <div class="modal fade" id="excluirProdutoModal" tabindex="-1" aria-labelledby="staticBackdropLabel"
+    aria-hidden="true">
+    <div class="modal-dialog ">
+      <div class="modal-content ">
+        <div class="modal-header alert-danger">
+          <h5 class="modal-title" id="staticBackdropLabel">Você está excluindo um produto</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-          ...
+        <div class="modal-body alert-danger">
+          <p class="display-6">Tem certeza?</p>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+        <div class="modal-footer alert-danger">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Sim</button>
         </div>
       </div>
     </div>
