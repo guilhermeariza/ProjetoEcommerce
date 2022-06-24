@@ -19,6 +19,13 @@ import { TabelaCartaoCreditoComponent } from './components/tabela-cartao-credito
 import { TabelaEnderecoComponent } from './components/tabela-endereco/tabela-endereco.component';
 import { CriarContaComponent } from './components/criar-conta/criar-conta.component';
 import { CadastroAdmComponent } from './components/cadastro-adm/cadastro-adm.component';
+import {CarouselModule} from 'primeng/carousel';
+import {AccordionModule} from 'primeng/accordion';
+import { AlertasComponent } from './components/alertas/alertas.component';
+import { OrderModule } from 'ngx-order-pipe';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import {ImageModule} from 'primeng/image';
+declare var $:any;
 
 
 @NgModule({
@@ -37,13 +44,19 @@ import { CadastroAdmComponent } from './components/cadastro-adm/cadastro-adm.com
     TabelaEnderecoComponent,
     ProdutoEspecificoComponent,
     CriarContaComponent,
-    CadastroAdmComponent
+    CadastroAdmComponent,
+    AlertasComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CarouselModule,
+    AccordionModule,
+    OrderModule,
+    ModalModule.forRoot(),
+    ImageModule
   ],
   providers: [
     {

@@ -2,9 +2,9 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 </head>
 
-<div class="container-fluid bg-212 p-4">
+<div class="container-fluid bg-212 p-4" id="formasPagamento">
   <h2 class="mb-4">Formas de pagamento</h2>
-<!-- Botão para cadastrar cartão -->
+  <!-- Botão para cadastrar cartão -->
   <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#cadastrarCartaoModal">
     <i class="bi bi-plus-square-fill"></i>
     Adicionar cartão
@@ -32,7 +32,8 @@
         <td>{{cartao.dataValidade}}</td>
         <td>{{cartao.cvv}}</td>
         <td>
-          <button (focus)="abrirModalExcluir(cartao)" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#excluirCartaoModal"><i class="bi bi-trash"></i>Excluir</button>
+          <button (focus)="abrirModalExcluir(cartao)" type="button" class="btn btn-outline-danger"
+            data-bs-toggle="modal" data-bs-target="#excluirCartaoModal"><i class="bi bi-trash"></i>Excluir</button>
         </td>
       </tr>
     </tbody>
@@ -53,19 +54,23 @@
           <div class="col-4">
 
             <label class="form-label" for="nomeCartaoCadastrar">Nome escrito no cartão</label>
-            <input [(ngModel)]="cartao.nomeCartao" name="nome" type="text" class="form-control" id="nomeCartaoCadastrar">
+            <input [(ngModel)]="cartao.nomeCartao" name="nome" type="text" class="form-control"
+              id="nomeCartaoCadastrar">
             <div id="nomeCartaoCadastrarHelp" class="form-text">Campo obrigatorio</div>
           </div>
 
           <div class="col-4">
             <label class="form-label" for="numeroCartaoCadastrar">Numero impressso no cartão</label>
-          <input [(ngModel)]="cartao.numeroCartao" name="numero" type="text" class="form-control" id="numeroCartaoCadastrar">
+            <input [(ngModel)]="cartao.numeroCartao" name="numero" type="text" class="form-control"
+              id="numeroCartaoCadastrar">
             <div id="numeroCartaoCadastrarHelp" class="form-text">Campo obrigatorio</div>
           </div>
 
           <div class="col-2">
-            <label class="form-label" for="validadeCadastrar" id="validadeCadastrar" name="validadeCadastrar">Validade</label>
-            <input [(ngModel)]="cartao.dataValidade" name="data" type="text" class="form-control" id="validadeCadastrar">
+            <label class="form-label" for="validadeCadastrar" id="validadeCadastrar"
+              name="validadeCadastrar">Validade</label>
+            <input [(ngModel)]="cartao.dataValidade" name="data" type="text" class="form-control"
+              id="validadeCadastrar">
             <div id="validadeCadastrarHelp" class="form-text">Campo obrigatorio</div>
           </div>
 
@@ -77,13 +82,14 @@
 
           <div class="col-4">
             <label class="form-label" for="apelidoCartaoCadastrar">Como você quer chamar este cartão?</label>
-          <input [(ngModel)]="cartao.apelido" name="apelido" type="text" class="form-control" id="apelidoCartaoCadastrar">
+            <input [(ngModel)]="cartao.apelido" name="apelido" type="text" class="form-control"
+              id="apelidoCartaoCadastrar">
             <div id="apelidoCartaoCadastrarHelp" class="form-text">Campo obrigatorio</div>
           </div>
         </form>
       </div>
       <div class="modal-footer text-center" style="background-color: #64AEAA;">
-        <button type="button" class="btn btn-success" (click)="cadastrarCartao(cartao)">Cadastrar</button>
+        <button type="button" class="btn btn-success" (click)="cadastrarCartao()">Cadastrar</button>
       </div>
     </div>
   </div>
@@ -91,22 +97,20 @@
 <!-- Modal cadastrar -->
 
 <!-- Modal excluir -->
-<ng-template [ngIf]="cartaoExcluir">
 <div class="modal fade" id="excluirCartaoModal" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog ">
     <div class="modal-content ">
       <div class="modal-header alert-danger">
-        <h5 class="modal-title" id="staticBackdropLabel">Você está excluindo o cartão {{cartaoExcluir.apelido}}</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">Você está excluindo o cartão {{cartao.apelido}}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body alert-danger">
         <p class="display-6">Tem certeza?</p>
       </div>
       <div class="modal-footer alert-danger">
-        <button type="button" class="btn btn-danger" (click)="excluir(cartaoExcluir)">Sim</button>
+        <button type="button" class="btn btn-danger" (click)="excluir()">Sim</button>
       </div>
     </div>
   </div>
 </div>
-</ng-template>
 <!-- Modal excluir -->

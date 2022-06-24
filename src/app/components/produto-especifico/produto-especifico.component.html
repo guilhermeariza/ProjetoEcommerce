@@ -1,19 +1,14 @@
 <!-- Construção do Conteiner -->
 <main class="pt-2" style="margin-top: 55px">
-  <ng-template [ngIf]="produtoEspecifico">
   <div class="container shadow-lg p-3 mb-5 bg-body arredondado" id="container" style="margin-top: 35px; height:450px;">
     <!-- Stack the columns on mobile by making one full-width and the other half-width -->
     <div class="col-4 text-center" id="imagem">
-      <img src="{{produtoEspecifico.foto}}" alt="...">
-    </div>
-    <div class="col-sm-8">
-      <h1 class="h1">{{produtoEspecifico.nome}}</h1>
+      <img src="{{produto.foto}}" alt="...">
       <hr>
-      <p class="paragrafo">{{produtoEspecifico.descricao}}</p>
       <hr class="linha">
       <div class="col-sm">
-        <h1 class="preco">R$ {{produtoEspecifico.preco}}</h1>
-        <h5 class="estoque text-muted">Existem {{produtoEspecifico.estoque}} produtos no estoque</h5>
+        <h1 class="preco">R$ {{produto.preco}}</h1>
+        <h5 class="estoque text-muted">Existem {{produto.estoque}} produtos no estoque</h5>
       </div>
       <hr class="linha">
       <!-- Fim do Conteiner -->
@@ -21,7 +16,7 @@
       <!-- Início dos Botões -->
       <div class="d-flex flex-row-reverse">
         <div class="p-4">
-          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="adicionarNoCarrinho(produtoEspecifico)">
+          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="adicionarNoCarrinho(produto)">
             COMPRAR
           </button>
         </div>
@@ -35,7 +30,6 @@
       </div>
     </div>
   </div>
-</ng-template>
   <!-- Fim dos Botões -->
 
   <!-- Início do Modal -->

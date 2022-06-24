@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProdutoService } from 'src/app/service/produto.service';
 import { Produto } from '../../model/Produto';
 import { Router } from '@angular/router';
+declare var $:any;
 
 @Component({
   selector: 'app-card-home',
@@ -10,8 +11,8 @@ import { Router } from '@angular/router';
 })
 export class CardHomeComponent implements OnInit {
 
-  produto: any = new Produto
-  maisVendidos:any
+  produto: Produto = new Produto()
+  listaProdutos:Produto[]
 
   constructor(private router: Router, private produtoService: ProdutoService) { }
 
@@ -20,8 +21,8 @@ export class CardHomeComponent implements OnInit {
   }
 
   get(){
-    this.produtoService.getAll().subscribe((data: Produto) => {
-     this.maisVendidos = data
+    this.produtoService.getAll().subscribe((data: Produto[]) => {
+     this.listaProdutos = data
     },(error: any) => {
       console.log('Erro: ', error)
     })

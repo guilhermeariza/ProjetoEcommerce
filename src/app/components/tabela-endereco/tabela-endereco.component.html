@@ -2,7 +2,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 </head>
 
-<div class="container-fluid bg-212 p-4">
+<div class="container-fluid bg-212 p-4" id="endereco">
   <h2 class="mb-4">Endereços</h2>
 <!-- Botão para cadastrar endereço -->
   <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#cadastrarEnderecoModal">
@@ -21,7 +21,7 @@
       </tr>
     </thead>
     <tbody class="text-center">
-      <tr *ngFor="let endereco of listaEndereco">
+      <tr *ngFor="let endereco of listaEnderecos">
         <th id="idEnderecoTb" scope="row">{{endereco.id}}</th>
         <td id="enderecoTb">{{endereco.endereco}}</td>
         <td id="cepTb">{{endereco.cep}}</td>
@@ -61,7 +61,7 @@
         </form>
       </div>
       <div class="modal-footer text-center" style="background-color: #64AEAA;">
-        <button type="button" class="btn btn-success"(click)="cadastrar(endereco)">Cadastrar</button>
+        <button type="button" class="btn btn-success"(click)="cadastrar()">Cadastrar</button>
       </div>
     </div>
   </div>
@@ -69,7 +69,7 @@
 <!-- Modal cadastrar -->
 
 <!-- Modal excluir -->
-<ng-template [ngIf]="enderecoExcluir">
+<ng-template [ngIf]="endereco">
 <div class="modal fade" id="excluirEnderecoModal" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog ">
     <div class="modal-content ">
@@ -78,11 +78,11 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body alert-danger">
-        <p class="display-6">{{enderecoExcluir.endereco}}</p>
+        <p class="display-6">{{endereco.endereco}}</p>
         <p class="display-6">Tem certeza?</p>
       </div>
       <div class="modal-footer alert-danger">
-        <button type="button" class="btn btn-danger" (click)="excluir(enderecoExcluir)">Sim</button>
+        <button type="button" class="btn btn-danger" (click)="excluir()">Sim</button>
       </div>
     </div>
   </div>
@@ -91,7 +91,6 @@
 <!-- Modal excluir -->
 
 <!-- Modal editar -->
-<ng-template [ngIf]="enderecoEditar">
 <div class="modal fade" id="editarEnderecoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" style="max-width:1000px;">
     <div class="modal-content">
@@ -103,22 +102,21 @@
         <form class="row gy-2 gx-3 align-items-center">
           <div class="col-8">
             <label class="form-label" for="enderecoEditar">Endereço</label>
-            <input value="{{enderecoEditar.endereco}}" type="text" class="form-control" id="enderecoEditar">
+            <input [(ngModel)]="endereco.endereco" name="endereco" value="{{endereco.endereco}}" type="text" class="form-control" id="enderecoEditar">
             <div id="enderecoEditarHelp" class="form-text">Campo obrigatorio</div>
           </div>
 
           <div class="col-4">
             <label class="form-label" for="cepEditar">CEP</label>
-            <input value="{{enderecoEditar.cep}}" type="text" class="form-control" id="cepEditar">
+            <input [(ngModel)]="endereco.cep" name="cep" value="{{endereco.cep}}" type="text" class="form-control" id="cepEditar">
             <div id="cepEditarHelp" class="form-text">Campo obrigatorio</div>
           </div>
         </form>
       </div>
       <div class="modal-footer text-center" style="background-color: #64AEAA;">
-        <button type="button" class="btn btn-primary" (click)="atualizar(enderecoEditar)">Atualizar</button>
+        <button type="button" class="btn btn-primary" (click)="atualizar()">Atualizar</button>
       </div>
     </div>
   </div>
 </div>
-</ng-template>
 <!-- Modal editar -->

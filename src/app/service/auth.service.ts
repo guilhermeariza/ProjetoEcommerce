@@ -26,6 +26,10 @@ export class AuthService {
     return this.http.post<Usuario>('http://localhost:8080/usuarios/cadastrar', usuario)
   }
 
+  getById(id: number):Observable<Usuario>{
+    return this.http.get<Usuario>('http://localhost:8080/usuarios/'+id, this.token)
+  }
+
   update(usuario: Usuario): Observable<Usuario>{
     return this.http.put<Usuario>(this.url+'/atualizar', usuario, this.token)
   }
