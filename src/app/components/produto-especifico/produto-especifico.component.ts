@@ -18,7 +18,7 @@ import { environment } from 'src/environments/environment.prod';
 export class ProdutoEspecificoComponent implements OnInit {
   produto: Produto = new Produto()
   id: any
-
+  quantidade: any
   carrinho: Carrinho = new Carrinho()
   usuario: Usuario = new Usuario()
 
@@ -32,7 +32,8 @@ export class ProdutoEspecificoComponent implements OnInit {
   ngOnInit() {
     this.produto.id = this.route.snapshot.params['id']
     this.carregarProdutoEspecifico()
-    this.getAllCarrinhoUsuario()
+    this.getUsuarioById()
+    // this.getCarrinhoById()
   }
 
   carregarProdutoEspecifico(){
@@ -44,29 +45,43 @@ export class ProdutoEspecificoComponent implements OnInit {
 // ------------------------------
 
   // Buscar o usuario no BD usando o id
-  getAllCarrinhoUsuario(){
+  getUsuarioById(){
     this.auth.getById(environment.id).subscribe((data: Usuario)=>{
       this.usuario = data
+      this.carrinho.id = this.usuario.carrinho.id
     })
   }
 
-  getCarrinhoById(){
-    this.carrinhoService.getById(this.carrinho.id).subscribe((data: Carrinho)=>{
-      this.carrinho = data
-    })
-  }
+  // getCarrinhoById(){
+  //   this.carrinhoService.getById(this.carrinho.id).subscribe((data: Carrinho)=>{
+  //     this.carrinho = data
+  //   })
+  // }
+
+  // obetrQuantidade(){
+  //   this.quantidade = $('#quantidade').val()
+  // }
 
     adicionarProduto(){
-    this.carrinho.usuario = this.usuario
-    this.carrinho.produto = this.produto
-    this.carrinho.status = 'carrinho'
-    this.carrinhoService.save(this.carrinho).subscribe((data: Carrinho)=>{
-      this.carrinho = data
-      console.log(this.carrinho)
-      this.alerta.showAlertSuccess('Carrinho cadastrado com sucesso')
-      this.carrinho = new Carrinho
-    })
-  }
+      // Configurar um objeto de produto para enviar ao carrinho
+      this.carrinho.usuario = this.usuario
+      this.carrinho.idProduto = this.produto.id
+      this.carrinho.foto = this.produto.foto
+      this.carrinho.nomeProduto = this.produto.nome
+      this.carrinho.descricao = this.produto.descricao
+      this.carrinho.categoria = this.produto.categoria
+      this.carrinho.quantidade = this.quantidade
+      this.carrinho.valorUnitario = this.produto.preco
+      // this.carrinho.valorTotal = this.quantidade * this.produto.preco
+      this.carrinho.status = 'carrinho'
+
+      this.carrinhoService.save(this.carrinho).subscribe((data: Carrinho)=>{
+        this.carrinho = data
+        console.log(this.carrinho)
+        this.alerta.showAlertSuccess('Carrinho cadastrado com sucesso')
+
+      })
+    }
 
   //fim
 }

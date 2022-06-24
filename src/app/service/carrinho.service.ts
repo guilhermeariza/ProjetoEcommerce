@@ -24,8 +24,12 @@ export class CarrinhoService {
     return this.http.get<Carrinho>('http://localhost:8080/carrinho/'+ id, this.token)
   }
 
+  getBtStatus(status: string){
+    return this.http.get<Carrinho>('http://localhost:8080/carrinho/'+status, this.token)
+  }
+
   save(carrinho: Carrinho): Observable<Carrinho>{
-    return this.http.post<Carrinho>(this.url+'/cadastrar', carrinho, this.token )
+    return this.http.post<Carrinho>(this.url+'/adicionar', carrinho, this.token )
   }
 
   update(carrinho: Carrinho): Observable<Carrinho>{

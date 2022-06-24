@@ -16,12 +16,7 @@ import { environment } from 'src/environments/environment.prod';
 export class CarrinhoComponent implements OnInit {
   carrinho:Carrinho = new Carrinho()
   usuario: Usuario = new Usuario()
-  produto: Produto = new Produto()
-  lista:Carrinho[]
-  listaCarrinho = new Array
-  listaSomar = new Array
-
-  id: number
+  listaCarrinho: any
 
   constructor(private router: Router,
     private carrinhoService: CarrinhoService,
@@ -29,37 +24,36 @@ export class CarrinhoComponent implements OnInit {
     private alerta: AlertaService) { }
 
   ngOnInit(){
-    this.getAllCarrinhoUsuario()
+    this.CarregarCarrinho()
   }
 
-  getAllCarrinhoUsuario(){
+  CarregarCarrinho(){
     this.auth.getById(environment.id).subscribe((data: Usuario)=>{
       this.usuario = data
-      this.lista = this.usuario.carrinho
-      console.log(this.lista)
-      this.somaTotal()
+      this.listaCarrinho = this.usuario.carrinho
+      console.log(this.listaCarrinho)
     })
   }
 
-  somaTotal(){
-    let valorTotal = 0
-    for(let i=0; i < this.lista.length; i++){
-      if(this.lista[i].status == 'pedido'){
-        this.listaCarrinho[i] = this.lista[i]
-        valorTotal = this.listaCarrinho[i].produto.preco + valorTotal
-      }
-    }
-    console.log('SOMA '+valorTotal)
-  }
+  // somaTotal(){
+  //   let valorTotal = 0
+  //   for(let i=0; i < this.lista.length; i++){
+  //     if(this.lista[i].status == 'carrinho'){
+  //       this.listaCarrinho[i] = this.lista[i]
+  //       valorTotal = this.listaCarrinho[i].produto.preco + valorTotal
+  //     }
+  //   }
+  //   console.log('SOMA '+valorTotal)
+  // }
 
-  seguirParaPagamento(){
-    for(let i=0; i<this.lista.length; i++){
-      this.lista[i].status = 'pedido'
-      this.lista[i].usuario = this.usuario
-      this.carrinhoService.update(this.lista[i]).subscribe((data: Carrinho)=>{
-        this.carrinho = data
-      })
-    }
-  }
+  // seguirParaPagamento(){
+  //   for(let i=0; i<this.lista.length; i++){
+  //     this.lista[i].status = 'pedido'
+  //     this.lista[i].usuario = this.usuario
+  //     this.carrinhoService.update(this.lista[i]).subscribe((data: Carrinho)=>{
+  //       this.carrinho = data
+  //     })
+  //   }
+  // }
 
 }
