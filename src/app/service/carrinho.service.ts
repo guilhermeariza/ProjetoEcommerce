@@ -24,7 +24,7 @@ export class CarrinhoService {
     return this.http.get<Carrinho>('http://localhost:8080/carrinho/'+ id, this.token)
   }
 
-  getBtStatus(status: string){
+  getByStatus(status: string){
     return this.http.get<Carrinho>('http://localhost:8080/carrinho/'+status, this.token)
   }
 
@@ -33,7 +33,7 @@ export class CarrinhoService {
   }
 
   update(carrinho: Carrinho): Observable<Carrinho>{
-    return this.http.put<Carrinho>(this.url, carrinho, this.token)
+    return this.http.put<Carrinho>(this.url+'/atualizar', carrinho, this.token)
   }
 
   delete(id: number){
