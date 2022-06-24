@@ -17,15 +17,16 @@
           <div class="col"></div>
         </div>
         <hr>
-        <div class="row col mt-5 alinhar">
+
+        <div class="row col mt-5 alinhar" *ngFor="let carrinho of listaCarrinho">
           <div class="col">
-            <img src="../../assets/img/carro_preto.png" alt="" class=""
+            <img src="{{carrinho.produto.foto}}" alt="" class=""
               style="max-width:90%; max-height:100%; width: auto; height: auto;">
           </div>
-          <div class="col-sm ">Bike elétrica</div>
-          <div class="col">40</div>
-          <div class="col fw-bold">R$ 3.000,00</div>
-          <div class="col fw-bold">R$ 120.000,00</div>
+          <div class="col-sm ">{{carrinho.produto.nome}}</div>
+          <div class="col">{{carrinho.produto.quantidade}}</div>
+          <div class="col fw-bold">R$ {{carrinho.produto.preco}}</div>
+          <div class="col fw-bold">R$ </div>
           <div class=" col form-check">
             <input type="checkbox" value="" id="defaultCheck1" style="width: 20px; height: 20px;">
             <label for="defaultCheck1"></label>
@@ -37,11 +38,13 @@
             </button>
           </div>
         </div>
+
         <hr>
-        <button (click)="teste()" type="button" class=" btn fs-20 fw-bold mt-5" style="background: rgb(66, 153, 171);">
+        <button (click)="seguirParaPagamento()" type="button" class=" btn fs-20 fw-bold mt-5" style="background: rgb(66, 153, 171);">
           Seguir para o pagamento
         </button>
       </div>
+
     </div>
   </div>
 

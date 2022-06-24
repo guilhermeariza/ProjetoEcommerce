@@ -21,7 +21,6 @@ export class ProdutoEspecificoComponent implements OnInit {
 
   carrinho: Carrinho = new Carrinho()
   usuario: Usuario = new Usuario()
-  idCarrinho: any
 
 
   constructor(private route: ActivatedRoute,
@@ -52,21 +51,20 @@ export class ProdutoEspecificoComponent implements OnInit {
   }
 
   getCarrinhoById(){
-    this.carrinhoService.getById().subscribe((data: Carrinho)=>{
+    this.carrinhoService.getById(this.carrinho.id).subscribe((data: Carrinho)=>{
       this.carrinho = data
-
     })
   }
 
     adicionarProduto(){
     this.carrinho.usuario = this.usuario
     this.carrinho.produto = this.produto
-    this.carrinho.status = false
+    this.carrinho.status = 'carrinho'
     this.carrinhoService.save(this.carrinho).subscribe((data: Carrinho)=>{
       this.carrinho = data
       console.log(this.carrinho)
       this.alerta.showAlertSuccess('Carrinho cadastrado com sucesso')
-      // this.carrinho = new Carrinho
+      this.carrinho = new Carrinho
     })
   }
 
