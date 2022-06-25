@@ -46,6 +46,7 @@ export class CadastrarProdutoComponent implements OnInit {
       this.produto = data
       this.alerta.showAlertSuccess(`Produto ${this.produto.nome} cadastrado com sucesso`)
       this.limparModal()
+      this.ngOnInit()
       this.produto = new Produto
     },
     (error: any) => {
@@ -79,6 +80,7 @@ export class CadastrarProdutoComponent implements OnInit {
 
     this.produtoService.update(this.produto).subscribe((data: Produto) => {
       this.alerta.showAlertSuccess('Produto atualizado com sucesso')
+      this.ngOnInit()
       this.produto = new Produto
     },
     (error: any) => {
@@ -104,6 +106,7 @@ export class CadastrarProdutoComponent implements OnInit {
       this.produtoService.delete(this.produto.id).subscribe((data: Produto) => {
         this.produto = data
         this.alerta.showAlertSuccess(this.produto.nome +' excluído com sucesso')
+        this.ngOnInit()
         this.produto = new Produto
       },
       (error: any) => {

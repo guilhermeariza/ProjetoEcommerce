@@ -75,6 +75,7 @@ export class CarrinhoComponent implements OnInit {
   excluirProduto(id: number, idProduto: number, quantidade: number){
     this.atualizarEstoque(idProduto, quantidade)
     this.carrinhoService.delete(id).subscribe(()=>{
+      this.ngOnInit()
       this.alerta.showAlertWarning(`Produto excluído com sucesso`)
     })
   }
@@ -84,7 +85,7 @@ export class CarrinhoComponent implements OnInit {
     this.produtoService.getById(idProduto).subscribe((data: Produto)=>{
       this.produto = data
 
-      // Atualiza o estoque disponível 
+      // Atualiza o estoque disponível
       this.produto.estoque = this.produto.estoque + quantidade
       this.produtoService.update(this.produto).subscribe((data: Produto)=>{
       this.produto = data

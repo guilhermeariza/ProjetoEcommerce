@@ -17,14 +17,16 @@ export class CardPesquisaProdutoComponent implements OnInit {
   ngOnInit(){
     this.route.queryParams.subscribe(params => {
       this.produto.nome = params['nome']
+      this.produto.categoria = params['categoria']
     })
-    this.carregarPesquisaPorNome()
+    this.carregarPesquisaPorNome(this.produto)
 
   }
 
-  carregarPesquisaPorNome(){
-    this.produtoService.getbyName(this.produto.nome).subscribe((data: Produto[]) => {
+  carregarPesquisaPorNome(produto: Produto){
+    this.produtoService.getbyName(produto.nome).subscribe((data: Produto[]) => {
       this.listaProduto = data
+      this.ngOnInit()
       this.produto = new Produto
     },(error: any) => {
       console.log('Erro: ', error)

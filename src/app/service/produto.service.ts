@@ -27,8 +27,8 @@ export class ProdutoService {
     return this.http.get<Produto[]>('http://localhost:8080/produto/produto/'+ nome, this.token)
   }
 
-  getbyCategoria(produto: Produto){
-    return this.http.get<Produto>('http://localhost:8080/produto/categoria/'+ produto.categoria, this.token)
+  getbyCategoria(categoria: string):Observable<Produto[]>{
+    return this.http.get<Produto[]>('http://localhost:8080/produto/categoria/'+ categoria, this.token)
   }
 
   save(produto: Produto):Observable<Produto>{

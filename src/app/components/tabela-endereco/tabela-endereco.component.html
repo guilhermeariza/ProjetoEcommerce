@@ -4,7 +4,7 @@
 
 <div class="container-fluid bg-212 p-4" id="endereco">
   <h2 class="mb-4">Endereços</h2>
-<!-- Botão para cadastrar endereço -->
+  <!-- Botão para cadastrar endereço -->
   <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#cadastrarEnderecoModal">
     <i class="bi bi-plus-square-fill"></i>
     Adicionar endereço
@@ -26,10 +26,13 @@
         <td id="enderecoTb">{{endereco.endereco}}</td>
         <td id="cepTb">{{endereco.cep}}</td>
         <td>
-          <button (click)="abrirModalEditar(endereco)"type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editarEnderecoModal"><i class="bi bi-pencil-square"></i>Editar</button>
+          <button (click)="abrirModalEditar(endereco)" type="button" class="btn btn-outline-primary"
+            data-bs-toggle="modal" data-bs-target="#editarEnderecoModal"><i
+              class="bi bi-pencil-square"></i>Editar</button>
         </td>
         <td>
-          <button (click)="abrirModalExcluir(endereco)" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#excluirEnderecoModal"><i class="bi bi-trash"></i>Excluir</button>
+          <button (click)="abrirModalExcluir(endereco)" type="button" class="btn btn-outline-danger"
+            data-bs-toggle="modal" data-bs-target="#excluirEnderecoModal"><i class="bi bi-trash"></i>Excluir</button>
         </td>
       </tr>
     </tbody>
@@ -38,7 +41,8 @@
 <!-- Tabela que irá listar os cartões -->
 
 <!-- Modal cadastrar -->
-<div class="modal fade" id="cadastrarEnderecoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="cadastrarEnderecoModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" style="max-width:1000px;">
     <div class="modal-content">
       <div class="modal-header" style="background-color: #64AEAA; color:white; ">
@@ -49,19 +53,20 @@
         <form class="row gy-2 gx-3 align-items-center">
           <div class="col-8">
             <label class="form-label" for="nomeEnderecoCadastrar">Novo Endereço</label>
-            <input [(ngModel)]="endereco.endereco" name="endereco" type="text" class="form-control" id="nomeEnderecoCadastrar">
+            <input [(ngModel)]="endereco.endereco" name="endereco" type="text" class="form-control"
+              id="nomeEnderecoCadastrar">
             <div id="nomeEnderecoCadastrarHelp" class="form-text">Campo obrigatorio</div>
           </div>
 
           <div class="col-4">
             <label class="form-label" for="cepCadastrar">CEP</label>
-          <input [(ngModel)]="endereco.cep" name="cep" type="text" class="form-control" id="cepCadastrar">
+            <input [(ngModel)]="endereco.cep" name="cep" type="text" class="form-control" id="cepCadastrar">
             <div id="cepCadastrarHelp" class="form-text">Campo obrigatorio</div>
           </div>
         </form>
       </div>
       <div class="modal-footer text-center" style="background-color: #64AEAA;">
-        <button type="button" class="btn btn-success"(click)="cadastrar()">Cadastrar</button>
+        <button type="button" class="btn btn-success" (click)="cadastrar()">Cadastrar</button>
       </div>
     </div>
   </div>
@@ -70,23 +75,24 @@
 
 <!-- Modal excluir -->
 <ng-template [ngIf]="endereco">
-<div class="modal fade" id="excluirEnderecoModal" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog ">
-    <div class="modal-content ">
-      <div class="modal-header alert-danger">
-        <h5 class="modal-title" id="staticBackdropLabel">Você está excluindo um endereço</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body alert-danger">
-        <p class="display-6">{{endereco.endereco}}</p>
-        <p class="display-6">Tem certeza?</p>
-      </div>
-      <div class="modal-footer alert-danger">
-        <button type="button" class="btn btn-danger" (click)="excluir()">Sim</button>
+  <div class="modal fade" id="excluirEnderecoModal" tabindex="-1" aria-labelledby="staticBackdropLabel"
+    aria-hidden="true">
+    <div class="modal-dialog ">
+      <div class="modal-content ">
+        <div class="modal-header alert-danger">
+          <h5 class="modal-title" id="staticBackdropLabel">Você está excluindo um endereço</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body alert-danger">
+          <p class="display-6">{{endereco.endereco}}</p>
+          <p class="display-6">Tem certeza?</p>
+        </div>
+        <div class="modal-footer alert-danger">
+          <button type="button" class="btn btn-danger" (click)="excluir()">Sim</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </ng-template>
 <!-- Modal excluir -->
 

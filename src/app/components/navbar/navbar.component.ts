@@ -31,7 +31,7 @@ export class NavbarComponent implements OnInit {
   pesquisar(){
     this.produto.nome = $('#barraPesquisa').val()
     this.router.navigate(['/pesquisar'],{queryParams: this.produto})
-    this.produto = new Produto
+    this.produto = new Produto()
   }
 
   admLogado(){
