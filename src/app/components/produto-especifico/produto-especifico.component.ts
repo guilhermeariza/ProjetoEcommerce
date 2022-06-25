@@ -72,7 +72,7 @@ export class ProdutoEspecificoComponent implements OnInit {
       this.carrinho.foto = this.produto.foto
       this.carrinho.nomeProduto = this.produto.nome
       this.carrinho.descricao = this.produto.descricao
-      this.carrinho.categoria = this.produto.categoria
+      this.carrinho.categoria = this.produto.categoria.nomeCategoria
       this.carrinho.quantidade = this.quantidade
       this.carrinho.valorUnitario = this.produto.preco
       this.carrinho.valorTotal = this.quantidade * this.produto.preco

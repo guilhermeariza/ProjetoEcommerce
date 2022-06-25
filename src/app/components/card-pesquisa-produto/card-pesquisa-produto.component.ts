@@ -11,13 +11,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class CardPesquisaProdutoComponent implements OnInit {
   produto: Produto = new Produto()
   listaProduto: Produto[]
+  nome: string
 
   constructor(private router: Router, private produtoService: ProdutoService, private route: ActivatedRoute) { }
 
   ngOnInit(){
     this.route.queryParams.subscribe(params => {
       this.produto.nome = params['nome']
-      this.produto.categoria = params['categoria']
+      this.nome = params['nome']
     })
     this.carregarPesquisaPorNome(this.produto)
 

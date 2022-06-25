@@ -10,6 +10,7 @@ import { FormularioDadosClienteComponent } from './components/formulario-dados-c
 import { CadastroAdmComponent } from './components/cadastro-adm/cadastro-adm.component';
 import { CardPesquisaProdutoComponent } from './components/card-pesquisa-produto/card-pesquisa-produto.component';
 import { HistoricoPedidosComponent } from './components/historico-pedidos/historico-pedidos.component';
+import { CardPesquisaCategoriaComponent } from './components/card-pesquisa-categoria/card-pesquisa-categoria.component';
 
 const routes: Routes = [
   {path: '', redirectTo:'inico', pathMatch: 'full'},
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: 'administracaoelertech', component: CadastroAdmComponent},
   {path: 'pesquisar', component: CardPesquisaProdutoComponent},
   {path: 'historicopedidos', component: HistoricoPedidosComponent},
+  {path: 'pesquisarcategoria', component: CardPesquisaCategoriaComponent}
 ];
 
 @NgModule({

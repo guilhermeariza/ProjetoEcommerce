@@ -21,8 +21,8 @@
                         Categorias
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <button type="button" class="dropdown-item">Painel</button>
-                        <button type="button" class="dropdown-item">Transporte</button>
+                        <button type="button" class="dropdown-item" *ngFor="let categoria of listaCategoria" (click)="pesquisarPorCategoria(categoria)">{{categoria.nomeCategoria}}</button>
+
                     </div>
                 </li>
                 <!--/Botao dropdown-->
@@ -35,7 +35,7 @@
                 <form class="d-flex" role="search">
                     <input id="barraPesquisa" class="form-control me-2" style="width: 496px;" type="search" placeholder="Pesquisar..."
                         aria-label="Search">
-                    <button (click)="pesquisar()" class="btn btn-outline-success my-2 my-sm-0" type="submit"><img
+                    <button (click)="pesquisarPorNome()" class="btn btn-outline-success my-2 my-sm-0" type="submit"><img
                             src="assets/icon/pesquisa_transparente.gif" width="25px"></button>
                 </form>
                 <!--/Barra de pesquisa com botão-->
