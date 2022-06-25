@@ -30,14 +30,14 @@ export class ProdutoEspecificoComponent implements OnInit {
      private alerta: AlertaService) { }
 
   ngOnInit() {
-    this.produto.id = this.route.snapshot.params['id']
+    this.id = this.route.snapshot.params['id']
     this.carregarProdutoEspecifico()
     this.getUsuarioById()
     // this.getCarrinhoById()
   }
 
   carregarProdutoEspecifico(){
-    this.produtoService.getById(this.produto.id).subscribe((data: Produto) => {
+    this.produtoService.getById(this.id).subscribe((data: Produto) => {
       this.produto = data
 
     })

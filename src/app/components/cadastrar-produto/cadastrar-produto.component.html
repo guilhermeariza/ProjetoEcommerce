@@ -153,7 +153,7 @@
 
             <div class="col-3">
               <label class="form-label" for="categoriaProdutoEditar">Categoria</label>
-              <select class="form-select" id="categoriaProdutoEditar">
+              <select class="form-select" id="categoriaProdutoEditar" (change)="categoriaProduto($event)">
                 <option value="0">Selecione uma categoria...</option>
                 <option *ngFor="let categoria of listaCategoria" value="{{categoria.id}}">{{categoria.nomeCategoria}}
                 </option>

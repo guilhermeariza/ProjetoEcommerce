@@ -51,14 +51,14 @@ export class CadastrarProdutoComponent implements OnInit {
   }
 
   cadastrarProduto(){
-    this.produto.categoria= this.categoria
+    this.produto.categoria = this.categoria
     this.produto.foto = $('#setFoto').attr('src')
     this.produtoService.save(this.produto).subscribe((data: Produto) => {
       this.produto = data
       this.alerta.showAlertSuccess(`Produto ${this.produto.nome} cadastrado com sucesso`)
       this.limparModal()
       this.ngOnInit()
-      this.produto = new Produto
+      this.produto = new Produto()
     },
     (error: any) => {
       switch(error.status){
@@ -77,22 +77,27 @@ export class CadastrarProdutoComponent implements OnInit {
 
   abrirModalEditar(produto: Produto){
     this.produto = produto
-    $("#categoriaEditar option:contains("+produto.categoria+")").attr('selected', 'true');
+    $("#categoriaProdutoEditar option:contains("+this.produto.categoria.nomeCategoria+")").attr('selected', 'true');
+    let id = this.produto.categoria.id
+    this.categoriaService.getById(id).subscribe((data: Categoria)=>{
+      this.categoria = data
+    })
+    console.log(this.categoria)
   }
 
   atualizarProduto(){
+    this.produto.categoria = this.categoria
     this.produto.id = $('#idEditar').val()
     this.produto.nome = $('#nomeEditar').val()
     this.produto.preco = $('#precoEditar').val()
     this.produto.estoque = $('#estoqueEditar').val()
     this.produto.descricao = $('#descricaoEditar').val()
-    this.produto.categoria = $('#categoriaEditar').val()
     this.produto.foto = $('#fotoProdutoEditar').attr('src')
-
+    console.log(this.produto)
     this.produtoService.update(this.produto).subscribe((data: Produto) => {
+      this.produto = data
       this.alerta.showAlertSuccess('Produto atualizado com sucesso')
-      this.ngOnInit()
-      this.produto = new Produto
+      this.produto = new Produto()
     },
     (error: any) => {
       switch(error.status){
@@ -118,7 +123,7 @@ export class CadastrarProdutoComponent implements OnInit {
         this.produto = data
         this.alerta.showAlertSuccess(this.produto.nome +' excluído com sucesso')
         this.ngOnInit()
-        this.produto = new Produto
+        this.produto = new Produto()
       },
       (error: any) => {
         switch(error.status){

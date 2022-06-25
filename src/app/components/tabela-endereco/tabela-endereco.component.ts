@@ -45,7 +45,7 @@ export class TabelaEnderecoComponent implements OnInit {
     this.enderecoService.save(this.endereco).subscribe((data: Endereco) => {
       this.endereco = data
       this.alerta.showAlertSuccess('Endereco cadastrado com sucesso')
-      this.endereco = new Endereco
+      this.endereco = new Endereco()
       this.limparModal
       this.ngOnInit()
     },

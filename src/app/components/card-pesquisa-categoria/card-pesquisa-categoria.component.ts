@@ -20,7 +20,8 @@ export class CardPesquisaCategoriaComponent implements OnInit {
   listaProduto: Produto[]
   lista: any
 
-  constructor(private router: Router,private categoriaService: CategoriaService, private produtoService: ProdutoService, private route: ActivatedRoute) { }
+  constructor(private router: Router,private categoriaService: CategoriaService, private produtoService: ProdutoService, private route: ActivatedRoute) {
+   }
 
   ngOnInit(){
     this.route.queryParams.subscribe(params => {
@@ -41,7 +42,6 @@ export class CardPesquisaCategoriaComponent implements OnInit {
       this.listaCategoria = this.lista.filter(function(c: Produto){
         return c.categoria.nomeCategoria == categoria
       })
-      this.ngOnInit()
     })
   }
 
