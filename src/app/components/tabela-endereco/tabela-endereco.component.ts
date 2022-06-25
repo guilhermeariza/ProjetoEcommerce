@@ -45,7 +45,7 @@ export class TabelaEnderecoComponent implements OnInit {
     this.enderecoService.save(this.endereco).subscribe((data: Endereco) => {
       this.endereco = data
       this.alerta.showAlertSuccess('Endereco cadastrado com sucesso')
-      this.endereco = new Endereco()
+      this.endereco = new Endereco
       this.limparModal
     },
     (error: any) => {
@@ -68,12 +68,17 @@ export class TabelaEnderecoComponent implements OnInit {
   }
 
   atualizar(){
+    this.endereco.endereco = $('#enderecoEditar').val()
+    this.endereco.cep = $('#cepEditar').val()
+    this.endereco.usuario = this.usuario
+
     this.enderecoService.update(this.endereco).subscribe((data: Endereco) => {
       this.endereco = data
+      console.log(this.endereco)
+      this.endereco = new Endereco
       this.alerta.showAlertSuccess('Endereco atualizado com sucesso')
       this.limparModal()
       this.fecharModal()
-      this.endereco = new Endereco
     },
     (error: any) => {
       switch(error.status){
@@ -118,7 +123,7 @@ excluir(){
 
 
   limparModal(){
-    $('.modal').find('input:text').val('')
+    $('.modal').find('input').val('')
   }
 
   fecharModal(){

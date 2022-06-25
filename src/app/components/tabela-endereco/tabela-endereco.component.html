@@ -26,10 +26,10 @@
         <td id="enderecoTb">{{endereco.endereco}}</td>
         <td id="cepTb">{{endereco.cep}}</td>
         <td>
-          <button (focus)="abrirModalEditar(endereco)"type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editarEnderecoModal"><i class="bi bi-pencil-square"></i>Editar</button>
+          <button (click)="abrirModalEditar(endereco)"type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editarEnderecoModal"><i class="bi bi-pencil-square"></i>Editar</button>
         </td>
         <td>
-          <button (focus)="abrirModalExcluir(endereco)" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#excluirEnderecoModal"><i class="bi bi-trash"></i>Excluir</button>
+          <button (click)="abrirModalExcluir(endereco)" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#excluirEnderecoModal"><i class="bi bi-trash"></i>Excluir</button>
         </td>
       </tr>
     </tbody>
@@ -102,13 +102,13 @@
         <form class="row gy-2 gx-3 align-items-center">
           <div class="col-8">
             <label class="form-label" for="enderecoEditar">Endereço</label>
-            <input [(ngModel)]="endereco.endereco" name="endereco" value="{{endereco.endereco}}" type="text" class="form-control" id="enderecoEditar">
+            <input name="endereco" value="{{endereco.endereco}}" type="text" class="form-control" id="enderecoEditar">
             <div id="enderecoEditarHelp" class="form-text">Campo obrigatorio</div>
           </div>
 
           <div class="col-4">
             <label class="form-label" for="cepEditar">CEP</label>
-            <input [(ngModel)]="endereco.cep" name="cep" value="{{endereco.cep}}" type="text" class="form-control" id="cepEditar">
+            <input name="cep" value="{{endereco.cep}}" type="text" class="form-control" id="cepEditar">
             <div id="cepEditarHelp" class="form-text">Campo obrigatorio</div>
           </div>
         </form>
