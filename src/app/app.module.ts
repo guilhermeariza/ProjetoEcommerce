@@ -26,7 +26,6 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import {ImageModule} from 'primeng/image';
 import { TabelaCartaoCreditoComponent } from './components/tabela-cartao-credito/tabela-cartao-credito.component';
 import { HistoricoPedidosComponent } from './components/historico-pedidos/historico-pedidos.component';
-import { FinalizarCarrinhoComponent } from './components/finalizar-carrinho/finalizar-carrinho.component';
 declare var $:any;
 
 
@@ -49,7 +48,6 @@ declare var $:any;
     CadastroAdmComponent,
     AlertasComponent,
     HistoricoPedidosComponent,
-    FinalizarCarrinhoComponent
   ],
   imports: [
     BrowserModule,
