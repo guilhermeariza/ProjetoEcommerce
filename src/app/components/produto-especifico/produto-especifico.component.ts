@@ -77,15 +77,25 @@ export class ProdutoEspecificoComponent implements OnInit {
       this.carrinho.valorUnitario = this.produto.preco
       this.carrinho.valorTotal = this.quantidade * this.produto.preco
       this.carrinho.status = 'carrinho'
-      console.log(this.carrinho)
 
-      // Envia o produto para o carrinho
-      this.carrinhoService.save(this.carrinho).subscribe((data: Carrinho)=>{
+     if(this.carrinho.quantidade > this.produto.estoque){
+      this.alerta.showAlertDanger('Não temos essa quantidade em estoque')
+     } else {
+      this.salvarCarrinho()
+      this.atualizarEstoque()
+     }
+    }
+
+    salvarCarrinho(){
+       // Envia o produto para o carrinho
+       this.carrinhoService.save(this.carrinho).subscribe((data: Carrinho)=>{
         this.carrinho = data
         console.log(this.carrinho)
         this.alerta.showAlertSuccess('Carrinho cadastrado com sucesso')
       })
+    }
 
+    atualizarEstoque(){
       // Atualiza o estoque disponível
       this.produto.estoque = this.produto.estoque - this.carrinho.quantidade
       this.produtoService.update(this.produto).subscribe((data: Produto)=>{
@@ -93,6 +103,5 @@ export class ProdutoEspecificoComponent implements OnInit {
         console.log('Estoque atualizado com sucesso')
       })
     }
-
   //fim
 }

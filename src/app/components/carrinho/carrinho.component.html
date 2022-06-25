@@ -32,7 +32,7 @@
             <div class="col fw-bold">R$ {{produto.valorUnitario}}</div>
             <div class="col fw-bold">R$ {{produto.valorTotal}}</div>
             <div class="col">
-              <button (focus)="excluirProduto(produto.id)" type="button" class="fw-bold border border-white "
+              <button (focus)="excluirProduto(produto.id, produto.idProduto, produto.quantidade)" type="button" class="fw-bold border border-white "
                 style="width: 80%; height: 80%; background: white;" data-bs-toggle="modal"
                 data-bs-target="#exampleModal">
                 <h4>&times;</h4>

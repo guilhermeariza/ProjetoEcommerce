@@ -72,7 +72,7 @@ export class CadastrarProdutoComponent implements OnInit {
     this.produto.id = $('#idEditar').val()
     this.produto.nome = $('#nomeEditar').val()
     this.produto.preco = $('#precoEditar').val()
-    this.produto.estoque = $('#precoEditar').val()
+    this.produto.estoque = $('#estoqueEditar').val()
     this.produto.descricao = $('#descricaoEditar').val()
     this.produto.categoria = $('#categoriaEditar').val()
     this.produto.foto = $('#fotoProdutoEditar').attr('src')

@@ -3,12 +3,14 @@ import { Router } from '@angular/router';
 import { Carrinho } from 'src/app/model/Carrinho';
 import { CartaoCredito } from 'src/app/model/CartaoCredito';
 import { Endereco } from 'src/app/model/Endereços';
+import { Produto } from 'src/app/model/Produto';
 import { Usuario } from 'src/app/model/Usuario';
 import { AlertaService } from 'src/app/service/alerta.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { CarrinhoService } from 'src/app/service/carrinho.service';
 import { CartaoCreditoService } from 'src/app/service/cartao-credito.service';
 import { EnderecoService } from 'src/app/service/endereco.service';
+import { ProdutoService } from 'src/app/service/produto.service';
 import { environment } from 'src/environments/environment.prod';
 
 @Component({
@@ -19,6 +21,7 @@ import { environment } from 'src/environments/environment.prod';
 export class CarrinhoComponent implements OnInit {
   carrinho:Carrinho = new Carrinho()
   usuario: Usuario = new Usuario()
+  produto: Produto = new Produto()
   listaCarrinho: any
   lista: any = new Carrinho()
   somaDosProdutos: number
@@ -30,8 +33,7 @@ export class CarrinhoComponent implements OnInit {
     private carrinhoService: CarrinhoService,
     private auth: AuthService,
     private alerta: AlertaService,
-    private cartao: CartaoCreditoService,
-    private endereco: EnderecoService
+    private produtoService: ProdutoService
   ) { }
 
   ngOnInit() {
@@ -66,13 +68,29 @@ export class CarrinhoComponent implements OnInit {
   somaTotal(){
     this.somaDosProdutos = 0
     for(let i=0; i < this.listaCarrinho.length; i++){
-      this.somaDosProdutos = this.listaCarrinho[i].valorUnitario + this.somaDosProdutos
+      this.somaDosProdutos = this.listaCarrinho[i].valorTotal + this.somaDosProdutos
     }
   }
 
-  excluirProduto(id: number){
+  excluirProduto(id: number, idProduto: number, quantidade: number){
+    this.atualizarEstoque(idProduto, quantidade)
     this.carrinhoService.delete(id).subscribe(()=>{
       this.alerta.showAlertWarning(`Produto excluído com sucesso`)
+    })
+  }
+
+  atualizarEstoque(idProduto: number, quantidade: number){
+    // busca o produto no estoque
+    this.produtoService.getById(idProduto).subscribe((data: Produto)=>{
+      this.produto = data
+
+      // Atualiza o estoque disponível 
+      this.produto.estoque = this.produto.estoque + quantidade
+      this.produtoService.update(this.produto).subscribe((data: Produto)=>{
+      this.produto = data
+      console.log('Estoque atualizado com sucesso')
+      this.produto = new Produto
+      })
     })
   }
 
