@@ -4,8 +4,8 @@
     <!-- Stack the columns on mobile by making one full-width and the other half-width -->
     <div class="col-4 text-center" id="imagem">
       <img src="{{produto.foto}}" alt="...">
-      </div>
-    <div class="col-sm-8">
+    </div>
+    <div class="col-sm-8 mr-5">
       <h1 class="h1">{{produto.nome}}</h1>
       <hr>
       <p class="paragrafo">{{produto.descricao}}</p>
@@ -20,14 +20,16 @@
       <!-- Início dos Botões -->
       <div class="d-flex flex-row-reverse">
         <div class="p-4">
-          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="adicionarProduto()">
+          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            (click)="adicionarProduto()">
             COMPRAR
           </button>
         </div>
         <div class="p-4">
           <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-            <button  type="button" class="btn btn-secondary" id="menos" (click)="diminuir()">-</button>
-            <input min="1" max="{{produto.estoque}}" type="number" name="numero" size="5" id="quantidade" value="1">
+            <button type="button" class="btn btn-secondary" id="menos" (click)="diminuir()">-</button>
+            <input class="text-center" min="1" max="{{produto.estoque}}" type="number" name="numero" size="5"
+              id="quantidade" value="1">
             <button type="button" class="btn btn-secondary" id="mais" (click)="aumentar()">+</button>
           </div>
         </div>

@@ -251,12 +251,6 @@
                 <td id="idCategoria">{{categoria.id}}</td>
                 <td id="nomeCategoria" class="text-center">{{categoria.nomeCategoria}}</td>
                 <td class="text-center">
-                  <button id="btnExcluir" (click)="deletarCategoria(categoria)" class="btn btn-outline-danger">
-                    <i class="bi bi-trash"></i>
-                    Excluir
-                  </button>
-                </td>
-                <td class="text-center">
                   <button id="btnEditar" (click)="abrirModalAtualizarCategoria(categoria)"
                     class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editarCategoria">
                     <i class="bi bi-pencil-square"></i>
@@ -281,7 +275,7 @@
       <div class="modal-body">
         <div class="row">
           <div class="col-8">
-            <input id="categoriaEditar" type="text" name="nome" class="form-control" value="{{categoria.nomeCategoria}}">
+            <input [(ngModel)]="categoria.nomeCategoria" id="categoriaEditar" type="text" name="nome" class="form-control" value="{{categoria.nomeCategoria}}">
           </div>
           <div class="col-4">
             <button (click)="atualizarCategoria()" data-bs-dismiss="modal" class="btn btn-outline-primary">

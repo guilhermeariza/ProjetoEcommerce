@@ -7,6 +7,7 @@ import { AlertaService } from 'src/app/service/alerta.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { CartaoCreditoService } from 'src/app/service/cartao-credito.service';
 import { environment } from 'src/environments/environment.prod';
+import * as Inputmask from "inputmask"
 declare var $:any;
 
 @Component({
@@ -52,7 +53,7 @@ export class TabelaCartaoCreditoComponent implements OnInit {
   cadastrarCartao(){
     // Armzena no atributo usuario do CartaoCredito, o usuario logado que foi buscado pelo metodo getAllCartaoUsuario
     this.cartao.usuario = this.usuario
-    this.cartao.nomeCartao = this.cartao.nomeCartao.toUpperCase()
+    this.cartao.nomeCartao = $('#nomeCartaoCadastrar').val()
     this.cartao.numeroCartao = $('#numeroCartaoCadastrar').val()
     this.cartao.dataValidade = $('#validadeCadastrar').val()
     this.cartao.cvv = $('#cvvCadastrar').val()

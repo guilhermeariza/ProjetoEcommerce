@@ -41,7 +41,9 @@ export class CarrinhoComponent implements OnInit {
   }
 
   CarregarCarrinho(){
-    this.auth.getById(environment.id).subscribe((data: Usuario)=>{this.usuario = data
+    this.auth.getById(environment.id).subscribe((data: Usuario)=>{
+      this.usuario = data
+      console.log(this.usuario)
       this.carrinho = this.usuario.carrinho
       this.lista = this.carrinho
       this.listaCartao = this.usuario.cartaoCredito
@@ -98,12 +100,14 @@ export class CarrinhoComponent implements OnInit {
   finalizarPedido(){
     this.auth.getById(environment.id).subscribe((data: Usuario)=>{
       this.usuario = data
+
       this.listaCarrinho = this.usuario.carrinho
       console.log(this.listaCarrinho)
-      for(this.carrinho of this.listaCarrinho){
-        this.carrinho.status = "pedido"
-        this.carrinhoService.update(this.carrinho).subscribe((resp: Carrinho)=>{
+      for(let carrinho of this.listaCarrinho){
+        carrinho.status = "pedido"
+        this.carrinhoService.update(carrinho).subscribe((resp: Carrinho)=>{
           this.carrinho = resp
+          console.log(this.carrinho)
           this.alerta.showAlertSuccess('Pedido finalizado com sucesso')
         }
         )

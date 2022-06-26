@@ -5,7 +5,7 @@
   </div>
   <div class="container" *ngFor="let produto of listaProduto">
 
-    <div class="row shadow-lg mb-3" style="background: lightgray; border-radius: 10px; box-shadow: black, 10%;">
+    <div class="row mb-3">
       <div style="display: none;">{{produto.id}}</div>
       <div class="col-3">
         <a [routerLink]="['/produto', produto]">
@@ -26,5 +26,6 @@
         </div>
       </div>
     </div>
+    <hr>
   </div>
 </main>

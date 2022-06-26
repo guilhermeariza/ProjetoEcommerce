@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Categoria } from 'src/app/model/Categoria';
 import { Produto } from 'src/app/model/Produto';
 import { AlertaService } from 'src/app/service/alerta.service';
+import { AuthService } from 'src/app/service/auth.service';
 import { CategoriaService } from 'src/app/service/categoria.service';
 import { environment } from 'src/environments/environment.prod';
 declare var $:any;
@@ -20,7 +21,7 @@ export class NavbarComponent implements OnInit {
   categoria: Categoria = new Categoria()
   listaCategoria: Categoria[]
 
-  constructor( private categoriaService: CategoriaService,private router: Router, private alerta: AlertaService) { }
+  constructor(private auth: AuthService, private categoriaService: CategoriaService,private router: Router, private alerta: AlertaService) { }
 
   ngOnInit() {
     this.getAllCategoria()
@@ -51,6 +52,8 @@ export class NavbarComponent implements OnInit {
     }
     return admLogado
   }
+
+
 
   getAllCategoria(){
     return this.categoriaService.getAll().subscribe((data: Categoria[])=>{

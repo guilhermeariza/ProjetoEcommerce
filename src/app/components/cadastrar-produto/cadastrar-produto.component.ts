@@ -220,8 +220,9 @@ export class CadastrarProdutoComponent implements OnInit {
   atualizarCategoria(){
     this.categoriaService.update(this.categoria).subscribe((data: Categoria)=>{
       this.categoria = data
-      this.alerta.showAlertSuccess(`Categoria atualizada com sucesso`)
       this.categoria = new Categoria()
+      this.alerta.showAlertSuccess(`Categoria atualizada com sucesso`)
+      this.ngOnInit()
 
     },(error: any) => {
       switch(error.status){
@@ -236,13 +237,7 @@ export class CadastrarProdutoComponent implements OnInit {
         break;
       }
     })
-    this.ngOnInit()
-  }
 
-  deletarCategoria(categoria: Categoria){
-    this.categoriaService.deletar(categoria.id).subscribe(()=>{
-      this.ngOnInit()
-    })
   }
 
 }
