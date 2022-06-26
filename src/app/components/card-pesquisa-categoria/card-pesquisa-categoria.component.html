@@ -1,9 +1,9 @@
 <main>
   <div class="container-fluid mb-4">
-    <label class="fs-3">Pesquisando por <label class="fw-bold">{{nome}}</label></label>
+    <label class="fs-3">Filtrando por <label class="fw-bold">{{categoria}}</label></label>
     <hr>
   </div>
-  <div class="container" *ngFor="let produto of listaProduto">
+  <div class="container" *ngFor="let produto of listaCategoria">
 
     <div class="row mb-3">
       <div style="display: none;">{{produto.id}}</div>

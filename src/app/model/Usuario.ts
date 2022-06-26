@@ -12,6 +12,6 @@ export class Usuario{
   public razaoSocial: string
   public cnpj: string
   public cartaoCredito: CartaoCredito[]
-  public carrinho: Carrinho[]
+  public carrinho: Carrinho
   public endereco: Endereco[]
 }

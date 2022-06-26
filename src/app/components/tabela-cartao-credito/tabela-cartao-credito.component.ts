@@ -7,6 +7,11 @@ import { AlertaService } from 'src/app/service/alerta.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { CartaoCreditoService } from 'src/app/service/cartao-credito.service';
 import { environment } from 'src/environments/environment.prod';
+<<<<<<< HEAD
+=======
+import * as Inputmask from "inputmask"
+declare var $:any;
+>>>>>>> 2c87c6350b5f2b86007c59dc2afb1939767055da
 
 @Component({
   templateUrl: './tabela-cartao-credito.component.html',
@@ -27,6 +32,7 @@ export class TabelaCartaoCreditoComponent implements OnInit {
   ngOnInit() {
     // Inicializa o componente chamando este método, que busca no banco de dados o usuario logado
     this.getAllCartaoUsuario()
+    this.mascara()
   }
 
   // Metodo para buscar usuario logado no banco de dados, e buscar os cartões desse usuario específico
@@ -40,15 +46,29 @@ export class TabelaCartaoCreditoComponent implements OnInit {
     })
   }
 
+  mascara(){
+    $('#numeroCartaoCadastrar').inputmask('9999.9999.9999.9999')
+    $('#validadeCadastrar').inputmask('99/99')
+    $('#cvvCadastrar').inputmask('999')
+  }
+
   cadastrarCartao(){
     // Armzena no atributo usuario do CartaoCredito, o usuario logado que foi buscado pelo metodo getAllCartaoUsuario
     this.cartao.usuario = this.usuario
+    this.cartao.nomeCartao = $('#nomeCartaoCadastrar').val()
+    this.cartao.nomeCartao = this.cartao.nomeCartao.toUpperCase()
+    this.cartao.numeroCartao = $('#numeroCartaoCadastrar').val()
+    this.cartao.dataValidade = $('#validadeCadastrar').val()
+    this.cartao.cvv = $('#cvvCadastrar').val()
+
+    console.log(this.cartao)
     // Passa o cartão(já com o usuario inserido) para o post da cartaoService
     this.cartaoService.post(this.cartao).subscribe((data: CartaoCredito) => {
       // Armazena o retorno dentro do cartão desta classe
       this.cartao = data
       this.alerta.showAlertSuccess('Cartao cadastrado com sucesso')
       this.limparModal()
+      this.ngOnInit()
       this.cartao = new CartaoCredito
     },
     (error: any) => {
@@ -75,6 +95,7 @@ export class TabelaCartaoCreditoComponent implements OnInit {
       this.alerta.showAlertSuccess('Cartao excluído com sucesso')
       this.cartao = new CartaoCredito
       this.fecharModal()
+      this.ngOnInit()
     },(error: any) => {
       switch(error.status){
         case 400:
