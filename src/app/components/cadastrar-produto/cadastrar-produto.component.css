@@ -22,3 +22,12 @@ th{
 table {
   border: #64AEAA;
 }
+
+.modal-footer{
+  background-color: #64AEAA;
+}
+
+.modal-header{
+  background-color: #64AEAA;
+  color: white
+}

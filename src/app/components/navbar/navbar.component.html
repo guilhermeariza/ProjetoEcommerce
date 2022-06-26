@@ -1,76 +1,89 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-    <div class="container-fluid">
-        <a class="navbar-brand" routerLink="/inico">Elertech</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/inico">Elertech</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item iten-hover">
-                    <a class="nav-link active" routerLink="/inicio">Início</a>
-                </li>
-                <li class="nav-item iten-hover">
-                  <a class="nav-link" routerLink="/gerenciarprodutos" *ngIf="admLogado()">Gerenciar produtos</a>
-              </li>
-                <!--Botao dropdown-->
-                <li class="nav-item dropdown iten-hover">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Categorias
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <button class="dropdown-item">Painel</button>
-                        <button class="dropdown-item">Transporte</button>
-                    </div>
-                </li>
-                <!--/Botao dropdown-->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item iten-hover">
+          <a class="nav-link active" routerLink="/inicio">Início</a>
+        </li>
+        <li class="nav-item iten-hover">
+          <a class="nav-link" routerLink="/gerenciarprodutos" *ngIf="admLogado()">Gerenciar produtos</a>
+        </li>
+        <!--Botao dropdown-->
+        <li class="nav-item dropdown iten-hover">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Categorias
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <button type="button" class="dropdown-item" *ngFor="let categoria of listaCategoria"
+              (click)="pesquisarPorCategoria(categoria)">{{categoria.nomeCategoria}}</button>
+          </div>
+        </li>
+        <!--/Botao dropdown-->
 
-                <li class="nav-item">
-                    <a class="nav-link iten-hover" routerLink="/sobre">Sobre</a>
-                </li>
+        <li class="nav-item">
+          <a class="nav-link iten-hover" routerLink="/sobre">Sobre</a>
+        </li>
 
-                <!--Barra de pesquisa com botão-->
-                <form class="d-flex" role="search">
-                    <input id="barraPesquisa" class="form-control me-2" style="width: 496px;" type="search" placeholder="Pesquisar..."
-                        aria-label="Search">
-                    <button (click)="pesquisar()" class="btn btn-outline-success my-2 my-sm-0" type="submit"><img
-                            src="assets/icon/pesquisa_transparente.gif" width="25px"></button>
-                </form>
-                <!--/Barra de pesquisa com botão-->
-            </ul>
-        </div>
-
-        <!--Botão carrinho-->
-        <ul class="navbar-nav">
-            <li class="form-inline nav-item dropdown">
-                <a class="nav-link" routerLink="/carrinho">
-                    <img src="assets/icon/carrinho_transparente.gif" width="30px">
-                </a>
-            </li>
-        </ul>
-        <!--/Botão carrinho-->
-
-        <!--Botão de usuario-->
-        <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                     aria-expanded="false">
-                    <img src="assets/icon/person-circle.svg" width="30px">
-                </a>
-                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item">{{usuario}}</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" routerLink="/meuperfil" href="">Atualizar perfil</a>
-                    <a class="dropdown-item" routerLink="/meuperfil"  href="">Formas de pagamento</a>
-                    <a class="dropdown-item" routerLink="">Histórico de pedidos</a>
-                    <a class="dropdown-item" routerLink="/meuperfil"  href="#usuarioSenha">Usuario e senha</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" (click)="sair()">Sair</a>
-                </div>
-            </li>
-        </ul>
-        <!--/Botão de usuario-->
+        <!--Barra de pesquisa com botão-->
+        <form class="d-flex" role="search">
+          <input id="barraPesquisa" class="form-control me-2" style="width: 496px;" type="search"
+            placeholder="Pesquisar..." aria-label="Search">
+          <button (click)="pesquisarPorNome()" class="btn btn-outline-success my-2 my-sm-0" type="submit"><img
+              src="assets/icon/pesquisa_transparente.gif" width="25px"></button>
+        </form>
+        <!--/Barra de pesquisa com botão-->
+      </ul>
     </div>
+    <ul class="navbar-nav" *ngIf="naoLogado()">
+      <li class="nav-item">
+        <a class="nav-link iten-hover" routerLink="/login">Fazer login</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav" *ngIf="naoLogado()">
+      <li class="nav-item">
+        <a class="nav-link iten-hover" routerLink="/criarconta">Fazer cadastro</a>
+      </li>
+    </ul>
+
+    <!--Botão carrinho-->
+    <ul class="navbar-nav" *ngIf="logado()">
+      <li class="form-inline nav-item dropdown">
+        <a class="nav-link" routerLink="/carrinho">
+          <img src="assets/icon/carrinho_transparente.gif" width="30px">
+        </a>
+      </li>
+    </ul>
+    <!--/Botão carrinho-->
+
+    <!--Botão de usuario-->
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <img src="assets/icon/person-circle.svg" width="30px">
+        </a>
+        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" *ngIf="logado()">{{usuario}}</a>
+          <div class="dropdown-divider" *ngIf="logado()"></div>
+          <a class="dropdown-item" *ngIf="logado()" routerLink="/meuperfil">Atualizar perfil</a>
+          <a class="dropdown-item" *ngIf="logado()" routerLink="/meuperfil">Formas de pagamento</a>
+          <a class="dropdown-item" *ngIf="logado()" routerLink="/historicopedidos">Histórico de pedidos</a>
+          <a class="dropdown-item" *ngIf="logado()" routerLink="/meuperfil">Usuario e senha</a>
+          <div class="dropdown-divider" *ngIf="logado()"></div>
+          <a class="dropdown-item" *ngIf="logado()" (click)="sair()">Sair</a>
+          <a class="dropdown-item" *ngIf="naoLogado()" routerLink="/login">Fazer login</a>
+          <a class="dropdown-item" *ngIf="naoLogado()" routerLink="/criarconta">Fazer cadastro</a>
+        </div>
+      </li>
+    </ul>
+    <!--/Botão de usuario-->
+  </div>
 </nav>

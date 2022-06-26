@@ -3,6 +3,8 @@ import { Produto } from 'src/app/model/Produto';
 import { ProdutoService } from 'src/app/service/produto.service';
 import { Router } from '@angular/router';
 import { AlertaService } from 'src/app/service/alerta.service';
+import { CategoriaService } from 'src/app/service/categoria.service';
+import { Categoria } from 'src/app/model/Categoria';
 declare var $:any;
 
 @Component({
@@ -14,17 +16,22 @@ export class CadastrarProdutoComponent implements OnInit {
 
   produto:Produto = new Produto()
   listaProdutos: Produto[]
-  categoria: string
+  categoriaChange: string
+
+  categoria: Categoria = new Categoria()
+  listaCategoria: Categoria[]
 
   constructor(
     private router: Router,
     private produtoService: ProdutoService,
+    private categoriaService: CategoriaService,
     private alerta: AlertaService
     ) {
   }
 
   ngOnInit(){
     this.getAll()
+    this.getAllCategoria()
   }
 
   getAll(){
@@ -36,7 +43,11 @@ export class CadastrarProdutoComponent implements OnInit {
   }
 
   categoriaProduto(event: any){
-    this.categoria = event.target.value
+    let id = event.target.value
+    this.categoriaService.getById(id).subscribe((data: Categoria)=>{
+      this.categoria = data
+    })
+    console.log(this.categoria)
   }
 
   cadastrarProduto(){
@@ -46,7 +57,8 @@ export class CadastrarProdutoComponent implements OnInit {
       this.produto = data
       this.alerta.showAlertSuccess(`Produto ${this.produto.nome} cadastrado com sucesso`)
       this.limparModal()
-      this.produto = new Produto
+      this.ngOnInit()
+      this.produto = new Produto()
     },
     (error: any) => {
       switch(error.status){
@@ -65,19 +77,43 @@ export class CadastrarProdutoComponent implements OnInit {
 
   abrirModalEditar(produto: Produto){
     this.produto = produto
-    $("#categoriaEditar option:contains("+produto.categoria+")").attr('selected', 'true');
+    $("#categoriaProdutoEditar option:contains("+this.produto.categoria.nomeCategoria+")").attr('selected', 'true');
+    let id = this.produto.categoria.id
+    this.categoriaService.getById(id).subscribe((data: Categoria)=>{
+      this.categoria = data
+    })
+    console.log(this.categoria)
   }
 
   atualizarProduto(){
+    this.produto.categoria = this.categoria
     this.produto.id = $('#idEditar').val()
     this.produto.nome = $('#nomeEditar').val()
     this.produto.preco = $('#precoEditar').val()
-    this.produto.estoque = $('#precoEditar').val()
+    this.produto.estoque = $('#estoqueEditar').val()
     this.produto.descricao = $('#descricaoEditar').val()
-    this.produto.categoria = $('#categoriaEditar').val()
     this.produto.foto = $('#fotoProdutoEditar').attr('src')
-
+    console.log(this.produto)
     this.produtoService.update(this.produto).subscribe((data: Produto) => {
+<<<<<<< HEAD
+=======
+      this.produto = data
+      this.alerta.showAlertSuccess('Produto atualizado com sucesso')
+      this.produto = new Produto()
+    },
+    (error: any) => {
+      switch(error.status){
+        case 400:
+          this.alerta.showAlertDanger('Erro na requisção, erro: '+error.status)
+        break;
+        case 401:
+          this.alerta.showAlertDanger('Acesso não autorizado, erro: '+error.status)
+        break;
+        case 500:
+          this.alerta.showAlertDanger('Erro na aplicação, erro: '+error.status)
+        break;
+      }
+>>>>>>> teste-mascaras
     })
   }
 
@@ -89,7 +125,8 @@ export class CadastrarProdutoComponent implements OnInit {
       this.produtoService.delete(this.produto.id).subscribe((data: Produto) => {
         this.produto = data
         this.alerta.showAlertSuccess(this.produto.nome +' excluído com sucesso')
-        this.produto = new Produto
+        this.ngOnInit()
+        this.produto = new Produto()
       },
       (error: any) => {
         switch(error.status){
@@ -140,6 +177,70 @@ export class CadastrarProdutoComponent implements OnInit {
     $("#categoriaEditar option:contains(Selecione uma categoria...)").attr('selected', 'true')
     $('input[type="file"]').val('')
     $('#input_img').show()
+  }
+
+
+  //Gestão de categorias
+  getAllCategoria(){
+    return this.categoriaService.getAll().subscribe((data: Categoria[])=>{
+      this.listaCategoria = data
+    })
+  }
+
+  getCategoriaById(){
+    this.categoriaService.getById(this.categoria.id).subscribe((data: Categoria)=>{
+      this.categoria = data
+      this.categoria = new Categoria()
+    })
+  }
+
+  cadastrarCategoria(){
+    this.categoria.nomeCategoria = $('#categoriaCadastrar').val()
+    this.categoriaService.save(this.categoria).subscribe((data: Categoria)=>{
+      this.categoria = data
+      this.alerta.showAlertSuccess(`Categoria ${this.categoria.nomeCategoria} cadastrada com sucesso`)
+      this.categoria = new Categoria()
+      this.ngOnInit()
+    },(error: any) => {
+      switch(error.status){
+        case 400:
+          this.alerta.showAlertDanger('Erro na requisção, erro: '+error.status)
+        break;
+        case 401:
+          this.alerta.showAlertDanger('Acesso não autorizado, erro: '+error.status)
+        break;
+        case 500:
+          this.alerta.showAlertDanger('Erro na aplicação, erro: '+error.status)
+        break;
+      }
+    })
+  }
+
+  abrirModalAtualizarCategoria(categoria: Categoria){
+    this.categoria = categoria
+  }
+
+  atualizarCategoria(){
+    this.categoriaService.update(this.categoria).subscribe((data: Categoria)=>{
+      this.categoria = data
+      this.categoria = new Categoria()
+      this.alerta.showAlertSuccess(`Categoria atualizada com sucesso`)
+      this.ngOnInit()
+
+    },(error: any) => {
+      switch(error.status){
+        case 400:
+          this.alerta.showAlertDanger('Erro na requisção, erro: '+error.status)
+        break;
+        case 401:
+          this.alerta.showAlertDanger('Acesso não autorizado, erro: '+error.status)
+        break;
+        case 500:
+          this.alerta.showAlertDanger('Erro na aplicação, erro: '+error.status)
+        break;
+      }
+    })
+
   }
 
 }

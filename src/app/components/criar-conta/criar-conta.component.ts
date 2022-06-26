@@ -34,6 +34,7 @@ export class CriarContaComponent implements OnInit {
     if(usuario.senha != this.confirmarSenha){
       this.alerta.showAlertDanger('As senhas precisam ser iguais')
     } else {
+      this.usuario.tipo = 'cliente'
       this.auth.cadastrar(this.usuario).subscribe((resp: Usuario)=>{
         this.usuario = resp
         this.alerta.showAlertSuccess('Usuário cadastrado com sucesso')

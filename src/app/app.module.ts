@@ -25,6 +25,8 @@ import { OrderModule } from 'ngx-order-pipe';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import {ImageModule} from 'primeng/image';
 import { TabelaCartaoCreditoComponent } from './components/tabela-cartao-credito/tabela-cartao-credito.component';
+import { HistoricoPedidosComponent } from './components/historico-pedidos/historico-pedidos.component';
+import { CardPesquisaCategoriaComponent } from './components/card-pesquisa-categoria/card-pesquisa-categoria.component';
 declare var $:any;
 
 
@@ -45,7 +47,9 @@ declare var $:any;
     ProdutoEspecificoComponent,
     CriarContaComponent,
     CadastroAdmComponent,
-    AlertasComponent
+    AlertasComponent,
+    HistoricoPedidosComponent,
+    CardPesquisaCategoriaComponent,
   ],
   imports: [
     BrowserModule,

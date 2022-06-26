@@ -24,7 +24,7 @@ export class AppComponent {
 
   navegarParaLogin(){
     if(environment.token == ''){
-      this.router.navigate(['/login'])
+      this.router.navigate(['/inicio'])
     }
   }
 }

@@ -14,7 +14,7 @@ footer{
   width: 100%;
   position: relative;
   bottom: 0;
-  background-color: #64AEAA;
+  background-color: #64aeaa;
 }
 
 footer .footer-copyright{
@@ -32,5 +32,4 @@ footer .footer-copyright span{
   bottom:0;
   left:0;
   right: 0;
-  margin-top: 50px;
 }
