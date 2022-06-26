@@ -26,6 +26,12 @@ export class TabelaEnderecoComponent implements OnInit {
 
   ngOnInit(){
     this.getAllEnderecoUsuario()
+    this.mascara()
+  }
+
+  mascara(){
+    $('#cepCadastrar').inputmask('99999-999')
+    $('#cepEditar').inputmask('99999-999')
   }
 
   getAllEnderecoUsuario(){
@@ -41,6 +47,8 @@ export class TabelaEnderecoComponent implements OnInit {
   cadastrar(){
     // indicar para o endereco qual usuario deve ser associado
     this.endereco.usuario = this.usuario
+    this.endereco.cep = $('#cepCadastrar').val()
+    console.log(this.endereco)
     // Passar o endereço, já com o usuario associado, como parametro para o método save da service de endereco
     this.enderecoService.save(this.endereco).subscribe((data: Endereco) => {
       this.endereco = data
@@ -71,29 +79,14 @@ export class TabelaEnderecoComponent implements OnInit {
   atualizar(){
     this.endereco.endereco = $('#enderecoEditar').val()
     this.endereco.cep = $('#cepEditar').val()
-    this.endereco.usuario = this.usuario
 
-    this.enderecoService.update(this.endereco).subscribe((data: Endereco) => {
+    this.enderecoService.update(this.endereco).subscribe((data: Endereco)=>{
       this.endereco = data
-      console.log(this.endereco)
       this.endereco = new Endereco()
       this.alerta.showAlertSuccess('Endereco atualizado com sucesso')
       this.limparModal()
       this.fecharModal()
       this.ngOnInit()
-    },
-    (error: any) => {
-      switch(error.status){
-        case 400:
-          this.alerta.showAlertDanger('Erro na requisção, erro: '+error.status)
-        break;
-        case 401:
-          this.alerta.showAlertDanger('Acesso não autorizado, erro: '+error.status)
-        break;
-        case 500:
-          this.alerta.showAlertDanger('Erro na aplicação, erro: '+error.status)
-        break;
-      }
     })
   }
 

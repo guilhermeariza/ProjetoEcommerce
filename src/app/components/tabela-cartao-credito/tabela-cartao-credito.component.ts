@@ -29,6 +29,7 @@ export class TabelaCartaoCreditoComponent implements OnInit {
   ngOnInit() {
     // Inicializa o componente chamando este método, que busca no banco de dados o usuario logado
     this.getAllCartaoUsuario()
+    this.mascara()
   }
 
   // Metodo para buscar usuario logado no banco de dados, e buscar os cartões desse usuario específico
@@ -42,9 +43,21 @@ export class TabelaCartaoCreditoComponent implements OnInit {
     })
   }
 
+  mascara(){
+    $('#numeroCartaoCadastrar').inputmask('9999.9999.9999.9999')
+    $('#validadeCadastrar').inputmask('99/99')
+    $('#cvvCadastrar').inputmask('999')
+  }
+
   cadastrarCartao(){
     // Armzena no atributo usuario do CartaoCredito, o usuario logado que foi buscado pelo metodo getAllCartaoUsuario
     this.cartao.usuario = this.usuario
+    this.cartao.nomeCartao = this.cartao.nomeCartao.toUpperCase()
+    this.cartao.numeroCartao = $('#numeroCartaoCadastrar').val()
+    this.cartao.dataValidade = $('#validadeCadastrar').val()
+    this.cartao.cvv = $('#cvvCadastrar').val()
+
+    console.log(this.cartao)
     // Passa o cartão(já com o usuario inserido) para o post da cartaoService
     this.cartaoService.post(this.cartao).subscribe((data: CartaoCredito) => {
       // Armazena o retorno dentro do cartão desta classe

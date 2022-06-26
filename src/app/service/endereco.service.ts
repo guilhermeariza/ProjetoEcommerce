@@ -22,7 +22,7 @@ export class EnderecoService {
   }
 
   save(endereco: Endereco): Observable<Endereco>{
-    return this.http.post<Endereco>(this.url+'/cadastrar', endereco, this.token)
+    return this.http.post<Endereco>('http://localhost:8080/endereco/cadastrar', endereco, this.token)
   }
 
   update(endereco: Endereco): Observable<Endereco>{
