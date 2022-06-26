@@ -95,8 +95,6 @@ export class CadastrarProdutoComponent implements OnInit {
     this.produto.foto = $('#fotoProdutoEditar').attr('src')
     console.log(this.produto)
     this.produtoService.update(this.produto).subscribe((data: Produto) => {
-<<<<<<< HEAD
-=======
       this.produto = data
       this.alerta.showAlertSuccess('Produto atualizado com sucesso')
       this.produto = new Produto()
@@ -113,7 +111,6 @@ export class CadastrarProdutoComponent implements OnInit {
           this.alerta.showAlertDanger('Erro na aplicação, erro: '+error.status)
         break;
       }
->>>>>>> teste-mascaras
     })
   }
 
