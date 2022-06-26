@@ -81,7 +81,7 @@
 
           <div class="col-4">
             <label class="form-label" for="apelidoCartaoCadastrar">Como você quer chamar este cartão?</label>
-            <input  name="apelido" type="text" class="form-control"
+            <input [(ngModel)]="cartao.apelido" name="apelido" type="text" class="form-control"
               id="apelidoCartaoCadastrar">
             <div id="apelidoCartaoCadastrarHelp" class="form-text">Campo obrigatorio</div>
           </div>

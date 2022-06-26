@@ -25,11 +25,11 @@
         <th id="idEnderecoTb" scope="row">{{endereco.id}}</th>
         <td id="enderecoTb">{{endereco.endereco}}</td>
         <td id="cepTb">{{endereco.cep}}</td>
-        <td>
+        <!-- <td>
           <button (click)="abrirModalEditar(endereco)" type="button" class="btn btn-outline-primary"
             data-bs-toggle="modal" data-bs-target="#editarEnderecoModal"><i
               class="bi bi-pencil-square"></i>Editar</button>
-        </td>
+        </td> -->
         <td>
           <button (click)="abrirModalExcluir(endereco)" type="button" class="btn btn-outline-danger"
             data-bs-toggle="modal" data-bs-target="#excluirEnderecoModal"><i class="bi bi-trash"></i>Excluir</button>
@@ -97,7 +97,7 @@
 <!-- Modal excluir -->
 
 <!-- Modal editar -->
-<div class="modal fade" id="editarEnderecoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="editarEnderecoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" style="max-width:1000px;">
     <div class="modal-content">
       <div class="modal-header" style="background-color: #64AEAA; color:white; ">
@@ -124,5 +124,5 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <!-- Modal editar -->

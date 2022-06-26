@@ -54,6 +54,7 @@ export class TabelaCartaoCreditoComponent implements OnInit {
     // Armzena no atributo usuario do CartaoCredito, o usuario logado que foi buscado pelo metodo getAllCartaoUsuario
     this.cartao.usuario = this.usuario
     this.cartao.nomeCartao = $('#nomeCartaoCadastrar').val()
+    this.cartao.nomeCartao = this.cartao.nomeCartao.toUpperCase()
     this.cartao.numeroCartao = $('#numeroCartaoCadastrar').val()
     this.cartao.dataValidade = $('#validadeCadastrar').val()
     this.cartao.cvv = $('#cvvCadastrar').val()

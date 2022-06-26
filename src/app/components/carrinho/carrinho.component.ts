@@ -8,8 +8,6 @@ import { Usuario } from 'src/app/model/Usuario';
 import { AlertaService } from 'src/app/service/alerta.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { CarrinhoService } from 'src/app/service/carrinho.service';
-import { CartaoCreditoService } from 'src/app/service/cartao-credito.service';
-import { EnderecoService } from 'src/app/service/endereco.service';
 import { ProdutoService } from 'src/app/service/produto.service';
 import { environment } from 'src/environments/environment.prod';
 
@@ -75,6 +73,7 @@ export class CarrinhoComponent implements OnInit {
   }
 
   excluirProduto(id: number, idProduto: number, quantidade: number){
+    console.log(id, idProduto, quantidade)
     this.atualizarEstoque(idProduto, quantidade)
     this.carrinhoService.delete(id).subscribe(()=>{
       this.ngOnInit()
