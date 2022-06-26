@@ -11,6 +11,7 @@ import * as Inputmask from "inputmask"
 declare var $:any;
 
 @Component({
+  selector: 'app-tabela-cartao-credito',
   templateUrl: './tabela-cartao-credito.component.html',
   styleUrls: ['./tabela-cartao-credito.component.css']
 })
