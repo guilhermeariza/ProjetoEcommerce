@@ -25,6 +25,7 @@ import { AlertasComponent } from './components/alertas/alertas.component';
 import { OrderModule } from 'ngx-order-pipe';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import {ImageModule} from 'primeng/image';
+import { ComponentSobreLcComponent } from './components/component-sobre-lc/component-sobre-lc.component';
 declare var $:any;
 
 
@@ -45,7 +46,8 @@ declare var $:any;
     ProdutoEspecificoComponent,
     CriarContaComponent,
     CadastroAdmComponent,
-    AlertasComponent
+    AlertasComponent,
+    ComponentSobreLcComponent
   ],
   imports: [
     BrowserModule,

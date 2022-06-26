@@ -9,6 +9,7 @@ import { CriarContaComponent } from './components/criar-conta/criar-conta.compon
 import { FormularioDadosClienteComponent } from './components/formulario-dados-cliente/formulario-dados-cliente.component';
 import { CadastroAdmComponent } from './components/cadastro-adm/cadastro-adm.component';
 import { CardPesquisaProdutoComponent } from './components/card-pesquisa-produto/card-pesquisa-produto.component';
+import { ComponentSobreLcComponent } from './components/component-sobre-lc/component-sobre-lc.component';
 const routes: Routes = [
   {path: '', redirectTo:'inicio', pathMatch: 'full'},
   {path: 'login', component: CardLoginComponent},
@@ -22,14 +23,15 @@ const routes: Routes = [
 
 
 
-  
+
   {path: 'produto', component: ProdutoEspecificoComponent},
   {path: 'meuperfil', component: FormularioDadosClienteComponent},
   {path: 'criarconta', component: CriarContaComponent},
   {path: 'administracaoelertech', component: CadastroAdmComponent},
 
   {path: 'administracaoelertech', component: CadastroAdmComponent},
-  {path: 'pesquisar', component: CardPesquisaProdutoComponent}
+  {path: 'pesquisar', component: CardPesquisaProdutoComponent},
+  {path: 'paginasobre', component: ComponentSobreLcComponent}
 
 ];
 
