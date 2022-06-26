@@ -14,11 +14,11 @@ footer{
   width: 100%;
   position: relative;
   bottom: 0;
-  background-color: lightgrey;
+  background-color: #64aeaa;
 }
 
 footer .footer-copyright{
-    background-color: gray;
+    background-color: #276064;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
 }
