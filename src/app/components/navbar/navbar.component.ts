@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Categoria } from 'src/app/model/Categoria';
 import { Produto } from 'src/app/model/Produto';
 import { AlertaService } from 'src/app/service/alerta.service';
-import { AuthService } from 'src/app/service/auth.service';
 import { CategoriaService } from 'src/app/service/categoria.service';
 import { environment } from 'src/environments/environment.prod';
 declare var $:any;
@@ -14,17 +13,18 @@ declare var $:any;
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  usuario = environment.usuario
+  usuario: string
   produto: any = new Produto
   environment: any;
 
   categoria: Categoria = new Categoria()
   listaCategoria: Categoria[]
 
-  constructor(private auth: AuthService, private categoriaService: CategoriaService,private router: Router, private alerta: AlertaService) { }
+  constructor( private categoriaService: CategoriaService,private router: Router, private alerta: AlertaService) { }
 
   ngOnInit() {
     this.getAllCategoria()
+    this.usuario = environment.usuario
   }
 
   sair(){
@@ -32,6 +32,7 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/login'])
     environment.token = ''
     environment.usuario = ''
+    environment.tipo = ''
     environment.id = 0
   }
 
@@ -53,7 +54,21 @@ export class NavbarComponent implements OnInit {
     return admLogado
   }
 
+  logado(){
+    let usuarioLogado:boolean = false
+    if(environment.token != ''){
+      usuarioLogado = true
+    }
+    return usuarioLogado
+  }
 
+  naoLogado(){
+    let usuarionaoLogado:boolean = false
+    if(environment.token == ''){
+      usuarionaoLogado = true
+    }
+    return usuarionaoLogado
+  }
 
   getAllCategoria(){
     return this.categoriaService.getAll().subscribe((data: Categoria[])=>{
