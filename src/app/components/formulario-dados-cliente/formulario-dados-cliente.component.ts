@@ -13,7 +13,7 @@ declare var $:any;
 })
 export class FormularioDadosClienteComponent implements OnInit {
 
-  usuario: any = environment
+  usuario: Usuario = new Usuario()
   confirmarSenha: string
   usuarioAtualizar: any = new Usuario
 
@@ -26,7 +26,18 @@ export class FormularioDadosClienteComponent implements OnInit {
 
   ngOnInit() {
     window.scroll(0,0)
+    this.getUsuario()
+    this.mascara()
+  }
 
+  mascara(){
+    $('#cnpj').inputmask('99.999.999/9999-99')
+  }
+
+  getUsuario(){
+    this.auth.getById(environment.id).subscribe((data: Usuario)=>{
+      this.usuario = data
+    })
   }
 
   confirmSenha(event:any) {
@@ -40,8 +51,8 @@ export class FormularioDadosClienteComponent implements OnInit {
     this.usuarioAtualizar.usuario = $('#usuario').val()
     this.usuarioAtualizar.senha = $('#senha').val()
     this.usuarioAtualizar.id = environment.id
+    this.usuarioAtualizar.tipo = environment.tipo
 
-    console.log(this.usuarioAtualizar)
     if(this.usuarioAtualizar.senha != this.confirmarSenha){
       this.alerta.showAlertDanger('As senhas precisam ser iguais')
     } else {

@@ -15,6 +15,7 @@ declare var $:any;
 })
 export class NavbarComponent implements OnInit {
   nomeDeUsuario: string
+  fotoUsuario: string
   produto: any = new Produto
   environment: any;
 
@@ -54,6 +55,7 @@ export class NavbarComponent implements OnInit {
     if(environment.token != ''){
       usuarioLogado = true
       this.nomeDeUsuario = environment.usuario
+      this.fotoUsuario = environment.foto
     }
     return usuarioLogado
   }
@@ -62,6 +64,7 @@ export class NavbarComponent implements OnInit {
     let usuarionaoLogado:boolean = false
     if(environment.token == ''){
       usuarionaoLogado = true
+      this.fotoUsuario = environment.foto
     }
     return usuarionaoLogado
   }

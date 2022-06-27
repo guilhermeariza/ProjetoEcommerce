@@ -4,6 +4,7 @@ import { Usuario } from 'src/app/model/Usuario';
 import { UsuarioLogin } from 'src/app/model/UsuarioLogin';
 import { AlertaService } from 'src/app/service/alerta.service';
 import { AuthService } from 'src/app/service/auth.service';
+declare var $:any;
 
 @Component({
   selector: 'app-criar-conta',
@@ -35,12 +36,40 @@ export class CriarContaComponent implements OnInit {
       this.alerta.showAlertDanger('As senhas precisam ser iguais')
     } else {
       this.usuario.tipo = 'cliente'
+      this.usuario.foto = $('#setFoto').attr('src')
       this.auth.cadastrar(this.usuario).subscribe((resp: Usuario)=>{
         this.usuario = resp
         this.alerta.showAlertSuccess('Usuário cadastrado com sucesso')
         this.router.navigate(['/login'])
       }
       )
+    }
+  }
+
+  carregarFoto(event: Event) {
+    var file: any
+    if(file !== null){
+      file = document.getElementById('input_img')
+      var form = new FormData()
+      form.append("image", file.files[0])
+      var settings= new Array
+      settings = [{
+          url: "https://api.imgbb.com/1/upload?key=f7dc66d97778642fac1278cb89831b02",
+          method: "POST",
+          timeout: 0,
+          processData: false,
+          mimeType: "multipart/form-data",
+          contentType: false,
+          data: form
+      }]
+      $.ajax(settings[0]).done(function (response: any) {
+          console.log(response)
+          var jx = JSON.parse(response)
+          var linkFoto = jx.data.url
+          $('#setFoto').attr('src', linkFoto)
+          $('#setFotoInput').val(linkFoto)
+          $('#input_img').hide()
+        });
     }
   }
 }
