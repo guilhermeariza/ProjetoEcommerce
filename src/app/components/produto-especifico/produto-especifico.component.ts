@@ -30,6 +30,7 @@ export class ProdutoEspecificoComponent implements OnInit {
      private alerta: AlertaService) { }
 
   ngOnInit() {
+    window.scroll(0,0)
     this.id = this.route.snapshot.params['id']
     this.carregarProdutoEspecifico()
     this.getUsuarioById()

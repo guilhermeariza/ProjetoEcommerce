@@ -25,7 +25,7 @@ export class FormularioDadosClienteComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    window.scroll(0,0)
+    // window.scroll(0,0)
     this.getUsuario()
     this.mascara()
   }
