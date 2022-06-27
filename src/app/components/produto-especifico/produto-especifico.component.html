@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!-- Construção do Conteiner -->
 <main class="pt-2" style="margin-top: 55px">
   <div class="container shadow-lg p-3 mb-5 bg" id="container" style="margin-top: 35px; height:450px;">
@@ -18,45 +19,77 @@
       </div>
       <hr class="linha">
       <!-- Fim do Conteiner -->
+=======
+<main>
+  <div class="container ml-5 mr-5 pt-5">
+>>>>>>> 0d0c9e83cdb7b95dc147ec893c60c58fa82a8251
 
-      <!-- Início dos Botões -->
-      <div class="d-flex flex-row-reverse">
-        <div class="p-4">
-          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"
-            (click)="adicionarProduto()">
-            COMPRAR
-          </button>
+    <div class="flex-wrap row">
+      <div class="col-sm-4 p-2 order-1">
+        <img src="{{produto.foto}}">
+      </div>
+
+      <div class="col-8 p-2 order-2 flex-wrap row">
+        <div class="row">
+          <label class="h1">{{produto.nome}}</label>
         </div>
-        <div class="p-4">
-          <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-            <button type="button" class="btn btn-secondary" id="menos" (click)="diminuir()">-</button>
-            <input class="text-center" min="1" max="{{produto.estoque}}" type="number" name="numero" size="5"
-              id="quantidade" value="1">
-            <button type="button" class="btn btn-secondary" id="mais" (click)="aumentar()">+</button>
+
+        <div class="row d-flex mt-2">
+          <p class="fs-16 lh-lg">{{produto.descricao}}</p>
+        </div>
+
+        <hr>
+
+        <div class="row">
+          <label class="display-3 text-end">R$ {{produto.preco}}</label>
+        </div>
+
+        <div class="row">
+          <label class="fs-6 text-muted text-end">Existem {{produto.estoque}} produtos no estoque</label>
+        </div>
+
+        <hr>
+
+        <div class="flex-wrap justify-content-end">
+          <div class="row">
+            <div class="col-4 btn btn-group" role="group">
+              <button type="button" class="btn btn-secondary" id="menos" (click)="diminuir()">-</button>
+              <input (change)="pegarQuantidade($event)" class="text-center" min="1" max="{{produto.estoque}}"
+                type="number" name="numero" size="5" id="quantidade" value="1">
+              <button type="button" class="btn btn-secondary" id="mais" (click)="aumentar()">+</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4 btn-group">
+              <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalProsseguir"
+                (click)="adicionarProduto()">
+                ASSINAR
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!-- Fim dos Botões -->
+  <hr>
+  <app-card-home></app-card-home>
+</main>
 
-  <!-- Início do Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Deseja continuar
-            comprando ou ir ao carrinho?
-          </h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CONTINUAR
-            COMPRANDO</button>
-          <button type="button" class="btn btn-primary">IR AO CARRINHO</button>
-        </div>
+<div *ngIf="logado()" id="modalProsseguir" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-white" id="exampleModalLabel">Produto adicionado ao carrinho
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Deseja continuar comprando ou ir ao carrinho?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Continuar comprando</button>
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal" routerLink="/carrinho">Ir para o carrinho</button>
       </div>
     </div>
   </div>
-</main>
-<!-- Fim do Modal -->
+</div>

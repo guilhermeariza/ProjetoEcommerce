@@ -11,11 +11,12 @@ import { CadastroAdmComponent } from './components/cadastro-adm/cadastro-adm.com
 import { CardPesquisaProdutoComponent } from './components/card-pesquisa-produto/card-pesquisa-produto.component';
 import { HistoricoPedidosComponent } from './components/historico-pedidos/historico-pedidos.component';
 import { CardPesquisaCategoriaComponent } from './components/card-pesquisa-categoria/card-pesquisa-categoria.component';
+import { CarrosselComponent } from './components/carrossel/carrossel.component';
 
 const routes: Routes = [
   {path: '', redirectTo:'inico', pathMatch: 'full'},
   {path: 'login', component: CardLoginComponent},
-  {path: 'inicio', component: CardHomeComponent},
+  {path: 'inicio', component: CarrosselComponent},
   {path: 'gerenciarprodutos', component: CadastrarProdutoComponent},
   {path: 'carrinho', component: CarrinhoComponent},
   {path: 'produto', component: ProdutoEspecificoComponent},

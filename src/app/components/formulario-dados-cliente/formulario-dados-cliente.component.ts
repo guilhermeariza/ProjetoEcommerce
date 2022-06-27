@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/model/Usuario';
+import { AlertaService } from 'src/app/service/alerta.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { environment } from 'src/environments/environment.prod';
 declare var $:any;
@@ -12,19 +13,31 @@ declare var $:any;
 })
 export class FormularioDadosClienteComponent implements OnInit {
 
-  usuario: any = environment
+  usuario: Usuario = new Usuario()
   confirmarSenha: string
   usuarioAtualizar: any = new Usuario
 
 
   constructor(
     private auth :AuthService,
-    private router: Router
+    private router: Router,
+    private alerta: AlertaService
     ) { }
 
   ngOnInit() {
-    window.scroll(0,0)
+    // window.scroll(0,0)
+    this.getUsuario()
+    this.mascara()
+  }
 
+  mascara(){
+    $('#cnpj').inputmask('99.999.999/9999-99')
+  }
+
+  getUsuario(){
+    this.auth.getById(environment.id).subscribe((data: Usuario)=>{
+      this.usuario = data
+    })
   }
 
   confirmSenha(event:any) {
@@ -37,36 +50,32 @@ export class FormularioDadosClienteComponent implements OnInit {
     this.usuarioAtualizar.cnpj = $('#cnpj').val()
     this.usuarioAtualizar.usuario = $('#usuario').val()
     this.usuarioAtualizar.senha = $('#senha').val()
+    this.usuarioAtualizar.id = environment.id
+    this.usuarioAtualizar.tipo = environment.tipo
 
-    console.log(this.usuarioAtualizar)
     if(this.usuarioAtualizar.senha != this.confirmarSenha){
-      alert('As senhas precisam ser iguais')
+      this.alerta.showAlertDanger('As senhas precisam ser iguais')
     } else {
       this.auth.update(this.usuarioAtualizar).subscribe((data: Usuario) => {
       this.usuarioAtualizar = data
-      alert('Usuario cadastrado com sucesso')
+      this.alerta.showAlertSuccess('Usuário atualizado com sucesso')
       this.usuarioAtualizar = new Usuario
     },
     (error: any) => {
       switch(error.status){
         case 400:
-          alert('Erro na requisção')
-          console.log('Resposta: '+error.status)
+          alert('')
+          this.alerta.showAlertDanger('Erro na requisção')
         break;
         case 401:
-          alert('Acesso não autorizado')
-          console.log('Resposta: '+error.status)
+          this.alerta.showAlertDanger('Acesso não autorizado')
         break;
         case 500:
-          alert('Erro na aplicação')
-          console.log('Resposta: '+error.status)
+          this.alerta.showAlertDanger('Erro na aplicação')
         break;
       }
     }
     )
   }
   }
-
-
-
 }

@@ -13,16 +13,21 @@ export class CardHomeComponent implements OnInit {
 
   produto: Produto = new Produto()
   listaProdutos:Produto[]
+  listaMaisProcurados=new Array
 
   constructor(private router: Router, private produtoService: ProdutoService) { }
 
   ngOnInit(){
-    this.get()
+    this.getAllProdutos()
+
   }
 
-  get(){
+  getAllProdutos(){
     this.produtoService.getAll().subscribe((data: Produto[]) => {
      this.listaProdutos = data
+     for(let i=0 ; i<4; i++){
+      this.listaMaisProcurados.push(this.listaProdutos[i])
+    }
     },(error: any) => {
       console.log('Erro: ', error)
     })

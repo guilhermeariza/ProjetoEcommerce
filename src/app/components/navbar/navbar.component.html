@@ -45,11 +45,14 @@
       <li class="nav-item">
         <a class="nav-link iten-hover" routerLink="/login">Fazer login</a>
       </li>
-    </ul>
-
-    <ul class="navbar-nav" *ngIf="naoLogado()">
       <li class="nav-item">
         <a class="nav-link iten-hover" routerLink="/criarconta">Fazer cadastro</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav" *ngIf="logado()">
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="logado()">{{nomeDeUsuario}}</a>
       </li>
     </ul>
 
@@ -68,13 +71,14 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
           aria-expanded="false">
-          <img src="assets/icon/person-circle.svg" width="30px">
+          <img src="{{fotoUsuario}}" width="30px" class="img-usuario">
+          <img *ngIf="naoLogado() || fotoUsuario == null" src="assets/icon/person-circle.svg" width="30px" class="img-usuario">
         </a>
         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" *ngIf="logado()">{{usuario}}</a>
+          <a class="dropdown-item" *ngIf="logado()">{{nomeDeUsuario}}</a>
           <div class="dropdown-divider" *ngIf="logado()"></div>
           <a class="dropdown-item" *ngIf="logado()" routerLink="/meuperfil">Atualizar perfil</a>
-          <a class="dropdown-item" *ngIf="logado()" routerLink="/meuperfil">Formas de pagamento</a>
+          <a class="dropdown-item" *ngIf="logado()" href="#formasPagamento"  routerLink="/meuperfil">Formas de pagamento</a>
           <a class="dropdown-item" *ngIf="logado()" routerLink="/historicopedidos">Histórico de pedidos</a>
           <a class="dropdown-item" *ngIf="logado()" routerLink="/meuperfil">Usuario e senha</a>
           <div class="dropdown-divider" *ngIf="logado()"></div>

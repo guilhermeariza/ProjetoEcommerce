@@ -1,33 +1,31 @@
-<main class="pt-2" style="margin-top: 55px;">
-  <app-carrossel></app-carrossel>
+
 
   <div class="d-flex justify-content-center">
     <p class="display-5 mr-4 mt-4 mb-4">Produtos mais procurados</p>
   </div>
 
-  <p-carousel [value]="listaProdutos" [numVisible]="4" [numScroll]="1" [circular]="false" [autoplayInterval]="3000">
-    <ng-template let-listaProdutos pTemplate="item">
-      <div class="d-flex justify-content-center">
-        <div class="card text-center" style="width: 300px;">
-          <label id="idProduto" hidden="true">{{listaProdutos.id}}</label>
-          <div class="card-header p-0" style="height: 200px;">
-            <div clas="row">
-              <img src="{{listaProdutos.foto}}">
-            </div>
-            <div clas="row">
-              <div style="height: 20px;">
-                <p>R$ {{listaProdutos.preco}}</p>
-              </div>
+  <div class="d-flex align-content-around flex-wrap justify-content-around mb-4">
+    <!-- <div class="mb-4"> -->
+      <div class="card text-center" *ngFor="let produto of listaMaisProcurados">
+        <label id="idProduto" hidden="true">{{produto.id}}</label>
+        <div class="card-header p-0" style="height: 200px;">
+          <div clas="row">
+            <img src="{{produto.foto}}">
+          </div>
+          <div clas="row">
+            <div style="height: 20px;">
+              <p>R$ {{produto.preco}}</p>
             </div>
           </div>
-          <div class="card-body">
-            <h5 class="card-title">{{listaProdutos.nome}}</h5>
-            <p class="card-text">Produto disponível para assinatura.</p>
-            <p class="card-text">Documentação e manutenção inclusas.</p>
-          </div>
-          <div class="card-footer">
-            <button class="btn btn-success" [routerLink]="['/produto', listaProdutos]">Saiba mais</button>
-  </p-carousel>
-
-
-</main>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{produto.nome}}</h5>
+          <p class="card-text">Produto disponível para assinatura.</p>
+          <p class="card-text">Documentação e manutenção inclusas.</p>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-success" [routerLink]="['/produto', produto]">Saiba mais</button>
+        </div>
+      </div>
+    </div>
+  <!-- </div> -->
