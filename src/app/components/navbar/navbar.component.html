@@ -71,7 +71,8 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
           aria-expanded="false">
-          <img src="assets/icon/person-circle.svg" width="30px">
+          <img src="{{fotoUsuario}}" width="30px" class="img-usuario">
+          <img *ngIf="naoLogado() || fotoUsuario == null" src="assets/icon/person-circle.svg" width="30px" class="img-usuario">
         </a>
         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" *ngIf="logado()">{{nomeDeUsuario}}</a>

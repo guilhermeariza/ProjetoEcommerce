@@ -31,9 +31,12 @@ export class CardLoginComponent implements OnInit {
       environment.cnpj = this.usuarioLogin.cnpj
       environment.nomeFantasia = this.usuarioLogin.nomeFantasia
       environment.razaoSocial = this.usuarioLogin.razaoSocial
-
-      console.log(environment)
-
+        if(this.usuarioLogin.foto != ''){
+          environment.foto = this.usuarioLogin.foto
+        } else if(this.usuarioLogin.foto == null){
+          environment.foto = "assets/icon/person-circle.svg"
+        }
+        console.log(environment)
       this.router.navigate(['/inicio'])
     }, erro => {
         if(erro.status == 500){
