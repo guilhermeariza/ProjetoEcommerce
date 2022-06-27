@@ -27,7 +27,6 @@ export class CardPesquisaCategoriaComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.categoriaId = params['id']
       this.categoria = params['nomeCategoria']
-      console.log(this.categoria)
     })
 
     this.getProduto()
@@ -38,11 +37,12 @@ export class CardPesquisaCategoriaComponent implements OnInit {
     let categoria = this.categoria
     this.produtoService.getAll().subscribe((data: Produto[])=>{
       this.lista = data
-
+      this.ngOnInit()
       this.listaCategoria = this.lista.filter(function(c: Produto){
         return c.categoria.nomeCategoria == categoria
       })
     })
+
   }
 
 }
