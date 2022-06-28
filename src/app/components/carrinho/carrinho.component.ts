@@ -85,7 +85,6 @@ export class CarrinhoComponent implements OnInit {
     // busca o produto no estoque
     this.produtoService.getById(idProduto).subscribe((data: Produto)=>{
       this.produto = data
-
       // Atualiza o estoque disponível
       this.produto.estoque = this.produto.estoque + quantidade
       this.produtoService.update(this.produto).subscribe((data: Produto)=>{
@@ -97,21 +96,12 @@ export class CarrinhoComponent implements OnInit {
   }
 
   finalizarPedido(){
-    this.auth.getById(environment.id).subscribe((data: Usuario)=>{
-      this.usuario = data
-
-      this.listaCarrinho = this.usuario.carrinho
-      console.log(this.listaCarrinho)
-      for(let carrinho of this.listaCarrinho){
-        carrinho.status = "pedido"
-        this.carrinhoService.update(carrinho).subscribe((resp: Carrinho)=>{
-          this.carrinho = resp
-          console.log(this.carrinho)
-          this.alerta.showAlertSuccess('Pedido finalizado com sucesso')
-        }
-        )
-      }
+    this.carrinhoService.fazerPedido(this.carrinho).subscribe((resp: Carrinho)=>{
+      this.carrinho = resp
+      console.log(this.carrinho)
+      this.alerta.showAlertSuccess('Pedido finalizado com sucesso')
     })
+    console.log(this.carrinho)
   }
 
 }
