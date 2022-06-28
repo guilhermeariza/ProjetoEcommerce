@@ -111,24 +111,10 @@ export class ProdutoEspecificoComponent implements OnInit {
     }
 
     salvarCarrinho(){
-      this.auth.getById(environment.id).subscribe((data: Usuario)=>{
-        this.usuario = data
-      })
-      this.carregarProdutoEspecifico()
-
-       if(this.usuario.carrinho.idProduto == this.produto.id){
-        this.carrinho.quantidade += this.usuario.carrinho.quantidade
-        
         this.carrinhoService.update(this.carrinho).subscribe((data: Carrinho)=>{
           this.carrinho = data
           console.log(this.carrinho)
         })
-       } else if(this.usuario.carrinho.idProduto != this.produto.id){
-        this.carrinhoService.save(this.carrinho).subscribe((data: Carrinho)=>{
-          this.carrinho = data
-          console.log(this.carrinho)
-        })
-      }
     }
 
     atualizarEstoque(){
