@@ -12,6 +12,7 @@ import { CardPesquisaProdutoComponent } from './components/card-pesquisa-produto
 import { HistoricoPedidosComponent } from './components/historico-pedidos/historico-pedidos.component';
 import { CardPesquisaCategoriaComponent } from './components/card-pesquisa-categoria/card-pesquisa-categoria.component';
 import { CarrosselComponent } from './components/carrossel/carrossel.component';
+import { SobreComponent } from './components/sobre/sobre.component';
 
 const routes: Routes = [
   {path: '', redirectTo:'inico', pathMatch: 'full'},
@@ -25,7 +26,8 @@ const routes: Routes = [
   {path: 'administracaoelertech', component: CadastroAdmComponent},
   {path: 'pesquisar', component: CardPesquisaProdutoComponent},
   {path: 'historicopedidos', component: HistoricoPedidosComponent},
-  {path: 'pesquisarcategoria', component: CardPesquisaCategoriaComponent}
+  {path: 'pesquisarcategoria', component: CardPesquisaCategoriaComponent},
+  {path: 'sobre', component: SobreComponent}
 ];
 
 @NgModule({
