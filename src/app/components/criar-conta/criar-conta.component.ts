@@ -69,6 +69,7 @@ export class CriarContaComponent implements OnInit {
           $('#setFoto').attr('src', linkFoto)
           $('#setFotoInput').val(linkFoto)
           $('#input_img').hide()
+          $('#enviarFotolabel').hide()
         });
     }
   }

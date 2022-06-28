@@ -1,31 +1,30 @@
+<div class="d-flex justify-content-center">
+  <p class="display-5 mr-4 mt-4 mb-4">Os melhores produtos te esperam</p>
+</div>
 
-
-  <div class="d-flex justify-content-center">
-    <p class="display-5 mr-4 mt-4 mb-4">Produtos mais procurados</p>
-  </div>
-
-  <div class="d-flex align-content-around flex-wrap justify-content-around mb-4">
-    <!-- <div class="mb-4"> -->
-      <div class="card text-center" *ngFor="let produto of listaMaisProcurados">
-        <label id="idProduto" hidden="true">{{produto.id}}</label>
-        <div class="card-header p-0" style="height: 200px;">
-          <div clas="row">
-            <img src="{{produto.foto}}">
-          </div>
-          <div clas="row">
-            <div style="height: 20px;">
-              <p>R$ {{produto.preco}}</p>
-            </div>
-          </div>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">{{produto.nome}}</h5>
-          <p class="card-text">Produto disponível para assinatura.</p>
-          <p class="card-text">Documentação e manutenção inclusas.</p>
-        </div>
-        <div class="card-footer">
-          <button class="btn btn-success" [routerLink]="['/produto', produto]">Saiba mais</button>
+<div class="d-flex align-content-around flex-wrap justify-content-around mb-4">
+  <div class="card text-center" *ngFor="let produto of listaMaisProcurados">
+    <label id="idProduto" hidden="true">{{produto.id}}</label>
+    <div class="card-header p-0" style="height: 200px;">
+      <div clas="row">
+        <img src="{{produto.foto}}">
+      </div>
+      <div clas="row">
+        <div style="height: 20px;">
+          <p>R$ {{produto.preco}}</p>
         </div>
       </div>
     </div>
-  <!-- </div> -->
+    <div class="card-body">
+      <h5 class="card-title">{{produto.nome}}</h5>
+      <p class="card-text">Produto disponível para assinatura.</p>
+      <p class="card-text">Documentação e manutenção inclusas.</p>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-success" [routerLink]="['/produto', produto]">
+        Saiba mais
+      </button>
+    </div>
+  </div>
+</div>
+<!-- </div> -->

@@ -1,6 +1,15 @@
 img{
-  max-width: 350px;
-  max-height: 350px;
+  max-width: 400px;
+  max-height: 400px;
+}
+
+.card{
+  background-color: #DCDEDD;
+  box-shadow: 0 10px 12px 0 rgba(23, 21, 172, 0.2), 0 6px 20px 0 rgba(18, 77, 6, 0.19);
+}
+
+.card-footer{
+  background-color: #DCDEDD;
 }
 
 #num{

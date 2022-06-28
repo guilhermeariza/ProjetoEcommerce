@@ -10,7 +10,8 @@ main{
 }
 
 #setFoto{
-  max-width: 100px;
-  max-height: 100px;
-  margin-top: 10px;
+  max-width: 150px;
+  max-height: 1500px;
+  border-radius: 50%;
+  box-shadow: 0 10px 12px 0 rgba(23, 21, 172, 0.2), 0 6px 20px 0 rgba(29, 141, 7, 0.19);
 }
