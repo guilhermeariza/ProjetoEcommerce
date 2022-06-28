@@ -51,5 +51,9 @@ export class AuthService {
     environment.usuario = ''
     environment.tipo = ''
     environment.id = 0
+    environment.foto = ''
+    environment.nomeFantasia = ''
+    environment.razaoSocial = ''
+    environment.cnpj = ''
   }
 }
