@@ -28,6 +28,7 @@ import { TabelaCartaoCreditoComponent } from './components/tabela-cartao-credito
 import { HistoricoPedidosComponent } from './components/historico-pedidos/historico-pedidos.component';
 import { CardPesquisaCategoriaComponent } from './components/card-pesquisa-categoria/card-pesquisa-categoria.component';
 import { SobreComponent } from './components/sobre/sobre.component';
+
 declare var $:any;
 
 
