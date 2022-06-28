@@ -1,58 +1,59 @@
 <main>
-  <div class="container ml-5 mr-5 pt-5">
+  <div class="container ml-5 mr-5 pt-3">
 
-    <div class="flex-wrap row">
-      <div class="col-sm-4 p-2 order-1">
-        <img src="{{produto.foto}}">
-      </div>
-
-      <div class="col-8 p-2 order-2 flex-wrap row">
-        <div class="row">
-          <label class="h1">{{produto.nome}}</label>
+    <div class="card">
+      <div class="row g-0 justify-content-center align-items-center">
+        <div class="col-md-4 text-center">
+          <img src="{{produto.foto}}" class="img-fluid rounded-start">
         </div>
 
-        <div class="row d-flex mt-2">
-          <p class="fs-16 lh-lg">{{produto.descricao}}</p>
-        </div>
-
-        <hr>
-
-        <div class="row">
-          <label class="display-3 text-end">R$ {{produto.preco}}</label>
-        </div>
-
-        <div class="row">
-          <label class="fs-6 text-muted text-end">Existem {{produto.estoque}} produtos no estoque</label>
-        </div>
-
-        <hr>
-
-        <div class="flex-wrap justify-content-end">
-          <div class="row">
-            <div class="col-4 btn btn-group" role="group">
-              <button type="button" class="btn btn-secondary" id="menos" (click)="diminuir()">-</button>
-              <input (change)="pegarQuantidade($event)" class="text-center" min="1" max="{{produto.estoque}}"
-                type="number" name="numero" size="5" id="quantidade" value="1">
-              <button type="button" class="btn btn-secondary" id="mais" (click)="aumentar()">+</button>
+        <div class="col-md-8">
+          <div class="card-body">
+            <div class="card-title">
+              <label class="h1">{{produto.nome}}</label>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-4 btn-group">
-              <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalProsseguir"
+
+            <div class="card-text">
+              <p class="fs-16 lh-lg">{{produto.descricao}}</p>
+            </div>
+
+            <hr>
+
+            <div class="card-text text-end">
+              <label class="display-3 ">R$ {{produto.preco}}</label>
+            </div>
+
+            <div class="card-text text-end">
+              <label class="fs-6 text-muted">Existem {{produto.estoque}} produtos no estoque</label>
+            </div>
+
+            <div class="card-footer text-end">
+
+              <div class="col-md btn btn-group" role="group">
+                <button type="button" class="btn btn-success" id="menos" (click)="diminuir()">-</button>
+                <input (change)="pegarQuantidade($event)" class="text-center" min="1" max="{{produto.estoque}}"
+                  type="number" name="numero" size="5" id="quantidade" value="1">
+                <button type="button" class="btn btn-success" id="mais" (click)="aumentar()">+</button>
+              </div>
+
+              <button type="button" class="col-md btn btn-success" data-bs-toggle="modal" data-bs-target="#modalProsseguir"
                 (click)="adicionarProduto()">
                 ASSINAR
               </button>
+
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
   <hr>
   <app-card-home></app-card-home>
 </main>
 
-<div *ngIf="logado()" id="modalProsseguir" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div *ngIf="logado()" id="modalProsseguir" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -65,7 +66,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-success" data-bs-dismiss="modal">Continuar comprando</button>
-        <button type="button" class="btn btn-success" data-bs-dismiss="modal" routerLink="/carrinho">Ir para o carrinho</button>
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal" routerLink="/carrinho">Ir para o
+          carrinho</button>
       </div>
     </div>
   </div>
