@@ -55,7 +55,6 @@ export class TabelaEnderecoComponent implements OnInit {
       this.alerta.showAlertSuccess('Endereco cadastrado com sucesso')
       this.endereco = new Endereco()
       this.limparModal
-      this.ngOnInit()
     },
     (error: any) => {
       switch(error.status){
@@ -85,7 +84,6 @@ export class TabelaEnderecoComponent implements OnInit {
       this.endereco = data
       this.endereco = new Endereco()
       this.alerta.showAlertSuccess('Endereco atualizado com sucesso')
-      this.ngOnInit()
       this.limparModal()
       this.fecharModal()
     })
@@ -101,7 +99,6 @@ excluir(){
       this.alerta.showAlertSuccess('Endereco excluído com sucesso')
       this.endereco = new Endereco
       this.fecharModal()
-      this.ngOnInit()
     },
     (error: any) => {
       switch(error.status){

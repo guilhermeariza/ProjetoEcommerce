@@ -55,15 +55,12 @@ export class TabelaCartaoCreditoComponent implements OnInit {
     this.cartao.numeroCartao = $('#numeroCartaoCadastrar').val()
     this.cartao.dataValidade = $('#validadeCadastrar').val()
     this.cartao.cvv = $('#cvvCadastrar').val()
-
-    console.log(this.cartao)
     // Passa o cartão(já com o usuario inserido) para o post da cartaoService
     this.cartaoService.post(this.cartao).subscribe((data: CartaoCredito) => {
       // Armazena o retorno dentro do cartão desta classe
       this.cartao = data
       this.alerta.showAlertSuccess('Cartao cadastrado com sucesso')
       this.limparModal()
-      this.ngOnInit()
       this.cartao = new CartaoCredito
     },
     (error: any) => {
@@ -90,7 +87,6 @@ export class TabelaCartaoCreditoComponent implements OnInit {
       this.alerta.showAlertSuccess('Cartao excluído com sucesso')
       this.cartao = new CartaoCredito
       this.fecharModal()
-      this.ngOnInit()
     },(error: any) => {
       switch(error.status){
         case 400:

@@ -55,7 +55,7 @@ export class CadastrarProdutoComponent implements OnInit {
       this.alerta.showAlertSuccess(`Produto ${this.produto.nome} cadastrado com sucesso`)
       this.produto = new Produto()
       this.limparModal()
-      this.ngOnInit()
+      this.getAll()
     },
     (error: any) => {
       switch(error.status){
@@ -93,7 +93,7 @@ export class CadastrarProdutoComponent implements OnInit {
       this.produto = data
       this.alerta.showAlertSuccess('Produto atualizado com sucesso')
       this.produto = new Produto()
-      this.ngOnInit()
+      this.getAll()
     },
     (error: any) => {
       switch(error.status){
@@ -115,11 +115,10 @@ export class CadastrarProdutoComponent implements OnInit {
   }
 
   excluirProduto() {
-      this.produtoService.delete(this.produto.id).subscribe((data: Produto) => {
-        this.produto = data
+      this.produtoService.delete(this.produto.id).subscribe(() => {
         this.alerta.showAlertSuccess(this.produto.nome +' excluído com sucesso')
         this.produto = new Produto()
-        this.ngOnInit()
+        this.getAll()
       },
       (error: any) => {
         switch(error.status){
@@ -191,6 +190,7 @@ export class CadastrarProdutoComponent implements OnInit {
     this.categoria.nomeCategoria = $('#categoriaCadastrar').val()
     this.categoriaService.save(this.categoria).subscribe((data: Categoria)=>{
       this.categoria = data
+      $('#categoriaCadastrar').val('')
       this.alerta.showAlertSuccess(`Categoria ${this.categoria.nomeCategoria} cadastrada com sucesso`)
       this.categoria = new Categoria()
       this.ngOnInit()

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Categoria } from 'src/app/model/Categoria';
 import { Produto } from 'src/app/model/Produto';
 import { CategoriaService } from 'src/app/service/categoria.service';
 import { ProdutoService } from 'src/app/service/produto.service';
@@ -32,14 +31,16 @@ export class CardPesquisaCategoriaComponent implements OnInit {
   }
 
   getProduto(){
-    let categoria = this.categoria
+    let id = this.categoriaId
     this.produtoService.getAll().subscribe((data: Produto[])=>{
       this.lista = data
       this.ngOnInit()
     })
     this.listaCategoria = this.lista.filter(function(c: Produto){
-      return c.categoria.nomeCategoria == categoria
+      return c.categoria.id == id
     })
-  }
+    if (this.listaCategoria.length == 0){
 
+    }
+  }
 }

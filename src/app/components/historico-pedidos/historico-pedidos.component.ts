@@ -31,9 +31,9 @@ export class HistoricoPedidosComponent implements OnInit {
   }
 
   carregarTodosCarrinhos(){
-    this.auth.getById(environment.id).subscribe((data: Usuario)=>{this.usuario = data
-      this.pedido = this.usuario.carrinho
-      this.lista = this.pedido
+    this.auth.getById(environment.id).subscribe((data: Usuario)=>{
+      this.usuario = data
+      this.lista = this.usuario.carrinho
 
       this.listaPedidos = this.lista.filter(function(c: Carrinho){
         return c.status == "pedido"

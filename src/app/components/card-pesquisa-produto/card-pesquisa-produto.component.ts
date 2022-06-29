@@ -29,7 +29,6 @@ export class CardPesquisaProdutoComponent {
     this.produtoService.getbyName(produto.nome).subscribe((data: Produto[]) => {
       this.listaProduto = data
       this.produto = new Produto
-      this.ngOnInit()
     },(error: any) => {
       console.log('Erro: ', error)
     })

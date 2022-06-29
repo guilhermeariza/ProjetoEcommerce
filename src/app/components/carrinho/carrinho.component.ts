@@ -38,17 +38,25 @@ export class CarrinhoComponent implements OnInit {
     this.CarregarCarrinho()
   }
 
+  somaTotal(){
+    this.somaDosProdutos = 0
+    for(let i=0; i < this.listaCarrinho.length; i++){
+      this.somaDosProdutos = this.listaCarrinho[i].valorTotal + this.somaDosProdutos
+    }
+  }
+
   CarregarCarrinho(){
     this.auth.getById(environment.id).subscribe((data: Usuario)=>{
       this.usuario = data
-      console.log(this.usuario)
-      this.carrinho = this.usuario.carrinho
-      this.lista = this.carrinho
+
+      this.lista = this.usuario.carrinho
       this.listaCartao = this.usuario.cartaoCredito
       this.listaEndereco = this.usuario.endereco
+
       this.listaCarrinho = this.lista.filter(function(c: Carrinho){
         return c.status == 'carrinho'
       })
+
       this.somaTotal()
     },(error: any) => {
         switch(error.status){
@@ -65,18 +73,9 @@ export class CarrinhoComponent implements OnInit {
       })
   }
 
-  somaTotal(){
-    this.somaDosProdutos = 0
-    for(let i=0; i < this.listaCarrinho.length; i++){
-      this.somaDosProdutos = this.listaCarrinho[i].valorTotal + this.somaDosProdutos
-    }
-  }
-
   excluirProduto(id: number, idProduto: number, quantidade: number){
-    console.log(id, idProduto, quantidade)
     this.atualizarEstoque(idProduto, quantidade)
     this.carrinhoService.delete(id).subscribe(()=>{
-      this.ngOnInit()
       this.alerta.showAlertWarning(`Produto excluído com sucesso`)
     })
   }
@@ -97,18 +96,16 @@ export class CarrinhoComponent implements OnInit {
   }
 
   finalizarPedido(){
-    this.auth.getById(environment.id).subscribe((data: Usuario)=>{
+    this.auth.getById(this.usuario.id).subscribe((data: Usuario)=>{
       this.usuario = data
 
       this.listaCarrinho = this.usuario.carrinho
-      console.log(this.listaCarrinho)
-      for(let carrinho of this.listaCarrinho){
-        carrinho.status = "pedido"
-        this.carrinhoService.update(carrinho).subscribe((resp: Carrinho)=>{
-          this.carrinho = resp
-          console.log(this.carrinho)
-        }
-        )
+
+      for(this.carrinho of this.listaCarrinho){
+        this.carrinho.status = "pedido"
+        this.carrinho
+        this.carrinhoService.update(this.carrinho).subscribe(()=>{
+        })
       }
       this.alerta.showAlertSuccess('Pedido finalizado com sucesso')
     })
