@@ -107,10 +107,10 @@ export class CarrinhoComponent implements OnInit {
         this.carrinhoService.update(carrinho).subscribe((resp: Carrinho)=>{
           this.carrinho = resp
           console.log(this.carrinho)
-          this.alerta.showAlertSuccess('Pedido finalizado com sucesso')
         }
         )
       }
+      this.alerta.showAlertSuccess('Pedido finalizado com sucesso')
     })
   }
 

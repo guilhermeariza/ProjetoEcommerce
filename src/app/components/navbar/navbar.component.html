@@ -45,13 +45,13 @@
           <a class="nav-link iten-hover" routerLink="/login">Fazer login</a>
         </li>
       </ul>
+      <ul class="navbar-nav" *ngIf="logado()">
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="logado()">{{nomeDeUsuario}}</a>
+        </li>
+      </ul>
     </div>
 
-    <ul class="navbar-nav" *ngIf="logado()">
-      <li class="nav-item">
-        <a class="nav-link" *ngIf="logado()">{{nomeDeUsuario}}</a>
-      </li>
-    </ul>
 
     <!--Botão carrinho-->
     <ul class="navbar-nav" *ngIf="logado()">
