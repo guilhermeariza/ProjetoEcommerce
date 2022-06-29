@@ -17,14 +17,21 @@ import { environment } from 'src/environments/environment.prod';
   styleUrls: ['./carrinho.component.css']
 })
 export class CarrinhoComponent implements OnInit {
+  //Instanciando as classes
   carrinho:Carrinho = new Carrinho()
-  usuario: Usuario = new Usuario()
-  produto: Produto = new Produto()
-  listaCarrinho: any
-  lista: any = new Carrinho()
-  somaDosProdutos: number
+  usuario:Usuario = new Usuario()
+  produto:Produto = new Produto()
+
+  //Listas para interagir com o html
+  listaCarrinho: Carrinho[]
   listaCartao:CartaoCredito[]
   listaEndereco: Endereco[]
+
+  //Lista para fazer o filtro por status
+  lista: any
+
+  //Variável para exibir a soma dos produtos no html
+  somaDosProdutos: number
 
   constructor(
     private router: Router,
@@ -38,31 +45,16 @@ export class CarrinhoComponent implements OnInit {
     this.CarregarCarrinho()
   }
 
+  //Método para buscar o usuario pelo id, e retornar os cartoes, endereços e carrinho.
   CarregarCarrinho(){
     this.auth.getById(environment.id).subscribe((data: Usuario)=>{
       this.usuario = data
-      console.log(this.usuario)
-      this.carrinho = this.usuario.carrinho
-      this.lista = this.carrinho
-      this.listaCartao = this.usuario.cartaoCredito
-      this.listaEndereco = this.usuario.endereco
-      this.listaCarrinho = this.lista.filter(function(c: Carrinho){
-        return c.status == 'carrinho'
-      })
+      this.lista = this.usuario.carrinho //Armazena o carrinho do usuario dentro da lista para fazer o filtro
+      this.listaCartao = this.usuario.cartaoCredito //Armazena os cartões do usuario em listaCartao
+      this.listaEndereco = this.usuario.endereco //Armazena os endereços do usuario em listaEndereco
+      this.listaCarrinho = this.lista.filter(function(c: Carrinho){return c.status == 'carrinho'}) //Função para armazenar em listaCarrinho o fitro da lista por status
       this.somaTotal()
-    },(error: any) => {
-        switch(error.status){
-          case 400:
-            this.alerta.showAlertDanger('Erro na requisção, erro: '+error.status)
-          break;
-          case 401:
-            this.alerta.showAlertDanger('Acesso não autorizado, erro: '+error.status)
-          break;
-          case 500:
-            this.alerta.showAlertDanger('Erro na aplicação, erro: '+error.status)
-          break;
-        }
-      })
+    })
   }
 
   somaTotal(){
@@ -73,11 +65,11 @@ export class CarrinhoComponent implements OnInit {
   }
 
   excluirProduto(id: number, idProduto: number, quantidade: number){
-    console.log(id, idProduto, quantidade)
-    this.atualizarEstoque(idProduto, quantidade)
     this.carrinhoService.delete(id).subscribe(()=>{
-      this.ngOnInit()
       this.alerta.showAlertWarning(`Produto excluído com sucesso`)
+      this.atualizarEstoque(idProduto, quantidade)
+      this.CarregarCarrinho()
+      this.ngOnInit()
     })
   }
 
@@ -96,12 +88,12 @@ export class CarrinhoComponent implements OnInit {
   }
 
   finalizarPedido(){
+    this.carrinho = this.usuario.carrinho
     this.carrinhoService.fazerPedido(this.carrinho).subscribe((resp: Carrinho)=>{
       this.carrinho = resp
-      console.log(this.carrinho)
       this.alerta.showAlertSuccess('Pedido finalizado com sucesso')
+      console.log(this.usuario.carrinho)
     })
-    console.log(this.carrinho)
   }
 
 }
