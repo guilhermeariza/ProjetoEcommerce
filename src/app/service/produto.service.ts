@@ -24,7 +24,7 @@ export class ProdutoService {
   }
 
   getbyName(nome: string):Observable<Produto[]>{
-    return this.http.get<Produto[]>('http://localhost:8080/produto/produto/'+ nome, this.token)
+    return this.http.get<Produto[]>('http://localhost:8080/produto/pesquisar/'+ nome, this.token)
   }
 
   getbyCategoria(categoria: string):Observable<Produto[]>{
