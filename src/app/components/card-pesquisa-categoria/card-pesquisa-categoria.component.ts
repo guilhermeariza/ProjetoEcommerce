@@ -28,9 +28,7 @@ export class CardPesquisaCategoriaComponent implements OnInit {
       this.categoriaId = params['id']
       this.categoria = params['nomeCategoria']
     })
-
     this.getProduto()
-
   }
 
   getProduto(){
@@ -38,11 +36,10 @@ export class CardPesquisaCategoriaComponent implements OnInit {
     this.produtoService.getAll().subscribe((data: Produto[])=>{
       this.lista = data
       this.ngOnInit()
-      this.listaCategoria = this.lista.filter(function(c: Produto){
-        return c.categoria.nomeCategoria == categoria
-      })
     })
-
+    this.listaCategoria = this.lista.filter(function(c: Produto){
+      return c.categoria.nomeCategoria == categoria
+    })
   }
 
 }

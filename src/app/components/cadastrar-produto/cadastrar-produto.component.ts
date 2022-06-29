@@ -37,8 +37,6 @@ export class CadastrarProdutoComponent implements OnInit {
   getAll(){
     this.produtoService.getAll().subscribe((data: Produto[]) => {
       this.listaProdutos = data
-    },(error: any) => {
-      console.log('Erro: ', error)
     })
   }
 
@@ -47,7 +45,6 @@ export class CadastrarProdutoComponent implements OnInit {
     this.categoriaService.getById(id).subscribe((data: Categoria)=>{
       this.categoria = data
     })
-    console.log(this.categoria)
   }
 
   cadastrarProduto(){
@@ -82,7 +79,6 @@ export class CadastrarProdutoComponent implements OnInit {
     this.categoriaService.getById(id).subscribe((data: Categoria)=>{
       this.categoria = data
     })
-    console.log(this.categoria)
   }
 
   atualizarProduto(){
@@ -93,7 +89,6 @@ export class CadastrarProdutoComponent implements OnInit {
     this.produto.estoque = $('#estoqueEditar').val()
     this.produto.descricao = $('#descricaoEditar').val()
     this.produto.foto = $('#fotoProdutoEditar').attr('src')
-    console.log(this.produto)
     this.produtoService.update(this.produto).subscribe((data: Produto) => {
       this.produto = data
       this.alerta.showAlertSuccess('Produto atualizado com sucesso')

@@ -72,23 +72,24 @@ export class TabelaEnderecoComponent implements OnInit {
     })
   }
 
-  // abrirModalEditar(endereco: Endereco){
-  //   this.endereco = endereco
-  // }
+  abrirModalEditar(endereco: Endereco){
+    this.endereco = endereco
+  }
 
-  // atualizar(){
-  //   this.endereco.endereco = $('#enderecoEditar').val()
-  //   this.endereco.cep = $('#cepEditar').val()
+  atualizar(){
+    this.endereco.endereco = $('#enderecoEditar').val()
+    this.endereco.cep = $('#cepEditar').val()
+    this.endereco.usuario = this.usuario
 
-  //   this.enderecoService.update(this.endereco).subscribe((data: Endereco)=>{
-  //     this.endereco = data
-  //     this.endereco = new Endereco()
-  //     this.alerta.showAlertSuccess('Endereco atualizado com sucesso')
-  //     this.limparModal()
-  //     this.fecharModal()
-  //     this.ngOnInit()
-  //   })
-  // }
+    this.enderecoService.update(this.endereco).subscribe((data: Endereco)=>{
+      this.endereco = data
+      this.endereco = new Endereco()
+      this.alerta.showAlertSuccess('Endereco atualizado com sucesso')
+      this.ngOnInit()
+      this.limparModal()
+      this.fecharModal()
+    })
+  }
 
   abrirModalExcluir(endereco: Endereco){
     this.endereco = endereco

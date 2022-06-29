@@ -15,7 +15,6 @@ export class CardPesquisaProdutoComponent {
 
   constructor(private router: Router, private produtoService: ProdutoService, private route: ActivatedRoute) {
 
-
   }
 
   ngOnInit(){
@@ -23,18 +22,16 @@ export class CardPesquisaProdutoComponent {
       this.produto.nome = params['nome']
       this.nome = params['nome']
     })
-
     this.carregarPesquisaPorNome(this.produto)
   }
 
   carregarPesquisaPorNome(produto: Produto){
     this.produtoService.getbyName(produto.nome).subscribe((data: Produto[]) => {
       this.listaProduto = data
-      this.ngOnInit()
       this.produto = new Produto
+      this.ngOnInit()
     },(error: any) => {
       console.log('Erro: ', error)
     })
   }
-
 }

@@ -25,11 +25,11 @@
         <th id="idEnderecoTb" scope="row">{{endereco.id}}</th>
         <td id="enderecoTb">{{endereco.endereco}}</td>
         <td id="cepTb">{{endereco.cep}}</td>
-        <!-- <td>
+        <td>
           <button (click)="abrirModalEditar(endereco)" type="button" class="btn btn-outline-primary"
             data-bs-toggle="modal" data-bs-target="#editarEnderecoModal"><i
               class="bi bi-pencil-square"></i>Editar</button>
-        </td> -->
+        </td>
         <td>
           <button (click)="abrirModalExcluir(endereco)" type="button" class="btn btn-outline-danger"
             data-bs-toggle="modal" data-bs-target="#excluirEnderecoModal"><i class="bi bi-trash"></i>Excluir</button>
@@ -55,13 +55,13 @@
             <label class="form-label" for="nomeEnderecoCadastrar">Novo Endereço</label>
             <input [(ngModel)]="endereco.endereco" name="endereco" type="text" class="form-control"
               id="nomeEnderecoCadastrar">
-            <div id="nomeEnderecoCadastrarHelp" class="form-text">Campo obrigatorio</div>
+            <div id="nomeEnderecoCadastrarHelp" class="form-text">Campo obrigatório</div>
           </div>
 
           <div class="col-4">
             <label class="form-label" for="cepCadastrar">CEP</label>
             <input [(ngModel)]="endereco.cep" name="cep" type="text" class="form-control" id="cepCadastrar">
-            <div id="cepCadastrarHelp" class="form-text">Campo obrigatorio</div>
+            <div id="cepCadastrarHelp" class="form-text">Campo obrigatório</div>
           </div>
         </form>
       </div>
@@ -97,7 +97,7 @@
 <!-- Modal excluir -->
 
 <!-- Modal editar -->
-<!-- <div class="modal fade" id="editarEnderecoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="editarEnderecoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" style="max-width:1000px;">
     <div class="modal-content">
       <div class="modal-header" style="background-color: #64AEAA; color:white; ">
@@ -109,13 +109,13 @@
           <div class="col-8">
             <label class="form-label" for="enderecoEditar">Endereço</label>
             <input name="endereco" value="{{endereco.endereco}}" type="text" class="form-control" id="enderecoEditar">
-            <div id="enderecoEditarHelp" class="form-text">Campo obrigatorio</div>
+            <div id="enderecoEditarHelp" class="form-text">Campo obrigatório</div>
           </div>
 
           <div class="col-4">
             <label class="form-label" for="cepEditar">CEP</label>
             <input name="cep" value="{{endereco.cep}}" type="text" class="form-control" id="cepEditar">
-            <div id="cepEditarHelp" class="form-text">Campo obrigatorio</div>
+            <div id="cepEditarHelp" class="form-text">Campo obrigatório</div>
           </div>
         </form>
       </div>
@@ -124,5 +124,5 @@
       </div>
     </div>
   </div>
-</div> -->
+</div>
 <!-- Modal editar -->

@@ -10,7 +10,7 @@ export class FooterComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
   }
 
 }

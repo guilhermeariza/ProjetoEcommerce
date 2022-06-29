@@ -35,11 +35,8 @@ export class TabelaCartaoCreditoComponent implements OnInit {
 
   // Metodo para buscar usuario logado no banco de dados, e buscar os cartões desse usuario específico
     getAllCartaoUsuario(){
-      // Passa o parametro id para o metodo getById da service de autenticação
     this.auth.getById(environment.id).subscribe((data: Usuario) => {
-      // Retorna as informações do BD e armazena no usuario
       this.usuario = data
-      // Armazena na listaCartao[] o atributo cartaoCredito que veio junto com o usuario
       this.listaCartao = this.usuario.cartaoCredito
     })
   }

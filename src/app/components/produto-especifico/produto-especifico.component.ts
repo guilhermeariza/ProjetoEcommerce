@@ -40,7 +40,6 @@ export class ProdutoEspecificoComponent implements OnInit {
   carregarProdutoEspecifico(){
     this.produtoService.getById(this.id).subscribe((data: Produto) => {
       this.produto = data
-
     })
   }
 // ------------------------------
@@ -117,12 +116,12 @@ export class ProdutoEspecificoComponent implements OnInit {
        if(this.usuario.carrinho.idProduto == this.produto.id){
         this.carrinhoService.update(this.carrinho).subscribe((data: Carrinho)=>{
           this.carrinho = data
-          console.log(this.carrinho)
+          this.ngOnInit()
         })
        } else if(this.usuario.carrinho.idProduto != this.produto.id){
         this.carrinhoService.save(this.carrinho).subscribe((data: Carrinho)=>{
           this.carrinho = data
-          console.log(this.carrinho)
+          this.ngOnInit()
         })
       }
     }
