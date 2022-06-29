@@ -25,6 +25,11 @@ export class CriarContaComponent implements OnInit {
 
   ngOnInit() {
     window.scroll(0,0)
+    this.mascara()
+  }
+
+  mascara(){
+    $('#cnpj').inputmask('99.999.999/9999-99')
   }
 
   confirmSenha(event:any) {

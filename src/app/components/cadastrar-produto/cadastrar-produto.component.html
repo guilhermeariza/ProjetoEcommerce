@@ -26,7 +26,7 @@
           <th scope="col">ID</th>
           <th scope="col">Foto</th>
           <th scope="col">Nome</th>
-          <th scope="col">Categotia</th>
+          <th scope="col">Categoria</th>
           <th scope="col">Preço</th>
           <th scope="col">Estoque</th>
           <th scope="col"></th>
@@ -75,7 +75,7 @@
             <div class="col-5">
               <label class="form-label" for="nomeCadastrar">Nome do produto</label>
               <input [(ngModel)]="produto.nome" name="nome" type="text" class="form-control" id="nomeCadastrar">
-              <div id="nomeCadastrarHelp" class="form-text">Campo obrigatorio</div>
+              <div id="nomeCadastrarHelp" class="form-text">Campo obrigatório</div>
             </div>
 
             <div class="col-3">
@@ -85,21 +85,21 @@
                 <option *ngFor="let categoria of listaCategoria" value="{{categoria.id}}">{{categoria.nomeCategoria}}
                 </option>
               </select>
-              <div id="categoriaProdutoCadastrarHelp" class="form-text">Campo obrigatorio</div>
+              <div id="categoriaProdutoCadastrarHelp" class="form-text">Campo obrigatório</div>
             </div>
 
             <div class="col-2">
               <label class="form-label" for="estoqueCadastrar">Estoque</label>
               <input [(ngModel)]="produto.estoque" name="estoque" type="text" class="form-control"
                 id="estoqueCadastrar">
-              <div id="estoqueCadastrarHelp" class="form-text">Campo obrigatorio</div>
+              <div id="estoqueCadastrarHelp" class="form-text">Campo obrigatório</div>
             </div>
 
             <div class="col-2">
               <label class="form-label" for="precoCadastrar" id="precoCadastrar" name="preco">Preço de venda</label>
               <input [(ngModel)]="produto.preco" name="preco" type="text" placeholder="R$ 0,00" class="form-control"
                 id="precoCadastrar">
-              <div id="precoCadastrarHelp" class="form-text">Campo obrigatorio</div>
+              <div id="precoCadastrarHelp" class="form-text">Campo obrigatório</div>
             </div>
 
             <div class="col-12">
