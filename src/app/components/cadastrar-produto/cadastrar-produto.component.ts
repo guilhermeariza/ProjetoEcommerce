@@ -37,8 +37,6 @@ export class CadastrarProdutoComponent implements OnInit {
   getAll(){
     this.produtoService.getAll().subscribe((data: Produto[]) => {
       this.listaProdutos = data
-    },(error: any) => {
-      console.log('Erro: ', error)
     })
   }
 
@@ -47,7 +45,6 @@ export class CadastrarProdutoComponent implements OnInit {
     this.categoriaService.getById(id).subscribe((data: Categoria)=>{
       this.categoria = data
     })
-    console.log(this.categoria)
   }
 
   cadastrarProduto(){
@@ -58,7 +55,7 @@ export class CadastrarProdutoComponent implements OnInit {
       this.alerta.showAlertSuccess(`Produto ${this.produto.nome} cadastrado com sucesso`)
       this.produto = new Produto()
       this.limparModal()
-      this.ngOnInit()
+      this.getAll()
     },
     (error: any) => {
       switch(error.status){
@@ -82,7 +79,6 @@ export class CadastrarProdutoComponent implements OnInit {
     this.categoriaService.getById(id).subscribe((data: Categoria)=>{
       this.categoria = data
     })
-    console.log(this.categoria)
   }
 
   atualizarProduto(){
@@ -93,7 +89,6 @@ export class CadastrarProdutoComponent implements OnInit {
     this.produto.estoque = $('#estoqueEditar').val()
     this.produto.descricao = $('#descricaoEditar').val()
     this.produto.foto = $('#fotoProdutoEditar').attr('src')
-    console.log(this.produto)
     this.produtoService.update(this.produto).subscribe((data: Produto) => {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -103,7 +98,7 @@ export class CadastrarProdutoComponent implements OnInit {
       this.produto = data
       this.alerta.showAlertSuccess('Produto atualizado com sucesso')
       this.produto = new Produto()
-      this.ngOnInit()
+      this.getAll()
     },
     (error: any) => {
       switch(error.status){
@@ -129,11 +124,10 @@ export class CadastrarProdutoComponent implements OnInit {
   }
 
   excluirProduto() {
-      this.produtoService.delete(this.produto.id).subscribe((data: Produto) => {
-        this.produto = data
+      this.produtoService.delete(this.produto.id).subscribe(() => {
         this.alerta.showAlertSuccess(this.produto.nome +' excluído com sucesso')
         this.produto = new Produto()
-        this.ngOnInit()
+        this.getAll()
       },
       (error: any) => {
         switch(error.status){
@@ -205,6 +199,7 @@ export class CadastrarProdutoComponent implements OnInit {
     this.categoria.nomeCategoria = $('#categoriaCadastrar').val()
     this.categoriaService.save(this.categoria).subscribe((data: Categoria)=>{
       this.categoria = data
+      $('#categoriaCadastrar').val('')
       this.alerta.showAlertSuccess(`Categoria ${this.categoria.nomeCategoria} cadastrada com sucesso`)
       this.categoria = new Categoria()
       this.ngOnInit()

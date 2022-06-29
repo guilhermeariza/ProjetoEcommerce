@@ -1,4 +1,3 @@
-import { Carrinho } from "./Carrinho"
 import { Categoria } from "./Categoria"
 
 export class Produto {
@@ -9,5 +8,4 @@ export class Produto {
   public descricao: string
   public categoria: Categoria
   public foto: string
-  public carrinho: Carrinho[]
 }

@@ -40,7 +40,6 @@ export class ProdutoEspecificoComponent implements OnInit {
   carregarProdutoEspecifico(){
     this.produtoService.getById(this.id).subscribe((data: Produto) => {
       this.produto = data
-
     })
   }
 // ------------------------------
@@ -49,7 +48,6 @@ export class ProdutoEspecificoComponent implements OnInit {
   getUsuarioById(){
     this.auth.getById(environment.id).subscribe((data: Usuario)=>{
       this.usuario = data
-      this.carrinho.id = this.usuario.carrinho.id
     })
   }
 
@@ -114,17 +112,10 @@ export class ProdutoEspecificoComponent implements OnInit {
       this.auth.getById(environment.id).subscribe((data: Usuario)=>{
         this.usuario = data
       })
-       if(this.usuario.carrinho.idProduto == this.produto.id){
-        this.carrinhoService.update(this.carrinho).subscribe((data: Carrinho)=>{
-          this.carrinho = data
-          console.log(this.carrinho)
-        })
-       } else if(this.usuario.carrinho.idProduto != this.produto.id){
-        this.carrinhoService.save(this.carrinho).subscribe((data: Carrinho)=>{
-          this.carrinho = data
-          console.log(this.carrinho)
-        })
-      }
+
+      this.carrinhoService.save(this.carrinho).subscribe((data: Carrinho)=>{
+        this.carrinho = data
+      })
     }
 
     atualizarEstoque(){

@@ -23,7 +23,7 @@
     <table class="table table-sm">
       <thead>
         <tr>
-          <th scope="col">ID</th>
+          <th scope="col" hidden="true">ID</th>
           <th scope="col">Foto</th>
           <th scope="col">Nome</th>
           <th scope="col">Categoria</th>
@@ -34,7 +34,7 @@
       </thead>
       <tbody>
         <tr class="align-middle" *ngFor="let produto of listaProdutos" id="tabela">
-          <td id="idProduto">{{produto.id}}</td>
+          <td id="idProduto" hidden="true">{{produto.id}}</td>
           <td id="fotoProduto" class="text-center"><img src="{{produto.foto}}" class="img-tabela"></td>
           <td id="nomeProduto" class="text-center">{{produto.nome}}</td>
           <td id="categoriaProduto" class="text-center">{{produto.categoria.nomeCategoria}}</td>
@@ -241,14 +241,13 @@
           <table class="table table-sm">
             <thead>
               <tr>
-                <th scope="col">ID</th>
                 <th scope="col">Nome da Categoria</th>
                 <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
               <tr class="align-middle" *ngFor="let categoria of listaCategoria" id="tabela">
-                <td id="idCategoria">{{categoria.id}}</td>
+                <td id="idCategoria" hidden="true">{{categoria.id}}</td>
                 <td id="nomeCategoria" class="text-center">{{categoria.nomeCategoria}}</td>
                 <td class="text-center">
                   <button id="btnEditar" (click)="abrirModalAtualizarCategoria(categoria)"
