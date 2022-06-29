@@ -88,7 +88,6 @@ export class CarrinhoComponent implements OnInit {
   }
 
   finalizarPedido(){
-    this.carrinho = this.usuario.carrinho
     this.carrinhoService.fazerPedido(this.carrinho).subscribe((resp: Carrinho)=>{
       this.carrinho = resp
       this.alerta.showAlertSuccess('Pedido finalizado com sucesso')

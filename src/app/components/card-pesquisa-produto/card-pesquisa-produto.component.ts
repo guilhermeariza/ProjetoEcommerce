@@ -15,7 +15,6 @@ export class CardPesquisaProdutoComponent {
 
   constructor(private router: Router, private produtoService: ProdutoService, private route: ActivatedRoute) {
 
-
   }
 
   ngOnInit(){
@@ -36,5 +35,4 @@ export class CardPesquisaProdutoComponent {
       console.log('Erro: ', error)
     })
   }
-
 }

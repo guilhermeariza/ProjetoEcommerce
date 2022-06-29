@@ -48,7 +48,6 @@ export class ProdutoEspecificoComponent implements OnInit {
   getUsuarioById(){
     this.auth.getById(environment.id).subscribe((data: Usuario)=>{
       this.usuario = data
-      this.carrinho.id = this.usuario.carrinho.id
     })
   }
 
@@ -96,7 +95,6 @@ export class ProdutoEspecificoComponent implements OnInit {
           this.carrinho.valorTotal = this.quantidade * this.produto.preco
           this.carrinho.status = 'carrinho'
 
-
          if(this.carrinho.quantidade > this.produto.estoque){
             this.alerta.showAlertDanger('Não temos essa quantidade em estoque')
           } else if(this.carrinho.quantidade <= 0){
@@ -111,10 +109,13 @@ export class ProdutoEspecificoComponent implements OnInit {
     }
 
     salvarCarrinho(){
-        this.carrinhoService.update(this.carrinho).subscribe((data: Carrinho)=>{
-          this.carrinho = data
-          console.log(this.carrinho)
-        })
+      this.auth.getById(environment.id).subscribe((data: Usuario)=>{
+        this.usuario = data
+      })
+
+      this.carrinhoService.save(this.carrinho).subscribe((data: Carrinho)=>{
+        this.carrinho = data
+      })
     }
 
     atualizarEstoque(){

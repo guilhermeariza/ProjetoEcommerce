@@ -28,8 +28,6 @@ export class CardHomeComponent implements OnInit {
      for(let i=0 ; i<4; i++){
       this.listaMaisProcurados.push(this.listaProdutos[i])
     }
-    },(error: any) => {
-      console.log('Erro: ', error)
     })
   }
 

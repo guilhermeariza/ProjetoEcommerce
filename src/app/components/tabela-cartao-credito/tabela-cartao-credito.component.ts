@@ -35,11 +35,8 @@ export class TabelaCartaoCreditoComponent implements OnInit {
 
   // Metodo para buscar usuario logado no banco de dados, e buscar os cartões desse usuario específico
     getAllCartaoUsuario(){
-      // Passa o parametro id para o metodo getById da service de autenticação
     this.auth.getById(environment.id).subscribe((data: Usuario) => {
-      // Retorna as informações do BD e armazena no usuario
       this.usuario = data
-      // Armazena na listaCartao[] o atributo cartaoCredito que veio junto com o usuario
       this.listaCartao = this.usuario.cartaoCredito
     })
   }
@@ -58,15 +55,12 @@ export class TabelaCartaoCreditoComponent implements OnInit {
     this.cartao.numeroCartao = $('#numeroCartaoCadastrar').val()
     this.cartao.dataValidade = $('#validadeCadastrar').val()
     this.cartao.cvv = $('#cvvCadastrar').val()
-
-    console.log(this.cartao)
     // Passa o cartão(já com o usuario inserido) para o post da cartaoService
     this.cartaoService.post(this.cartao).subscribe((data: CartaoCredito) => {
       // Armazena o retorno dentro do cartão desta classe
       this.cartao = data
       this.alerta.showAlertSuccess('Cartao cadastrado com sucesso')
       this.limparModal()
-      this.ngOnInit()
       this.cartao = new CartaoCredito
     },
     (error: any) => {
@@ -93,7 +87,6 @@ export class TabelaCartaoCreditoComponent implements OnInit {
       this.alerta.showAlertSuccess('Cartao excluído com sucesso')
       this.cartao = new CartaoCredito
       this.fecharModal()
-      this.ngOnInit()
     },(error: any) => {
       switch(error.status){
         case 400:

@@ -17,7 +17,7 @@
       <tr>
         <th scope="col">ID</th>
         <th scope="col">Apelido</th>
-        <th scope="col">Nome</th>
+        <th scope="col">Nome escrito no cartao</th>
         <th scope="col">Numero</th>
         <th scope="col">Data de validade</th>
         <th scope="col">CVV</th>
@@ -56,34 +56,34 @@
             <label class="form-label" for="nomeCartaoCadastrar">Nome escrito no cartão</label>
             <input style="text-transform: uppercase;" name="nome" type="text" class="form-control"
               id="nomeCartaoCadastrar">
-            <div id="nomeCartaoCadastrarHelp" class="form-text">Campo obrigatorio</div>
+            <div id="nomeCartaoCadastrarHelp" class="form-text">Campo obrigatório</div>
           </div>
 
           <div class="col-4">
             <label class="form-label" for="numeroCartaoCadastrar">Numero impressso no cartão</label>
             <input name="numeroCartao" type="text" class="form-control"
               id="numeroCartaoCadastrar">
-            <div id="numeroCartaoCadastrarHelp" class="form-text">Campo obrigatorio</div>
+            <div id="numeroCartaoCadastrarHelp" class="form-text">Campo obrigatório</div>
           </div>
 
           <div class="col-2">
             <label class="form-label" for="validadeCadastrar" name="validadeCadastrar">Validade</label>
             <input name="data" type="text" class="form-control"
               id="validadeCadastrar">
-            <div id="validadeCadastrarHelp" class="form-text">Campo obrigatorio</div>
+            <div id="validadeCadastrarHelp" class="form-text">Campo obrigatório</div>
           </div>
 
           <div class="col-2">
             <label class="form-label" for="cvvCadastrar" name="cvvCadastrar">CVV</label>
             <input name="cvv" type="text" class="form-control" id="cvvCadastrar">
-            <div id="cvvHelpCadastrar" class="form-text">Campo obrigatorio</div>
+            <div id="cvvHelpCadastrar" class="form-text">Campo obrigatório</div>
           </div>
 
           <div class="col-4">
             <label class="form-label" for="apelidoCartaoCadastrar">Como você quer chamar este cartão?</label>
             <input [(ngModel)]="cartao.apelido" name="apelido" type="text" class="form-control"
               id="apelidoCartaoCadastrar">
-            <div id="apelidoCartaoCadastrarHelp" class="form-text">Campo obrigatorio</div>
+            <div id="apelidoCartaoCadastrarHelp" class="form-text">Campo obrigatório</div>
           </div>
         </form>
       </div>
