@@ -55,6 +55,7 @@ export class CarrinhoComponent implements OnInit {
       this.listaCarrinho = this.lista.filter(function(c: Carrinho){return c.status == 'carrinho'}) //Função para armazenar em listaCarrinho o fitro da lista por status
       this.somaTotal()
     })
+
   }
 
   somaTotal(){
@@ -88,11 +89,17 @@ export class CarrinhoComponent implements OnInit {
   }
 
   finalizarPedido(){
-    this.carrinhoService.fazerPedido(this.carrinho).subscribe((resp: Carrinho)=>{
-      this.carrinho = resp
-      this.alerta.showAlertSuccess('Pedido finalizado com sucesso')
-      console.log(this.usuario.carrinho)
+    const user = new Usuario()
+    user.id = this.usuario.id
+    this.listaCarrinho.forEach((item: Carrinho) => {
+      item.usuario = user
+      item.status = 'pedido'
     })
+    this.carrinhoService.fazerPedido(this.listaCarrinho).subscribe((resp: Carrinho[])=>{
+      this.CarregarCarrinho()
+      this.alerta.showAlertSuccess('Pedido finalizado com sucesso')
+    })
+    console.log(this.listaCarrinho)
   }
 
 }

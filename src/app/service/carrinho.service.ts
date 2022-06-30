@@ -37,8 +37,8 @@ export class CarrinhoService {
     return this.http.put<Carrinho>(this.url+'/atualizar', carrinho, this.token)
   }
 
-  fazerPedido(carrinho: Carrinho): Observable<Carrinho>{
-    return this.http.put<Carrinho>('http://localhost:8080/carrinho/pedido', carrinho, this.token)
+  fazerPedido(carrinho: Carrinho[]): Observable<Carrinho[]>{
+    return this.http.put<Carrinho[]>('http://localhost:8080/carrinho/pedido', carrinho, this.token)
   }
 
   delete(id: number){
