@@ -37,6 +37,7 @@ export class CriarContaComponent implements OnInit {
   }
 
   cadastrar(usuario: Usuario){
+    this.usuario.cnpj = $('#cnpj').val()
     if(usuario.senha != this.confirmarSenha){
       this.alerta.showAlertDanger('As senhas precisam ser iguais')
     } else {
