@@ -28,6 +28,11 @@ export class CardPesquisaProdutoComponent {
     })
   }
 
+
+  abrirProdutoEspecifico(produto: Produto){
+    this.router.navigate(['/produto'],{queryParams: produto})
+  }
+
   carregarPesquisaPorNome(){
     this.produtoService.getbyName(this.nome).subscribe((data: Produto[]) => {
       this.listaProduto = data

@@ -21,6 +21,8 @@ export class CadastrarProdutoComponent implements OnInit {
   categoria: Categoria = new Categoria()
   listaCategoria: Categoria[]
 
+  valorFormatado: string
+
   constructor(
     private router: Router,
     private produtoService: ProdutoService,
@@ -189,7 +191,7 @@ export class CadastrarProdutoComponent implements OnInit {
   }
 
   cadastrarCategoria(){
-    
+
     this.categoriaService.save(this.categoria).subscribe((data: Categoria)=>{
       this.categoria = data
       $('#categoriaCadastrar').val('')

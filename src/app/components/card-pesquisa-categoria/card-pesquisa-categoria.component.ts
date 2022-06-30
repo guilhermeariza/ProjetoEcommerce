@@ -35,6 +35,10 @@ export class CardPesquisaCategoriaComponent implements OnInit {
     })
   }
 
+  abrirProdutoEspecifico(produto: Produto){
+    this.router.navigate(['/produto'],{queryParams: produto})
+  }
+
   getProduto(){
     let id = this.categoriaId
     this.produtoService.getAll().subscribe((data: Produto[])=>{

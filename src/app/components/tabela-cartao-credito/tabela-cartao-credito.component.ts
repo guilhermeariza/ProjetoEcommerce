@@ -61,7 +61,9 @@ export class TabelaCartaoCreditoComponent implements OnInit {
       this.cartao = data
       this.alerta.showAlertSuccess('Cartao cadastrado com sucesso')
       this.limparModal()
+      this.getAllCartaoUsuario()
       this.cartao = new CartaoCredito
+
     },
     (error: any) => {
       switch(error.status){
@@ -86,6 +88,7 @@ export class TabelaCartaoCreditoComponent implements OnInit {
     this.cartaoService.delete(this.cartao.id).subscribe(() => {
       this.alerta.showAlertSuccess('Cartao excluído com sucesso')
       this.cartao = new CartaoCredito
+      this.getAllCartaoUsuario()
       this.fecharModal()
     },(error: any) => {
       switch(error.status){

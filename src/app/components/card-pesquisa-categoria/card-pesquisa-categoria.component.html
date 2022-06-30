@@ -9,7 +9,7 @@
       <div class="row g-0 justify-content-center align-items-center">
 
         <div class="col-md-3 text-center">
-          <a [routerLink]="['/produto', produto]">
+          <a (click)="abrirProdutoEspecifico(produto)">
             <img src="{{produto.foto}}" height="200" width="200" class="img-fluid mx-auto d-block ">
           </a>
         </div>
@@ -17,7 +17,7 @@
         <div class="col-md-9">
           <div class="card-body">
             <div class="card-title">
-              <a [routerLink]="['/produto', produto]" style="text-decoration: none; color:black;">
+              <a (click)="abrirProdutoEspecifico(produto)" style="text-decoration: none; color:black;">
                 <p class="pt-3 nomeProduto">{{produto.nome}}</p>
               </a>
             </div>

@@ -46,12 +46,12 @@ export class TabelaEnderecoComponent implements OnInit {
 
   cadastrar(){
     // indicar para o endereco qual usuario deve ser associado
-    this.endereco.usuario = this.usuario
+    this.endereco.usuario.id = this.usuario.id
     this.endereco.cep = $('#cepCadastrar').val()
     console.log(this.endereco)
-    // Passar o endereço, já com o usuario associado, como parametro para o método save da service de endereco
     this.enderecoService.save(this.endereco).subscribe((data: Endereco) => {
       this.endereco = data
+      this.getAllEnderecoUsuario()
       this.alerta.showAlertSuccess('Endereco cadastrado com sucesso')
       this.endereco = new Endereco()
       this.limparModal
@@ -78,10 +78,11 @@ export class TabelaEnderecoComponent implements OnInit {
   atualizar(){
     this.endereco.endereco = $('#enderecoEditar').val()
     this.endereco.cep = $('#cepEditar').val()
-    this.endereco.usuario = this.usuario
+    this.endereco.usuario.id = this.usuario.id
 
     this.enderecoService.update(this.endereco).subscribe((data: Endereco)=>{
       this.endereco = data
+      this.getAllEnderecoUsuario()
       this.endereco = new Endereco()
       this.alerta.showAlertSuccess('Endereco atualizado com sucesso')
       this.limparModal()
@@ -96,6 +97,7 @@ export class TabelaEnderecoComponent implements OnInit {
 excluir(){
     this.enderecoService.delete(this.endereco.id).subscribe((data: Endereco) => {
       this.endereco = data
+      this.getAllEnderecoUsuario()
       this.alerta.showAlertSuccess('Endereco excluído com sucesso')
       this.endereco = new Endereco
       this.fecharModal()

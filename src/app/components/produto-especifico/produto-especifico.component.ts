@@ -41,6 +41,7 @@ export class ProdutoEspecificoComponent implements OnInit {
   pegarParametroRota(){
     this.route.queryParams.subscribe(params => {
       this.id = params['id']
+      console.log(this.id)
       this.carregarProdutoEspecifico()
       window.scroll(0,0)
     })
