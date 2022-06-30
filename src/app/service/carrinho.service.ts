@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { Carrinho } from '../model/Carrinho';
+import { Usuario } from '../model/Usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,10 @@ export class CarrinhoService {
 
   update(carrinho: Carrinho): Observable<Carrinho>{
     return this.http.put<Carrinho>(this.url+'/atualizar', carrinho, this.token)
+  }
+
+  fazerPedido(carrinho: Carrinho[]): Observable<Carrinho[]>{
+    return this.http.put<Carrinho[]>('http://localhost:8080/carrinho/pedido', carrinho, this.token)
   }
 
   delete(id: number){

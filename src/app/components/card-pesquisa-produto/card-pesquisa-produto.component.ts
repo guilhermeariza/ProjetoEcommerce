@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CardPesquisaProdutoComponent {
   produto: Produto = new Produto()
-  listaProduto: Produto[]
+  listaProduto =  new Array
   nome: string
 
   constructor(private router: Router, private produtoService: ProdutoService, private route: ActivatedRoute) {
@@ -18,15 +18,27 @@ export class CardPesquisaProdutoComponent {
   }
 
   ngOnInit(){
-    this.route.queryParams.subscribe(params => {this.nome = params['nome']})
-    this.carregarPesquisaPorNome()
+    this.pegarParametroRota()
+  }
+
+  pegarParametroRota(){
+    this.route.queryParams.subscribe(params => {
+      this.nome = params['nome']
+      this.carregarPesquisaPorNome()
+    })
+  }
+
+
+  abrirProdutoEspecifico(produto: Produto){
+    this.router.navigate(['/produto'],{queryParams: produto})
   }
 
   carregarPesquisaPorNome(){
     this.produtoService.getbyName(this.nome).subscribe((data: Produto[]) => {
       this.listaProduto = data
-    },(error: any) => {
-      console.log('Erro: ', error)
+      this.listaProduto.forEach(item => {
+        item.preco = item.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+      })
     })
   }
 }

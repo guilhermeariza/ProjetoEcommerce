@@ -13,14 +13,18 @@ export class CardHomeComponent implements OnInit {
 
   produto: Produto = new Produto()
   listaProdutos:Produto[]
-  listaMaisProcurados=new Array
+  listaMaisProcurados = new Array
 
   constructor(private router: Router, private produtoService: ProdutoService) { }
 
   ngOnInit(){
     this.getAllProdutos()
-
   }
+
+  saibaMais(produto: Produto){
+    this.router.navigate(['/produto'],{queryParams: produto})
+  }
+
 
   getAllProdutos(){
     this.produtoService.getAll().subscribe((data: Produto[]) => {
@@ -28,6 +32,9 @@ export class CardHomeComponent implements OnInit {
      for(let i=0 ; i<4; i++){
       this.listaMaisProcurados.push(this.listaProdutos[i])
     }
+    this.listaMaisProcurados.forEach(item=>{
+      item.preco = item.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    })
     })
   }
 

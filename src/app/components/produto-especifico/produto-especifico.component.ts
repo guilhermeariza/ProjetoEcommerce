@@ -21,6 +21,7 @@ export class ProdutoEspecificoComponent implements OnInit {
   quantidade: any
   carrinho: Carrinho = new Carrinho()
   usuario: Usuario = new Usuario()
+  valorFormatado: string
 
 
   constructor(private route: ActivatedRoute,
@@ -31,15 +32,25 @@ export class ProdutoEspecificoComponent implements OnInit {
 
   ngOnInit() {
     window.scroll(0,0)
-    this.id = this.route.snapshot.params['id']
+    this.pegarParametroRota()
     this.carregarProdutoEspecifico()
     this.getUsuarioById()
     this.quantidade = $('#quantidade').val()
   }
 
+  pegarParametroRota(){
+    this.route.queryParams.subscribe(params => {
+      this.id = params['id']
+      console.log(this.id)
+      this.carregarProdutoEspecifico()
+      window.scroll(0,0)
+    })
+  }
+
   carregarProdutoEspecifico(){
     this.produtoService.getById(this.id).subscribe((data: Produto) => {
       this.produto = data
+      this.valorFormatado = this.produto.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     })
   }
 // ------------------------------

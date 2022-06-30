@@ -2,8 +2,31 @@ main{
   margin-top: 100px;
 }
 
+img:hover{
+  cursor: pointer;
+}
 
-.container{
-  border-radius: 10px;
+.precoProduto{
+  font-size: 20pt;
+}
+
+.descricaoProduto{
+  font-size: 14pt;
+}
+
+.nomeProduto{
+  font-size: 24pt;
+  font-weight: bold;
+}
+
+.nomeProduto:hover{
+  font-size: 24pt;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: solid;
+}
+
+.card{
   background-color: #DCDEDD;
+  border: none;
 }

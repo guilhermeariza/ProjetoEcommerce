@@ -17,7 +17,7 @@
         <!--Botao dropdown-->
         <li class="nav-item dropdown iten-hover">
           <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false">
+            aria-expanded="false" (click)="getAllCategoria()">
             Categorias
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -34,7 +34,7 @@
         <!--Barra de pesquisa com botão-->
         <form class="d-flex" role="search" style="width: 496px;">
           <input id="barraPesquisa" class="form-control me-2" type="search" placeholder="Pesquisar..."
-            aria-label="Search">
+            aria-label="Search" [(ngModel)]='produto.nome' (keyup)='pesquisarPorNome()' name="nomeProduto">
           <button (click)="pesquisarPorNome()" class="btn btn-success my-2 my-sm-0" type="submit"><img
               src="assets/icon/pesquisa_transparente.gif" width="25px"></button>
         </form>
@@ -76,7 +76,7 @@
           <a class="dropdown-item" *ngIf="logado()">{{nomeDeUsuario}}</a>
           <div class="dropdown-divider" *ngIf="logado()"></div>
           <a class="dropdown-item" *ngIf="logado()" routerLink="/meuperfil">Atualizar perfil</a>
-          <a class="dropdown-item" *ngIf="logado()" href="#formasPagamento" routerLink="/meuperfil">Formas de
+          <a class="dropdown-item" *ngIf="logado()" routerLink="/meuperfil" href="#formasPagamento">Formas de
             pagamento</a>
           <a class="dropdown-item" *ngIf="logado()" routerLink="/historicopedidos">Histórico de pedidos</a>
           <a class="dropdown-item" *ngIf="logado()" routerLink="/meuperfil">Usuario e senha</a>

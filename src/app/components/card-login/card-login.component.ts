@@ -32,7 +32,6 @@ export class CardLoginComponent implements OnInit {
       environment.cnpj = this.usuarioLogin.cnpj
       environment.nomeFantasia = this.usuarioLogin.nomeFantasia
       environment.razaoSocial = this.usuarioLogin.razaoSocial
-
         if(this.usuarioLogin.foto != ''){
           environment.foto = this.usuarioLogin.foto
         } else if(this.usuarioLogin.foto == null){
@@ -41,9 +40,9 @@ export class CardLoginComponent implements OnInit {
       this.router.navigate(['/inicio'])
     }, erro => {
         if(erro.status == 500){
-          this.alerta.showAlertDanger('Huuum, parece que você ainda não é um cliente!')
+          this.alerta.showAlertDanger('Usuário ou senha incorretos!')
         } else if(erro.status == 401){
-          this.alerta.showAlertDanger('Usuário ou senha estão incorretos!')
+          this.alerta.showAlertDanger('Huuum, parece que você ainda não é um cliente!')
         } else if(erro.status == 404){
           this.alerta.showAlertDanger('Houve um erro no seu login, entre em contato pelos nossos canais de atendimento')
         }
