@@ -40,9 +40,9 @@ export class CardLoginComponent implements OnInit {
       this.router.navigate(['/inicio'])
     }, erro => {
         if(erro.status == 500){
-          this.alerta.showAlertDanger('Huuum, parece que você ainda não é um cliente!')
+          this.alerta.showAlertDanger('Usuário ou senha incorretos!')
         } else if(erro.status == 401){
-          this.alerta.showAlertDanger('Usuário ou senha estão incorretos!')
+          this.alerta.showAlertDanger('Huuum, parece que você ainda não é um cliente!')
         } else if(erro.status == 404){
           this.alerta.showAlertDanger('Houve um erro no seu login, entre em contato pelos nossos canais de atendimento')
         }
