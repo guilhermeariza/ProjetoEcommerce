@@ -90,11 +90,7 @@ export class CadastrarProdutoComponent implements OnInit {
     this.produto.descricao = $('#descricaoEditar').val()
     this.produto.foto = $('#fotoProdutoEditar').attr('src')
     this.produtoService.update(this.produto).subscribe((data: Produto) => {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 0d0c9e83cdb7b95dc147ec893c60c58fa82a8251
+
       this.produto = data
       this.alerta.showAlertSuccess('Produto atualizado com sucesso')
       this.produto = new Produto()
@@ -112,10 +108,7 @@ export class CadastrarProdutoComponent implements OnInit {
           this.alerta.showAlertDanger('Erro na aplicação, erro: '+error.status)
         break;
       }
-<<<<<<< HEAD
->>>>>>> 2c87c6350b5f2b86007c59dc2afb1939767055da
-=======
->>>>>>> 0d0c9e83cdb7b95dc147ec893c60c58fa82a8251
+
     })
   }
 

@@ -7,16 +7,10 @@ import { AlertaService } from 'src/app/service/alerta.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { CartaoCreditoService } from 'src/app/service/cartao-credito.service';
 import { environment } from 'src/environments/environment.prod';
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
 import * as Inputmask from "inputmask"
 declare var $:any;
->>>>>>> 2c87c6350b5f2b86007c59dc2afb1939767055da
-=======
-import * as Inputmask from "inputmask"
-declare var $:any;
->>>>>>> 0d0c9e83cdb7b95dc147ec893c60c58fa82a8251
+
 
 @Component({
   selector: 'app-tabela-cartao-credito',
