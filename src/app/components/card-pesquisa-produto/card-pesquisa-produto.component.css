@@ -2,11 +2,6 @@ main{
   margin-top: 100px;
 }
 
-.container{
-  border-radius: 10px;
-  background-color: #DCDEDD;
-}
-
 .precoProduto{
   font-size: 20pt;
 }
@@ -17,4 +12,10 @@ main{
 
 .nomeProduto{
   font-size: 24pt;
+  font-weight: bold;
+}
+
+.card{
+  background-color: #DCDEDD;
+  border: none;
 }
