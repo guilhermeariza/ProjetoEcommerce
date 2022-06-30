@@ -25,6 +25,7 @@ export class TabelaEnderecoComponent implements OnInit {
     private auth: AuthService) { }
 
   ngOnInit(){
+    window.scroll(0,0)
     this.getAllEnderecoUsuario()
     this.mascara()
   }
@@ -46,15 +47,15 @@ export class TabelaEnderecoComponent implements OnInit {
 
   cadastrar(){
     // indicar para o endereco qual usuario deve ser associado
-    this.endereco.usuario.id = this.usuario.id
     this.endereco.cep = $('#cepCadastrar').val()
-    console.log(this.endereco)
+    this.endereco.usuario = this.usuario
     this.enderecoService.save(this.endereco).subscribe((data: Endereco) => {
       this.endereco = data
+      console.log(this.endereco)
       this.getAllEnderecoUsuario()
       this.alerta.showAlertSuccess('Endereco cadastrado com sucesso')
-      this.endereco = new Endereco()
       this.limparModal
+      this.endereco = new Endereco()
     },
     (error: any) => {
       switch(error.status){
@@ -76,16 +77,17 @@ export class TabelaEnderecoComponent implements OnInit {
   }
 
   atualizar(){
+    const user = new Usuario()
+    user.id = this.usuario.id
+    this.endereco.usuario = user
     this.endereco.endereco = $('#enderecoEditar').val()
     this.endereco.cep = $('#cepEditar').val()
-    this.endereco.usuario.id = this.usuario.id
 
     this.enderecoService.update(this.endereco).subscribe((data: Endereco)=>{
       this.endereco = data
-      this.getAllEnderecoUsuario()
       this.endereco = new Endereco()
       this.alerta.showAlertSuccess('Endereco atualizado com sucesso')
-      this.limparModal()
+      this.getAllEnderecoUsuario()
       this.fecharModal()
     })
   }
