@@ -11,7 +11,7 @@
       </div>
       <div clas="row">
         <div style="height: 20px;">
-          <p>R$ {{produto.preco}}</p>
+          <p>{{produto.preco}}</p>
         </div>
       </div>
     </div>
@@ -21,7 +21,7 @@
       <p class="card-text">Documentação e manutenção inclusas.</p>
     </div>
     <div class="card-footer">
-      <button class="btn btn-success" [routerLink]="['/produto', produto]">
+      <button class="btn btn-success" (click)="saibaMais(produto)">
         Saiba mais
       </button>
     </div>
