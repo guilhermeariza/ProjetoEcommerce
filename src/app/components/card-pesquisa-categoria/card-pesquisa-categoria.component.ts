@@ -24,6 +24,7 @@ export class CardPesquisaCategoriaComponent implements OnInit {
 
   ngOnInit(){
     this.pegarCategoriaRota()
+
   }
 
   pegarCategoriaRota(){
@@ -38,6 +39,10 @@ export class CardPesquisaCategoriaComponent implements OnInit {
     let id = this.categoriaId
     this.produtoService.getAll().subscribe((data: Produto[])=>{
       this.lista = data
+      this.lista.forEach(item => {
+        item.preco = item.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+      })
+
       this.listaCategoria = this.lista.filter(function(c: Produto){
         return c.categoria.id == id
       })

@@ -2,8 +2,19 @@ main{
   margin-top: 100px;
 }
 
-
 .container{
   border-radius: 10px;
   background-color: #DCDEDD;
+}
+
+.precoProduto{
+  font-size: 20pt;
+}
+
+.descricaoProduto{
+  font-size: 14pt;
+}
+
+.nomeProduto{
+  font-size: 24pt;
 }
