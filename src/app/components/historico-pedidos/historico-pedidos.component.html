@@ -19,8 +19,8 @@
         </div>
         <hr>
 
-        <div class="row col pt-5 pb-5 alinhar hover-effect rounded" data-bs-toggle="modal" data-bs-target="#abrirCarrinhoModal" *ngFor="let item of listaPedidos">
-          <div class="col fw-bold">{{item.data}}</div>
+        <div class="row col pt-5 pb-5 alinhar hover-effect rounded" data-bs-toggle="modal" data-bs-target="#abrirCarrinhoModal" *ngFor="let item of grupo">
+          <div class="col fw-bold">{{item.valor.data}}</div>
           <div class="col">Cartão do RH</div>
           <div class="col">Rua Thuller, 100</div>
           <div class="col">40</div>
@@ -28,33 +28,7 @@
 
         </div>
         <hr>
-        <div class="row col pt-5 pb-5 alinhar hover-effect rounded" data-bs-toggle="modal" data-bs-target="#abrirCarrinhoModal">
-          <div class="col fw-bold">19/04/2022</div>
-          <div class="col">Cartão da administração</div>
-          <div class="col"></div>
-          <div class="col">40</div>
-          <div class="col fw-bold">R$ 120.000,00</div>
 
-        </div>
-        <hr>
-        <div class="row col pt-5 pb-5 alinhar hover-effect rounded" data-bs-toggle="modal" data-bs-target="#abrirCarrinhoModal">
-          <div class="col fw-bold">18/05/2022</div>
-          <div class="col">Cartão do pai</div>
-          <div class="col"></div>
-          <div class="col">40</div>
-          <div class="col fw-bold">R$ 120.000,00</div>
-
-        </div>
-        <hr>
-        <div class="row col pt-5 pb-5 alinhar hover-effect rounded" data-bs-toggle="modal" data-bs-target="#abrirCarrinhoModal">
-          <div class="col fw-bold">11/02/2022</div>
-          <div class="col">Cartão reserva</div>
-          <div class="col"></div>
-          <div class="col">40</div>
-          <div class="col fw-bold">R$ 120.000,00</div>
-
-        </div>
-        <hr>
 
       </div>
 
@@ -90,6 +64,13 @@
             <div class="col">{{item.quantidade}}</div>
             <div class="col fw-bold">R$ {{item.valorUnitario}}</div>
             <div class="col fw-bold">R$ {{item.valorTotal}}</div>
+          </div>
+          <div class="col-12 row fs-17 alinhar">
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col fw-bold ">Total:</div>
+            <div class="col">R$ {{somaDosProdutos}}</div>
           </div>
           <hr>
 

@@ -1,3 +1,4 @@
+import { Data } from 'popper.js';
 import { AlertaService } from 'src/app/service/alerta.service';
 import { CarrinhoService } from 'src/app/service/carrinho.service';
 import { Carrinho } from 'src/app/model/Carrinho';
@@ -21,6 +22,9 @@ export class HistoricoPedidosComponent implements OnInit {
 
   somaDosProdutos: number
 
+  grupo = new Array
+
+
   constructor(
     router: Router,
     private carrinhoService: CarrinhoService,
@@ -30,6 +34,7 @@ export class HistoricoPedidosComponent implements OnInit {
 
   ngOnInit(): void {
     this.carregarTodosCarrinhos()
+    this.teste()
   }
 
   carregarTodosCarrinhos(){
@@ -40,19 +45,46 @@ export class HistoricoPedidosComponent implements OnInit {
       this.listaPedidos = this.lista.filter(function(c: Carrinho){
         return c.status == "pedido"
       })
-      console.log(this.listaPedidos)
-      console.log(this.lista)
+
+
+      //console.log(this.listaPedidos)
+
+
+      let x = this.listaPedidos.forEach((valor: any) => {
+          this.grupo[valor.data] = this.grupo[valor.data]  || [];
+          this.grupo[valor.data].push({ nomeProduto : valor.nomeProduto , foto : valor.foto , data : valor.data});
+      });
+
+      console.log(this.grupo);
+
+      //console.log(this.listaPedidos)
+      this.somaTotal()
+
     })
   }
 
   somaTotal(){
-    this.carregarTodosCarrinhos()
     this.somaDosProdutos = 0
 
     //fazer um filtro por data do carrinho
     for(let i=0; i < this.listaPedidos.length; i++){
       this.somaDosProdutos = this.listaPedidos[i].valorTotal + this.somaDosProdutos
     }
+  }
+
+  teste(){
+    // let grupo = new Array
+
+    // this.listaPedidos.forEach( ( valor ) => {
+    //   grupo[valor.data] = grupo[valor.data]  || [];
+    //   grupo[valor.data].push({ data : valor.data });
+    // });
+
+    // console.log(grupo)
+
+
+
+
   }
 
 }
