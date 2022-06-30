@@ -71,6 +71,7 @@ export class NavbarComponent implements OnInit {
   getAllCategoria(){
     return this.categoriaService.getAll().subscribe((data: Categoria[])=>{
       this.listaCategoria = data
+      this.ngOnInit
     })
   }
 }

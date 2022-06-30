@@ -32,7 +32,6 @@ export class CardLoginComponent implements OnInit {
       environment.cnpj = this.usuarioLogin.cnpj
       environment.nomeFantasia = this.usuarioLogin.nomeFantasia
       environment.razaoSocial = this.usuarioLogin.razaoSocial
-
         if(this.usuarioLogin.foto != ''){
           environment.foto = this.usuarioLogin.foto
         } else if(this.usuarioLogin.foto == null){

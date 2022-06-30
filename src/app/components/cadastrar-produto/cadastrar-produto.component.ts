@@ -56,6 +56,8 @@ export class CadastrarProdutoComponent implements OnInit {
       this.produto = new Produto()
       this.limparModal()
       this.getAll()
+      
+      this.getAllCategoria()
     },
     (error: any) => {
       switch(error.status){
