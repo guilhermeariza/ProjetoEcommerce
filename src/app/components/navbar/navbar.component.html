@@ -34,7 +34,7 @@
         <!--Barra de pesquisa com botão-->
         <form class="d-flex" role="search" style="width: 496px;">
           <input id="barraPesquisa" class="form-control me-2" type="search" placeholder="Pesquisar..."
-            aria-label="Search">
+            aria-label="Search" [(ngModel)]='produto.nome' (keyup)='pesquisarPorNome()'>
           <button (click)="pesquisarPorNome()" class="btn btn-success my-2 my-sm-0" type="submit"><img
               src="assets/icon/pesquisa_transparente.gif" width="25px"></button>
         </form>

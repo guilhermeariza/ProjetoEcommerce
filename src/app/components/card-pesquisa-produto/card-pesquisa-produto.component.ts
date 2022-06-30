@@ -18,15 +18,19 @@ export class CardPesquisaProdutoComponent {
   }
 
   ngOnInit(){
-    this.route.queryParams.subscribe(params => {this.nome = params['nome']})
-    this.carregarPesquisaPorNome()
+    this.pegarParametroRota()
+  }
+
+  pegarParametroRota(){
+    this.route.queryParams.subscribe(params => {
+      this.nome = params['nome']
+      this.carregarPesquisaPorNome()
+    })
   }
 
   carregarPesquisaPorNome(){
     this.produtoService.getbyName(this.nome).subscribe((data: Produto[]) => {
       this.listaProduto = data
-    },(error: any) => {
-      console.log('Erro: ', error)
     })
   }
 }
