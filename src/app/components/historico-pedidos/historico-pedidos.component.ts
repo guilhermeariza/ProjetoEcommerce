@@ -19,6 +19,8 @@ export class HistoricoPedidosComponent implements OnInit {
   listaPedidos = new Array
   lista: any = new Carrinho()
 
+  somaDosProdutos: number
+
   constructor(
     router: Router,
     private carrinhoService: CarrinhoService,
@@ -41,6 +43,16 @@ export class HistoricoPedidosComponent implements OnInit {
       console.log(this.listaPedidos)
       console.log(this.lista)
     })
+  }
+
+  somaTotal(){
+    this.carregarTodosCarrinhos()
+    this.somaDosProdutos = 0
+
+    //fazer um filtro por data do carrinho
+    for(let i=0; i < this.listaPedidos.length; i++){
+      this.somaDosProdutos = this.listaPedidos[i].valorTotal + this.somaDosProdutos
+    }
   }
 
 }

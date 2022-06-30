@@ -1,5 +1,5 @@
 <main class="pt-4" style="margin-top:55px; ">
-  <div class=" container d-block row w-50 mx-auto ">
+  <div class=" container d-block row w-75 mx-auto ">
 
     <div class="row p-3 fw-bold mx-auto rounded"  style="background: #b3e2e0">
       <div class="col"></div>
@@ -11,35 +11,45 @@
 
       <div class="col-12 row-cols text-center alinhar">
         <div class="row col mb-3 fw-bold">
-          <div class="col ">CÓDIGO DO PEDIDO</div>
-          <div class="col">QUANTIDADE</div>
+          <div class="col ">DATA DO PEDIDO</div>
+          <div class="col">CARTÃO USADO</div>
+          <div class="col">ENDEREÇO A SER ENTREGUE</div>
+          <div class="col">QUANTIDADE DE ITENS</div>
           <div class="col">TOTAL</div>
         </div>
         <hr>
 
+        <div class="row col pt-5 pb-5 alinhar hover-effect rounded" data-bs-toggle="modal" data-bs-target="#abrirCarrinhoModal" *ngFor="let item of listaPedidos">
+          <div class="col fw-bold">{{item.data}}</div>
+          <div class="col">Cartão do RH</div>
+          <div class="col">Rua Thuller, 100</div>
+          <div class="col">40</div>
+          <div class="col fw-bold">R$ {{somaDosProdutos}}</div>
+
+        </div>
+        <hr>
         <div class="row col pt-5 pb-5 alinhar hover-effect rounded" data-bs-toggle="modal" data-bs-target="#abrirCarrinhoModal">
-          <div class="col fw-bold">1</div>
+          <div class="col fw-bold">19/04/2022</div>
+          <div class="col">Cartão da administração</div>
+          <div class="col"></div>
           <div class="col">40</div>
           <div class="col fw-bold">R$ 120.000,00</div>
 
         </div>
         <hr>
         <div class="row col pt-5 pb-5 alinhar hover-effect rounded" data-bs-toggle="modal" data-bs-target="#abrirCarrinhoModal">
-          <div class="col fw-bold">1</div>
+          <div class="col fw-bold">18/05/2022</div>
+          <div class="col">Cartão do pai</div>
+          <div class="col"></div>
           <div class="col">40</div>
           <div class="col fw-bold">R$ 120.000,00</div>
 
         </div>
         <hr>
         <div class="row col pt-5 pb-5 alinhar hover-effect rounded" data-bs-toggle="modal" data-bs-target="#abrirCarrinhoModal">
-          <div class="col fw-bold">1</div>
-          <div class="col">40</div>
-          <div class="col fw-bold">R$ 120.000,00</div>
-
-        </div>
-        <hr>
-        <div class="row col pt-5 pb-5 alinhar hover-effect rounded" data-bs-toggle="modal" data-bs-target="#abrirCarrinhoModal">
-          <div class="col fw-bold">1</div>
+          <div class="col fw-bold">11/02/2022</div>
+          <div class="col">Cartão reserva</div>
+          <div class="col"></div>
           <div class="col">40</div>
           <div class="col fw-bold">R$ 120.000,00</div>
 
@@ -52,14 +62,14 @@
 
   </div>
 
-  <div class="modal fade" id="abrirCarrinhoModal" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal fade" id="abrirCarrinhoModal" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
     <div class="modal-dialog modal-xl">
       <div class="modal-content ">
         <div class="modal-header ">
           <h5 class="modal-title" id="staticBackdropLabel">Carinho ID: 1</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body alinhar fs-15">
+        <div class="modal-body alinhar fs-15" >
 
 
           <div class="row col fw-bold">
@@ -71,63 +81,17 @@
           </div>
           <hr>
 
-          <div class="row col ">
+          <div class="row col " *ngFor="let item of listaPedidos">
             <div class="col">
-              <img src="../../assets/img/carro_preto.png" alt="" class=""
+              <img src="{{item.foto}}" alt="" class=""
                 style="max-width:90%; max-height:100%; width: auto; height: auto;">
             </div>
-            <div class="col">Bike elétrica</div>
-            <div class="col">40</div>
-            <div class="col fw-bold">R$ 3.000,00</div>
-            <div class="col fw-bold">R$ 120.000,00</div>
+            <div class="col">{{item.nomeProduto}}</div>
+            <div class="col">{{item.quantidade}}</div>
+            <div class="col fw-bold">R$ {{item.valorUnitario}}</div>
+            <div class="col fw-bold">R$ {{item.valorTotal}}</div>
           </div>
           <hr>
-          <div class="row col ">
-            <div class="col">
-              <img src="../../assets/img/carro_preto.png" alt="" class=""
-                style="max-width:90%; max-height:100%; width: auto; height: auto;">
-            </div>
-            <div class="col ">Bike elétrica</div>
-            <div class="col">40</div>
-            <div class="col fw-bold">R$ 3.000,00</div>
-            <div class="col fw-bold">R$ 120.000,00</div>
-          </div>
-          <hr>
-          <div class="row col ">
-            <div class="col">
-              <img src="../../assets/img/carro_preto.png" alt="" class=""
-                style="max-width:90%; max-height:100%; width: auto; height: auto;">
-            </div>
-            <div class="col ">Bike elétrica</div>
-            <div class="col">40</div>
-            <div class="col fw-bold">R$ 3.000,00</div>
-            <div class="col fw-bold">R$ 120.000,00</div>
-          </div>
-          <hr>
-          <div class="row col ">
-            <div class="col">
-              <img src="../../assets/img/carro_preto.png" alt="" class=""
-                style="max-width:90%; max-height:100%; width: auto; height: auto;">
-            </div>
-            <div class="col">Bike elétrica</div>
-            <div class="col">40</div>
-            <div class="col fw-bold">R$ 3.000,00</div>
-            <div class="col fw-bold">R$ 120.000,00</div>
-          </div>
-          <hr>
-          <div class="row col ">
-            <div class="col">
-              <img src="../../assets/img/carro_preto.png" alt="" class=""
-                style="max-width:90%; max-height:100%; width: auto; height: auto;">
-            </div>
-            <div class="col ">Bike elétrica</div>
-            <div class="col">40</div>
-            <div class="col fw-bold">R$ 3.000,00</div>
-            <div class="col fw-bold">R$ 120.000,00</div>
-          </div>
-          <hr>
-
-
 
         </div>
       </div>
