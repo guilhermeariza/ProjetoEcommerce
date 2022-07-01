@@ -16,6 +16,10 @@ export class CartaoCreditoService {
     headers: new HttpHeaders().set('Autorization', environment.token)
   }
 
+  getById(id: number):Observable<CartaoCredito>{
+    return this.http.get<CartaoCredito>(`http://localhost:8080/cartaocredito/${id}`, this.token)
+  }
+
   getAll(): Observable<CartaoCredito[]>{
     return this.http.get<CartaoCredito[]>('http://localhost:8080/cartaocredito', this.token)
   }

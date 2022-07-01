@@ -21,15 +21,19 @@ export class EnderecoService {
     return this.http.get<Endereco[]>(this.url, this.token)
   }
 
+  getById(id: number):Observable<Endereco>{
+    return this.http.get<Endereco>(`http://localhost:8080/endereco/${id}`, this.token)
+  }
+
   save(endereco: Endereco): Observable<Endereco>{
     return this.http.post<Endereco>('http://localhost:8080/endereco/cadastrar', endereco, this.token)
   }
 
   update(endereco: Endereco): Observable<Endereco>{
-    return this.http.put<Endereco>(this.url+'/atualizar', endereco, this.token)
+    return this.http.put<Endereco>('http://localhost:8080/endereco/atualizar', endereco, this.token)
   }
 
   delete(id: number){
-    return this.http.delete<Endereco>(this.url+'/'+id, this.token)
+    return this.http.delete<Endereco>(`http://localhost:8080/endereco/${id}`, this.token)
   }
 }

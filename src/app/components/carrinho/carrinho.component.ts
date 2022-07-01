@@ -8,8 +8,11 @@ import { Usuario } from 'src/app/model/Usuario';
 import { AlertaService } from 'src/app/service/alerta.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { CarrinhoService } from 'src/app/service/carrinho.service';
+import { CartaoCreditoService } from 'src/app/service/cartao-credito.service';
+import { EnderecoService } from 'src/app/service/endereco.service';
 import { ProdutoService } from 'src/app/service/produto.service';
 import { environment } from 'src/environments/environment.prod';
+declare var $:any;
 
 @Component({
   selector: 'app-carrinho',
@@ -19,6 +22,8 @@ import { environment } from 'src/environments/environment.prod';
 export class CarrinhoComponent implements OnInit {
   //Instanciando as classes
   carrinho:Carrinho = new Carrinho()
+  cartao: CartaoCredito = new CartaoCredito()
+  endereco: Endereco = new Endereco()
   usuario:Usuario = new Usuario()
   produto:Produto = new Produto()
 
@@ -38,11 +43,29 @@ export class CarrinhoComponent implements OnInit {
     private carrinhoService: CarrinhoService,
     private auth: AuthService,
     private alerta: AlertaService,
-    private produtoService: ProdutoService
+    private produtoService: ProdutoService,
+    private cartaoService: CartaoCreditoService,
+    private enderecoService: EnderecoService
   ) { }
 
   ngOnInit() {
     this.CarregarCarrinho()
+  }
+
+  pegarSelectEndereco(event: any){
+    const id = event.target.value
+    this.enderecoService.getById(id).subscribe((data: Endereco)=>{
+      this.endereco = data
+    })
+    console.log(this.endereco)
+  }
+
+  pegarSelectCartao(event: any){
+    const id = event.target.value
+    this.cartaoService.getById(id).subscribe((data: CartaoCredito)=>{
+      this.cartao = data
+    })
+    console.log(this.cartao)
   }
 
   //Método para buscar o usuario pelo id, e retornar os cartoes, endereços e carrinho.
@@ -94,6 +117,9 @@ export class CarrinhoComponent implements OnInit {
     this.listaCarrinho.forEach((item: Carrinho) => {
       item.usuario = user
       item.status = 'pedido'
+      item.apelidoCartao = this.cartao.apelido
+      item.endereco = this.endereco.endereco
+
     })
     this.carrinhoService.fazerPedido(this.listaCarrinho).subscribe((resp: Carrinho[])=>{
       this.CarregarCarrinho()

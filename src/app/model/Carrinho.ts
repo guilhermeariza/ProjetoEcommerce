@@ -15,12 +15,12 @@ export class Carrinho{
   public status: string
   public usuario: Usuario
 
-	private endereco: string
-	private cep: string
+	public endereco: string
+	public cep: string
 
-	private apelidoCartao: string
-	private nomeCartao: string
-	private numeroCartao: string
-	private dataValidadeCartao: string
-	private cvvCartao: string
+	public apelidoCartao: string
+	public nomeCartao: string
+	public numeroCartao: string
+	public dataValidadeCartao: string
+	public cvvCartao: string
 }

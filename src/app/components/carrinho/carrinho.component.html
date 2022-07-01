@@ -52,7 +52,7 @@
       <div class="row mb-5">
         <label class="h3 mb-4">Selecione um endereço de entrega</label>
         <select class="form-select" id="categoriaCadastrar">
-          <option *ngFor="let endereco of listaEndereco" value="{{endereco.endereco}}">Endereço: {{endereco.endereco}}
+          <option *ngFor="let endereco of listaEndereco" value="{{endereco.id}}" (change)="pegarSelectEndereco($event)">Endereço: {{endereco.endereco}}
             -
             {{endereco.cep}}</option>
         </select>
@@ -60,8 +60,8 @@
       <hr>
       <div class="row mb-5">
         <label class="h3 mt-4">Selecione forma de pagameto</label>
-        <select class="form-select" id="categoriaCadastrar">
-          <option *ngFor="let cartao of listaCartao" value="{{cartao.numeroCartao}}">{{cartao.apelido}} -
+        <select class="form-select" id="cartaoPedido" (change)="pegarSelectCartao($event)">
+          <option *ngFor="let cartao of listaCartao" value="{{cartao.id}}">{{cartao.apelido}} -
             {{cartao.numeroCartao}}</option>
         </select>
       </div>

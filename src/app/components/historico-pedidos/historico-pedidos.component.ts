@@ -26,16 +26,16 @@ export class HistoricoPedidosComponent implements OnInit {
 
   item:any
 
+  //variaveis para o orderBy
+  key = 'data'
+  reverse = true
+
   constructor(
-    router: Router,
-    private carrinhoService: CarrinhoService,
-    private auth: AuthService,
-    private alerta: AlertaService
+    private auth: AuthService
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
     this.carregarTodosCarrinhos()
-    this.teste()
   }
 
   carregarTodosCarrinhos(){
@@ -46,17 +46,12 @@ export class HistoricoPedidosComponent implements OnInit {
       this.listaPedidos = this.lista.filter(function(c: Carrinho){
         return c.status == "pedido"
       })
-
-      //console.log(this.listaPedido)
+      console.log(this.listaPedidos)
 
       this.listaPedidos.forEach((valor: any) => {
           this.grupo[valor.data] = this.grupo[valor.data] || [];
           this.grupo[valor.data].push({ Carrinho: valor});
-      });
-
-      console.log(this.grupo);
-
-     
+      })
 
       //console.log(this.listaPedidos)
       this.somaTotal()
@@ -66,26 +61,9 @@ export class HistoricoPedidosComponent implements OnInit {
 
   somaTotal(){
     this.somaDosProdutos = 0
-
-    //fazer um filtro por data do carrinho
     for(let i=0; i < this.listaPedidos.length; i++){
       this.somaDosProdutos = this.listaPedidos[i].valorTotal + this.somaDosProdutos
     }
-  }
-
-  teste(){
-    // let grupo = new Array
-
-    // this.listaPedidos.forEach( ( valor ) => {
-    //   grupo[valor.data] = grupo[valor.data]  || [];
-    //   grupo[valor.data].push({ data : valor.data });
-    // });
-
-    // console.log(grupo)
-
-
-
-
   }
 
 }
