@@ -11,13 +11,14 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class HistoricoPedidosComponent implements OnInit {
   usuario: Usuario = new Usuario()
-  listaPedidos = new Array
+  listaPedidos: Carrinho[] = [];
   lista: any = new Carrinho()
-  somaDosProdutos: string
 
-  //variaveis para o orderBy
-  key = 'data'
-  reverse = true
+  somaDosProdutos: number
+
+  grupo = new Array
+
+  item = new Array
 
   constructor(
     private auth: AuthService
@@ -27,6 +28,8 @@ export class HistoricoPedidosComponent implements OnInit {
     this.carregarTodosCarrinhos()
   }
 
+  dias:string[] = [];
+
   carregarTodosCarrinhos(){
     this.auth.getById(environment.id).subscribe((data: Usuario)=>{
       this.usuario = data
@@ -34,13 +37,40 @@ export class HistoricoPedidosComponent implements OnInit {
       this.listaPedidos = this.lista.filter(function(c: Carrinho){
         return c.status == "pedido"
       })
-      this.formatarValor()
+
+      console.log(this.listaPedidos)
+
+      this.listaPedidos.forEach((item) => {
+        if(!this.dias.includes(item.data)){
+          this.dias.push(item.data)
+        }
+      })
+
+      this.somaTotal()
+
     })
   }
 
-  formatarValor(){
+  selectedDia:string = '';
+  setSelectedDia(dia:string){
+    this.selectedDia = dia
+  }
+
+  getPedidosByDia(){
+    return [...this.listaPedidos].filter(item => {
+       return item.data == this.selectedDia
+    })
+  }
+
+  somaTotal(){
+    this.somaDosProdutos = 0
+
+    //fazer um filtro por data do carrinho
     for(let i=0; i < this.listaPedidos.length; i++){
-      this.listaPedidos[i].valorTotal = this.listaPedidos[i].valorTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+      this.somaDosProdutos = this.listaPedidos[i].valorTotal + this.somaDosProdutos
     }
   }
+
+
 }
+

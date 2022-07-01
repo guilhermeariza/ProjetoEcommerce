@@ -1,4 +1,3 @@
-import { Data } from "popper.js"
 import { Usuario } from "./Usuario"
 
 export class Carrinho{
@@ -11,7 +10,7 @@ export class Carrinho{
   public quantidade: number
   public valorUnitario: number
   public valorTotal: number
-  public data: Data
+  public data: string
   public status: string
   public usuario: Usuario
 	public enderecoEntrega: string
