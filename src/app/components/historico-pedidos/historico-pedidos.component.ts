@@ -38,13 +38,17 @@ export class HistoricoPedidosComponent implements OnInit {
         return c.status == "pedido"
       })
 
-      console.log(this.listaPedidos)
+      //console.log(this.listaPedidos)
 
       this.listaPedidos.forEach((item) => {
         if(!this.dias.includes(item.data)){
           this.dias.push(item.data)
         }
       })
+
+      for(let dia of this.dias){
+        console.log(dia)
+      }
 
       this.somaTotal()
 
@@ -57,7 +61,12 @@ export class HistoricoPedidosComponent implements OnInit {
   }
 
   getPedidosByDia(){
+    this.somaDosProdutos = 0
     return [...this.listaPedidos].filter(item => {
+      for(let i=0; i < this.item.length; i++){
+        this.somaDosProdutos = this.item[i].valorTotal + this.somaDosProdutos
+        console.log(this.somaDosProdutos)
+      }
        return item.data == this.selectedDia
     })
   }

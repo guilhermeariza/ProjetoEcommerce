@@ -7,25 +7,18 @@
       <div class="col"></div>
     </div>
 
-    <div class=" mx-auto d-block fs-15 shadow-lg p-3 mb-5  rounded" >
+    <div class=" mx-auto d-block fs-20 shadow-lg p-3 mb-5  rounded" >
 
-      <div class="col-12 row-cols text-center alinhar">
-        <div class="row col mb-3 fw-bold">
-          <div class="col ">DATA DO PEDIDO</div>
-          <div class="col">CARTÃO USADO</div>
-          <div class="col">ENDEREÇO A SER ENTREGUE</div>
-          <div class="col">QUANTIDADE DE ITENS</div>
-          <div class="col">TOTAL</div>
+      <div class="col-12 row-cols ">
+        <div class="row col mb-3 fw-bold ">
+          <div class="col text-center d-flex justify-content-center align-items-center">DATA DO PEDIDO</div>
+
         </div>
         <hr>
-
         <div *ngFor="let dia of dias" class="pai filha hover-effect" data-bs-toggle="modal" data-bs-target="#abrirCarrinhoModal" (click)="setSelectedDia(dia)">
-            <div class="col fw-bold">{{dia}}</div>
-            <div class="col">Cartão do RH</div>
-            <div class="col">Rua Thuller, 100</div>
-            <div class="col">40</div>
-            <div class="col fw-bold">R$ {{somaDosProdutos}}</div>
-
+            <div class="col fw-bold  d-flex justify-content-center align-items-center">
+              <p class="display-5">{{dia}}</p>
+            </div>
           <hr>
         </div>
 
@@ -36,26 +29,28 @@
   </div>
 
   <div class="modal fade" id="abrirCarrinhoModal" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
-    <div class="modal-dialog modal-xl">
-      <div class="modal-content ">
+    <div class="modal-dialog modal-xl" style="width: 1100px; ">
+      <div class="modal-content" >
         <div class="modal-header ">
-          <h5 class="modal-title" id="staticBackdropLabel">Carinho ID: 1</h5>
+          <h5 class="modal-title" id="staticBackdropLabel" >Itens do pedido: </h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body alinhar fs-15" >
+        <div class="modal-body fs-15" >
 
 
           <div class="row col fw-bold">
-            <div class="col ">PRODUTOS</div>
-            <div class="col"></div>
-            <div class="col">QUANTIDADE</div>
-            <div class="col">VALOR UNITÁRIO</div>
-            <div class="col">SUBTOTAL</div>
+            <div class="col text-center d-flex justify-content-center align-items-center">PRODUTOS</div>
+            <div class="col text-center d-flex justify-content-center align-items-center"></div>
+            <div class="col text-center d-flex justify-content-center align-items-center">QUANTIDADE</div>
+            <div class="col text-center d-flex justify-content-center align-items-center">VALOR UNITÁRIO</div>
+            <div class="col text-center d-flex justify-content-center align-items-center">SUBTOTAL</div>
+            <div class="col text-center d-flex justify-content-center align-items-center">FORMA DE PAGAMENTO</div>
+            <div class="col text-center d-flex justify-content-center align-items-center">ENDEREÇO DE ENTREGA</div>
           </div>
           <hr>
 
 
-            <div class="row col " *ngFor="let item of getPedidosByDia()">
+            <div class="row col text-center" *ngFor="let item of getPedidosByDia()">
               <div class="col">
                 <img src="{{item.foto}}" alt="" class=""
                   style="max-width:90%; max-height:100%; width: auto; height: auto;">
@@ -64,15 +59,11 @@
               <div class="col">{{item.quantidade}}</div>
               <div class="col fw-bold">R$ {{item.valorUnitario}}</div>
               <div class="col fw-bold">R$ {{item.valorTotal}}</div>
+              <div class="col">{{item.formaPagamento}}</div>
+              <div class="col">{{item.enderecoEntrega}}</div>
+
             </div>
-            <div class="col-12 row fs-17 alinhar">
-              <div class="col"></div>
-              <div class="col"></div>
-              <div class="col"></div>
-              <div class="col fw-bold ">Total:</div>
-              <div class="col">R$ {{somaDosProdutos}}</div>
-            </div>
-            <hr>
+
 
 
         </div>

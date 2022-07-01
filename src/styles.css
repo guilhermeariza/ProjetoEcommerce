@@ -30,9 +30,9 @@ app-card-login{
   min-height: calc(100vh - 30px);
 } */
 
-/* app-historico-pedidos{
-  min-height:100%;
-} */
+app-historico-pedidos{
+  min-height:80%;
+}
 
 app-footer{
   height: 100%;
