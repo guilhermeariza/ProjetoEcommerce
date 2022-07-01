@@ -1,5 +1,6 @@
 main{
   margin-top: 62px;
+  height: 100%;
 }
 
 body{
@@ -16,22 +17,22 @@ html{
   flex-direction: column;
 }
 
-app-carrinho{
+/* app-carrinho{
   min-height: 100%;
-}
+} */
 
 app-card-login{
   height: 100%;
 
 }
 
-app-card-pesquisa-produto{
+/* app-card-pesquisa-produto{
   min-height: calc(100vh - 30px);
-}
+} */
 
-app-historico-pedidos{
+/* app-historico-pedidos{
   min-height:100%;
-}
+} */
 
 app-footer{
   height: 100%;
