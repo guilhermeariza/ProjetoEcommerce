@@ -6,11 +6,8 @@ main{
     height: 450px;
     box-shadow: 0 10px 12px 0 rgba(23, 21, 172, 0.2), 0 6px 20px 0 rgba(29, 141, 7, 0.19);
     margin-top: 50px;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
 }
-
-
-
 
 div label{
     width:296px;

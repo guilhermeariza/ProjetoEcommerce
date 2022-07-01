@@ -5,27 +5,37 @@
   </div>
   <div class="container" *ngFor="let produto of listaCategoria">
 
-    <div class="row mb-3">
-      <div style="display: none;">{{produto.id}}</div>
-      <div class="col-3">
-        <a [routerLink]="['/produto', produto]">
-          <img src="{{produto.foto}}" height="200" width="200" class="img-fluid mx-auto d-block">
-        </a>
-      </div>
-      <div class="col-9">
-        <a [routerLink]="['/produto', produto]" style="text-decoration: none; color:black;">
-          <p class="pt-3" style="font-size: 20pt;">{{produto.nome}}</p>
-        </a>
-        <div class="row">
-          <div class="col-9">
-            <p><strong>Descrição: </strong>{{produto.descricao}}</p>
-          </div>
-          <div class="col-9">
-            <p class="" style="font-size: 24pt;"><strong>R$ </strong>{{produto.preco}}</p>
+    <div class="card">
+      <div class="row g-0 justify-content-center align-items-center">
+
+        <div class="col-md-3 text-center">
+          <a (click)="abrirProdutoEspecifico(produto)">
+            <img src="{{produto.foto}}" height="200" width="200" class="img-fluid mx-auto d-block ">
+          </a>
+        </div>
+
+        <div class="col-md-9">
+          <div class="card-body">
+            <div class="card-title">
+              <a (click)="abrirProdutoEspecifico(produto)" style="text-decoration: none; color:black;">
+                <p class="pt-3 nomeProduto">{{produto.nome}}</p>
+              </a>
+            </div>
+
+            <div class="row">
+              <div class="col-12">
+                <p class="descricaoProduto"><strong>Descrição: </strong>{{produto.descricao}}</p>
+              </div>
+              <div class="col-12">
+                <label>Assinatura por:</label>
+                <p class="precoProduto">{{produto.preco}}</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
     <hr>
   </div>
 </main>

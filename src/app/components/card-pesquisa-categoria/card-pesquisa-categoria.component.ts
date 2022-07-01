@@ -17,30 +17,39 @@ export class CardPesquisaCategoriaComponent implements OnInit {
 
   produto: Produto = new Produto
   listaProduto: Produto[]
-  lista: any
+  lista = new Array
 
   constructor(private router: Router,private categoriaService: CategoriaService, private produtoService: ProdutoService, private route: ActivatedRoute) {
    }
 
   ngOnInit(){
+    this.pegarCategoriaRota()
+
+  }
+
+  pegarCategoriaRota(){
     this.route.queryParams.subscribe(params => {
       this.categoriaId = params['id']
       this.categoria = params['nomeCategoria']
+      this.getProduto()
     })
-    this.getProduto()
+  }
+
+  abrirProdutoEspecifico(produto: Produto){
+    this.router.navigate(['/produto'],{queryParams: produto})
   }
 
   getProduto(){
     let id = this.categoriaId
     this.produtoService.getAll().subscribe((data: Produto[])=>{
       this.lista = data
-      this.ngOnInit()
-    })
-    this.listaCategoria = this.lista.filter(function(c: Produto){
-      return c.categoria.id == id
-    })
-    if (this.listaCategoria.length == 0){
+      this.lista.forEach(item => {
+        item.preco = item.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+      })
 
-    }
+      this.listaCategoria = this.lista.filter(function(c: Produto){
+        return c.categoria.id == id
+      })
+    })
   }
 }

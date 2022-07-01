@@ -38,6 +38,9 @@ export class CarrinhoComponent implements OnInit {
   //Variável para exibir a soma dos produtos no html
   somaDosProdutos: number
 
+  //variavel para contar os itens do carrinho
+  qtdItens: number
+
   constructor(
     private router: Router,
     private carrinhoService: CarrinhoService,
@@ -83,8 +86,10 @@ export class CarrinhoComponent implements OnInit {
 
   somaTotal(){
     this.somaDosProdutos = 0
+    this.qtdItens = 0
     for(let i=0; i < this.listaCarrinho.length; i++){
       this.somaDosProdutos = this.listaCarrinho[i].valorTotal + this.somaDosProdutos
+      this.qtdItens = this.qtdItens + 1
     }
   }
 

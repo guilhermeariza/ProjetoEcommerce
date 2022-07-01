@@ -5,7 +5,7 @@
 
       <div class="row col-lg-12 p-3 fw-bold mx-auto rounded" style="background: rgb(237, 237, 237);">
         <div class="col"><u><a class="text-muted" routerLink="/inicio">CONTINUAR COMPRANDO</a></u></div>
-        <div class="col text-center">MEU CARRINHO(4)</div>
+        <div class="col text-center">MEU CARRINHO({{qtdItens}})</div>
         <div class="col"></div>
       </div>
       <div class="mx-auto d-block  font fs-17 shadow-lg p-3 mb-5 bg-body rounded"
@@ -29,8 +29,8 @@
             <div class="col fw-bold">R$ {{item.valorUnitario}}</div>
             <div class="col fw-bold">R$ {{item.valorTotal}}</div>
             <div class="col">
-              <button (click)="excluirProduto(item.id, item.idProduto, item.quantidade)" type="button" class="fw-bold border border-white "
-                style="width: 80%; height: 80%; background: white;">
+              <button (click)="excluirProduto(item.id, item.idProduto, item.quantidade)" type="button"
+                class="fw-bold border border-white " style="width: 80%; height: 80%; background: white;">
                 <h4>&times;</h4>
               </button>
             </div>

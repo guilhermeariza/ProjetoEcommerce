@@ -1,26 +1,27 @@
-<main>
-  <div class="container ml-5 mr-5 pt-3">
+<!-- Construção do Conteiner -->
+<main class="pt-2" style="margin-top: 55px">
+  <div class="container ml-5 mr-5 pt-5">
 
     <div class="card">
       <div class="row g-0 justify-content-center align-items-center">
         <div class="col-md-4 text-center">
-          <img src="{{produto.foto}}" class="img-fluid rounded-start">
+          <img src="{{produto.foto}}" class="img-fluid rounded-start p-1">
         </div>
 
         <div class="col-md-8">
           <div class="card-body">
             <div class="card-title">
-              <label class="h1">{{produto.nome}}</label>
+              <label class="nomeProduto">{{produto.nome}}</label>
             </div>
 
             <div class="card-text">
-              <p class="fs-16 lh-lg">{{produto.descricao}}</p>
+              <p class="produtoDescricao lh-lg">{{produto.descricao}}</p>
             </div>
 
             <hr>
 
             <div class="card-text text-end">
-              <label class="display-3 ">R$ {{produto.preco}}</label>
+              <label class="precoProduto">{{valorFormatado}}</label>
             </div>
 
             <div class="card-text text-end">
@@ -50,25 +51,25 @@
 
   <hr>
   <app-card-home></app-card-home>
-</main>
 
-<div *ngIf="logado()" id="modalProsseguir" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title text-white" id="exampleModalLabel">Produto adicionado ao carrinho
-        </h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Deseja continuar comprando ou ir ao carrinho?</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Continuar comprando</button>
-        <button type="button" class="btn btn-success" data-bs-dismiss="modal" routerLink="/carrinho">Ir para o
-          carrinho</button>
+  <div *ngIf="logado()" id="modalProsseguir" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-white" id="exampleModalLabel">Produto adicionado ao carrinho
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Deseja continuar comprando ou ir ao carrinho?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal">Continuar comprando</button>
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal" routerLink="/carrinho">Ir para o
+            carrinho</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</main>
