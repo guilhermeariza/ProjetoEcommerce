@@ -1,4 +1,4 @@
-<main class="pt-4" style="margin-top:55px; "  ng-repeat="item in grupo">
+<main class="pt-4" style="margin-top:55px; "  >
   <div class=" container d-block row w-75 mx-auto ">
 
     <div class="row p-3 fw-bold mx-auto rounded"  style="background: #b3e2e0">
@@ -19,16 +19,15 @@
         </div>
         <hr>
 
-        <div class="row col pt-5 pb-5 alinhar hover-effect rounded" data-bs-toggle="modal" data-bs-target="#abrirCarrinhoModal">
-          <div class="col fw-bold">{{item}}</div>
-          <div class="col">Cartão do RH</div>
-          <div class="col">Rua Thuller, 100</div>
-          <div class="col">40</div>
-          <div class="col fw-bold">R$ {{somaDosProdutos}}</div>
+        <div *ngFor="let dia of dias" class="pai filha hover-effect" data-bs-toggle="modal" data-bs-target="#abrirCarrinhoModal" (click)="setSelectedDia(dia)">
+            <div class="col fw-bold">{{dia}}</div>
+            <div class="col">Cartão do RH</div>
+            <div class="col">Rua Thuller, 100</div>
+            <div class="col">40</div>
+            <div class="col fw-bold">R$ {{somaDosProdutos}}</div>
 
+          <hr>
         </div>
-        <hr>
-
 
       </div>
 
@@ -55,24 +54,26 @@
           </div>
           <hr>
 
-          <div class="row col " *ngFor="let item of listaPedidos">
-            <div class="col">
-              <img src="{{item.foto}}" alt="" class=""
-                style="max-width:90%; max-height:100%; width: auto; height: auto;">
+
+            <div class="row col " *ngFor="let item of getPedidosByDia()">
+              <div class="col">
+                <img src="{{item.foto}}" alt="" class=""
+                  style="max-width:90%; max-height:100%; width: auto; height: auto;">
+              </div>
+              <div class="col">{{item.nomeProduto}}</div>
+              <div class="col">{{item.quantidade}}</div>
+              <div class="col fw-bold">R$ {{item.valorUnitario}}</div>
+              <div class="col fw-bold">R$ {{item.valorTotal}}</div>
             </div>
-            <div class="col">{{item.nomeProduto}}</div>
-            <div class="col">{{item.quantidade}}</div>
-            <div class="col fw-bold">R$ {{item.valorUnitario}}</div>
-            <div class="col fw-bold">R$ {{item.valorTotal}}</div>
-          </div>
-          <div class="col-12 row fs-17 alinhar">
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col fw-bold ">Total:</div>
-            <div class="col">R$ {{somaDosProdutos}}</div>
-          </div>
-          <hr>
+            <div class="col-12 row fs-17 alinhar">
+              <div class="col"></div>
+              <div class="col"></div>
+              <div class="col"></div>
+              <div class="col fw-bold ">Total:</div>
+              <div class="col">R$ {{somaDosProdutos}}</div>
+            </div>
+            <hr>
+
 
         </div>
       </div>

@@ -11,7 +11,7 @@ export class Carrinho{
   public quantidade: number
   public valorUnitario: number
   public valorTotal: number
-  public data: Data
+  public data: string
   public status: string
   public usuario: Usuario
 

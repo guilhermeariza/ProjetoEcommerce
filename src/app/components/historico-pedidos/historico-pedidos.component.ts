@@ -17,7 +17,7 @@ export class HistoricoPedidosComponent implements OnInit {
 
   pedido:Carrinho = new Carrinho()
   usuario: Usuario = new Usuario()
-  listaPedidos = new Array
+  listaPedidos: Carrinho[] = [];
   lista: any = new Carrinho()
 
   somaDosProdutos: number
@@ -39,8 +39,9 @@ export class HistoricoPedidosComponent implements OnInit {
 
   ngOnInit(): void {
     this.carregarTodosCarrinhos()
-    this.teste()
   }
+
+  dias:string[] = [];
 
   carregarTodosCarrinhos(){
     this.auth.getById(environment.id).subscribe((data: Usuario)=>{
@@ -51,34 +52,27 @@ export class HistoricoPedidosComponent implements OnInit {
         return c.status == "pedido"
       })
 
-      //console.log(this.listaPedido)
+      console.log(this.listaPedidos)
 
-      this.listaPedidos.forEach((valor) => {
-          this.grupo[valor.data] = this.grupo[valor.data] || [];
-          this.grupo[valor.data].push({ Carrinho: valor});
+      this.listaPedidos.forEach((item) => {
+        if(!this.dias.includes(item.data)){
+          this.dias.push(item.data)
+        }
+      })
 
-          console.log(valor)
-
-          // this.x = valor.filter(function(c = new Array){
-          //   return  c == valor.data
-          // })
-          // console.log(this.x)
-
-
-      });
-
-
-
-      for(let item in this.grupo){
-        console.log(item);
-
-      }
-
-      console.log(this.grupo)
-
-      //console.log(this.listaPedidos)
       this.somaTotal()
 
+    })
+  }
+
+  selectedDia:string = '';
+  setSelectedDia(dia:string){
+    this.selectedDia = dia
+  }
+
+  getPedidosByDia(){
+    return [...this.listaPedidos].filter(item => {
+       return item.data == this.selectedDia
     })
   }
 
@@ -91,19 +85,5 @@ export class HistoricoPedidosComponent implements OnInit {
     }
   }
 
-  teste(){
-    // let grupo = new Array
-
-    // this.listaPedidos.forEach( ( valor ) => {
-    //   grupo[valor.data] = grupo[valor.data]  || [];
-    //   grupo[valor.data].push({ data : valor.data });
-    // });
-
-    // console.log(grupo)
-
-
-
-
-  }
-
 }
+
