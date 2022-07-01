@@ -24,7 +24,11 @@ export class HistoricoPedidosComponent implements OnInit {
 
   grupo = new Array
 
-  item:any
+  item = new Array
+
+  x = new Array
+
+  valor = new Array
 
   constructor(
     router: Router,
@@ -49,14 +53,28 @@ export class HistoricoPedidosComponent implements OnInit {
 
       //console.log(this.listaPedido)
 
-      this.listaPedidos.forEach((valor: any) => {
+      this.listaPedidos.forEach((valor) => {
           this.grupo[valor.data] = this.grupo[valor.data] || [];
           this.grupo[valor.data].push({ Carrinho: valor});
+
+          console.log(valor)
+
+          // this.x = valor.filter(function(c = new Array){
+          //   return  c == valor.data
+          // })
+          // console.log(this.x)
+
+
       });
 
-      console.log(this.grupo);
 
-     
+
+      for(let item in this.grupo){
+        console.log(item);
+
+      }
+
+      console.log(this.grupo)
 
       //console.log(this.listaPedidos)
       this.somaTotal()
