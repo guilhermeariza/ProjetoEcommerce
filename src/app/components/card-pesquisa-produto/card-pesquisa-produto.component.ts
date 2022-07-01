@@ -37,7 +37,7 @@ export class CardPesquisaProdutoComponent {
     this.produtoService.getbyName(this.nome).subscribe((data: Produto[]) => {
       this.listaProduto = data
       this.listaProduto.forEach(item => {
-        item.preco = item.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        item.preco = item.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
       })
     })
   }

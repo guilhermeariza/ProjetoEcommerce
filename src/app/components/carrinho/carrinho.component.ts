@@ -59,16 +59,18 @@ export class CarrinhoComponent implements OnInit {
     const id = event.target.value
     this.enderecoService.getById(id).subscribe((data: Endereco)=>{
       this.endereco = data
+      console.log(this.endereco)
     })
-    console.log(this.endereco)
+    this.endereco = new Endereco()
   }
 
   pegarSelectCartao(event: any){
     const id = event.target.value
     this.cartaoService.getById(id).subscribe((data: CartaoCredito)=>{
       this.cartao = data
+      console.log(this.cartao)
     })
-    console.log(this.cartao)
+    this.cartao = new CartaoCredito()
   }
 
   //Método para buscar o usuario pelo id, e retornar os cartoes, endereços e carrinho.
@@ -119,17 +121,22 @@ export class CarrinhoComponent implements OnInit {
   finalizarPedido(){
     const user = new Usuario()
     user.id = this.usuario.id
+    if(this.cartao.nomeCartao.length > 0 && this.endereco.endereco.length > 0 && this.listaCarrinho.length > 0){
     this.listaCarrinho.forEach((item: Carrinho) => {
       item.usuario = user
       item.status = 'pedido'
-      item.apelidoCartao = this.cartao.apelido
-      item.endereco = this.endereco.endereco
-
+      item.formaPagamento = this.cartao.apelido + ' - Final '+this.cartao.numeroCartao.slice(-4)
+      item.enderecoEntrega = this.endereco.endereco +' - '+ this.endereco.cep
     })
-    this.carrinhoService.fazerPedido(this.listaCarrinho).subscribe((resp: Carrinho[])=>{
-      this.CarregarCarrinho()
-      this.alerta.showAlertSuccess('Pedido finalizado com sucesso')
-    })
+      this.carrinhoService.fazerPedido(this.listaCarrinho).subscribe((resp: Carrinho[])=>{
+        this.CarregarCarrinho()
+        this.alerta.showAlertSuccess('Pedido finalizado com sucesso')
+      })
+    } else if(this.listaCarrinho.length < 1){
+      this.alerta.showAlertDanger('Seu carrinho está vazio!')
+    } else if(this.cartao.nomeCartao.length == 0 || this.endereco.endereco.length == 0){
+      this.alerta.showAlertDanger('É necessário selecionar uma forma e pagamento e um endereço de entrega!')
+    }
     console.log(this.listaCarrinho)
   }
 

@@ -1,89 +1,36 @@
-<main class="pt-4" style="margin-top:55px; " ng-repeat="item in grupo">
+<main class="pt-4" style="margin-top:55px;">
   <div class=" container d-block row w-75 mx-auto ">
-
     <div class="row p-3 fw-bold mx-auto rounded" style="background: #b3e2e0">
       <div class="col"></div>
-      <div class="col text-center">Compras:</div>
+      <div class="col text-center">Histórico de pedidos</div>
       <div class="col"></div>
     </div>
-
     <div class=" mx-auto d-block fs-15 shadow-lg p-3 mb-5  rounded">
-
       <div class="col-12 row-cols text-center alinhar">
         <div class="row col mb-3 fw-bold">
           <div class="col "></div>
-          <div class="col">NOME PRODUTO</div>
+          <div class="col">PRODUTO</div>
           <div class="col">FORMA DE PAGAMENTO</div>
           <div class="col">ENDEREÇO DE ENTREGA</div>
           <div class="col">QUANTIDADE</div>
-          <div class="col">TOTAL</div>
+          <div class="col">VALOR TOTAL POR ASSINATURA</div>
         </div>
         <hr>
-        <div class="row col pt-3 pb-3 alinhar hover-effect rounded" data-bs-toggle="modal"
-          data-bs-target="#abrirCarrinhoModal" *ngFor="let item of listaPedidos | orderBy: key : reverse">
-
-          <p class="justify-content-end dataPedidoOrder">Pedido feito em {{item.data | date: 'dd/MM/yyyy'}} às {{item.data | date: 'HH:mm'}}</p>
-
+        <div class="row col pt-3 pb-3 alinhar hover-effect rounded"
+          *ngFor="let item of listaPedidos | orderBy: key : reverse">
+          <p class="justify-content-end dataPedidoOrder fw-bold">Pedido feito em {{item.data | date: 'dd/MM/yyyy'}} às
+            {{item.data | date: 'HH:mm'}}</p>
           <div class="col">
             <img src="{{item.foto}}" style="max-width:90%; max-height:100%; width: auto; height: auto;">
           </div>
           <div class="col fw-bold">{{item.nomeProduto}}</div>
-          <div class="col">{{item.apelidoCartao}}</div>
-          <div class="col">{{item.endereco}}</div>
+          <div class="col">{{item.formaPagamento}}</div>
+          <div class="col">{{item.enderecoEntrega}}</div>
           <div class="col">{{item.quantidade}}</div>
-          <div class="col fw-bold">R$ {{somaDosProdutos}}</div>
-        </div>
-        <hr>
-
-
-      </div>
-
-    </div>
-
-  </div>
-
-  <div class="modal fade" id="abrirCarrinhoModal" tabindex="-1" aria-labelledby="staticBackdropLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-      <div class="modal-content ">
-        <div class="modal-header ">
-          <h5 class="modal-title" id="staticBackdropLabel">Carinho ID: 1</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body alinhar fs-15">
-
-
-          <div class="row col fw-bold">
-            <div class="col ">PRODUTOS</div>
-            <div class="col"></div>
-            <div class="col">QUANTIDADE</div>
-            <div class="col">VALOR UNITÁRIO</div>
-            <div class="col">SUBTOTAL</div>
-          </div>
+          <div class="col fw-bold">{{item.valorTotal}}</div>
           <hr>
-
-          <div class="row col " *ngFor="let item of listaPedidos">
-            <div class="col">
-              <img src="{{item.foto}}" alt="" class=""
-                style="max-width:90%; max-height:100%; width: auto; height: auto;">
-            </div>
-            <div class="col">{{item.nomeProduto}}</div>
-            <div class="col">{{item.quantidade}}</div>
-            <div class="col fw-bold">R$ {{item.valorUnitario}}</div>
-            <div class="col fw-bold">R$ {{item.valorTotal}}</div>
-          </div>
-          <div class="col-12 row fs-17 alinhar">
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col fw-bold ">Total:</div>
-            <div class="col">R$ {{somaDosProdutos}}</div>
-          </div>
-          <hr>
-
         </div>
       </div>
     </div>
   </div>
-
 </main>

@@ -126,6 +126,7 @@ export class ProdutoEspecificoComponent implements OnInit {
 
       this.carrinhoService.save(this.carrinho).subscribe((data: Carrinho)=>{
         this.carrinho = data
+        this.carrinho = new Carrinho()
       })
     }
 

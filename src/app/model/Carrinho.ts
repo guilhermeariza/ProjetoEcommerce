@@ -14,13 +14,6 @@ export class Carrinho{
   public data: Data
   public status: string
   public usuario: Usuario
-
-	public endereco: string
-	public cep: string
-
-	public apelidoCartao: string
-	public nomeCartao: string
-	public numeroCartao: string
-	public dataValidadeCartao: string
-	public cvvCartao: string
+	public enderecoEntrega: string
+	public formaPagamento: string
 }
