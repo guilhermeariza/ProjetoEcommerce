@@ -49,6 +49,7 @@ export class TabelaEnderecoComponent implements OnInit {
     // indicar para o endereco qual usuario deve ser associado
     this.endereco.cep = $('#cepCadastrar').val()
     this.endereco.usuario = this.usuario
+    console.log("teste")
     this.enderecoService.save(this.endereco).subscribe((data: Endereco) => {
       this.endereco = data
       console.log(this.endereco)

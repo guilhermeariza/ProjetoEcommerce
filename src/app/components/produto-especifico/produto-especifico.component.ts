@@ -115,7 +115,7 @@ export class ProdutoEspecificoComponent implements OnInit {
             this.atualizarEstoque()
           }
       } else{
-        this.alerta.showAlertDanger('É necessário esta logado para fazer uma assinatura')
+        this.alerta.showAlertDanger('É necessário estar logado para fazer uma assinatura')
       }
     }
 
