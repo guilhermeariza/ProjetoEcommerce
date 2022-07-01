@@ -1,4 +1,4 @@
-<main class="pt-4" style="margin-top:55px; ">
+<main class="pt-4" style="margin-top:55px; "  ng-repeat="item in grupo">
   <div class=" container d-block row w-75 mx-auto ">
 
     <div class="row p-3 fw-bold mx-auto rounded"  style="background: #b3e2e0">
@@ -19,8 +19,8 @@
         </div>
         <hr>
 
-        <div class="row col pt-5 pb-5 alinhar hover-effect rounded" data-bs-toggle="modal" data-bs-target="#abrirCarrinhoModal" *ngFor="let item of grupo">
-          <div class="col fw-bold">{{item.valor.data}}</div>
+        <div class="row col pt-5 pb-5 alinhar hover-effect rounded" data-bs-toggle="modal" data-bs-target="#abrirCarrinhoModal">
+          <div class="col fw-bold">{{item}}</div>
           <div class="col">Cartão do RH</div>
           <div class="col">Rua Thuller, 100</div>
           <div class="col">40</div>
