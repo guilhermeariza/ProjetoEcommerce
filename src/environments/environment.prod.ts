@@ -8,5 +8,5 @@ export const environment = {
   nomeFantasia: '',
   razaoSocial: '',
   cnpj: '',
-  url: 'https://elertech.herokuapp.com'
+  url: 'http://localhost:8080'
 };
