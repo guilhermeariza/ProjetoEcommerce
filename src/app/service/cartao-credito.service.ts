@@ -16,15 +16,15 @@ export class CartaoCreditoService {
     headers: new HttpHeaders().set('Autorization', environment.token)
   }
 
-  getAll(): Observable<CartaoCredito[]>{
-    return this.http.get<CartaoCredito[]>('http://localhost:8080/cartaocredito', this.token)
+  getAll(idUsuario: number): Observable<CartaoCredito[]>{
+    return this.http.get<CartaoCredito[]>(`http://localhost:8080/cartaocredito/buscar/user/${idUsuario}`, this.token)
   }
 
-  post(cartao: CartaoCredito):Observable<CartaoCredito>{
-    return this.http.post<CartaoCredito>('http://localhost:8080/cartaocredito/cadastrar', cartao, this.token)
+  post(cartao: CartaoCredito, idUsuario: number):Observable<CartaoCredito>{
+    return this.http.post<CartaoCredito>(`http://localhost:8080/cartaocredito/cadastrar/user/${idUsuario}`, cartao, this.token)
   }
 
   delete(id: number){
-    return this.http.delete('http://localhost:8080/cartaocredito/' + id, this.token)
+    return this.http.delete(`http://localhost:8080/cartaocredito/delete/${id}`, this.token)
   }
 }
