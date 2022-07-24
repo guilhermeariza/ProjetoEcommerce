@@ -9,8 +9,6 @@ import { Endereco } from '../model/Endereços';
 })
 export class EnderecoService {
 
-  url: string = 'http://localhost:8080/endereco'
-
   constructor(private http: HttpClient) { }
 
   token = {
@@ -18,18 +16,18 @@ export class EnderecoService {
   }
 
   getAll(): Observable<Endereco[]>{
-    return this.http.get<Endereco[]>(this.url, this.token)
+    return this.http.get<Endereco[]>(environment.url+'/endereco', this.token)
   }
 
   save(endereco: Endereco): Observable<Endereco>{
-    return this.http.post<Endereco>('http://localhost:8080/endereco/cadastrar', endereco, this.token)
+    return this.http.post<Endereco>(environment.url+'/endereco/cadastrar', endereco, this.token)
   }
 
   update(endereco: Endereco): Observable<Endereco>{
-    return this.http.put<Endereco>(this.url+'/atualizar', endereco, this.token)
+    return this.http.put<Endereco>(environment.url+'/endereco/atualizar', endereco, this.token)
   }
 
   delete(id: number){
-    return this.http.delete<Endereco>(this.url+'/'+id, this.token)
+    return this.http.delete<Endereco>(environment.url+'/endereco/'+id, this.token)
   }
 }

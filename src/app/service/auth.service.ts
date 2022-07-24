@@ -12,8 +12,6 @@ import { AlertaService } from './alerta.service';
 })
 export class AuthService {
 
-  url:string = 'http://localhost:8080/usuarios'
-
   token = {
     headers: new HttpHeaders().set('Autorization', environment.token)
   }
@@ -21,23 +19,23 @@ export class AuthService {
   constructor(private http:HttpClient, private router: Router, private alerta: AlertaService) { }
 
   entrar(usuarioLogin: UsuarioLogin):Observable<UsuarioLogin>{
-    return this.http.post<UsuarioLogin>('http://localhost:8080/usuarios/logar', usuarioLogin)
+    return this.http.post<UsuarioLogin>(environment.url+'/usuarios/logar', usuarioLogin)
   }
 
   cadastrar(usuario: Usuario):Observable<Usuario>{
-    return this.http.post<Usuario>('http://localhost:8080/usuarios/cadastrar', usuario)
+    return this.http.post<Usuario>(environment.url+'/usuarios/cadastrar', usuario)
   }
 
   getById(id: number):Observable<Usuario>{
-    return this.http.get<Usuario>('http://localhost:8080/usuarios/'+id, this.token)
+    return this.http.get<Usuario>(environment.url+'/usuarios/'+id, this.token)
   }
 
   getBy(id: number):Observable<any>{
-    return this.http.get<any>('http://localhost:8080/usuarios/'+id, this.token)
+    return this.http.get<any>(environment.url+'/usuarios/'+id, this.token)
   }
 
   update(usuario: Usuario): Observable<Usuario>{
-    return this.http.put<Usuario>(this.url+'/atualizar', usuario, this.token)
+    return this.http.put<Usuario>(environment.url+'/atualizar', usuario, this.token)
   }
 
   logado(){

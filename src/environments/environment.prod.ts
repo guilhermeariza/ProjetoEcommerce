@@ -7,5 +7,6 @@ export const environment = {
   foto: '',
   nomeFantasia: '',
   razaoSocial: '',
-  cnpj: ''
+  cnpj: '',
+  url: 'https://elertech.herokuapp.com'
 };

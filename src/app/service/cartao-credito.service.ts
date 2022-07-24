@@ -17,14 +17,14 @@ export class CartaoCreditoService {
   }
 
   getAll(idUsuario: number): Observable<CartaoCredito[]>{
-    return this.http.get<CartaoCredito[]>(`http://localhost:8080/cartaocredito/buscar/user/${idUsuario}`, this.token)
+    return this.http.get<CartaoCredito[]>(environment.url+`/cartaocredito/buscar/user/${idUsuario}`, this.token)
   }
 
   post(cartao: CartaoCredito, idUsuario: number):Observable<CartaoCredito>{
-    return this.http.post<CartaoCredito>(`http://localhost:8080/cartaocredito/cadastrar/user/${idUsuario}`, cartao, this.token)
+    return this.http.post<CartaoCredito>(environment.url+`/cartaocredito/cadastrar/user/${idUsuario}`, cartao, this.token)
   }
 
   delete(id: number){
-    return this.http.delete(`http://localhost:8080/cartaocredito/delete/${id}`, this.token)
+    return this.http.delete(environment.url+`/cartaocredito/delete/${id}`, this.token)
   }
 }
