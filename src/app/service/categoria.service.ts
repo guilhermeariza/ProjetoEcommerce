@@ -16,22 +16,22 @@ export class CategoriaService {
   }
 
   getAll(): Observable<Categoria[]>{
-    return this.http.get<Categoria[]>('http://localhost:8080/categoria', this.token)
+    return this.http.get<Categoria[]>(environment.url+'/categoria', this.token)
   }
 
   getById(id: number){
-    return this.http.get<Categoria>('http://localhost:8080/categoria/'+id, this.token)
+    return this.http.get<Categoria>(environment.url+'/categoria/'+id, this.token)
   }
 
   save(categoria: Categoria): Observable<Categoria>{
-    return this.http.post<Categoria>('http://localhost:8080/categoria/cadastrar', categoria, this.token)
+    return this.http.post<Categoria>(environment.url+'/categoria/cadastrar', categoria, this.token)
   }
 
   update(categoria: Categoria): Observable<Categoria>{
-    return this.http.put<Categoria>('http://localhost:8080/categoria/atualizar', categoria, this.token)
+    return this.http.put<Categoria>(environment.url+'/categoria/atualizar', categoria, this.token)
   }
 
   deletar(id: number){
-    return this.http.delete<Categoria>('http://localhost:8080/categoria/'+id, this.token)
+    return this.http.delete<Categoria>(environment.url+'/categoria/'+id, this.token)
   }
 }

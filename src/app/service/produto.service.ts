@@ -16,31 +16,31 @@ export class ProdutoService {
   }
 
   getAll(): Observable<Produto[]> {
-    return this.http.get<Produto[]>('http://localhost:8080/produto', this.token)
+    return this.http.get<Produto[]>(environment.url+'/produto', this.token)
   }
 
   getById(id: number){
-    return this.http.get<Produto>('http://localhost:8080/produto/'+ id, this.token)
+    return this.http.get<Produto>(environment.url+'/produto/'+ id, this.token)
   }
 
   getbyName(nome: string):Observable<Produto[]>{
-    return this.http.get<Produto[]>('http://localhost:8080/produto/pesquisar/'+ nome, this.token)
+    return this.http.get<Produto[]>(environment.url+'/produto/pesquisar/'+ nome, this.token)
   }
 
   getbyCategoria(categoria: string):Observable<Produto[]>{
-    return this.http.get<Produto[]>('http://localhost:8080/produto/categoria/'+ categoria, this.token)
+    return this.http.get<Produto[]>(environment.url+'/produto/categoria/'+ categoria, this.token)
   }
 
   save(produto: Produto):Observable<Produto>{
-    return this.http.post<Produto>('http://localhost:8080/produto/cadastrar', produto, this.token)
+    return this.http.post<Produto>(environment.url+'/produto/cadastrar', produto, this.token)
   }
 
   update(produto:Produto):Observable<Produto>{
-    return this.http.put<Produto>('http://localhost:8080/produto/atualizar', produto, this.token)
+    return this.http.put<Produto>(environment.url+'/produto/atualizar', produto, this.token)
   }
 
   delete(id: number){
-    return this.http.delete<Produto>('http://localhost:8080/produto/'+ id, this.token)
+    return this.http.delete<Produto>(environment.url+'/produto/'+ id, this.token)
   }
 
 }

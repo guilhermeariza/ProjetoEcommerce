@@ -1,5 +1,4 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { identifierName } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
@@ -16,19 +15,15 @@ export class CartaoCreditoService {
     headers: new HttpHeaders().set('Autorization', environment.token)
   }
 
-  getById(id: number):Observable<CartaoCredito>{
-    return this.http.get<CartaoCredito>(`http://localhost:8080/cartaocredito/${id}`, this.token)
+  getAll(idUsuario: number): Observable<CartaoCredito[]>{
+    return this.http.get<CartaoCredito[]>(environment.url+`/cartaocredito/buscar/user/${idUsuario}`, this.token)
   }
 
-  getAll(): Observable<CartaoCredito[]>{
-    return this.http.get<CartaoCredito[]>('http://localhost:8080/cartaocredito', this.token)
-  }
-
-  post(cartao: CartaoCredito):Observable<CartaoCredito>{
-    return this.http.post<CartaoCredito>('http://localhost:8080/cartaocredito/cadastrar', cartao, this.token)
+  post(cartao: CartaoCredito, idUsuario: number):Observable<CartaoCredito>{
+    return this.http.post<CartaoCredito>(environment.url+`/cartaocredito/cadastrar/user/${idUsuario}`, cartao, this.token)
   }
 
   delete(id: number){
-    return this.http.delete('http://localhost:8080/cartaocredito/' + id, this.token)
+    return this.http.delete(environment.url+`/cartaocredito/delete/${id}`, this.token)
   }
 }
